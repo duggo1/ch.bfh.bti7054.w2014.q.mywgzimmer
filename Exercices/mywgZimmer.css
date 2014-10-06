@@ -1,37 +1,69 @@
 @CHARSET "ISO-8859-1";
 
 div#Header {
-	margin: 5px 10px 0px 10px;
-	background: url(rosenblatt.jpg);
+	background: url(logo.png);
+        background-repeat: no-repeat;
 	padding: 10px 30px;
-	height: 80px;
-	border-radius: 3;
+	height: 100px;
+}
+#help {
+    position: absolute;
+    top: 50px;
+    right: 200px;
+}
+#agb {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+}
+#helpb {
+    position: absolute;
+    top: 127px;
+    right: 215px;
+}
+#agbb {
+    position: absolute;
+    top: 127px;
+    right: 115px;
+}
+#suche {
+    position: absolute;
+    top: 170px;
+    left: 40px;
+}
+#inserat {
+    position: absolute;
+    top: 400px;
+    left: 40px;
+}
+#sucheb {
+    position: absolute;
+    top: 362px;
+    left: 77px;
+}
+#inseratb {
+    position: absolute;
+    top: 597px;
+    left: 53px;
 }
 div#leftbox{
 	
-	background-color: orange;
+	height: 200px;
+	text-align: right;
+	
+}
+	
+div#rightbox{
+	
+	right-margin: 66%;
 	height: 200px;
 	width: 300px;
 	text-align: right;
 	
 }
 div#content{
-	
-	margin: 30px 30px 30px 50px;
-	background-color: red;
-	height: 200px;
-	width: 500px;
-	text-align: right;
-	
-}
-div#rightbox{
-	
-	right-margin: 66%;
-	background-color: yellow;
-	height: 200px;
-	width: 300px;
-	text-align: right;
-	
+        height: 100%;
+
 }
 body {
     background-image: url('holz.jpg');
