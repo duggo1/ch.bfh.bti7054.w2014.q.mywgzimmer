@@ -33,3 +33,7 @@ div#rightbox{
 	text-align: right;
 	
 }
+body {
+    background-image: url('holz.jpg');
+    background-repeat: repeat;
+}
