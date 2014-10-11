@@ -24,7 +24,7 @@ div#Header {
 }
 div#leftbox{
 	width: 100%;
-	height: width * 1.2;
+	height: width*1.2;
 	text-align: left;
         background-color: violet;
 }
