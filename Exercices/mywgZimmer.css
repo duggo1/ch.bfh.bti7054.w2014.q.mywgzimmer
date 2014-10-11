@@ -16,43 +16,23 @@ div#Header {
     top: 50px;
     right: 100px;
 }
-#helpb {
-    position: absolute;
-    top: 127px;
-    right: 215px;
-}
-#agbb {
-    position: absolute;
-    top: 127px;
-    right: 115px;
-}
-#suche {
-    position: absolute;
-    top: 170px;
-    left: 40px;
-}
+
+
 #inserat {
-    position: absolute;
-    top: 400px;
-    left: 40px;
-}
-#sucheb {
-    position: absolute;
-    top: 362px;
-    left: 77px;
-}
-#inseratb {
-    position: absolute;
-    top: 597px;
-    left: 53px;
+    width: 80%;
+    height: width * 1.2;
 }
 div#leftbox{
-	
-	height: 200px;
-	text-align: right;
-	
+	width: 100%;
+	height: width * 1.2;
+	text-align: left;
+        background-color: violet;
 }
-	
+#suche {
+
+       width: 80%;
+    height: width * 1.2;
+}	
 div#rightbox{
 	
 	right-margin: 66%;
