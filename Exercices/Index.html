@@ -1,76 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head >
-<meta charset="ISO-8859-1">
-<title>MyWGZimmer</title>
-<link rel="stylesheet" type="text/css" href="mywgzimmer.css">
-</head >
-<body>
-    <img id=help src="help.png">
-    <img id=agb src="agb.png">
-    
-<table border="1" width="95%" height="100%" cellspacing="2"
-cellpadding="10" bgcolor="#E0E0E0" align="center">
-
-<div id="Wrap">
-
-
-<div id="Header" >
-</div>
-<table border="0" cellpadding="10" cellspacing="0" width="100%"
-height="100%">
-<tr>
-<td colspan="2" width="100%" height="10%" align="center">
-</td>
-</tr><tr>
-<td width="25%" height="90%" valign="top">
-<div id="leftbox">
-    
-    <img id=suche src="suche.png">
-    <img id=inserat src="inserat.png">
-
-</div>
-</td>
-<td width="70%" height="600px" valign="top" bgcolor=white>
-    <div id="content">
-Content
-Lorum ipsum:
-öalwghwahg
-wlEGKHWpgh
-wGw
-gwR
-HG wr
- h
- r
-  HA
-  E H
-  AER
-  H
-  AE
-  RH
-  ERA
-  H
-  ERA
-  H
-  AER
-   H
-   
-    h
-    </div>
-</td>
-<td width="25%" height="90%" valign="top">
-<div id="rightbox">
-</div>
-</td>
-</tr>
-</table>
-
-
-
-
-
-</div>
-
-</table>
-</body>
+    <head >
+        <meta charset="ISO-8859-1">
+        <title>MyWGZimmer</title>
+        <link rel="stylesheet" type="text/css" href="mywgzimmer.css">
+    </head >
+    <body>
+        <div id="Header" >
+            <a href="?link=home" ><img id=logo src="logo.png" alt="Home" title="Home"></a>
+            <a href="?link=hilfe" ><img id=help src="help.png" alt="Hilfe" title="Hilfe"></a>
+            <a href="?link=agb" ><img id=agb src="agb.png" alt="AGB" title="AGB"></a>
+        </div>
+        <div id="Wrap">
+            <table>
+                <tr>
+                    <td>
+                        <div id="leftbox">  
+                            <a href="?link=suchen" ><img id=suche src="suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
+                            <a href="?link=inserieren" ><img id=inserat src="inserat.png" alt="Gratis-WG-Zimmer-inserieren" title="Gratis WG-Zimmer inserieren"></a>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="content">
+                            <?php
+                            if ($link == 0 || $link == Home) {
+                                home();
+                            }
+                            ?>
+                        </div>
+                    </td> 
+                    <td>
+                        <div id="rightbox">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>

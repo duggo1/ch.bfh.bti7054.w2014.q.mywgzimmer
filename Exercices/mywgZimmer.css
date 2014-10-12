@@ -1,51 +1,45 @@
 @CHARSET "ISO-8859-1";
 
+body {
+    background-image: url('holz.jpg');
+    background-repeat: repeat;
+}
 div#Header {
-	background: url(logo.png);
-        background-repeat: no-repeat;
-	padding: 10px 30px;
-	height: 100px;
+    padding: 3px 30px;
 }
 #help {
     position: absolute;
-    top: 50px;
+    top: 25px;
     right: 200px;
 }
 #agb {
     position: absolute;
-    top: 50px;
+    top: 25px;
     right: 100px;
 }
-
-
-#inserat {
-    width: 80%;
-    height: width * 1.2;
+div#Wrap {
+    padding-top: 20px;
 }
 div#leftbox{
-	width: 100%;
-	height: width*1.2;
-	text-align: left;
-        background-color: violet;
+    width: 220px;
 }
 #suche {
-
-       width: 80%;
-    height: width * 1.2;
+    height: 200px;
+    width: 200px;
 }	
+#inserat {
+    height: 200px;
+    width: 200px;
+}
+td{
+    vertical-align: top;
+}
+div#content
+{
+    height: 100%;
+    width: 100%;
+    background-color:rgba(255,255,255,0.5);
+}
 div#rightbox{
-	
-	right-margin: 66%;
-	height: 200px;
-	width: 300px;
-	text-align: right;
-	
-}
-div#content{
-        height: 100%;
-
-}
-body {
-    background-image: url('holz.jpg');
-    background-repeat: repeat;
+    width: 250px;
 }
