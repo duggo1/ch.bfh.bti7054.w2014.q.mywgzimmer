@@ -1,7 +1,7 @@
 <?php
 $link = 0;
 
-require_once '~/Content/content.php';
+require_once ("Content/content.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,9 +34,17 @@ require_once '~/Content/content.php';
                     <td>
                         <div id="content">
                             <?php
-                            if ($link == 0 || $link == Home) {
+                            if ($link == 'home') {
                                 home();
-                            }
+                                }elseif ($link == 'suchen') {
+                                	anders();
+                                }elseif ($link=='inserieren'){
+									echo '<ul><li>Inserieren</li></ul>';
+								}elseif ($link=='hilfe'){
+									echo '<ul><li>Hilfe</li></ul>';
+								}elseif ($link=='agb'){
+									echo '<ul><li>AGB</li></ul>';
+                                }
                             ?>
                         </div>
                     </td> 
