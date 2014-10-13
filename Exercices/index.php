@@ -1,7 +1,7 @@
 <?php
 $link = 0;
 
-require_once 'content.php';
+require_once '~/Content/content.php';
 ?>
 <!DOCTYPE html>
 <html>
