@@ -1,8 +1,8 @@
 <?php
 
 function home() {
-    echo ''
-    ?> 
+    echo '
+
     <h1>Willkommen auf mywgzimmer.ch!</h1>
     <ul>
         <li>Du bist auf der Suchen nach einem freien Zimmer. 
@@ -11,5 +11,7 @@ function home() {
             Klicke auf "Gratis WG-Zimmer inserieren"</li>
         <li>Du suchst ein WG-Zimmer und möchtest <strong>gratis</strong>* ein Inserat für deine Zimmersuche aufgeben:
             Klicke auf "Suche WG-Zimmer" und dann auf "Gratis Zimmersuche inserieren"</li>
-    </ul>
-<?php } ?>
+    </ul>';
+ } 
+ 
+ ?>
