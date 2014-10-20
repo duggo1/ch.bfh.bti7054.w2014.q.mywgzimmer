@@ -2,6 +2,7 @@
 $link = 0;
 
 require_once ("Content/content.php");
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,34 @@ require_once ("Content/content.php");
         <meta charset="ISO-8859-1">
         <title>MyWGZimmer</title>
         <link rel="stylesheet" type="text/css" href="mywgzimmer.css">
+        <link href="css/blitzer/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+		<script src="js/jquery-1.8.3.js"></script>
+		<script src="js/jquery-ui-1.9.2.custom.js"></script>
+		<script>
+	$(function() {
+	
+		//$("#table").resizable();
+		$( "#tabs" ).tabs();
+		 $( "#radio" ).buttonset();
+		$( "#tabs" ).tabs( "disable", 1 );
+		$( "#tabs" ).tabs( "disable", 2 );
+		$( "#tabs" ).tabs( "disable", 3 );
+		$( "#tabs" ).tabs( "disable", 4 );
+		$( "#accordion" ).accordion();
+		$( "#datepicker" ).datepicker({
+			inline: true			
+		});
+		$( "#datepicker2" ).datepicker({	
+		dateFormat:"dd.mm.yy"
+		});	
+		$( "#btwiter1" ).button();	
+		$( "#autocomplete" ).autocomplete({
+			source: availableTags
+		});	
+		 $( "#number" ).selectmenu();	
+		 
+	});
+	</script>
     </head >
     <body>
         <div id="Header" >
@@ -37,9 +66,9 @@ require_once ("Content/content.php");
                             if ($link == 'home') {
                                 home();
                                 }elseif ($link == 'suchen') {
-                                	anders();
+                                	echo '<ul><li>Suchen</li></ul>';
                                 }elseif ($link=='inserieren'){
-									echo '<ul><li>Inserieren</li></ul>';
+									Inserieren();
 								}elseif ($link=='hilfe'){
 									echo '<ul><li>Hilfe</li></ul>';
 								}elseif ($link=='agb'){

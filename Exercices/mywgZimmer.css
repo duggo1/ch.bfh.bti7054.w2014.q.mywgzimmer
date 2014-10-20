@@ -1,6 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 body {
+	font: 80% "Trebuchet MS", sans-serif;
     background-image: url('holz.jpg');
     background-repeat: repeat;
 }
@@ -36,18 +37,30 @@ td{
 }
 div#content
 {
+	margin-left: 80px;
     height: 100%;
     width: 100%;
-    background-color:rgba(255,255,255,0.5);
+  /*  background-color:rgba(255,255,255,0.5);*/
 }
 div#rightbox{
-    width: 250px;
+    width: 25opx;
 }
 .Accordion {
-	height: 350px';
+	
 	border :1px ridge gray;
 		
 }
 .Tabs {
-	height: 100%;	
+	height: 550px;
+	width: 900px;
+}
+tr#trtabs{
+	
+	height: 40px;
+	text-align: left;
+}
+
+.error{
+	color: red;
+	font-size: 8pt;
 }
