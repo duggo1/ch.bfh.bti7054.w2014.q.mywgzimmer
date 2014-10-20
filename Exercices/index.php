@@ -1,8 +1,8 @@
 <?php
 $link = 0;
 
-require_once ("Content/content.php");
-
+require_once ("Content/Inserieren.php");
+require_once ("Content/Home.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@ require_once ("Content/content.php");
 		//$("#table").resizable();
 		$( "#tabs" ).tabs();
 		 $( "#radio" ).buttonset();
-		$( "#tabs" ).tabs( "disable", 1 );
+		//$( "#tabs" ).tabs( "disable", 1 );
 		$( "#tabs" ).tabs( "disable", 2 );
 		$( "#tabs" ).tabs( "disable", 3 );
 		$( "#tabs" ).tabs( "disable", 4 );
