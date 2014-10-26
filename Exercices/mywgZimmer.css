@@ -1,6 +1,7 @@
-@CHARSET "ISO-8859-1";
+@CHARSET "utf-8";
 
 body {
+	font: 80% "Trebuchet MS", sans-serif;
     background-image: url('holz.jpg');
     background-repeat: repeat;
 }
@@ -28,6 +29,7 @@ div#leftbox{
     width: 200px;
 }	
 #inserat {
+    padding-top: 20px;
     height: 200px;
     width: 200px;
 }
@@ -36,18 +38,27 @@ td{
 }
 div#content
 {
-    height: 100%;
+    min-height: 380px;
+    padding: 20px;
+    margin-left: 30px;
     width: 100%;
     background-color:rgba(255,255,255,0.5);
 }
 div#rightbox{
-    width: 250px;
+    width: 400px;
 }
 .Accordion {
-	height: 350px;
-	border: 1px ridge gray;
-		
+	min-height: 350px;
+	border: 1px ridge gray;	
+	border :1px ridge gray;	
 }
 .Tabs {
-	height: 100%;	
+        min-height: 420px;
+}
+tr#trtabs{
+	text-align: left;
+}
+.error{
+	color: red;
+	font-size: 8pt;
 }
