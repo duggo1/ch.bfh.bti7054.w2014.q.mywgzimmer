@@ -32,9 +32,11 @@ div#leftbox{
     height: 200px;
     width: 200px;
 }
+
 td{
     vertical-align: top;
 }
+
 div#content
 {
 	margin-left: 80px;
