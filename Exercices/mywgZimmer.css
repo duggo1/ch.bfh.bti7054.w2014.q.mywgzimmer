@@ -33,9 +33,11 @@ div#leftbox{
     height: 200px;
     width: 200px;
 }
+
 td{
     vertical-align: top;
 }
+
 div#content
 {
     min-height: 380px;
@@ -48,9 +50,10 @@ div#rightbox{
     width: 400px;
 }
 .Accordion {
+
 	min-height: 350px;
-	border: 1px ridge gray;	
-	border :1px ridge gray;	
+	border: 1px ridge gray;
+        
 }
 .Tabs {
         min-height: 420px;

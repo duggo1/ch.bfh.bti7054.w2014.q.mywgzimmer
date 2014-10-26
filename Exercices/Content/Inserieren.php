@@ -196,10 +196,56 @@ function InserierenTab2() {
 function InserierenTab3() {
 	?>
 
+<div style="width: 450px;">
+	<table>
+		<tr id="trtabs">
+			<td>*Pflichtfelder
+				<p></p>
+			</td>
+		</tr>
+		<tr style="float: left">
+			<td><p></p>
+				<p></p>
+				<p></p>*Ab-Datum</td>
+		</tr>
+		<tr id="trtabs">
+			<td><input type="text"
+				value="<?php echo date("d"+2).".".date("m").".".date("Y"); ?>"
+				id="abdatum" style="width: 100px" /></td>
+		</tr>
+		<tr style="float: left">
+			<td><p></p>*Bis-Datum</td>
+		</tr>
 
+		<tr>
+			<td style="float: left"><input type="radio" id="unbefristet"
+				name="radio" checked="checked" /> <label for="unbefristet">Unbefristet</label></td
+		
+		</tr>
+		<tr id="trtabs"  style="float: left">
+			<td><input type="radio" id="befristet" name="radio" /> <label
+				for="befristet">Befristet</label></td>
+			<td>bis <input type="text"
+				value="<?php echo date("d"+2).".".date("m").".".date("Y"); ?>"
+				id="bisdatum" style="width: 100px" /></td>
+		</tr>
+		<tr style="float: left">
+			<td><p></p>*W&aumlhrung / *Miete inkl Nebenkosten</td>
+		</tr>
 
+		<tr  style="float: left">
+			<td><select id="waerung">
+					<option value="chf">CHF</option>
+					<option value="euro">EURO</option>
+			</select></td>
+			<td>/</td>
+			<td><input id="miete" type="text"></td>
+			<td class="errorClass" id="errorwaerungmiete"></td>
+		</tr>
 
-
+	</table>
+</div>
+>>>>>>> origin/master
 
 <?php
 }
