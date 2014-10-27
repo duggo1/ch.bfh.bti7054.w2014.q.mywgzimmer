@@ -36,6 +36,7 @@ div#leftbox{
 
 td{
     vertical-align: top;
+    text-align: left;
 }
 
 div#content
@@ -56,11 +57,12 @@ div#rightbox{
         
 }
 .Tabs {
-        min-height: 550px;
+        //min-height: 550px;
 }
-tr#trtabs{
-	text-align: left;
+tr#4{
+	width: 100%;
 }
+
 .error{
 	color: red;
 	font-size: 8pt;

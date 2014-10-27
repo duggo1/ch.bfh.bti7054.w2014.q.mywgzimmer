@@ -46,81 +46,88 @@ function Inserieren() {
 }
 function InserierenTab1() {
 	?>
+<table style="min-width: 0px";>
+	<tr>
+		<td style="width: 40%" colspan="4">*Pflichtfelder</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%">Es werden keine persönlichen</td>
 
-<div style="width: 400px; float: left">
-	<table>
-		<tr id="trtabs">
-			<td>*Pflichtfelder
-				<p></p>
-			</td>
-		</tr>
-		<tr id="trtabs">
-			<td>*Anrede:</td>
-			<td><input type="radio" id="radioHerr" name="radio" checked="checked">
-				<label for="radioHerr">Herr</label> <input type="radio"
-				id="radioFrau" name="radio"> <label for="radioFrau">Frau</label></td>
-			<td class="error" id="errorgeschlecht"></td>
-		</tr>
-		<tr id="trtabs">
-			<td>*Vorname:</td>
-			<td><input id="vorname" type="text"></td>
-		</tr>
+	</tr>
+	<tr>
+		<td style="width: 40%" colspan="4">*Anrede</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%">Daten im Inserat veröffentlicht.</td>
+	</tr>
+	<tr>
+		<td style="width: 20%" colspan="2"><input type="radio" id="radioHerr"
+			name="radio" checked="checked"> <label for="radioHerr">Herr</label></td>
+		<td style="width: 20%" colspan="2"><input type="radio" id="radioFrau"
+			name="radio"> <label for="radioFrau">Frau</label></td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%"></td>
+	</tr>
+	<tr>
+		<td style="width: 40%" colspan="4">*Vorname</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%">*E-Mail</td>
+	</tr>
+	<tr>
+		<td style="width: 40%" colspan="4"><input id="vorname" type="text"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%"><input id="email" type="email"></td>
+	</tr>
+	<tr>
+		<td style="width: 40%" colspan="4">*Nachname</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%">*E-Mail (wiederholen)</td>
+	</tr>
+	<tr>
+		<td style="width: 40%" colspan="4"><input id="nachname" type="text"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%"><input id="email" type="email"></td>
+	</tr>
+	<tr>
+		<td style="width: 20%" colspan="2">*Strasse</td>
+		<td style="width: 20%" colspan="2">*Nr.</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%">*Telefonnummer</td>
+	
+	
+	<tr>
+		<td style="width: 20%" colspan="2"><input id="strasse" type="text"></td>
+		<td style="width: 20%" colspan="2"><input id="strasseNr" type="text"
+			style="width: 40px"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%"><input id="telefonnr" type="tel"></td>
+	</tr>
+	<tr>
+		<td style="width: 20%" colspan="2">*PLZ</td>
+		<td style="width: 20%" colspan="2">*Ort</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%"></td>
+	</tr>
 
-		<tr id="trtabs">
-			<td>*Nachname:</td>
-			<td><input id="nachname" type="text"></td>
-		</tr>
 
-		<tr id="trtabs">
-			<td>*Strasse/Nr:</td>
-			<td><input id="strasse" type="text"></td>
-			<td>/</td>
-			<td><input id="strasseNr" type="text" style="width: 40px"></td>
-		</tr>
-
-		<tr id="trtabs">
-			<td>*PLZ:</td>
-			<td><input id="plz" type="text"></td>
-		</tr>
-
-		<tr id="trtabs">
-			<td>*Ort:</td>
-			<td><input id="ort" type="text"></td>
-		</tr>
-	</table>
-</div>
-<div style="float: left">
-	<table>
-		<tr id="trtabs">
-			<h4 style="margin: 0;">Es werden keine pers&#246nlichen Daten im
-				Inserat ver&#246ffentlicht</h4>
-		</tr>
-		<tr id="trtabs">
-
-			<td>*E-Mail</td>
-			<td><input id="email" type="email"></td>
-		</tr>
-
-		<tr id="trtabs">
-
-			<td>*E-Mail (wiederholen)</td>
-			<td><input id="email" type="email"></td>
-		</tr>
-
-		<tr id="trtabs">
-
-			<td>*Telefonnummer</td>
-			<td><input id="telefonnr" type="tel"></td>
+	<tr>
 		
-		
-		<tr id="trtabs" styler="height=300px;">
-			<td>&nbsp;</td>
-			<td style="height: 300px; float: right;">
-				<button id="btweiter1">Weiter</button>
-			</td>
-		</tr>
-	</table>
-</div>
+		<td style="width: 20%" colspan="2"><input id="ort" type="text"></td>
+		<td style="width: 20%" colspan="2"><input id="plz" type="text"
+			style="width: 40px"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%"></td>
+	</tr>
+	<tr>
+		<td style="width: 10%"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 20%"></td>
+		<td style="width: 40%; float: right;">
+			<button id="btweiter1">Weiter</button>
+		</td>
+	</tr>
+</table>
+
 <?php
 }
 function InserierenTab2() {
@@ -225,55 +232,53 @@ function InserierenTab2() {
 function InserierenTab3() {
 	?>
 
-<div style="width: 450px;">
-	<table>
-		<tr id="trtabs">
-			<td>*Pflichtfelder
-				<p></p>
-			</td>
-		</tr>
-		<tr style="float: left">
-			<td><p></p>
-				<p></p>
-				<p></p>*Ab-Datum</td>
-		</tr>
-		<tr id="trtabs">
-			<td><input type="text"
-				value="<?php echo date("d"+2).".".date("m").".".date("Y"); ?>"
-				id="abdatum" style="width: 100px" /></td>
-		</tr>
-		<tr style="float: left">
-			<td><p></p>*Bis-Datum</td>
-		</tr>
+<table>
+	<tr>
+		<td>*Pflichtfelder</td>
+		<td>*Pflichtfelder</td>
+	</tr>
+	<tr style="float: left">
+		<td><p></p>
+			<p></p>
+			<p></p>*Ab-Datum</td>
+	</tr>
+	<tr id="trtabs">
+		<td><input type="text"
+			value="<?php echo date("d"+2).".".date("m").".".date("Y"); ?>"
+			id="abdatum" style="width: 100px" /></td>
+	</tr>
+	<tr style="float: left">
+		<td><p></p>*Bis-Datum</td>
+	</tr>
 
-		<tr>
-			<td style="float: left"><input type="radio" id="unbefristet"
-				name="radio" checked="checked" /> <label for="unbefristet">Unbefristet</label></td
-		
-		</tr>
-		<tr id="trtabs"  style="float: left">
-			<td><input type="radio" id="befristet" name="radio" /> <label
-				for="befristet">Befristet</label></td>
-			<td>bis <input type="text"
-				value="<?php echo date("d"+2).".".date("m").".".date("Y"); ?>"
-				id="bisdatum" style="width: 100px" /></td>
-		</tr>
-		<tr style="float: left">
-			<td><p></p>*W&aumlhrung / *Miete inkl Nebenkosten</td>
-		</tr>
+	<tr>
+		<td style="float: left"><input type="radio" id="unbefristet"
+			name="radio" checked="checked" /> <label for="unbefristet">Unbefristet</label></td
+	
+	</tr>
+	<tr id="trtabs" style="float: left">
+		<td><input type="radio" id="befristet" name="radio" /> <label
+			for="befristet">Befristet</label></td>
+		<td>bis <input type="text"
+			value="<?php echo date("d"+2).".".date("m").".".date("Y"); ?>"
+			id="bisdatum" style="width: 100px" /></td>
+	</tr>
+	<tr style="float: left">
+		<td><p></p>*W&aumlhrung / *Miete inkl Nebenkosten</td>
+	</tr>
 
-		<tr  style="float: left">
-			<td><select id="waerung">
-					<option value="chf">CHF</option>
-					<option value="euro">EURO</option>
-			</select></td>
-			<td>/</td>
-			<td><input id="miete" type="text"></td>
-			<td class="errorClass" id="errorwaerungmiete"></td>
-		</tr>
+	<tr style="float: left">
+		<td><select id="waerung">
+				<option value="chf">CHF</option>
+				<option value="euro">EURO</option>
+		</select></td>
+		<td>/</td>
+		<td><input id="miete" type="text"></td>
+		<td class="errorClass" id="errorwaerungmiete"></td>
+	</tr>
 
-	</table>
-</div>
+</table>
+
 
 <?php
 }
