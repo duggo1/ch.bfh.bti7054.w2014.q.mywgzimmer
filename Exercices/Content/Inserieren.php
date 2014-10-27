@@ -9,11 +9,11 @@ function Inserieren() {
 
 			<div id="tabs" class="Tabs">
 				<ul>
-					<li><a href="#tabs-1">Persönliche Angaben </a></li>
+					<li><a href="#tabs-1">Pers&#246nliche Angaben </a></li>
 					<li><a href="#tabs-2">Zimmerbeschreibung </a></li>
 					<li><a href="#tabs-3">Mietangaben </a></li>
 					<li><a href="#tabs-4">Rechliches </a></li>
-					<li><a href="#tabs-5">Bestätigung </a></li>
+					<li><a href="#tabs-5">Best&aumltigung </a></li>
 				</ul>
 
 				<div id="tabs-1">
@@ -44,7 +44,7 @@ function Inserieren() {
 </table>
 <?php
 }
- function InserierenTab1() {
+function InserierenTab1() {
 	?>
 
 <div style="width: 400px; float: left">
@@ -72,10 +72,10 @@ function Inserieren() {
 		</tr>
 
 		<tr id="trtabs">
-			<td>*Strasse/Nr</td>
+			<td>*Strasse/Nr:</td>
 			<td><input id="strasse" type="text"></td>
 			<td>/</td>
-			<td><input id="strasseNr" type="text" style="width: 60px"></td>
+			<td><input id="strasseNr" type="text" style="width: 40px"></td>
 		</tr>
 
 		<tr id="trtabs">
@@ -92,8 +92,8 @@ function Inserieren() {
 <div style="float: left">
 	<table>
 		<tr id="trtabs">
-			<h4 style="margin: 0;">Es werden keine persönlichen Daten im
-				Inserat veröffentlicht</h4>
+			<h4 style="margin: 0;">Es werden keine pers&#246nlichen Daten im
+				Inserat ver&#246ffentlicht</h4>
 		</tr>
 		<tr id="trtabs">
 
@@ -113,10 +113,10 @@ function Inserieren() {
 			<td><input id="telefonnr" type="tel"></td>
 		
 		
-		<tr id="trtabs">
+		<tr id="trtabs" styler="height=300px;">
 			<td>&nbsp;</td>
-			<td float: right;">
-				<button id="btwiter1">Weiter</button>
+			<td style="height: 300px; float: right;">
+				<button id="btweiter1">Weiter</button>
 			</td>
 		</tr>
 	</table>
@@ -124,9 +124,9 @@ function Inserieren() {
 <?php
 }
 function InserierenTab2() {
-?>
+	?>
 
-<div style="width: 500px; float: left">
+<div style="width: 450px; float: left">
 	<table>
 		<tr id="trtabs">
 			<td>*Pflichtfelder
@@ -137,23 +137,37 @@ function InserierenTab2() {
 			<td>*Titel des Inserats</td>
 		</tr>
 		<tr id="trtabs">
-			<td><input id="titeldesinserats" type="text"></td>
+			<td><input id="titeldesinserats" type="text" style="width: 250px"></td>
 		</tr>
-		<tr id="trtabs">
+		<tr style="float: left">
 			<td>Zimmeradresse (sofern diese vom Wohnort abweicht)</td>
 		</tr>
-		<tr id="trtabs">
-			<td>
-				Strasse/Nr
-			</td>
+		<tr>
+			<td style="float: left">Strasse/Nr</td>
 		</tr>
-		<tr  id="trtabs">
-			<td><input id="zimmerStrasse" type="text" ></td>
+		<tr style="float: left">
+			<td><input id="zimmerStrasse" type="text"></td>
 			<td>/</td>
-			
-			<td><input id="zimmerStrasseNr" type="text" style="width: 60px"></td>
+			<td><input id="zimmerStrasseNr" type="text" style="width: 40px"></td>
+
 		</tr>
-	
+		<tr>
+			<td style="float: left">PLZ/Ort</td>
+		</tr>
+		<tr id="trtabs" style="float: left">
+			<td><input id="zimmerPlz" type="number" style="width: 40px"></td>
+			<td>/</td>
+			<td><input id="zimmerOrt" type="text"></td>
+		</tr>
+
+		<tr id="trtabs">
+			<td><p></p>*Zimmerbeschreibung</td>
+		</tr>
+		<tr id="trtabs" style="float: left">
+			<td><textarea id="Zimmerbeschreibung"
+					style="width: 250px; height: 120px;"></textarea></td>
+		</tr>
+
 	</table>
 </div>
 <div style="float: left">
@@ -180,13 +194,28 @@ function InserierenTab2() {
 				name="checkbox"> <label for="checkboxStudirenLehrling">nur f&uumlr
 					Studierende/Lehrlinge</label></td>
 		</tr>
-		<tr>
+		<tr id="trtabs">
+			<td><p></p>Erw&uumlnschte Geschlecht</td>
 		</tr>
-		<tr>
+		<tr id="trtabs">
+			<td><input type="radio" id="zimmerFrau" name="radio" /> <label
+				for="zimmerFrau">nur Frauen</label></td>
 		</tr>
-		<tr>
+		<tr id="trtabs">
+			<td><input type="radio" id="zimmerHerr" name="radio" /> <label
+				for="zimmerHerr">nur M&aumlnner</label></td
+		
 		</tr>
-
+		<tr id="trtabs">
+			<td><input type="radio" id="zimmerEgal" name="radio"
+				checked="checked" /> <label for="zimmerEgal">egal</label></td>
+		</tr>
+		<tr id="trtabs" styler="height=300px;">
+			<td>&nbsp;</td>
+			<td style="height: 300px; float: right;">
+				<button id="btweiter2">Weiter</button>
+			</td>
+		</tr>
 	</table>
 </div>
 
@@ -245,7 +274,6 @@ function InserierenTab3() {
 
 	</table>
 </div>
->>>>>>> origin/master
 
 <?php
 }
@@ -270,7 +298,3 @@ function InserierenTab5() {
 <?php
 }
 ?>				
-
-
-
-  

@@ -47,16 +47,16 @@ div#content
     background-color:rgba(255,255,255,0.5);
 }
 div#rightbox{
-    width: 400px;
+    width: 300px;
 }
 .Accordion {
 
-	min-height: 350px;
+	min-height: 420px;
 	border: 1px ridge gray;
         
 }
 .Tabs {
-        min-height: 420px;
+        min-height: 550px;
 }
 tr#trtabs{
 	text-align: left;
