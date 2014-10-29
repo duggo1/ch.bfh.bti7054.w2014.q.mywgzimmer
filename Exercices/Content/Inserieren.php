@@ -9,11 +9,11 @@ function Inserieren() {
 
 			<div id="tabs" class="Tabs">
 				<ul>
-					<li><a href="#tabs-1">Pers&#246nliche Angaben </a></li>
+					<li><a href="#tabs-1">Persönliche Angaben </a></li>
 					<li><a href="#tabs-2">Zimmerbeschreibung </a></li>
 					<li><a href="#tabs-3">Mietangaben </a></li>
 					<li><a href="#tabs-4">Rechliches </a></li>
-					<li><a href="#tabs-5">Best&aumltigung </a></li>
+					<li><a href="#tabs-5">Bestätigung </a></li>
 				</ul>
 
 				<div id="tabs-1">
@@ -50,13 +50,13 @@ function InserierenTab1() {
 	<tr>
 		<td style="width: 40%" colspan="4">*Pflichtfelder</td>
 		<td style="width: 10%"></td>
-		<td style="width: 50%">Es werden keine pers�nlichen</td>
+		<td style="width: 50%">Es werden keine persönlichen</td>
 
 	</tr>
 	<tr>
 		<td style="width: 40%" colspan="4">*Anrede</td>
 		<td style="width: 10%"></td>
-		<td style="width: 50%">Daten im Inserat ver�ffentlicht.</td>
+		<td style="width: 50%">Daten im Inserat veröffentlicht.</td>
 	</tr>
 	<tr>
 		<td style="width: 20%" colspan="2"><input type="radio" id="radioHerr"
@@ -191,18 +191,18 @@ function InserierenTab2() {
 			<td class="error" id="errorZimmerart"></td>
 		</tr>
 		<tr style="float: left">
-			<td>*Fl&aumlche m2</td>
+			<td>*Fläche m2</td>
 		</tr>
 		<tr id="trtabs">
 			<td><input id="zimmerflaeche" type="number"></td>
 		</tr>
 		<tr id="trtabs">
 			<td><input type="checkbox" id="checkboxStudirenLehrling"
-				name="checkbox"> <label for="checkboxStudirenLehrling">nur f&uumlr
+				name="checkbox"> <label for="checkboxStudirenLehrling">nur für
 					Studierende/Lehrlinge</label></td>
 		</tr>
 		<tr id="trtabs">
-			<td><p></p>Erw&uumlnschte Geschlecht</td>
+			<td><p></p>Erwünschte Geschlecht</td>
 		</tr>
 		<tr id="trtabs">
 			<td><input type="radio" id="zimmerFrau" name="radio" /> <label
@@ -210,7 +210,7 @@ function InserierenTab2() {
 		</tr>
 		<tr id="trtabs">
 			<td><input type="radio" id="zimmerHerr" name="radio" /> <label
-				for="zimmerHerr">nur M&aumlnner</label></td
+				for="zimmerHerr">nur Männer</label></td
 		
 		</tr>
 		<tr id="trtabs">
