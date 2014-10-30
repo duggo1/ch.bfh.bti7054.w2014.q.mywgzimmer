@@ -5,6 +5,18 @@ require_once ("Content/Inserieren.php");
 require_once ("Content/Home.php");
 require_once ("Content/AGB.php");
 
+function get_param($name, $default) {
+if (isset($_GET[$name])) return urldecode($_GET[$name]);
+        else return $default;
+    }
+function add_param($url, $name, $value, $sep="&") { $new_url = $url.$sep.$name."=".urlencode($value); return $new_url;
+    }
+function language() {
+$url = $_SERVER['PHP_SELF'];
+$url = add_param($url, "id", get_param("id", 0), "?"); echo "<a href=\"".add_param($url,"lan","de")."\">DE</a> "; echo "<a href=\"".add_param($url,"lan","en")."\">EN</a> ";
+}
+$text = array("de"=>"Seite", "en"=>"Page");
+$title = array("de"=>"Willkommen", "en"=>"Welcome");
 ?>
 <!DOCTYPE html>
 
@@ -61,6 +73,7 @@ require_once ("Content/AGB.php");
                 <tr>
                     <td style="vertical-align: top;">
                         <div id="leftbox">
+                            <?php language(); ?>
                             <a href="?link=suchen"><img id=suche src="suche.png"
                                                         alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a> <a
                                 href="?link=inserieren"><img id=inserat src="inserat.png"
