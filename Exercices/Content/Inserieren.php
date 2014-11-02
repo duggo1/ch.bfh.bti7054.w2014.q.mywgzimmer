@@ -46,7 +46,7 @@ function Inserieren() {
 }
 function InserierenTab1() {
 	?>
-<table style="min-width: 0px;" >
+<table style="min-width: 0px;">
 
 	<tr>
 		<td style="width: 40%" colspan="4">*Pflichtfelder</td>
@@ -188,8 +188,8 @@ function InserierenTab2() {
 
 	</tr>
 	<tr>
-		<td style="width: 20%" colspan="2">*Strasse</td>
-		<td style="width: 20%" colspan="2">*Nr.</td>
+		<td style="width: 20%" colspan="2">Strasse</td>
+		<td style="width: 20%" colspan="2">Nr.</td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%" colspan="5"></td>
 	
@@ -206,8 +206,8 @@ function InserierenTab2() {
 	</tr>
 
 	<tr>
-		<td style="width: 20%" colspan="2">*Ort</td>
-		<td style="width: 20%" colspan="2">*PLZ</td>
+		<td style="width: 20%" colspan="2">Ort</td>
+		<td style="width: 20%" colspan="2">PLZ</td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%" colspan="5"></td>
 	</tr>
@@ -229,9 +229,9 @@ function InserierenTab2() {
 	</tr>
 
 	<tr>
-		<td rowspan="3" style="width: 40%" colspan="4"><textarea
+		<td rowspan="3" style="width: 40%" colspan="4"><textarea rows="3"
 				id="Zimmerbeschreibung"
-				style="width: 100%; height: 100%; resize: none;"></textarea></td>
+				style="width: 100%; resize: none; overflow: auto;"></textarea></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%" colspan="5"><input type="radio" id="zimmerFrau"
 			name="zimmerFrau" /> <label for="zimmerFrau">nur Frauen</label></td>
@@ -273,7 +273,7 @@ function InserierenTab2() {
 function InserierenTab3() {
 	?>
 
-<table >
+<table border="2">
 	<tr>
 		<td style="width: 40%" colspan="4">*Pflichtfelder</td>
 		<td style="width: 10%"></td>
@@ -361,16 +361,84 @@ function InserierenTab3() {
 }
 function InserierenTab4() {
 	?>
+<table border="2">
+	<tr>
+		<td style="width: 40%" colspan="4">*Pflichtfelder</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%" colspan="5"></td>
+	</tr>
+	<tr>
+		<td style="width: 40%" height="18pt" colspan="4"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%" colspan="5"></td>
+	</tr>
+	<tr>
 
+		<td style="width: 100%" colspan="10"><textarea rows="20" cols="104"
+				id="Zimmerbeschreibung"
+				style="width: 100%; resize: none; overflow: auto;"></textarea></td>
 
+	</tr>
+	<tr>
+		<td style="width: 10%"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 20%"></td>
 
+		<td style="width: 20%"></td>
+		<td style="float: right;"><button id="btzuruck4">Zurück</button></td>
 
+		<td>
+			<button id="btweiter4">Weiter</button>
+		</td>
+	</tr>
 
-
+</table>
 <?php
 }
 function InserierenTab5() {
 	?>
+<table border="2">
+	<tr>
+		<td style="width: 40%" colspan="4">Mögliche Mitbewohner</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%" colspan="5"></td>
+	</tr>
+	<tr>
+		<td style="width: 100%" colspan="10">Hier ist fur die Tabelle</td>
+	</tr>
+	<tr>
+		<td valign="middle" style="width: 100%;" colspan="8">Die
+			Mitbewohnerinserate mit den Angaben Deines Inserates durchsuchen:</td>
+
+		<td style="width: 10%" colspan="1">
+			<button style="width: 140px" id="btMitbewohsuch">Mitbewohner/in
+				suchen</button>
+		</td>
+	</tr>
+	<tr>
+		<td style="width: 40%" height="18pt" colspan="4"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%" colspan="5"></td>
+	</tr>
+		<tr>
+		<td style="width: 40%" height="18pt" colspan="4"></td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%" colspan="5"></td>
+	</tr>
+	<tr>
+		<td valign="middle" style="width: 100%;" colspan="8">Nach Aufgabe des
+			Inserats erh�lst Du ein Mail mit einem Aktivierungslink.</td>
+
+		<td style="width: 10%" colspan="1" rowspan="2">
+			<button style="width: 140px" id="btInserataufgeben">Inserat aufgeben</button>
+		</td>
+	</tr>
+	<tr>
+	<td valign="middle" style="width: 100%;" colspan="8">Das Inserat
+			wird erst aufgeschaltet sobald es aktiviert wurde.</td>
+	</tr>
+</table>
 
 
 

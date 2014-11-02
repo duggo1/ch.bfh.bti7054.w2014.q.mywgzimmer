@@ -67,6 +67,14 @@ $title = array (
                 $("#btzuruck2").button();
                 $("#btweiter3").button();
                 $("#btzuruck3").button();
+                $("#btweiter4").button();
+                $("#btzuruck4").button();
+                $("#btweiter5").button();
+                $("#btzuruck5").button();
+
+                $("#btMitbewohsuch").button();
+                $("#btInserataufgeben").button();
+                
                 $("#autocomplete").autocomplete({
                     //source: availableTags
                 });
@@ -98,18 +106,18 @@ $title = array (
 				<td style="vertical-align: top;">
 					<div id="content">
                             <?php
-																												if ($link == 'home') {
-																													home ();
-																												} elseif ($link == 'suchen') {
-																													echo '<ul><li>Suchen</li></ul>';
-																												} elseif ($link == 'inserieren') {
-																													Inserieren ();
-																												} elseif ($link == 'hilfe') {
-																													echo '<ul><li>Hilfe</li></ul>';
-																												} elseif ($link == 'agb') {
-																													agb ();
-																												}
-																												?>
+								if ($link == 'home') {
+									home ();
+								} elseif ($link == 'suchen') {
+									echo '<ul><li>Suchen</li></ul>';
+								} elseif ($link == 'inserieren') {
+									Inserieren ();
+								} elseif ($link == 'hilfe') {
+									echo '<ul><li>Hilfe</li></ul>';
+								} elseif ($link == 'agb') {
+									agb ();
+								}
+							?>
                         </div>
 				</td>
 				<td>
