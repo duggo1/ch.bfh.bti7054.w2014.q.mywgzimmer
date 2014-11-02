@@ -273,7 +273,7 @@ function InserierenTab2() {
 function InserierenTab3() {
 	?>
 
-<table border="2">
+<table >
 	<tr>
 		<td style="width: 40%" colspan="4">*Pflichtfelder</td>
 		<td style="width: 10%"></td>
@@ -361,7 +361,7 @@ function InserierenTab3() {
 }
 function InserierenTab4() {
 	?>
-<table border="2">
+<table >
 	<tr>
 		<td style="width: 40%" colspan="4">*Pflichtfelder</td>
 		<td style="width: 10%"></td>
@@ -398,9 +398,15 @@ function InserierenTab4() {
 }
 function InserierenTab5() {
 	?>
-<table border="2">
+<table >
 	<tr>
 		<td style="width: 40%" colspan="4">Mögliche Mitbewohner</td>
+		<td style="width: 10%"></td>
+		<td style="width: 50%" colspan="5"></td>
+	</tr>
+		</tr>
+		<tr>
+		<td style="width: 40%" height="18pt" colspan="4"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%" colspan="5"></td>
 	</tr>
