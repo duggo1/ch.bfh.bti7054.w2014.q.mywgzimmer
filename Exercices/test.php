@@ -1,3 +1,4 @@
-<?php 
-     echo "PHP has been installed successfully!";
+<?php
+
+echo "PHP has been installed successfully!";
 ?>
