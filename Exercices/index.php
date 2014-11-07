@@ -88,10 +88,12 @@ require_once 'Language.php';
                         </div>
                     </td>
                     <td style="vertical-align: top;">
-                        <div id="content">
                             <?php
                             if ($link == 'home') {
-                                home();
+							?><div id="content"><?php 
+                                home();?>
+                                </div>
+                                <?php
                             } elseif ($link == 'suchen') {
                                 echo '<ul><li>Suchen</li></ul>';
                             } elseif ($link == 'inserieren') {
@@ -102,7 +104,6 @@ require_once 'Language.php';
                                 agb();
                             }
                             ?>
-                        </div>
                     </td>
                     <td>
                         <div id="rightbox"></div>

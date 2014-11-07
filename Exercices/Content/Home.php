@@ -19,15 +19,19 @@ $link = array(
 );
 $text = array(
     "de" => '
-        <li>Bist du auf der Suche nach einem freien Zimmer?
+    
+		<li>Bist du auf der Suche nach einem freien Zimmer?
             Dann klicke auf "WG-Zimmer suchen"!</li>
         <li>Hast du ein Zimmer zu vermieten und möchtest <strong>gratis</strong> ein Inserat aufgeben?
-            Klicke auf "Gratis WG-Zimmer inserieren"!</li>',
+            Klicke auf "Gratis WG-Zimmer inserieren"!</li>
+		',
     "en" => '
-        <li>Are you looking for a room?
+        
+		<li>Are you looking for a room?
             Please click on "search WG-Room"!</li>
         <li>Do you have a room to rent and do you want to make an  <strong>gratis</strong> ein Inserat aufgeben?
-            Klicke auf "Gratis WG-Zimmer inserieren"!</li>'
+            Klicke auf "Gratis WG-Zimmer inserieren"!</li>
+		'
 );
 $title = array(
     "de" => "Willkommen auf mywgzimmer.ch!",
