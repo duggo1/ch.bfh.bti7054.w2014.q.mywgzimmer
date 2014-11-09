@@ -77,7 +77,7 @@ function InserierenTab1() {
 		<td style="width: 50%">*E-Mail</td>
 	</tr>
 	<tr>
-		<td style="width: 40%" colspan="4"><input id="vorname" type="text"></td>
+		<td style="width: 40%" colspan="4"><input id="insvorname" type="text"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%"><input id="email" type="email"></td>
 	</tr>
@@ -87,9 +87,9 @@ function InserierenTab1() {
 		<td style="width: 50%">*E-Mail (wiederholen)</td>
 	</tr>
 	<tr>
-		<td style="width: 40%" colspan="4"><input id="nachname" type="text"></td>
+		<td style="width: 40%" colspan="4"><input id="insnachname" type="text"></td>
 		<td style="width: 10%"></td>
-		<td style="width: 50%"><input id="email" type="email"></td>
+		<td style="width: 50%"><input id="wiederemail" type="email"></td>
 	</tr>
 	<tr>
 		<td style="width: 20%" colspan="2">*Strasse</td>
@@ -99,8 +99,8 @@ function InserierenTab1() {
 	
 	
 	<tr>
-		<td style="width: 20%" colspan="2"><input id="personstrasse" type="text"></td>
-		<td style="width: 20%" colspan="2"><input id="personstrasseNr" type="text"
+		<td style="width: 20%" colspan="2"><input id="inspersonstrasse" type="text"></td>
+		<td style="width: 20%" colspan="2"><input id="inspersonstrasseNr" type="text"
 			style="width: 40px"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%"><input id="telefonnr" type="tel"></td>
@@ -115,8 +115,8 @@ function InserierenTab1() {
 
 	<tr>
 
-		<td style="width: 20%" colspan="2"><input id="personort" type="text"></td>
-		<td style="width: 20%" colspan="2"><input id="personaplz" type="text"
+		<td style="width: 20%" colspan="2"><input id="inspersonort" type="text"></td>
+		<td style="width: 20%" colspan="2"><input id="inspersonaplz" type="text"
 			style="width: 40px"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%"></td>
