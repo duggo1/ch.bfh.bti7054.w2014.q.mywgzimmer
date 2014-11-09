@@ -58,6 +58,7 @@ require_once 'Language.php';
 
                 $("#btMitbewohsuch").button();
                 $("#btInserataufgeben").button();
+                $("#btSuchen").button();
 
                 $("#autocomplete").autocomplete({
                     //source: availableTags
