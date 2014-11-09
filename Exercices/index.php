@@ -5,6 +5,7 @@ global $lan;
 require_once ("Content/Inserieren.php");
 require_once ("Content/Home.php");
 require_once ("Content/AGB.php");
+require_once ("Content/Suchen.php");
 require_once 'Language.php';
 ?>
 <!DOCTYPE html>
@@ -29,7 +30,8 @@ require_once 'Language.php';
         <script>
             $(function () {
 
-                //$("#table").resizable();
+            	//$("#table").droppable();
+               	//$("#table").resizable();
                 $("#tabs").tabs();
                 $("#radio").buttonset();
                 //$( "#tabs" ).tabs( "disable", 1 );
@@ -39,8 +41,9 @@ require_once 'Language.php';
                 $("#accordion").accordion();
 
 
-                $("#abdatum").datepicker({dateFormat: "dd.mm.yy"});
-                $("#bisdatum").datepicker({dateFormat: "dd.mm.yy"});
+                $("#inseratabdatum").datepicker({dateFormat: "dd.mm.yy"});
+                $("#inseratbisdatum").datepicker({dateFormat: "dd.mm.yy"});
+                $("#suchenfreiab").datepicker({dateFormat: "dd.mm.yy"});
 
 
                 $("#btweiter1").button();
@@ -95,7 +98,7 @@ require_once 'Language.php';
                                 </div>
                                 <?php
                             } elseif ($link == 'suchen') {
-                                echo '<ul><li>Suchen</li></ul>';
+                                suchen();
                             } elseif ($link == 'inserieren') {
                                 Inserieren();
                             } elseif ($link == 'hilfe') {

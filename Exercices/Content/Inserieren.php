@@ -6,7 +6,8 @@ function Inserieren() {
 
 		<th valign="top">
 			<!-- hier ist Mittel Seite -->
-
+<div class="ui-widget-content" >
+<h2 class="ui-widget-header" style="margin-top: 0; margin-bottom: 5px; ">WG-Zimmer Inserieren</h2>
 			<div id="tabs" class="Tabs">
 				<ul>
 					<li><a href="#tabs-1">Persönliche Angaben </a></li>
@@ -33,6 +34,7 @@ function Inserieren() {
                 <?php InserierenTab5()?>
             </div>
 
+			</div>
 			</div>
 		</th>
 	</tr>
@@ -97,8 +99,8 @@ function InserierenTab1() {
 	
 	
 	<tr>
-		<td style="width: 20%" colspan="2"><input id="strasse" type="text"></td>
-		<td style="width: 20%" colspan="2"><input id="strasseNr" type="text"
+		<td style="width: 20%" colspan="2"><input id="personstrasse" type="text"></td>
+		<td style="width: 20%" colspan="2"><input id="personstrasseNr" type="text"
 			style="width: 40px"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%"><input id="telefonnr" type="tel"></td>
@@ -113,8 +115,8 @@ function InserierenTab1() {
 
 	<tr>
 
-		<td style="width: 20%" colspan="2"><input id="ort" type="text"></td>
-		<td style="width: 20%" colspan="2"><input id="plz" type="text"
+		<td style="width: 20%" colspan="2"><input id="personort" type="text"></td>
+		<td style="width: 20%" colspan="2"><input id="personaplz" type="text"
 			style="width: 40px"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%"></td>
@@ -292,7 +294,7 @@ function InserierenTab3() {
 		<td style="width: 10%"></td>
 		<td style="width: 10%" colspan="1"><input type="text"
 			value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
-			id="abdatum" style="width: 100px" /></td>
+			id="inseratabdatum" style="width: 100px" /></td>
 		<td style="width: 10%" colspan="1"><input type="radio"
 			id="unbefristet" name="unbefristet" checked="checked" /><label
 			for="unbefristet">Unbefristet</label></td>
@@ -308,7 +310,7 @@ function InserierenTab3() {
 
 		<td style="width: 20%" colspan="2">bis <input type="text"
 			value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
-			id="bisdatum" style="width: 100px" /></td>
+			id="inseratbisdatum" style="width: 100px" /></td>
 		<td style="width: 20%" colspan="2"></td>
 
 	</tr>
