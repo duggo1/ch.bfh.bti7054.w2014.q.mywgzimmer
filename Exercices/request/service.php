@@ -16,6 +16,7 @@ $insStrNr = (isset($_GET["insStrNr"]))? $_GET["insStrNr"] : "" ;
 $insOrt = (isset($_GET["insOrt"]))? $_GET["insOrt"] : "" ;
 $insPLZ = (isset($_GET["insPLZ"]))? $_GET["insPLZ"] : "" ;
 $email = (isset($_GET["email"]))? $_GET["email"] : "" ;
+$wiederemail = (isset($_GET["wiederemail"]))? $_GET["wiederemail"] : "" ;
 $tel = (isset($_GET["tel"]))? $_GET["tel"] : "" ;
 //Tab_2 von Inserat
 $insTitel = (isset($_GET["insTitel"]))? $_GET["insTitel"] : "" ;
@@ -85,7 +86,7 @@ if($what == "admin")
 
 }
 
-if($what == "löschen")
+if($what == "loeschen")
 {
 
 }

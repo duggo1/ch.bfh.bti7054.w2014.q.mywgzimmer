@@ -11,7 +11,8 @@ function InserierenTab1() {
 	var hasErrorOrt = false;
 	var hasErrorPlz = false;
 	var hasErrorEmail = false;
-	var hasErrorEmailWirder = false;
+	var hasErrorEmailWierder = false;
+	var hasErrorTel = false;
 
 	var AnredeHerr = $("#radioHerr").val();
 	var Anrede = $("#radioFrau").val();
@@ -20,92 +21,109 @@ function InserierenTab1() {
 	var Vorname = $("#insvorname").val();
 
 	if (Vorname.length == 0) {
-		$("#errorVorname").html("*");
+		//$("#Vorname").html("*");
 		hasErrorVorname = true;
 	} else {
-		$("#errorlvorname").html("");
+		//$("#Vorname").html("");
 		hasErrorVorname = false;
 	}
 
 	var Nachname = $("#insnachname").val();
 	if (Nachname.length == 0) {
-		$("#errorNachname").html("*");
+		//$("#errorNachname").html("*");
 		hasErrorNachname = true;
 	} else {
-		$("#errorlNachname").html("");
+		//$("#errorlNachname").html("");
 		hasErrorNachname = false;
 	}
 
 	var Strasse = $("#inspersonstrasse").val();
 	if (Strasse.length == 0) {
-		$("#errorStrasse").html("*");
+		//$("#errorStrasse").html("*");
 		hasErrorStrasse = true;
 	} else {
-		$("#errorStrasse").html("");
+		//$("#errorStrasse").html("");
 		hasErrorStrasse = false;
 	}
 
 	var StrasseNr = $("#inspersonstrasseNr").val();
 	if (StrasseNr.length == 0) {
-		$("#errorStrasseNr").html("*");
+		//$("#errorStrasseNr").html("*");
 		hasErrorStrasseNr = true;
 	} else {
-		$("#errorStrasseNr").html("");
+		//$("#errorStrasseNr").html("");
 		hasErrorStrasseNr = false;
 	}
 
 	var Ort = $("#inspersonort").val();
 	if (Ort.length == 0) {
-		$("#errorOrt").html("*");
+		//$("#errorOrt").html("*");
 		hasErrorOrt = true;
 	} else {
-		$("#errorOrt").html("");
+		//$("#errorOrt").html("");
 		hasErrorOrt = false;
 	}
 
 	var Plz = $("#inspersonaplz").val();
 	if (Plz.length == 0) {
-		$("#errorPlz").html("*");
+		//$("#errorPlz").html("*");
 		hasErrorPlz = true;
-	} else {
-		$("#errorPlz").html("");
-		hasErrorPlz = false;
+	}else {
+		if ( isNaN(Plz)){
+			hasErrorPlz = true;
+		}else{
+			
+			hasErrorPlz = false;
+		}
+		
 	}
 
 	var Email = $("#email").val();// hier müssen wir prüfen ob erste Email mit
-									// 2. Email gleich ist.
+								  // 2. Email gleich ist.
 	if (Email.length == 0) {
-		$("#errorEmail").html("*");
+		//$("#errorEmail").html("*");
 		hasErrorEmail = true;
 	} else {
-		$("#errorEmail").html("");
+		//$("#errorEmail").html("");
 		hasErrorEmail = false;
 	}
 
 	var EmailWierder = $("#wiederemail").val();
+	
+	
 	if (EmailWierder.length == 0) {
-		$("#errorEmailWierder").html("*");
+		//$("#errorEmailWierder").html("*");
 		hasErrorEmailWierder = true;
 	} else {
 		if (EmailWierder == Email) {
-			$("#errorEmailWierder").html("");
+			//$("#errorEmailWierder").html("");
 			hasErrorEmailWierder = false;
 		} else {
-			$("#errorEmailWierder").html("*");
+			//$("#errorEmailWierder").html("*");
 			hasErrorEmailWierder = true;
 		}
 
 	}
 
-	var Tel = $("#telefonnr").val();
+	var Tel =$("#telefonnr").val();
 	if (Tel.length == 0) {
-		$("#errorTel").html("*");
+		//$("#errorTel").html("*");
 		hasErrorTel = true;
 	} else {
-		$("#errorTel").html("");
+		if ( isNaN(Tel)){
+			hasErrorTel = true;
+		}else{
+			//$("#errorTel").html("");
 		hasErrorTel = false;
+		}
+		
 	}
 
+	if (hasErrorVorname || hasErrorNachname ||hasErrorStrasse ||hasErrorStrasseNr || hasErrorOrt ||hasErrorPlz || hasErrorEmail || hasErrorEmailWierder || hasErrorTel){
+		alert ("Kontolieren Sie bitte eingegebene Daten!");
+		return;
+	}
+	
 	$.ajax({
 
 		type : "GET",
@@ -136,57 +154,73 @@ function InserierenTab1() {
 function InserierenTab2() {
 
 	var hasErrorTitel = false;
-	var hasErrorZimmerArt = false;
 	var hasErrorZimmerFlaeche = false;
+	var hasErrorZimmerBeschreibung = false;
 
 	
 	var Titel = $("#insTitel").val();
-	
-	
 	if (Titel.length == 0) {
 	
-		$("#errorTitel").html("*");
+		//$("#errorTitel").html("*");
 		hasErrorTitel = true;
 	} else {
-		$("#errorTitel").html("");
+		//$("#errorTitel").html("");
 		hasErrorTitel = false;
 	}
+
 		
-	;
 	var ZimmerStr= $("#insZimmerStr").val();
-	
-	var ZimmerStrNr= $("#insZimmerStrNr").val();
-	
-	var ZimmerOrt= $("#insZimmerOrt").val();
-	
+	var ZimmerStrNr= $("#insZimmerStrNr").val();	
+	var ZimmerOrt= $("#insZimmerOrt").val();	
 	var ZimmerPlz= $("#insZimmerPlz").val();
 	
-	if (ZimmerStr.length==0){
-		
+	if (ZimmerStr.length==0){		
 		ZimmerStr= $("#inspersonstrasse").val();
 	}
-	if (ZimmerStrNr.length==0){
-		
+	if (ZimmerStrNr.length==0){		
 		ZimmerStrNr= $("#inspersonstrasseNr").val();
 	}
-	if (ZimmerOrt.length==0){
-		
-		ZimmerOrt= $("#inspersonort").val();
-	
+	if (ZimmerOrt.length==0){		
+		ZimmerOrt= $("#inspersonort").val();	
 	}
-	if (ZimmerPlz.length==0){
-	
-		ZimmerPlz = $("#inspersonaplz").val();
-	
+	if (ZimmerPlz.length==0){	
+		ZimmerPlz = $("#inspersonaplz").val();	
+	}
+		
+	var ZimmerBeschreibung = $("#Zimmerbeschreibung").val();
+	if (ZimmerBeschreibung.length == 0) {
+		
+		//$("#errorTitel").html("*");
+		hasErrorZimmerBeschreibung = true;
+	} else {
+		//$("#errorTitel").html("");
+		hasErrorZimmerBeschreibung = false;
 	}
 
 	
-	var ZimmerBeschreibung = $("#insZimmerBeschreibung").val();
 	var ZimmerArt = $("#insZimmerart").val();
-	var ZimmerFlaeche = $("#insFlaeche").val();
-	var nurStudent = $("#insnurStdLhr").val();
 	
+	var ZimmerFlaeche = $("#insFlaeche").val();
+	if (ZimmerFlaeche.length == 0) {
+		//$("#errorTel").html("*");
+		hasErrorZimmerFlaeche = true;
+	} else {
+		if ( isNaN(ZimmerFlaeche)){
+			hasErrorZimmerFlaeche = true;
+		}else{
+			//$("#errorTel").html("");
+			hasErrorZimmerFlaeche = false;
+		}
+		
+	}
+
+	var nurStudent = $("#insnurStdLhr").val();
 	var ZimmerGeschlecht = $("#insZimmerSex").val();
+	
+	if (hasErrorTitel || hasErrorZimmerFlaeche || hasErrorZimmerBeschreibung){
+		alert ("Kontolieren Sie bitte eingegebene Daten!");
+		return;
+	}
 		
 	
 	$.ajax({
@@ -211,10 +245,7 @@ function InserierenTab2() {
 			}
 		}
 	});
-	
-	$("#tabs").tabs("enable", 2);
-	$("#tabs").tabs("option", "active", 2);
-	$("#tabs").tabs("disable", 1);
+
 }
 
 function InserierenTab3() {
@@ -253,4 +284,11 @@ function ZuruckbtTab4() {
 	$("#tabs").tabs("option", "active", 2);
 	$("#tabs").tabs("disable", 3);
 	
+}
+function Suchen() {
+
+}
+
+function adminLogin() {
+
 }
