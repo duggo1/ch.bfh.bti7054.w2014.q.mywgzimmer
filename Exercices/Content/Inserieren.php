@@ -64,9 +64,9 @@ function InserierenTab1() {
 	</tr>
 	<tr>
 		<td style="width: 10%" colspan="1"><input type="radio" id="radioHerr"
-			name="radioHerr" checked="checked"> <label for="radioHerr">Herr</label></td>
+			name="PersSex" checked="checked"> <label for="radioHerr">Herr</label></td>
 		<td style="width: 20%" colspan="2"><input type="radio" id="radioFrau"
-			name="radioFrau"> <label for="radioFrau">Frau</label></td>
+			name="PersSex"> <label for="radioFrau">Frau</label></td>
 		<td style="width: 10%"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%"></td>
@@ -157,16 +157,16 @@ function InserierenTab2() {
 
 	</tr>
 	<tr>
-		<td style="width: 40%" colspan="4"><input id="titeldesinserats"
+		<td style="width: 40%" colspan="4"><input id="insTitel"
 			type="text" style="width: 60%"></td>
 		<td style="width: 10%"></td>
 
-		<td style="width: 15px"><input type="radio" id="radioZimmer"
-			name="radioZimmer" /> <label for="radioZimmer">Zimmer</label></td>
-		<td style="width: 15%"><input type="radio" id="radioAtelier"
-			name="radioAtelier" /> <label for="radioAtelier">Atelier</label></td>
-		<td style="width: 15%"><input type="radio" id="radioStudio"
-			name="radioStudio" /> <label for="radioStudio">Studio</label></td>
+		<td style="width: 15px"><input type="radio" id="insZimmer"
+			name="radioZimmerArt" checked="checked"/> <label for="insZimmer">Zimmer</label></td>
+		<td style="width: 15%"><input type="radio" id="insAtelier"
+			name="radioZimmerArt" /> <label for="insAtelier">Atelier</label></td>
+		<td style="width: 15%"><input type="radio" id="insStudio"
+			name="radioZimmerArt" /> <label for="insStudio">Studio</label></td>
 
 
 	</tr>
@@ -180,7 +180,7 @@ function InserierenTab2() {
 	<tr>
 		<td style="width: 50%" colspan="5">Zimmeradresse (sofern diese vom
 			Wohnort abweicht)</td>
-		<td style="width: 50%" colspan="5"><input id="zimmerflaeche"
+		<td style="width: 50%" colspan="5"><input id="insFlaeche"
 			type="number"></td>
 
 	</tr>
@@ -192,14 +192,14 @@ function InserierenTab2() {
 	
 	
 	<tr>
-		<td style="width: 20%" colspan="2"><input id="zimmerStrasse"
+		<td style="width: 20%" colspan="2"><input id="insZimmerStr"
 			type="text"></td>
-		<td style="width: 20%" colspan="2"><input id="zimmerStrasseNr"
+		<td style="width: 20%" colspan="2"><input id="insZimmerStrNr"
 			type="text" style="width: 40px"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%" colspan="5"><input type="checkbox"
-			id="checkboxStudirenLehrling" name="checkbox"> <label
-			for="checkboxStudirenLehrling">nur für Studierende/Lehrlinge</label></td>
+			id="insnurStdLhr" name="checkbox"> <label
+			for="insnurStdLhr">nur für Studierende/Lehrlinge</label></td>
 	</tr>
 
 	<tr>
@@ -212,8 +212,8 @@ function InserierenTab2() {
 
 	<tr>
 
-		<td style="width: 20%" colspan="2"><input id="zimmerOrt" type="text"></td>
-		<td style="width: 20%" colspan="2"><input id="zimmerPlz" type="text"
+		<td style="width: 20%" colspan="2"><input id="insZimmerOrt" type="text"></td>
+		<td style="width: 20%" colspan="2"><input id="insZimmerPlz" type="text"
 			style="width: 40px"></td>
 		<td style="width: 10%"></td>
 		<td style="width: 50%" colspan="5"></td>
@@ -230,21 +230,21 @@ function InserierenTab2() {
 				id="Zimmerbeschreibung"
 				style="width: 100%; resize: none; overflow: auto;"></textarea></td>
 		<td style="width: 10%"></td>
-		<td style="width: 50%" colspan="5"><input type="radio" id="zimmerFrau"
-			name="zimmerFrau" /> <label for="zimmerFrau">nur Frauen</label></td>
+		<td style="width: 50%" colspan="5"><input type="radio" id="insZimmerFrau"
+			name="zimmerGeschlecht" /> <label for="insZimmerFrau">nur Frauen</label></td>
 
 	</tr>
 
 	<tr>
 		<td style="width: 10%"></td>
-		<td style="width: 50%" colspan="5"><input type="radio" id="zimmerHerr"
-			name="zimmerHerr" /> <label for="zimmerHerr">nur Männer</label></td>
+		<td style="width: 50%" colspan="5"><input type="radio" id="insZimmerHerr"
+			name="zimmerGeschlecht" /> <label for="insZimmerHerr">nur Männer</label></td>
 
 	</tr>
 	<tr>
 		<td style="width: 10%"></td>
-		<td style="width: 50%" colspan="5"><input type="radio" id="zimmerEgal"
-			name="zimmerEgal" checked="checked" /> <label for="zimmerEgal">egal</label></td>
+		<td style="width: 50%" colspan="5"><input type="radio" id="insZimmerEgal"
+			name="zimmerGeschlecht" checked="checked" /> <label for="insZimmerEgal">egal</label></td>
 
 	</tr>
 	<tr>
@@ -294,9 +294,9 @@ function InserierenTab3() {
 		<td style="width: 10%"></td>
 		<td style="width: 10%" colspan="1"><input type="text"
 			value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
-			id="inseratabdatum" style="width: 100px" /></td>
+			id="insMitAbDatum" style="width: 100px" /></td>
 		<td style="width: 10%" colspan="1"><input type="radio"
-			id="unbefristet" name="unbefristet" checked="checked" /><label
+			id="insMitunbefristet" name="datumbefristet" checked="checked" /><label
 			for="unbefristet">Unbefristet</label></td>
 		<td style="width: 40%" colspan="4"></td>
 
@@ -305,12 +305,12 @@ function InserierenTab3() {
 	<tr>
 		<td style="width: 10%"></td>
 		<td style="width: 10%"></td>
-		<td style="width: 10%" colspan="1"><input type="radio" id="befristet"
-			name="befristet" /> <label for="befristet">Befristet</label></td>
+		<td style="width: 10%" colspan="1"><input type="radio" id="insMitbefristet"
+			name="datumbefristet" /> <label for="befristet">Befristet</label></td>
 
 		<td style="width: 20%" colspan="2">bis <input type="text"
 			value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
-			id="inseratbisdatum" style="width: 100px" /></td>
+			id="insMitBisDatum" style="width: 100px" /></td>
 		<td style="width: 20%" colspan="2"></td>
 
 	</tr>
@@ -329,11 +329,11 @@ function InserierenTab3() {
 	</tr>
 	<tr>
 		<td style="width: 10%"></td>
-		<td style="width: 10%;" colspan="1"><select id="waerung">
+		<td style="width: 10%;" colspan="1"><select id="insMitwaehrung">
 				<option value="chf">CHF</option>
 				<option value="euro">EURO</option>
 		</select></td>
-		<td style="width: 20%"><input id="miete" type="text"
+		<td style="width: 20%"><input id="insMitkosten" type="text"
 			style="width: 100px"></td>
 		<td style="width: 50%" colspan="5"></td>
 
@@ -376,7 +376,7 @@ function InserierenTab4() {
 	</tr>
 
 	<td style="width: 80%" colspan="5"><input type="checkbox"
-		id="checkboxAGB" name="checkbox"> <label for="checkboxAGB">*Ich bin
+		id="insRechtCheck" name="checkbox"> <label for="checkboxAGB">*Ich bin
 			mit den Allgemeinen Bedingungen einverstanden</label></td>
 	<td style="width: 10%"></td>
 	<td style="width: 10%"></td>
