@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\View\Widget;
 
 use Cake\View\Widget\WidgetInterface;
@@ -24,43 +26,43 @@ use Cake\View\Widget\WidgetInterface;
  */
 class File implements WidgetInterface {
 
-/**
- * Constructor
- *
- * @param \Cake\View\StringTemplate $templates
- */
-	public function __construct($templates) {
-		$this->_templates = $templates;
-	}
+    /**
+     * Constructor
+     *
+     * @param \Cake\View\StringTemplate $templates
+     */
+    public function __construct($templates) {
+        $this->_templates = $templates;
+    }
 
-/**
- * Render a file upload form widget.
- *
- * Data supports the following keys:
- *
- * - `name` - Set the input name.
- * - `escape` - Set to false to disable HTML escaping.
- *
- * All other keys will be converted into HTML attributes.
- * Unlike other input objects the `val` property will be specifically
- * ignored.
- *
- * @param array $data The data to build a file input with.
- * @return string HTML elements.
- */
-	public function render(array $data) {
-		$data += [
-			'name' => '',
-			'escape' => true,
-		];
-		unset($data['val']);
+    /**
+     * Render a file upload form widget.
+     *
+     * Data supports the following keys:
+     *
+     * - `name` - Set the input name.
+     * - `escape` - Set to false to disable HTML escaping.
+     *
+     * All other keys will be converted into HTML attributes.
+     * Unlike other input objects the `val` property will be specifically
+     * ignored.
+     *
+     * @param array $data The data to build a file input with.
+     * @return string HTML elements.
+     */
+    public function render(array $data) {
+        $data += [
+            'name' => '',
+            'escape' => true,
+        ];
+        unset($data['val']);
 
-		return $this->_templates->format('file', [
-			'name' => $data['name'],
-			'attrs' => $this->_templates->formatAttributes(
-				$data, ['name', 'val']
-			)
-		]);
-	}
+        return $this->_templates->format('file', [
+                    'name' => $data['name'],
+                    'attrs' => $this->_templates->formatAttributes(
+                            $data, ['name', 'val']
+                    )
+        ]);
+    }
 
 }

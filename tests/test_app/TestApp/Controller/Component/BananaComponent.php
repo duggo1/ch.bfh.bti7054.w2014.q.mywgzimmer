@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Controller\Component;
 
 use Cake\Controller\Component;
@@ -23,21 +25,22 @@ use Cake\Event\Event;
  */
 class BananaComponent extends Component {
 
-/**
- * testField property
- *
- * @var string
- */
-	public $testField = 'BananaField';
+    /**
+     * testField property
+     *
+     * @var string
+     */
+    public $testField = 'BananaField';
 
-/**
- * startup method
- *
- * @param Event $event
- * @param Controller $controller
- * @return string
- */
-	public function startup(Event $event) {
-		$controller->bar = 'fail';
-	}
+    /**
+     * startup method
+     *
+     * @param Event $event
+     * @param Controller $controller
+     * @return string
+     */
+    public function startup(Event $event) {
+        $controller->bar = 'fail';
+    }
+
 }

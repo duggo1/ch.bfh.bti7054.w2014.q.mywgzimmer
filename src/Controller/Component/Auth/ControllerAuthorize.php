@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -13,6 +14,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Controller\Component\Auth;
 
 use Cake\Controller\ComponentRegistry;
@@ -25,12 +27,12 @@ use Cake\Network\Request;
  * Your controller's isAuthorized() method should return a boolean to indicate whether or not the user is authorized.
  *
  * {{{
- *	public function isAuthorized($user) {
- *		if (!empty($this->request->params['admin'])) {
- *			return $user['role'] === 'admin';
- *		}
- *		return !empty($user);
- *	}
+ * 	public function isAuthorized($user) {
+ * 		if (!empty($this->request->params['admin'])) {
+ * 			return $user['role'] === 'admin';
+ * 		}
+ * 		return !empty($user);
+ * 	}
  * }}}
  *
  * the above is simple implementation that would only authorize users of the 'admin' role to access
@@ -40,31 +42,31 @@ use Cake\Network\Request;
  */
 class ControllerAuthorize extends BaseAuthorize {
 
-/**
- * Get/set the controller this authorize object will be working with. Also checks that isAuthorized is implemented.
- *
- * @param Controller $controller null to get, a controller to set.
- * @return mixed
- * @throws \Cake\Error\Exception
- */
-	public function controller(Controller $controller = null) {
-		if ($controller) {
-			if (!method_exists($controller, 'isAuthorized')) {
-				throw new Error\Exception(sprintf('%s does not implement an isAuthorized() method.', get_class($controller)));
-			}
-		}
-		return parent::controller($controller);
-	}
+    /**
+     * Get/set the controller this authorize object will be working with. Also checks that isAuthorized is implemented.
+     *
+     * @param Controller $controller null to get, a controller to set.
+     * @return mixed
+     * @throws \Cake\Error\Exception
+     */
+    public function controller(Controller $controller = null) {
+        if ($controller) {
+            if (!method_exists($controller, 'isAuthorized')) {
+                throw new Error\Exception(sprintf('%s does not implement an isAuthorized() method.', get_class($controller)));
+            }
+        }
+        return parent::controller($controller);
+    }
 
-/**
- * Checks user authorization using a controller callback.
- *
- * @param array $user Active user data
- * @param \Cake\Network\Request $request
- * @return bool
- */
-	public function authorize($user, Request $request) {
-		return (bool)$this->_Controller->isAuthorized($user);
-	}
+    /**
+     * Checks user authorization using a controller callback.
+     *
+     * @param array $user Active user data
+     * @param \Cake\Network\Request $request
+     * @return bool
+     */
+    public function authorize($user, Request $request) {
+        return (bool) $this->_Controller->isAuthorized($user);
+    }
 
 }

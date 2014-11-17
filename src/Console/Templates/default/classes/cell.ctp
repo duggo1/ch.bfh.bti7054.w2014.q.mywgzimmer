@@ -12,30 +12,31 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-echo "<?php\n"; ?>
+echo "<?php\n";
+?>
 namespace <?= $namespace ?>\View\Cell;
 
 use Cake\View\Cell;
 
 /**
- * <?= $name ?> cell
- */
+* <?= $name ?> cell
+*/
 class <?= $name ?>Cell extends Cell {
 
 /**
- * List of valid options that can be passed into this
- * cell's constructor.
- *
- * @var array
- */
-	protected $_validCellOptions = [];
+* List of valid options that can be passed into this
+* cell's constructor.
+*
+* @var array
+*/
+protected $_validCellOptions = [];
 
 /**
- * Default display method.
- *
- * @return void
- */
-	public function display() {
-	}
+* Default display method.
+*
+* @return void
+*/
+public function display() {
+}
 
 }

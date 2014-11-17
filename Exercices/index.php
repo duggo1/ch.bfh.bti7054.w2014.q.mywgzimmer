@@ -36,17 +36,20 @@ require_once 'Language.php';
 
 
             	 $("#btweiter1").click(function( event ) {
-            		 InserierenTab1();
+            		 InserierenTab2();
   				});
             	 
             	 $("#btweiter2").click(function( event ) {
-            		 InserierenTab2();
- 				});
-            	 $("#btweiter3").click(function( event ) {
             		 InserierenTab3();
  				});
-            	 $("#btweiter4").click(function( event ) {
+            	 $("#btweiter3").click(function( event ) {
             		 InserierenTab4();
+ 				});
+            	 $("#btweiter4").click(function( event ) {
+            		 InserierenTab5();
+ 				});
+                 $("#btweiter5").click(function( event ) {
+            		 
  				});
 
             	 $("#btzuruck2").click(function( event ) {
@@ -67,8 +70,8 @@ require_once 'Language.php';
                 $("#accordion").accordion();
 
 
-                $("#inseratabdatum").datepicker({dateFormat: "dd.mm.yy"});
-                $("#inseratbisdatum").datepicker({dateFormat: "dd.mm.yy"});
+                $("#insMitAbDatum").datepicker({dateFormat: "dd.mm.yy"});
+                $("#insMitBisDatum").datepicker({dateFormat: "dd.mm.yy"});
                 $("#suchenfreiab").datepicker({dateFormat: "dd.mm.yy"});
 
                
@@ -87,10 +90,11 @@ require_once 'Language.php';
                 $("#btSuchen").button();
 
                 
-                $( "#tabs" ).tabs( "disable", 1 );
+                /*$( "#tabs" ).tabs( "disable", 1 );
                 $( "#tabs" ).tabs( "disable", 2 );
                 $( "#tabs" ).tabs( "disable", 3 );
                 $( "#tabs" ).tabs( "disable", 4 );
+                $( "#tabs" ).tabs( "disable", 5 );*/
 
 
               //  $("#autocomplete").autocomplete({

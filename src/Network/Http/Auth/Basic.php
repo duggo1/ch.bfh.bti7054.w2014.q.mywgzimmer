@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Network\Http\Auth;
 
 use Cake\Network\Http\Request;
@@ -23,45 +25,45 @@ use Cake\Network\Http\Request;
  */
 class Basic {
 
-/**
- * Add Authorization header to the request.
- *
- * @param Request $request
- * @param array $credentials
- * @return void
- * @see http://www.ietf.org/rfc/rfc2617.txt
- */
-	public function authentication(Request $request, array $credentials) {
-		if (isset($credentials['username'], $credentials['password'])) {
-			$value = $this->_generateHeader($credentials['username'], $credentials['password']);
-			$request->header('Authorization', $value);
-		}
-	}
+    /**
+     * Add Authorization header to the request.
+     *
+     * @param Request $request
+     * @param array $credentials
+     * @return void
+     * @see http://www.ietf.org/rfc/rfc2617.txt
+     */
+    public function authentication(Request $request, array $credentials) {
+        if (isset($credentials['username'], $credentials['password'])) {
+            $value = $this->_generateHeader($credentials['username'], $credentials['password']);
+            $request->header('Authorization', $value);
+        }
+    }
 
-/**
- * Proxy Authentication
- *
- * @param Request $request
- * @param array $credentials
- * @return void
- * @see http://www.ietf.org/rfc/rfc2617.txt
- */
-	public function proxyAuthentication(Request $request, array $credentials) {
-		if (isset($credentials['username'], $credentials['password'])) {
-			$value = $this->_generateHeader($credentials['username'], $credentials['password']);
-			$request->header('Proxy-Authorization', $value);
-		}
-	}
+    /**
+     * Proxy Authentication
+     *
+     * @param Request $request
+     * @param array $credentials
+     * @return void
+     * @see http://www.ietf.org/rfc/rfc2617.txt
+     */
+    public function proxyAuthentication(Request $request, array $credentials) {
+        if (isset($credentials['username'], $credentials['password'])) {
+            $value = $this->_generateHeader($credentials['username'], $credentials['password']);
+            $request->header('Proxy-Authorization', $value);
+        }
+    }
 
-/**
- * Generate basic [proxy] authentication header
- *
- * @param string $user
- * @param string $pass
- * @return string
- */
-	protected function _generateHeader($user, $pass) {
-		return 'Basic ' . base64_encode($user . ':' . $pass);
-	}
+    /**
+     * Generate basic [proxy] authentication header
+     *
+     * @param string $user
+     * @param string $pass
+     * @return string
+     */
+    protected function _generateHeader($user, $pass) {
+        return 'Basic ' . base64_encode($user . ':' . $pass);
+    }
 
 }

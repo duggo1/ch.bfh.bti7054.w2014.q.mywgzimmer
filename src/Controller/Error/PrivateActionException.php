@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PrivateActionException class
  *
@@ -13,6 +14,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Controller\Error;
 
 use Cake\Error\Exception;
@@ -23,22 +25,22 @@ use Cake\Error\Exception;
  */
 class PrivateActionException extends Exception {
 
-/**
- * Message template.
- *
- * @var string
- */
-	protected $_messageTemplate = 'Private Action %s::%s() is not directly accessible.';
+    /**
+     * Message template.
+     *
+     * @var string
+     */
+    protected $_messageTemplate = 'Private Action %s::%s() is not directly accessible.';
 
-/**
- * Constructor
- *
- * @param string $message Excception message
- * @param int $code Exception code
- * @param Exception $previous Previous exception
- */
-	public function __construct($message, $code = 404, Exception $previous = null) {
-		parent::__construct($message, $code, $previous);
-	}
+    /**
+     * Constructor
+     *
+     * @param string $message Excception message
+     * @param int $code Exception code
+     * @param Exception $previous Previous exception
+     */
+    public function __construct($message, $code = 404, Exception $previous = null) {
+        parent::__construct($message, $code, $previous);
+    }
 
 }

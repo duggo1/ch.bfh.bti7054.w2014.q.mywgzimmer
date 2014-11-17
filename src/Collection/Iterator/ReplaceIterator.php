@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Collection\Iterator;
 
 use Cake\Collection\Collection;
@@ -22,38 +24,38 @@ use Cake\Collection\Collection;
  */
 class ReplaceIterator extends Collection {
 
-/**
- * The callback function to be used to modify each of the values
- *
- * @var callable
- */
-	protected $_callback;
+    /**
+     * The callback function to be used to modify each of the values
+     *
+     * @var callable
+     */
+    protected $_callback;
 
-/**
- * Creates an iterator from another iterator that will modify each of the values
- * by converting them using a callback function.
- *
- * Each time the callback is executed it will receive the value of the element
- * in the current iteration, the key of the element and the passed $items iterator
- * as arguments, in that order.
- *
- * @param array|\Traversable $items the items to be filtered
- * @param callable $callback
- */
-	public function __construct($items, callable $callback) {
-		$this->_callback = $callback;
-		parent::__construct($items);
-	}
+    /**
+     * Creates an iterator from another iterator that will modify each of the values
+     * by converting them using a callback function.
+     *
+     * Each time the callback is executed it will receive the value of the element
+     * in the current iteration, the key of the element and the passed $items iterator
+     * as arguments, in that order.
+     *
+     * @param array|\Traversable $items the items to be filtered
+     * @param callable $callback
+     */
+    public function __construct($items, callable $callback) {
+        $this->_callback = $callback;
+        parent::__construct($items);
+    }
 
-/**
- * Returns the value returned by the callback after passing the current value in
- * the iteration
- *
- * @return mixed
- */
-	public function current() {
-		$callback = $this->_callback;
-		return $callback(parent::current(), $this->key(), $this->getInnerIterator());
-	}
+    /**
+     * Returns the value returned by the callback after passing the current value in
+     * the iteration
+     *
+     * @return mixed
+     */
+    public function current() {
+        $callback = $this->_callback;
+        return $callback(parent::current(), $this->key(), $this->getInnerIterator());
+    }
 
 }

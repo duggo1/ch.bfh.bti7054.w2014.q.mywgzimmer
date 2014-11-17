@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Driver;
 
 use Cake\Database\Dialect\PostgresDialectTrait;
@@ -20,98 +22,99 @@ use PDO;
 
 class Postgres extends \Cake\Database\Driver {
 
-	use PDODriverTrait;
-	use PostgresDialectTrait;
+    use PDODriverTrait;
 
-/**
- * Base configuration settings for Postgres driver
- *
- * @var array
- */
-	protected $_baseConfig = [
-		'persistent' => true,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '',
-		'database' => 'cake',
-		'schema' => 'public',
-		'port' => 5432,
-		'encoding' => 'utf8',
-		'timezone' => null,
-		'flags' => [],
-		'init' => [],
-		'dsn' => null
-	];
+use PostgresDialectTrait;
 
-/**
- * Establishes a connection to the databse server
- *
- * @return bool true on success
- */
-	public function connect() {
-		if ($this->_connection) {
-			return true;
-		}
-		$config = $this->_config;
-		$config['flags'] += [
-			PDO::ATTR_PERSISTENT => $config['persistent'],
-			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-		];
+    /**
+     * Base configuration settings for Postgres driver
+     *
+     * @var array
+     */
+    protected $_baseConfig = [
+        'persistent' => true,
+        'host' => 'localhost',
+        'login' => 'root',
+        'password' => '',
+        'database' => 'cake',
+        'schema' => 'public',
+        'port' => 5432,
+        'encoding' => 'utf8',
+        'timezone' => null,
+        'flags' => [],
+        'init' => [],
+        'dsn' => null
+    ];
 
-		if (empty($config['dsn'])) {
-			$config['dsn'] = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['database']}";
-		}
+    /**
+     * Establishes a connection to the databse server
+     *
+     * @return bool true on success
+     */
+    public function connect() {
+        if ($this->_connection) {
+            return true;
+        }
+        $config = $this->_config;
+        $config['flags'] += [
+            PDO::ATTR_PERSISTENT => $config['persistent'],
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ];
 
-		$this->_connect($config);
-		$this->_connection = $connection = $this->connection();
-		if (!empty($config['encoding'])) {
-			$this->setEncoding($config['encoding']);
-		}
+        if (empty($config['dsn'])) {
+            $config['dsn'] = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['database']}";
+        }
 
-		if (!empty($config['schema'])) {
-			$this->setSchema($config['schema']);
-		}
+        $this->_connect($config);
+        $this->_connection = $connection = $this->connection();
+        if (!empty($config['encoding'])) {
+            $this->setEncoding($config['encoding']);
+        }
 
-		if (!empty($config['timezone'])) {
-			$config['init'][] = sprintf("SET timezone = %s", $connection->quote($config['timezone']));
-		}
+        if (!empty($config['schema'])) {
+            $this->setSchema($config['schema']);
+        }
 
-		foreach ($config['init'] as $command) {
-			$connection->exec($command);
-		}
-		return true;
-	}
+        if (!empty($config['timezone'])) {
+            $config['init'][] = sprintf("SET timezone = %s", $connection->quote($config['timezone']));
+        }
 
-/**
- * Returns whether php is able to use this driver for connecting to database
- *
- * @return bool true if it is valid to use this driver
- */
-	public function enabled() {
-		return in_array('pgsql', PDO::getAvailableDrivers());
-	}
+        foreach ($config['init'] as $command) {
+            $connection->exec($command);
+        }
+        return true;
+    }
 
-/**
- * Sets connection encoding
- *
- * @param string $encoding
- * @return void
- */
-	public function setEncoding($encoding) {
-		$this->connect();
-		$this->_connection->exec('SET NAMES ' . $this->_connection->quote($encoding));
-	}
+    /**
+     * Returns whether php is able to use this driver for connecting to database
+     *
+     * @return bool true if it is valid to use this driver
+     */
+    public function enabled() {
+        return in_array('pgsql', PDO::getAvailableDrivers());
+    }
 
-/**
- * Sets connection default schema, if any relation defined in a query is not fully qualified
- * postgres will fallback to looking the relation into defined default schema
- *
- * @param string $schema
- * @return void
- */
-	public function setSchema($schema) {
-		$this->connect();
-		$this->_connection->exec('SET search_path TO ' . $this->_connection->quote($schema));
-	}
+    /**
+     * Sets connection encoding
+     *
+     * @param string $encoding
+     * @return void
+     */
+    public function setEncoding($encoding) {
+        $this->connect();
+        $this->_connection->exec('SET NAMES ' . $this->_connection->quote($encoding));
+    }
+
+    /**
+     * Sets connection default schema, if any relation defined in a query is not fully qualified
+     * postgres will fallback to looking the relation into defined default schema
+     *
+     * @param string $schema
+     * @return void
+     */
+    public function setSchema($schema) {
+        $this->connect();
+        $this->_connection->exec('SET search_path TO ' . $this->_connection->quote($schema));
+    }
 
 }

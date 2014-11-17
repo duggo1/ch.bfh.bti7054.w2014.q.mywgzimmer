@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Collection\Iterator;
 
 use Cake\Collection\Collection;
@@ -25,20 +27,20 @@ use Iterator;
  */
 class FilterIterator extends Collection {
 
-/**
- * Creates a filtered iterator using the callback to determine which items are
- * accepted or rejected.
- *
- * Each time the callback is executed it will receive the value of the element
- * in the current iteration, the key of the element and the passed $items iterator
- * as arguments, in that order.
- *
- * @param Iterator $items the items to be filtered
- * @param callable $callback
- */
-	public function __construct(Iterator $items, callable $callback) {
-		$wrapper = new CallbackFilterIterator($items, $callback);
-		parent::__construct($wrapper);
-	}
+    /**
+     * Creates a filtered iterator using the callback to determine which items are
+     * accepted or rejected.
+     *
+     * Each time the callback is executed it will receive the value of the element
+     * in the current iteration, the key of the element and the passed $items iterator
+     * as arguments, in that order.
+     *
+     * @param Iterator $items the items to be filtered
+     * @param callable $callback
+     */
+    public function __construct(Iterator $items, callable $callback) {
+        $wrapper = new CallbackFilterIterator($items, $callback);
+        parent::__construct($wrapper);
+    }
 
 }

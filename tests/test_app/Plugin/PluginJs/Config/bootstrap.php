@@ -1,4 +1,5 @@
 <?php
+
 namespace PluginJs\Config;
 
 use Cake\Core\Configure;

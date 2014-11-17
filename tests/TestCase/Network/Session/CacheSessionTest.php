@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CacheSessionTest
  *
@@ -14,6 +15,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\Network\Session;
 
 use Cake\Cache\Cache;
@@ -28,96 +30,96 @@ use Cake\TestSuite\TestCase;
  */
 class CacheSessionTest extends TestCase {
 
-	protected static $_sessionBackup;
+    protected static $_sessionBackup;
 
-/**
- * test case startup
- *
- * @return void
- */
-	public static function setupBeforeClass() {
-		Cache::enable();
-		Cache::config('session_test', [
-			'engine' => 'File',
-			'path' => TMP . 'sessions',
-			'prefix' => 'session_test'
-		]);
-		static::$_sessionBackup = Configure::read('Session');
+    /**
+     * test case startup
+     *
+     * @return void
+     */
+    public static function setupBeforeClass() {
+        Cache::enable();
+        Cache::config('session_test', [
+            'engine' => 'File',
+            'path' => TMP . 'sessions',
+            'prefix' => 'session_test'
+        ]);
+        static::$_sessionBackup = Configure::read('Session');
 
-		Configure::write('Session.handler.config', 'session_test');
-	}
+        Configure::write('Session.handler.config', 'session_test');
+    }
 
-/**
- * cleanup after test case.
- *
- * @return void
- */
-	public static function teardownAfterClass() {
-		Cache::clear(false, 'session_test');
-		Cache::drop('session_test');
+    /**
+     * cleanup after test case.
+     *
+     * @return void
+     */
+    public static function teardownAfterClass() {
+        Cache::clear(false, 'session_test');
+        Cache::drop('session_test');
 
-		Configure::write('Session', static::$_sessionBackup);
-	}
+        Configure::write('Session', static::$_sessionBackup);
+    }
 
-/**
- * setup
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-		$this->storage = new CacheSession();
-	}
+    /**
+     * setup
+     *
+     * @return void
+     */
+    public function setUp() {
+        parent::setUp();
+        $this->storage = new CacheSession();
+    }
 
-/**
- * tearDown
- *
- * @return void
- */
-	public function tearDown() {
-		parent::tearDown();
-		unset($this->storage);
-	}
+    /**
+     * tearDown
+     *
+     * @return void
+     */
+    public function tearDown() {
+        parent::tearDown();
+        unset($this->storage);
+    }
 
-/**
- * test open
- *
- * @return void
- */
-	public function testOpen() {
-		$this->assertTrue($this->storage->open(null, null));
-	}
+    /**
+     * test open
+     *
+     * @return void
+     */
+    public function testOpen() {
+        $this->assertTrue($this->storage->open(null, null));
+    }
 
-/**
- * test write()
- *
- * @return void
- */
-	public function testWrite() {
-		$this->storage->write('abc', 'Some value');
-		$this->assertEquals('Some value', Cache::read('abc', 'session_test'), 'Value was not written.');
-	}
+    /**
+     * test write()
+     *
+     * @return void
+     */
+    public function testWrite() {
+        $this->storage->write('abc', 'Some value');
+        $this->assertEquals('Some value', Cache::read('abc', 'session_test'), 'Value was not written.');
+    }
 
-/**
- * test reading.
- *
- * @return void
- */
-	public function testRead() {
-		$this->storage->write('test_one', 'Some other value');
-		$this->assertEquals('Some other value', $this->storage->read('test_one'), 'Incorrect value.');
-	}
+    /**
+     * test reading.
+     *
+     * @return void
+     */
+    public function testRead() {
+        $this->storage->write('test_one', 'Some other value');
+        $this->assertEquals('Some other value', $this->storage->read('test_one'), 'Incorrect value.');
+    }
 
-/**
- * test destroy
- *
- * @return void
- */
-	public function testDestroy() {
-		$this->storage->write('test_one', 'Some other value');
-		$this->assertTrue($this->storage->destroy('test_one'), 'Value was not deleted.');
+    /**
+     * test destroy
+     *
+     * @return void
+     */
+    public function testDestroy() {
+        $this->storage->write('test_one', 'Some other value');
+        $this->assertTrue($this->storage->destroy('test_one'), 'Value was not deleted.');
 
-		$this->assertFalse(Cache::read('test_one', 'session_test'), 'Value stuck around.');
-	}
+        $this->assertFalse(Cache::read('test_one', 'session_test'), 'Value stuck around.');
+    }
 
 }

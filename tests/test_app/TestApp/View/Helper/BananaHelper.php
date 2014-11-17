@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -13,14 +14,15 @@
  * @since         1.3.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\View\Helper;
 
 use Cake\View\Helper;
 
 class BananaHelper extends Helper {
 
-	public function peel() {
-		return '<b>peeled</b>';
-	}
+    public function peel() {
+        return '<b>peeled</b>';
+    }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace TestPluginTwo\Config;
 
 use Cake\Core\Configure;

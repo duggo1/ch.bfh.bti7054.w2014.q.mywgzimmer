@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestPlugin\View\Cell;
 
 /**
@@ -19,22 +21,23 @@ namespace TestPlugin\View\Cell;
  */
 class DummyCell extends \Cake\View\Cell {
 
-/**
- * Default cell action.
- *
- * @return void
- */
-	public function display() {
-	}
+    /**
+     * Default cell action.
+     *
+     * @return void
+     */
+    public function display() {
+        
+    }
 
-/**
- * Simple echo.
- *
- * @param string $msg
- * @return void
- */
-	public function echoThis($msg) {
-		$this->set('msg', $msg);
-	}
+    /**
+     * Simple echo.
+     *
+     * @param string $msg
+     * @return void
+     */
+    public function echoThis($msg) {
+        $this->set('msg', $msg);
+    }
 
 }

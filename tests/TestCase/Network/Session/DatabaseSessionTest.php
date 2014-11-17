@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DatabaseSessionTest file
  *
@@ -14,6 +15,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\Network\Session;
 
 use Cake\Core\Configure;
@@ -30,161 +32,162 @@ use Cake\TestSuite\TestCase;
  */
 class DatabaseSessionTest extends TestCase {
 
-/**
- * sessionBackup
- *
- * @var array
- */
-	protected static $_sessionBackup;
+    /**
+     * sessionBackup
+     *
+     * @var array
+     */
+    protected static $_sessionBackup;
 
-/**
- * fixtures
- *
- * @var string
- */
-	public $fixtures = ['core.session'];
+    /**
+     * fixtures
+     *
+     * @var string
+     */
+    public $fixtures = ['core.session'];
 
-/**
- * test case startup
- *
- * @return void
- */
-	public static function setupBeforeClass() {
-		static::$_sessionBackup = Configure::read('Session');
+    /**
+     * test case startup
+     *
+     * @return void
+     */
+    public static function setupBeforeClass() {
+        static::$_sessionBackup = Configure::read('Session');
 
-		Configure::write('Session.handler', array(
-			'model' => 'Sessions'
-		));
-		Configure::write('Session.timeout', 100);
-	}
+        Configure::write('Session.handler', array(
+            'model' => 'Sessions'
+        ));
+        Configure::write('Session.timeout', 100);
+    }
 
-/**
- * cleanup after test case.
- *
- * @return void
- */
-	public static function teardownAfterClass() {
-		Configure::write('Session', static::$_sessionBackup);
-	}
+    /**
+     * cleanup after test case.
+     *
+     * @return void
+     */
+    public static function teardownAfterClass() {
+        Configure::write('Session', static::$_sessionBackup);
+    }
 
-/**
- * setUp
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-		Configure::write('App.namespace', 'TestApp');
-		$this->storage = new DatabaseSession();
-	}
+    /**
+     * setUp
+     *
+     * @return void
+     */
+    public function setUp() {
+        parent::setUp();
+        Configure::write('App.namespace', 'TestApp');
+        $this->storage = new DatabaseSession();
+    }
 
-/**
- * tearDown
- *
- * @return void
- */
-	public function tearDown() {
-		unset($this->storage);
-		TableRegistry::clear();
-		parent::tearDown();
-	}
+    /**
+     * tearDown
+     *
+     * @return void
+     */
+    public function tearDown() {
+        unset($this->storage);
+        TableRegistry::clear();
+        parent::tearDown();
+    }
 
-/**
- * test that constructor sets the right things up.
- *
- * @return void
- */
-	public function testConstructionSettings() {
-		TableRegistry::clear();
-		new DatabaseSession();
+    /**
+     * test that constructor sets the right things up.
+     *
+     * @return void
+     */
+    public function testConstructionSettings() {
+        TableRegistry::clear();
+        new DatabaseSession();
 
-		$session = TableRegistry::get('Sessions');
-		$this->assertInstanceOf('Cake\ORM\Table', $session);
-		$this->assertEquals('Sessions', $session->alias());
-		$this->assertEquals(ConnectionManager::get('test'), $session->connection());
-		$this->assertEquals('sessions', $session->table());
-	}
+        $session = TableRegistry::get('Sessions');
+        $this->assertInstanceOf('Cake\ORM\Table', $session);
+        $this->assertEquals('Sessions', $session->alias());
+        $this->assertEquals(ConnectionManager::get('test'), $session->connection());
+        $this->assertEquals('sessions', $session->table());
+    }
 
-/**
- * test opening the session
- *
- * @return void
- */
-	public function testOpen() {
-		$this->assertTrue($this->storage->open(null, null));
-	}
+    /**
+     * test opening the session
+     *
+     * @return void
+     */
+    public function testOpen() {
+        $this->assertTrue($this->storage->open(null, null));
+    }
 
-/**
- * test write()
- *
- * @return void
- */
-	public function testWrite() {
-		$result = $this->storage->write('foo', 'Some value');
-		$expected = [
-			'id' => 'foo',
-			'data' => 'Some value',
-		];
-		$expires = $result['expires'];
-		unset($result['expires']);
-		$this->assertEquals($expected, $result);
+    /**
+     * test write()
+     *
+     * @return void
+     */
+    public function testWrite() {
+        $result = $this->storage->write('foo', 'Some value');
+        $expected = [
+            'id' => 'foo',
+            'data' => 'Some value',
+        ];
+        $expires = $result['expires'];
+        unset($result['expires']);
+        $this->assertEquals($expected, $result);
 
-		$expected = time() + (Configure::read('Session.timeout') * 60);
-		$this->assertWithinMargin($expires, $expected, 1);
-	}
+        $expected = time() + (Configure::read('Session.timeout') * 60);
+        $this->assertWithinMargin($expires, $expected, 1);
+    }
 
-/**
- * testReadAndWriteWithDatabaseStorage method
- *
- * @return void
- */
-	public function testWriteEmptySessionId() {
-		$result = $this->storage->write('', 'This is a Test');
-		$this->assertFalse($result);
-	}
+    /**
+     * testReadAndWriteWithDatabaseStorage method
+     *
+     * @return void
+     */
+    public function testWriteEmptySessionId() {
+        $result = $this->storage->write('', 'This is a Test');
+        $this->assertFalse($result);
+    }
 
-/**
- * test read()
- *
- * @return void
- */
-	public function testRead() {
-		$this->storage->write('foo', 'Some value');
+    /**
+     * test read()
+     *
+     * @return void
+     */
+    public function testRead() {
+        $this->storage->write('foo', 'Some value');
 
-		$result = $this->storage->read('foo');
-		$expected = 'Some value';
-		$this->assertEquals($expected, $result);
+        $result = $this->storage->read('foo');
+        $expected = 'Some value';
+        $this->assertEquals($expected, $result);
 
-		$result = $this->storage->read('made up value');
-		$this->assertFalse($result);
-	}
+        $result = $this->storage->read('made up value');
+        $this->assertFalse($result);
+    }
 
-/**
- * test blowing up the session.
- *
- * @return void
- */
-	public function testDestroy() {
-		$this->storage->write('foo', 'Some value');
+    /**
+     * test blowing up the session.
+     *
+     * @return void
+     */
+    public function testDestroy() {
+        $this->storage->write('foo', 'Some value');
 
-		$this->assertTrue($this->storage->destroy('foo'), 'Destroy failed');
-		$this->assertFalse($this->storage->read('foo'), 'Value still present.');
-	}
+        $this->assertTrue($this->storage->destroy('foo'), 'Destroy failed');
+        $this->assertFalse($this->storage->read('foo'), 'Value still present.');
+    }
 
-/**
- * test the garbage collector
- *
- * @return void
- */
-	public function testGc() {
-		TableRegistry::clear();
-		Configure::write('Session.timeout', 0);
+    /**
+     * test the garbage collector
+     *
+     * @return void
+     */
+    public function testGc() {
+        TableRegistry::clear();
+        Configure::write('Session.timeout', 0);
 
-		$storage = new DatabaseSession();
-		$storage->write('foo', 'Some value');
+        $storage = new DatabaseSession();
+        $storage->write('foo', 'Some value');
 
-		sleep(1);
-		$storage->gc(0);
-		$this->assertFalse($storage->read('foo'));
-	}
+        sleep(1);
+        $storage->gc(0);
+        $this->assertFalse($storage->read('foo'));
+    }
+
 }

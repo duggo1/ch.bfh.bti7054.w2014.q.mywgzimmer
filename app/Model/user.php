@@ -1,6 +1,9 @@
 <?php
-class User extends AppModel
-{
-var $name='User';
+
+class User extends AppModel {
+
+    var $name = 'User';
+
 }
+
 ?>

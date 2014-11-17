@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -12,18 +13,18 @@ use App\Controller\AppController;
  */
 class BakeArticlesController extends AppController {
 
-/**
- * Helpers
- *
- * @var array
- */
-	public $helpers = ['Html', 'Time'];
+    /**
+     * Helpers
+     *
+     * @var array
+     */
+    public $helpers = ['Html', 'Time'];
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = ['Csrf', 'Auth'];
+    /**
+     * Components
+     *
+     * @var array
+     */
+    public $components = ['Csrf', 'Auth'];
 
 }

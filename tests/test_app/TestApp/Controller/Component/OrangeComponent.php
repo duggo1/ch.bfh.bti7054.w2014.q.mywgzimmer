@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Controller\Component;
 
 use Cake\Controller\Component;
@@ -23,33 +25,34 @@ use Cake\Event\Event;
  */
 class OrangeComponent extends Component {
 
-/**
- * components property
- *
- * @var array
- */
-	public $components = array('Banana');
+    /**
+     * components property
+     *
+     * @var array
+     */
+    public $components = array('Banana');
 
-/**
- * initialize method
- *
- * @param Event $event
- * @param Controller $controller
- * @return void
- */
-	public function initialize(Event $event) {
-		$this->Controller = $event->subject();
-		$this->Banana->testField = 'OrangeField';
-	}
+    /**
+     * initialize method
+     *
+     * @param Event $event
+     * @param Controller $controller
+     * @return void
+     */
+    public function initialize(Event $event) {
+        $this->Controller = $event->subject();
+        $this->Banana->testField = 'OrangeField';
+    }
 
-/**
- * startup method
- *
- * @param Event $event
- * @param Controller $controller
- * @return string
- */
-	public function startup(Event $event) {
-		$controller->foo = 'pass';
-	}
+    /**
+     * startup method
+     *
+     * @param Event $event
+     * @param Controller $controller
+     * @return string
+     */
+    public function startup(Event $event) {
+        $controller->foo = 'pass';
+    }
+
 }

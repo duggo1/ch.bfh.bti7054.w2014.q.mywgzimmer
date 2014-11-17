@@ -16,16 +16,16 @@
 ?>
 <h2>Missing Layout</h2>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('The layout file <em>%s</em> can not be found or does not exist.', h($file)); ?>
+    <strong>Error: </strong>
+    <?= sprintf('The layout file <em>%s</em> can not be found or does not exist.', h($file)); ?>
 </p>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('Confirm you have created the file: <em>%s</em>', h($file)); ?>
+    <strong>Error: </strong>
+    <?= sprintf('Confirm you have created the file: <em>%s</em>', h($file)); ?>
 </p>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_layout.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_layout.ctp'); ?>
 </p>
 
 <?= $this->element('exception_stack_trace'); ?>

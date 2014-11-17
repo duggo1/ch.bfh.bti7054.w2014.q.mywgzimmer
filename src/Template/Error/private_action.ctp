@@ -16,12 +16,12 @@
 ?>
 <h2><?= sprintf('Private Method in %s', $controller); ?></h2>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('<em>%s::%s()</em> cannot be accessed directly.', h($controller), h($action)); ?>
+    <strong>Error: </strong>
+    <?= sprintf('<em>%s::%s()</em> cannot be accessed directly.', h($controller), h($action)); ?>
 </p>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'private_action.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'private_action.ctp'); ?>
 </p>
 
 <?= $this->element('exception_stack_trace'); ?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Statement;
 
 /**
@@ -22,121 +24,120 @@ namespace Cake\Database\Statement;
  */
 class BufferedStatement extends StatementDecorator {
 
-/**
- * Records count
- * @var int
- */
-	protected $_count = 0;
+    /**
+     * Records count
+     * @var int
+     */
+    protected $_count = 0;
 
-/**
- * Array of results
- *
- * @var array
- */
-	protected $_records = [];
+    /**
+     * Array of results
+     *
+     * @var array
+     */
+    protected $_records = [];
 
-/**
- * If true, all rows were fetched
- *
- * @var bool
- */
-	protected $_allFetched = true;
+    /**
+     * If true, all rows were fetched
+     *
+     * @var bool
+     */
+    protected $_allFetched = true;
 
-/**
- * Current record pointer
- * @var int
- */
-	protected $_counter = 0;
+    /**
+     * Current record pointer
+     * @var int
+     */
+    protected $_counter = 0;
 
-/**
- * Constructor
- *
- * @param \Cake\Database\StatementInterface $statement Statement implementation such as PDOStatement
- * @param \Cake\Database\Driver $driver Driver instance
- */
-	public function __construct($statement = null, $driver = null) {
-		parent::__construct($statement, $driver);
-		$this->_reset();
-	}
+    /**
+     * Constructor
+     *
+     * @param \Cake\Database\StatementInterface $statement Statement implementation such as PDOStatement
+     * @param \Cake\Database\Driver $driver Driver instance
+     */
+    public function __construct($statement = null, $driver = null) {
+        parent::__construct($statement, $driver);
+        $this->_reset();
+    }
 
-/**
- * Execute the statement and return the results.
- *
- * @param array $params list of values to be bound to query
- * @return bool true on success, false otherwise
- */
-	public function execute($params = null) {
-		$this->_reset();
-		return parent::execute($params);
-	}
+    /**
+     * Execute the statement and return the results.
+     *
+     * @param array $params list of values to be bound to query
+     * @return bool true on success, false otherwise
+     */
+    public function execute($params = null) {
+        $this->_reset();
+        return parent::execute($params);
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function fetch($type = 'num') {
-		if ($this->_allFetched) {
-			$row = ($this->_counter < $this->_count) ? $this->_records[$this->_counter++] : false;
-			$row = ($row && $type === 'num') ? array_values($row) : $row;
-			return $row;
-		}
+    /**
+     * {@inheritDoc}
+     */
+    public function fetch($type = 'num') {
+        if ($this->_allFetched) {
+            $row = ($this->_counter < $this->_count) ? $this->_records[$this->_counter++] : false;
+            $row = ($row && $type === 'num') ? array_values($row) : $row;
+            return $row;
+        }
 
-		$this->_fetchType = $type;
-		$record = parent::fetch($type);
+        $this->_fetchType = $type;
+        $record = parent::fetch($type);
 
-		if ($record === false) {
-			$this->_allFetched = true;
-			$this->_counter = $this->_count + 1;
-			$this->_statement->closeCursor();
-			return false;
-		}
+        if ($record === false) {
+            $this->_allFetched = true;
+            $this->_counter = $this->_count + 1;
+            $this->_statement->closeCursor();
+            return false;
+        }
 
-		$this->_count++;
-		return $this->_records[] = $record;
-	}
+        $this->_count++;
+        return $this->_records[] = $record;
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function fetchAll($type = 'num') {
-		if ($this->_allFetched) {
-			return $this->_records;
-		}
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchAll($type = 'num') {
+        if ($this->_allFetched) {
+            return $this->_records;
+        }
 
-		$this->_records = parent::fetchAll($type);
-		$this->_count = count($this->_records);
-		$this->_allFetched = true;
-		$this->_statement->closeCursor();
-		return $this->_records;
-	}
+        $this->_records = parent::fetchAll($type);
+        $this->_count = count($this->_records);
+        $this->_allFetched = true;
+        $this->_statement->closeCursor();
+        return $this->_records;
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function rowCount() {
-		if (!$this->_allFetched) {
-			$counter = $this->_counter;
-			while($this->fetch('assoc'));
-			$this->_counter = $counter;
-		}
+    /**
+     * {@inheritDoc}
+     */
+    public function rowCount() {
+        if (!$this->_allFetched) {
+            $counter = $this->_counter;
+            while ($this->fetch('assoc'));
+            $this->_counter = $counter;
+        }
 
-		return $this->_count;
-	}
+        return $this->_count;
+    }
 
-/**
- * Rewind the _counter property
- */
-	public function rewind() {
-		$this->_counter = 0;
-	}
+    /**
+     * Rewind the _counter property
+     */
+    public function rewind() {
+        $this->_counter = 0;
+    }
 
-/**
- * Reset all properties
- */
-	protected function _reset() {
-		$this->_count = $this->_counter = 0;
-		$this->_records = [];
-		$this->_allFetched = false;
-	}
+    /**
+     * Reset all properties
+     */
+    protected function _reset() {
+        $this->_count = $this->_counter = 0;
+        $this->_records = [];
+        $this->_allFetched = false;
+    }
 
 }
-

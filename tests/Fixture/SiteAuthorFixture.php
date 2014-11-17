@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,35 +13,35 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
 
 class SiteAuthorFixture extends TestFixture {
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = [
-		'id' => ['type' => 'integer'],
-		'name' => ['type' => 'string', 'default' => null],
-		'site_id' => ['type' => 'integer', 'null' => true],
-		'_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id', 'site_id']]]
-	];
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id' => ['type' => 'integer'],
+        'name' => ['type' => 'string', 'default' => null],
+        'site_id' => ['type' => 'integer', 'null' => true],
+        '_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id', 'site_id']]]
+    ];
 
-/**
- * records property
- *
- * @var array
- */
-	public $records = [
-		['id' => 1, 'name' => 'mark', 'site_id' => 1],
-		['id' => 2, 'name' => 'juan', 'site_id' => 2],
-		['id' => 3, 'name' => 'jose', 'site_id' => 2],
-		['id' => 4, 'name' => 'andy', 'site_id' => 1]
-	];
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['id' => 1, 'name' => 'mark', 'site_id' => 1],
+        ['id' => 2, 'name' => 'juan', 'site_id' => 2],
+        ['id' => 3, 'name' => 'jose', 'site_id' => 2],
+        ['id' => 4, 'name' => 'andy', 'site_id' => 1]
+    ];
 
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestPlugin\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
@@ -21,26 +23,26 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class ArticleFixture extends TestFixture {
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = [
-		'id' => ['type' => 'integer'],
-		'author_id' => ['type' => 'integer', 'null' => true],
-		'title' => ['type' => 'string', 'null' => true],
-		'body' => 'text',
-		'_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
-	];
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = [
+        'id' => ['type' => 'integer'],
+        'author_id' => ['type' => 'integer', 'null' => true],
+        'title' => ['type' => 'string', 'null' => true],
+        'body' => 'text',
+        '_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
+    ];
 
-/**
- * records property
- *
- * @var array
- */
-	public $records = [
-		['author_id' => 1, 'title' => 'Plugin Article', 'body' => 'Plugin Article Body'],
-	];
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['author_id' => 1, 'title' => 'Plugin Article', 'body' => 'Plugin Article Body'],
+    ];
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Error;
 
 use Cake\Controller\Controller;
@@ -45,246 +47,246 @@ use Cake\View\View;
  */
 class ExceptionRenderer {
 
-/**
- * Controller instance.
- *
- * @var Controller
- */
-	public $controller = null;
+    /**
+     * Controller instance.
+     *
+     * @var Controller
+     */
+    public $controller = null;
 
-/**
- * Template to render for Cake\Error\Exception
- *
- * @var string
- */
-	public $template = '';
+    /**
+     * Template to render for Cake\Error\Exception
+     *
+     * @var string
+     */
+    public $template = '';
 
-/**
- * The method corresponding to the Exception this object is for.
- *
- * @var string
- */
-	public $method = '';
+    /**
+     * The method corresponding to the Exception this object is for.
+     *
+     * @var string
+     */
+    public $method = '';
 
-/**
- * The exception being handled.
- *
- * @var \Exception
- */
-	public $error = null;
+    /**
+     * The exception being handled.
+     *
+     * @var \Exception
+     */
+    public $error = null;
 
-/**
- * Creates the controller to perform rendering on the error response.
- * If the error is a Cake\Error\Exception it will be converted to either a 400 or a 500
- * code error depending on the code used to construct the error.
- *
- * @param \Exception $exception Exception
- */
-	public function __construct(\Exception $exception) {
-		$this->error = $exception;
-		$this->controller = $this->_getController();
-	}
+    /**
+     * Creates the controller to perform rendering on the error response.
+     * If the error is a Cake\Error\Exception it will be converted to either a 400 or a 500
+     * code error depending on the code used to construct the error.
+     *
+     * @param \Exception $exception Exception
+     */
+    public function __construct(\Exception $exception) {
+        $this->error = $exception;
+        $this->controller = $this->_getController();
+    }
 
-/**
- * Get the controller instance to handle the exception.
- * Override this method in subclasses to customize the controller used.
- * This method returns the built in `ErrorController` normally, or if an error is repeated
- * a bare controller will be used.
- *
- * @return \Cake\Controller\Controller
- */
-	protected function _getController() {
-		if (!$request = Router::getRequest(true)) {
-			$request = Request::createFromGlobals();
-		}
-		$response = new Response();
+    /**
+     * Get the controller instance to handle the exception.
+     * Override this method in subclasses to customize the controller used.
+     * This method returns the built in `ErrorController` normally, or if an error is repeated
+     * a bare controller will be used.
+     *
+     * @return \Cake\Controller\Controller
+     */
+    protected function _getController() {
+        if (!$request = Router::getRequest(true)) {
+            $request = Request::createFromGlobals();
+        }
+        $response = new Response();
 
-		try {
-			$controller = new ErrorController($request, $response);
-			$controller->startupProcess();
-		} catch (\Exception $e) {
-			if (!empty($controller) && isset($controller->RequestHandler)) {
-				$event = new Event('Controller.startup', $controller);
-				$controller->RequestHandler->startup($event);
-			}
-		}
-		if (empty($controller)) {
-			$controller = new Controller($request, $response);
-			$controller->viewPath = 'Error';
-		}
-		return $controller;
-	}
+        try {
+            $controller = new ErrorController($request, $response);
+            $controller->startupProcess();
+        } catch (\Exception $e) {
+            if (!empty($controller) && isset($controller->RequestHandler)) {
+                $event = new Event('Controller.startup', $controller);
+                $controller->RequestHandler->startup($event);
+            }
+        }
+        if (empty($controller)) {
+            $controller = new Controller($request, $response);
+            $controller->viewPath = 'Error';
+        }
+        return $controller;
+    }
 
-/**
- * Renders the response for the exception.
- *
- * @return void
- */
-	public function render() {
-		$exception = $this->error;
-		$code = $this->_code($exception);
-		$method = $this->_method($exception);
-		$template = $this->_template($exception, $method, $code);
+    /**
+     * Renders the response for the exception.
+     *
+     * @return void
+     */
+    public function render() {
+        $exception = $this->error;
+        $code = $this->_code($exception);
+        $method = $this->_method($exception);
+        $template = $this->_template($exception, $method, $code);
 
-		$isDebug = Configure::read('debug');
-		if (($isDebug || $exception instanceof Error\HttpException) &&
-			method_exists($this, $method)
-		) {
-			call_user_func_array(array($this, $method), array($exception));
-			return;
-		}
+        $isDebug = Configure::read('debug');
+        if (($isDebug || $exception instanceof Error\HttpException) &&
+                method_exists($this, $method)
+        ) {
+            call_user_func_array(array($this, $method), array($exception));
+            return;
+        }
 
-		$message = $this->_message($exception, $code);
-		$url = $this->controller->request->here();
+        $message = $this->_message($exception, $code);
+        $url = $this->controller->request->here();
 
-		if (method_exists($exception, 'responseHeader')) {
-			$this->controller->response->header($exception->responseHeader());
-		}
-		$this->controller->response->statusCode($code);
-		$this->controller->set(array(
-			'message' => h($message),
-			'url' => h($url),
-			'error' => $exception,
-			'code' => $code,
-			'_serialize' => array('message', 'url', 'code')
-		));
+        if (method_exists($exception, 'responseHeader')) {
+            $this->controller->response->header($exception->responseHeader());
+        }
+        $this->controller->response->statusCode($code);
+        $this->controller->set(array(
+            'message' => h($message),
+            'url' => h($url),
+            'error' => $exception,
+            'code' => $code,
+            '_serialize' => array('message', 'url', 'code')
+        ));
 
-		if ($exception instanceof Error\Exception && $isDebug) {
-			$this->controller->set($this->error->getAttributes());
-		}
+        if ($exception instanceof Error\Exception && $isDebug) {
+            $this->controller->set($this->error->getAttributes());
+        }
 
-		$this->_outputMessage($template);
-	}
+        $this->_outputMessage($template);
+    }
 
-/**
- * Get method name
- *
- * @param \Exception $exception
- * @return string
- */
-	protected function _method(\Exception $exception) {
-		list(, $baseClass) = namespaceSplit(get_class($exception));
-		$baseClass = substr($baseClass, 0, -9);
-		$method = Inflector::variable($baseClass) ?: 'error500';
-		return $this->method = $method;
-	}
+    /**
+     * Get method name
+     *
+     * @param \Exception $exception
+     * @return string
+     */
+    protected function _method(\Exception $exception) {
+        list(, $baseClass) = namespaceSplit(get_class($exception));
+        $baseClass = substr($baseClass, 0, -9);
+        $method = Inflector::variable($baseClass) ? : 'error500';
+        return $this->method = $method;
+    }
 
-/**
- * Get error message.
- *
- * @param \Exception $exception Exception
- * @param int $code Error code
- * @return string Error message
- */
-	protected function _message(\Exception $exception, $code) {
-		$message = $this->error->getMessage();
+    /**
+     * Get error message.
+     *
+     * @param \Exception $exception Exception
+     * @param int $code Error code
+     * @return string Error message
+     */
+    protected function _message(\Exception $exception, $code) {
+        $message = $this->error->getMessage();
 
-		if (!Configure::read('debug') &&
-			!($exception instanceof Error\HttpException)
-		) {
-			if ($code < 500) {
-				$message = __d('cake', 'Not Found');
-			} else {
-				$message = __d('cake', 'An Internal Error Has Occurred.');
-			}
-		}
+        if (!Configure::read('debug') &&
+                !($exception instanceof Error\HttpException)
+        ) {
+            if ($code < 500) {
+                $message = __d('cake', 'Not Found');
+            } else {
+                $message = __d('cake', 'An Internal Error Has Occurred.');
+            }
+        }
 
-		return $message;
-	}
+        return $message;
+    }
 
-/**
- * Get template for rendering exception info.
- *
- * @param \Exception $exception
- * @param string $method Method name
- * @param int $code Error code
- * @return string Template name
- */
-	protected function _template(\Exception $exception, $method, $code) {
-		$isHttpException = $exception instanceof Error\HttpException;
+    /**
+     * Get template for rendering exception info.
+     *
+     * @param \Exception $exception
+     * @param string $method Method name
+     * @param int $code Error code
+     * @return string Template name
+     */
+    protected function _template(\Exception $exception, $method, $code) {
+        $isHttpException = $exception instanceof Error\HttpException;
 
-		if (!Configure::read('debug') && !$isHttpException) {
-			$template = 'error500';
-			if ($code < 500) {
-				$template = 'error400';
-			}
-			return $this->template = $template;
-		}
+        if (!Configure::read('debug') && !$isHttpException) {
+            $template = 'error500';
+            if ($code < 500) {
+                $template = 'error400';
+            }
+            return $this->template = $template;
+        }
 
-		if ($isHttpException) {
-			$template = 'error500';
-			if ($code < 500) {
-				$template = 'error400';
-			}
-			return $this->template = $template;
-		}
+        if ($isHttpException) {
+            $template = 'error500';
+            if ($code < 500) {
+                $template = 'error400';
+            }
+            return $this->template = $template;
+        }
 
-		$template = $method ?: 'error500';
+        $template = $method ? : 'error500';
 
-		if ($exception instanceof \PDOException) {
-			$template = 'pdo_error';
-		}
+        if ($exception instanceof \PDOException) {
+            $template = 'pdo_error';
+        }
 
-		return $this->template = $template;
-	}
+        return $this->template = $template;
+    }
 
-/**
- * Get an error code value within range 400 to 506
- *
- * @param \Exception $exception Exception
- * @return int Error code value within range 400 to 506
- */
-	protected function _code(\Exception $exception) {
-		$code = 500;
-		$errorCode = $exception->getCode();
-		if ($errorCode >= 400 && $errorCode < 506) {
-			$code = $errorCode;
-		}
-		return $code;
-	}
+    /**
+     * Get an error code value within range 400 to 506
+     *
+     * @param \Exception $exception Exception
+     * @return int Error code value within range 400 to 506
+     */
+    protected function _code(\Exception $exception) {
+        $code = 500;
+        $errorCode = $exception->getCode();
+        if ($errorCode >= 400 && $errorCode < 506) {
+            $code = $errorCode;
+        }
+        return $code;
+    }
 
-/**
- * Generate the response using the controller object.
- *
- * @param string $template The template to render.
- * @return void
- */
-	protected function _outputMessage($template) {
-		try {
-			$this->controller->render($template);
-			$event = new Event('Controller.shutdown', $this->controller);
-			$this->controller->afterFilter($event);
-			$this->controller->response->send();
-		} catch (MissingViewException $e) {
-			$attributes = $e->getAttributes();
-			if (isset($attributes['file']) && strpos($attributes['file'], 'error500') !== false) {
-				$this->_outputMessageSafe('error500');
-			} else {
-				$this->_outputMessage('error500');
-			}
-		} catch (\Exception $e) {
-			$this->_outputMessageSafe('error500');
-		}
-	}
+    /**
+     * Generate the response using the controller object.
+     *
+     * @param string $template The template to render.
+     * @return void
+     */
+    protected function _outputMessage($template) {
+        try {
+            $this->controller->render($template);
+            $event = new Event('Controller.shutdown', $this->controller);
+            $this->controller->afterFilter($event);
+            $this->controller->response->send();
+        } catch (MissingViewException $e) {
+            $attributes = $e->getAttributes();
+            if (isset($attributes['file']) && strpos($attributes['file'], 'error500') !== false) {
+                $this->_outputMessageSafe('error500');
+            } else {
+                $this->_outputMessage('error500');
+            }
+        } catch (\Exception $e) {
+            $this->_outputMessageSafe('error500');
+        }
+    }
 
-/**
- * A safer way to render error messages, replaces all helpers, with basics
- * and doesn't call component methods.
- *
- * @param string $template The template to render
- * @return void
- */
-	protected function _outputMessageSafe($template) {
-		$this->controller->layoutPath = null;
-		$this->controller->subDir = null;
-		$this->controller->viewPath = 'Error';
-		$this->controller->layout = 'error';
-		$this->controller->helpers = array('Form', 'Html', 'Session');
+    /**
+     * A safer way to render error messages, replaces all helpers, with basics
+     * and doesn't call component methods.
+     *
+     * @param string $template The template to render
+     * @return void
+     */
+    protected function _outputMessageSafe($template) {
+        $this->controller->layoutPath = null;
+        $this->controller->subDir = null;
+        $this->controller->viewPath = 'Error';
+        $this->controller->layout = 'error';
+        $this->controller->helpers = array('Form', 'Html', 'Session');
 
-		$view = $this->controller->createView();
-		$this->controller->response->body($view->render($template, 'error'));
-		$this->controller->response->type('html');
-		$this->controller->response->send();
-	}
+        $view = $this->controller->createView();
+        $this->controller->response->body($view->render($template, 'error'));
+        $this->controller->response->type('html');
+        $this->controller->response->send();
+    }
 
 }

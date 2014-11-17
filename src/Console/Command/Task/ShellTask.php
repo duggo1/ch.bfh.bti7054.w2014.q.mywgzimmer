@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Console\Command\Task;
 
 use Cake\Console\Command\Task\SimpleBakeTask;
@@ -21,32 +23,32 @@ use Cake\Console\Command\Task\SimpleBakeTask;
  */
 class ShellTask extends SimpleBakeTask {
 
-/**
- * Task name used in path generation.
- *
- * @var string
- */
-	public $pathFragment = 'Console/Command/';
+    /**
+     * Task name used in path generation.
+     *
+     * @var string
+     */
+    public $pathFragment = 'Console/Command/';
 
-/**
- * {@inheritDoc}
- */
-	public function name() {
-		return 'shell';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function name() {
+        return 'shell';
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function fileName($name) {
-		return $name . 'Shell.php';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function fileName($name) {
+        return $name . 'Shell.php';
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function template() {
-		return 'shell';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function template() {
+        return 'shell';
+    }
 
 }

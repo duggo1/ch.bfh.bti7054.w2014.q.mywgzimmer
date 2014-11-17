@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -19,12 +20,12 @@ $pluginDot = empty($plugin) ? null : $plugin . '.';
 ?>
 <h2>Missing Component</h2>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('<em>%s</em> could not be found.', h($pluginDot . $class)); ?>
+    <strong>Error: </strong>
+    <?= sprintf('<em>%s</em> could not be found.', h($pluginDot . $class)); ?>
 </p>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('Create the class <em>%s</em> below in file: %s', h($class), (empty($plugin) ? APP_DIR : Plugin::path($plugin)) . DS . 'Controller' . DS . 'Component' . DS . h($class) . '.php'); ?>
+    <strong>Error: </strong>
+    <?= sprintf('Create the class <em>%s</em> below in file: %s', h($class), (empty($plugin) ? APP_DIR : Plugin::path($plugin)) . DS . 'Controller' . DS . 'Component' . DS . h($class) . '.php'); ?>
 </p>
 <pre>
 &lt;?php
@@ -33,8 +34,8 @@ class <?= h($class); ?> extends Component {
 }
 </pre>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_component.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_component.ctp'); ?>
 </p>
 
 <?= $this->element('exception_stack_trace'); ?>

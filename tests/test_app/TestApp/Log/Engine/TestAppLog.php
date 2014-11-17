@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Suite Test App Logging stream class.
  *
@@ -14,6 +15,7 @@
  * @since         1.3.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Log\Engine;
 
 use Cake\Log\Engine\BaseLog;
@@ -24,10 +26,10 @@ use Cake\Log\Engine\BaseLog;
  */
 class TestAppLog extends BaseLog {
 
-	public $passedScope = null;
+    public $passedScope = null;
 
-	public function write($level, $message, $scope = []) {
-		$this->passedScope = $scope;
-	}
+    public function write($level, $message, $scope = []) {
+        $this->passedScope = $scope;
+    }
 
 }

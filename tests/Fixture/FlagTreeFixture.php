@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
@@ -24,18 +26,19 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class FlagTreeFixture extends TestFixture {
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => ['type' => 'integer'],
-		'name' => ['type' => 'string', 'null' => false],
-		'parent_id' => 'integer',
-		'lft' => ['type' => 'integer', 'null' => false],
-		'rght' => ['type' => 'integer', 'null' => false],
-		'flag' => ['type' => 'integer', 'null' => false, 'length' => 1, 'default' => 0],
-		'_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
-	);
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = array(
+        'id' => ['type' => 'integer'],
+        'name' => ['type' => 'string', 'null' => false],
+        'parent_id' => 'integer',
+        'lft' => ['type' => 'integer', 'null' => false],
+        'rght' => ['type' => 'integer', 'null' => false],
+        'flag' => ['type' => 'integer', 'null' => false, 'length' => 1, 'default' => 0],
+        '_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
+    );
+
 }

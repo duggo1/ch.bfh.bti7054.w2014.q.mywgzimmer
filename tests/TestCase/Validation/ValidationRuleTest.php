@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         2.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\Validation;
 
 use Cake\TestSuite\TestCase;
@@ -23,127 +25,129 @@ use Cake\Validation\ValidationRule;
  */
 class ValidationRuleTest extends TestCase {
 
-/**
- * Auxiliary method to test custom validators
- *
- * @return bool
- */
-	public function myTestRule() {
-		return false;
-	}
+    /**
+     * Auxiliary method to test custom validators
+     *
+     * @return bool
+     */
+    public function myTestRule() {
+        return false;
+    }
 
-/**
- * Auxiliary method to test custom validators
- *
- * @return bool
- */
-	public function myTestRule2() {
-		return true;
-	}
+    /**
+     * Auxiliary method to test custom validators
+     *
+     * @return bool
+     */
+    public function myTestRule2() {
+        return true;
+    }
 
-/**
- * Auxiliary method to test custom validators
- *
- * @return string
- */
-	public function myTestRule3() {
-		return 'string';
-	}
+    /**
+     * Auxiliary method to test custom validators
+     *
+     * @return string
+     */
+    public function myTestRule3() {
+        return 'string';
+    }
 
-/**
- * tests that passing custom validation methods work
- *
- * @return void
- */
-	public function testCustomMethods() {
-		$data = 'some data';
-		$providers = ['default' => $this];
+    /**
+     * tests that passing custom validation methods work
+     *
+     * @return void
+     */
+    public function testCustomMethods() {
+        $data = 'some data';
+        $providers = ['default' => $this];
 
-		$context = ['newRecord' => true];
-		$Rule = new ValidationRule(['rule' => 'myTestRule']);
-		$this->assertFalse($Rule->process($data, $providers, $context));
+        $context = ['newRecord' => true];
+        $Rule = new ValidationRule(['rule' => 'myTestRule']);
+        $this->assertFalse($Rule->process($data, $providers, $context));
 
-		$Rule = new ValidationRule(['rule' => 'myTestRule2']);
-		$this->assertTrue($Rule->process($data, $providers, $context));
+        $Rule = new ValidationRule(['rule' => 'myTestRule2']);
+        $this->assertTrue($Rule->process($data, $providers, $context));
 
-		$Rule = new ValidationRule(['rule' => 'myTestRule3']);
-		$this->assertEquals('string', $Rule->process($data, $providers, $context));
+        $Rule = new ValidationRule(['rule' => 'myTestRule3']);
+        $this->assertEquals('string', $Rule->process($data, $providers, $context));
 
-		$Rule = new ValidationRule(['rule' => 'myTestRule', 'message' => 'foo']);
-		$this->assertEquals('foo', $Rule->process($data, $providers, $context));
-	}
+        $Rule = new ValidationRule(['rule' => 'myTestRule', 'message' => 'foo']);
+        $this->assertEquals('foo', $Rule->process($data, $providers, $context));
+    }
 
-/**
- * Make sure errors are triggered when validation is missing.
- *
- * @expectedException \InvalidArgumentException
- * @expectedExceptionMessage Unable to call method totallyMissing in default provider
- * @return void
- */
-	public function testCustomMethodMissingError() {
-		$def = ['rule' => ['totallyMissing']];
-		$data = 'some data';
-		$providers = ['default' => $this];
+    /**
+     * Make sure errors are triggered when validation is missing.
+     *
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Unable to call method totallyMissing in default provider
+     * @return void
+     */
+    public function testCustomMethodMissingError() {
+        $def = ['rule' => ['totallyMissing']];
+        $data = 'some data';
+        $providers = ['default' => $this];
 
-		$Rule = new ValidationRule($def);
-		$Rule->process($data, $providers, ['newRecord' => true]);
-	}
+        $Rule = new ValidationRule($def);
+        $Rule->process($data, $providers, ['newRecord' => true]);
+    }
 
-/**
- * Tests that a rule can be skipped
- *
- * @return void
- */
-	public function testSkip() {
-		$data = 'some data';
-		$providers = ['default' => $this];
+    /**
+     * Tests that a rule can be skipped
+     *
+     * @return void
+     */
+    public function testSkip() {
+        $data = 'some data';
+        $providers = ['default' => $this];
 
-		$Rule = new ValidationRule([
-			'rule' => 'myTestRule',
-			'on' => 'create'
-		]);
-		$this->assertFalse($Rule->process($data, $providers, ['newRecord' => true]));
+        $Rule = new ValidationRule([
+            'rule' => 'myTestRule',
+            'on' => 'create'
+        ]);
+        $this->assertFalse($Rule->process($data, $providers, ['newRecord' => true]));
 
-		$Rule = new ValidationRule([
-			'rule' => 'myTestRule',
-			'on' => 'update'
-		]);
-		$this->assertTrue($Rule->process($data, $providers, ['newRecord' => true]));
+        $Rule = new ValidationRule([
+            'rule' => 'myTestRule',
+            'on' => 'update'
+        ]);
+        $this->assertTrue($Rule->process($data, $providers, ['newRecord' => true]));
 
-		$Rule = new ValidationRule([
-			'rule' => 'myTestRule',
-			'on' => 'update'
-		]);
-		$this->assertFalse($Rule->process($data, $providers, ['newRecord' => false]));
-	}
+        $Rule = new ValidationRule([
+            'rule' => 'myTestRule',
+            'on' => 'update'
+        ]);
+        $this->assertFalse($Rule->process($data, $providers, ['newRecord' => false]));
+    }
 
-/**
- * Tests that the 'on' key can be a callable function
- *
- * @return void
- */
-	public function testCallableOn() {
-		$data = 'some data';
-		$providers = ['default' => $this];
+    /**
+     * Tests that the 'on' key can be a callable function
+     *
+     * @return void
+     */
+    public function testCallableOn() {
+        $data = 'some data';
+        $providers = ['default' => $this];
 
-		$Rule = new ValidationRule([
-			'rule' => 'myTestRule',
-			'on' => function($context) use ($providers) {
-				$expected = compact('providers') + ['newRecord' => true, 'data' => []];
-				$this->assertEquals($expected, $context);
-				return true;
-			}
-		]);
-		$this->assertFalse($Rule->process($data, $providers, ['newRecord' => true]));
+        $Rule = new ValidationRule([
+            'rule' => 'myTestRule',
+            'on' => function($context) use ($providers) {
+                $expected = compact('providers') + ['newRecord' => true, 'data' => []];
+                $this->assertEquals($expected, $context);
+                return true;
+            }
+                ]);
+                $this->assertFalse($Rule->process($data, $providers, ['newRecord' => true]));
 
-		$Rule = new ValidationRule([
-			'rule' => 'myTestRule',
-			'on' => function($context) use ($providers) {
-				$expected = compact('providers') + ['newRecord' => true, 'data' => []];
-				$this->assertEquals($expected, $context);
-				return false;
-			}
-		]);
-		$this->assertTrue($Rule->process($data, $providers, ['newRecord' => true]));
-	}
-}
+                $Rule = new ValidationRule([
+                    'rule' => 'myTestRule',
+                    'on' => function($context) use ($providers) {
+                        $expected = compact('providers') + ['newRecord' => true, 'data' => []];
+                        $this->assertEquals($expected, $context);
+                        return false;
+                    }
+                        ]);
+                        $this->assertTrue($Rule->process($data, $providers, ['newRecord' => true]));
+                    }
+
+                }
+                

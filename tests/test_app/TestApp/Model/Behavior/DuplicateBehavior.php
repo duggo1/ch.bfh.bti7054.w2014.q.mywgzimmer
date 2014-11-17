@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Model\Behavior;
 
 use Cake\ORM\Behavior;
@@ -21,7 +23,8 @@ use Cake\ORM\Behavior;
  */
 class DuplicateBehavior extends Behavior {
 
-	public function slugify() {
-	}
+    public function slugify() {
+        
+    }
 
 }

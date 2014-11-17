@@ -1,4 +1,5 @@
 <?php
+
 $config = [
-	'italic' => '<em>{{text}}</em>',
+    'italic' => '<em>{{text}}</em>',
 ];

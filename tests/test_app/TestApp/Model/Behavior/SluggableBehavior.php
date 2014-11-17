@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Behavior for binding management.
  *
@@ -16,6 +17,7 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Model\Behavior;
 
 use Cake\Event\Event;
@@ -26,18 +28,18 @@ use Cake\Utility\Inflector;
 
 class SluggableBehavior extends Behavior {
 
-	public function beforeFind(Event $event, Query $query, $options = []) {
-		$query->where(['slug' => 'test']);
-		return $query;
-	}
+    public function beforeFind(Event $event, Query $query, $options = []) {
+        $query->where(['slug' => 'test']);
+        return $query;
+    }
 
-	public function findNoSlug(Query $query, $options = []) {
-		$query->where(['slug' => null]);
-		return $query;
-	}
+    public function findNoSlug(Query $query, $options = []) {
+        $query->where(['slug' => null]);
+        return $query;
+    }
 
-	public function slugify($value) {
-		return Inflector::slug($value);
-	}
+    public function slugify($value) {
+        return Inflector::slug($value);
+    }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakeLogInterface
  *
@@ -14,6 +15,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Log;
 
 /**
@@ -22,15 +24,15 @@ namespace Cake\Log;
  */
 interface LogInterface {
 
-/**
- * Write method to handle writes being made to the Logger
- *
- * @param string $level The severity level of the message being written.
- *    See Cake\Log\Log::$_levels for list of possible levels.
- * @param string $message Message content to log
- * @param string|array $scope The scope(s) a log message is being created in.
- *    See Cake\Log\Log::config() for more information on logging scopes.
- * @return void
- */
-	public function write($level, $message, $scope = []);
+    /**
+     * Write method to handle writes being made to the Logger
+     *
+     * @param string $level The severity level of the message being written.
+     *    See Cake\Log\Log::$_levels for list of possible levels.
+     * @param string $message Message content to log
+     * @param string|array $scope The scope(s) a log message is being created in.
+     *    See Cake\Log\Log::config() for more information on logging scopes.
+     * @return void
+     */
+    public function write($level, $message, $scope = []);
 }

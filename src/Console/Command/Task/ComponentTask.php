@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Console\Command\Task;
 
 use Cake\Console\Command\Task\SimpleBakeTask;
@@ -21,32 +23,32 @@ use Cake\Console\Command\Task\SimpleBakeTask;
  */
 class ComponentTask extends SimpleBakeTask {
 
-/**
- * Task name used in path generation.
- *
- * @var string
- */
-	public $pathFragment = 'Controller/Component/';
+    /**
+     * Task name used in path generation.
+     *
+     * @var string
+     */
+    public $pathFragment = 'Controller/Component/';
 
-/**
- * {@inheritDoc}
- */
-	public function name() {
-		return 'component';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function name() {
+        return 'component';
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function fileName($name) {
-		return $name . 'Component.php';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function fileName($name) {
+        return $name . 'Component.php';
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function template() {
-		return 'component';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function template() {
+        return 'component';
+    }
 
 }

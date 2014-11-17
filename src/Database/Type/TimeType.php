@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Type;
 
 /**
@@ -21,11 +23,11 @@ namespace Cake\Database\Type;
  */
 class TimeType extends \Cake\Database\Type\DateTimeType {
 
-/**
- * Time format for DateTime object
- *
- * @var string
- */
-	protected $_format = 'H:i:s';
+    /**
+     * Time format for DateTime object
+     *
+     * @var string
+     */
+    protected $_format = 'H:i:s';
 
 }

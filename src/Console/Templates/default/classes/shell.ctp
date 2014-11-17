@@ -12,7 +12,6 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 echo "<?php\n";
 ?>
 namespace <?= $namespace ?>\Console\Command;
@@ -20,15 +19,15 @@ namespace <?= $namespace ?>\Console\Command;
 use Cake\Console\Shell;
 
 /**
- * <?= $name ?> shell command.
- */
+* <?= $name ?> shell command.
+*/
 class <?= $name ?>Shell extends Shell {
 
 /**
- * main() method.
- *
- * @return bool|int Success or error code.
- */
-	public function main() {
-	}
+* main() method.
+*
+* @return bool|int Success or error code.
+*/
+public function main() {
+}
 }

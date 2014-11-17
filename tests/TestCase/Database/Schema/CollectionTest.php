@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\Database\Schema;
 
 use Cake\Cache\Cache;
@@ -27,62 +29,62 @@ use Cake\TestSuite\TestCase;
  */
 class CollectionTest extends TestCase {
 
-	public $fixtures = [
-		'core.user'
-	];
+    public $fixtures = [
+        'core.user'
+    ];
 
-/**
- * Setup function
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-		$this->connection = ConnectionManager::get('test');
-		Cache::clear(false, '_cake_model_');
-		Cache::enable();
-	}
+    /**
+     * Setup function
+     *
+     * @return void
+     */
+    public function setUp() {
+        parent::setUp();
+        $this->connection = ConnectionManager::get('test');
+        Cache::clear(false, '_cake_model_');
+        Cache::enable();
+    }
 
-/**
- * Teardown function
- *
- * @return void
- */
-	public function tearDown() {
-		parent::tearDown();
-		unset($this->connection);
-	}
+    /**
+     * Teardown function
+     *
+     * @return void
+     */
+    public function tearDown() {
+        parent::tearDown();
+        unset($this->connection);
+    }
 
-/**
- * Test that describing non-existent tables fails.
- *
- * Tests for positive describe() calls are in each platformSchema
- * test case.
- *
- * @expectedException \Cake\Database\Exception
- * @return void
- */
-	public function testDescribeIncorrectTable() {
-		$schema = new Collection($this->connection);
-		$this->assertNull($schema->describe('derp'));
-	}
+    /**
+     * Test that describing non-existent tables fails.
+     *
+     * Tests for positive describe() calls are in each platformSchema
+     * test case.
+     *
+     * @expectedException \Cake\Database\Exception
+     * @return void
+     */
+    public function testDescribeIncorrectTable() {
+        $schema = new Collection($this->connection);
+        $this->assertNull($schema->describe('derp'));
+    }
 
-/**
- * Tests that schema metadata is cached
- *
- * @return void
- */
-	public function testDescribeCache() {
-		$schema = $this->connection->schemaCollection();
-		$table = $this->connection->schemaCollection()->describe('users');
+    /**
+     * Tests that schema metadata is cached
+     *
+     * @return void
+     */
+    public function testDescribeCache() {
+        $schema = $this->connection->schemaCollection();
+        $table = $this->connection->schemaCollection()->describe('users');
 
-		Cache::delete('test_users', '_cake_model_');
-		$schema->cacheMetadata(true);
-		$result = $schema->describe('users');
-		$this->assertEquals($table, $result);
+        Cache::delete('test_users', '_cake_model_');
+        $schema->cacheMetadata(true);
+        $result = $schema->describe('users');
+        $this->assertEquals($table, $result);
 
-		$result = Cache::read('test_users', '_cake_model_');
-		$this->assertEquals($table, $result);
-	}
+        $result = Cache::read('test_users', '_cake_model_');
+        $this->assertEquals($table, $result);
+    }
 
 }

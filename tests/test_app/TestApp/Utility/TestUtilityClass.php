@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Suite TestUtilityClass Library
  *
@@ -14,12 +15,13 @@
  * @since         1.3.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class TestUtilityClass
  *
  */
+
 namespace TestApp\Utility;
 
 class TestUtilityClass {
+    
 }

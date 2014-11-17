@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -13,6 +14,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Controller\Component\Auth;
 
 use Cake\Controller\ComponentRegistry;
@@ -34,72 +36,67 @@ use Cake\Routing\Router;
  */
 class CrudAuthorize extends BaseAuthorize {
 
-/**
- * Sets up additional actionMap values that match the configured `Routing.prefixes`.
- *
- * @param ComponentRegistry $registry The component registry from the controller.
- * @param array $config An array of config. This class does not use any config.
- */
-	public function __construct(ComponentRegistry $registry, $config = array()) {
-		parent::__construct($registry, $config);
-		$this->_setPrefixMappings();
-	}
+    /**
+     * Sets up additional actionMap values that match the configured `Routing.prefixes`.
+     *
+     * @param ComponentRegistry $registry The component registry from the controller.
+     * @param array $config An array of config. This class does not use any config.
+     */
+    public function __construct(ComponentRegistry $registry, $config = array()) {
+        parent::__construct($registry, $config);
+        $this->_setPrefixMappings();
+    }
 
-/**
- * sets the crud mappings for prefix routes.
- *
- * @return void
- */
-	protected function _setPrefixMappings() {
-		$crud = array('create', 'read', 'update', 'delete');
-		$map = array_combine($crud, $crud);
+    /**
+     * sets the crud mappings for prefix routes.
+     *
+     * @return void
+     */
+    protected function _setPrefixMappings() {
+        $crud = array('create', 'read', 'update', 'delete');
+        $map = array_combine($crud, $crud);
 
-		$prefixes = Router::prefixes();
-		if (!empty($prefixes)) {
-			foreach ($prefixes as $prefix) {
-				$map = array_merge($map, array(
-					$prefix . '_index' => 'read',
-					$prefix . '_add' => 'create',
-					$prefix . '_edit' => 'update',
-					$prefix . '_view' => 'read',
-					$prefix . '_remove' => 'delete',
-					$prefix . '_create' => 'create',
-					$prefix . '_read' => 'read',
-					$prefix . '_update' => 'update',
-					$prefix . '_delete' => 'delete'
-				));
-			}
-		}
-		$this->mapActions($map);
-	}
+        $prefixes = Router::prefixes();
+        if (!empty($prefixes)) {
+            foreach ($prefixes as $prefix) {
+                $map = array_merge($map, array(
+                    $prefix . '_index' => 'read',
+                    $prefix . '_add' => 'create',
+                    $prefix . '_edit' => 'update',
+                    $prefix . '_view' => 'read',
+                    $prefix . '_remove' => 'delete',
+                    $prefix . '_create' => 'create',
+                    $prefix . '_read' => 'read',
+                    $prefix . '_update' => 'update',
+                    $prefix . '_delete' => 'delete'
+                ));
+            }
+        }
+        $this->mapActions($map);
+    }
 
-/**
- * Authorize a user using the mapped actions and the AclComponent.
- *
- * @param array $user The user to authorize
- * @param \Cake\Network\Request $request The request needing authorization.
- * @return bool
- */
-	public function authorize($user, Request $request) {
-		$mapped = $this->config('actionMap.' . $request->params['action']);
+    /**
+     * Authorize a user using the mapped actions and the AclComponent.
+     *
+     * @param array $user The user to authorize
+     * @param \Cake\Network\Request $request The request needing authorization.
+     * @return bool
+     */
+    public function authorize($user, Request $request) {
+        $mapped = $this->config('actionMap.' . $request->params['action']);
 
-		if (!$mapped) {
-			trigger_error(sprintf(
-				'CrudAuthorize::authorize() - Attempted access of un-mapped action "%1$s" in controller "%2$s"',
-				$request->action,
-				$request->controller
-				),
-				E_USER_WARNING
-			);
-			return false;
-		}
-		$user = array($this->_config['userModel'] => $user);
-		$Acl = $this->_registry->load('Acl');
-		return $Acl->check(
-			$user,
-			$this->action($request, ':controller'),
-			$mapped
-		);
-	}
+        if (!$mapped) {
+            trigger_error(sprintf(
+                            'CrudAuthorize::authorize() - Attempted access of un-mapped action "%1$s" in controller "%2$s"', $request->action, $request->controller
+                    ), E_USER_WARNING
+            );
+            return false;
+        }
+        $user = array($this->_config['userModel'] => $user);
+        $Acl = $this->_registry->load('Acl');
+        return $Acl->check(
+                        $user, $this->action($request, ':controller'), $mapped
+        );
+    }
 
 }

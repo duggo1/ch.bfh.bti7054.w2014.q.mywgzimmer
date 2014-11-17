@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\View;
 
 use Cake\Controller\Controller;
@@ -27,26 +29,26 @@ use Cake\Network\Response;
  */
 class AjaxView extends View {
 
-/**
- *
- * @var string
- */
-	public $layout = 'ajax';
+    /**
+     *
+     * @var string
+     */
+    public $layout = 'ajax';
 
-/**
- * Constructor
- *
- * @param Request $request
- * @param Response $response
- * @param EventManager $eventManager
- * @param array $viewOptions
- */
-	public function __construct(Request $request = null, Response $response = null,
-		EventManager $eventManager = null, array $viewOptions = []) {
-		parent::__construct($request, $response, $eventManager, $viewOptions);
+    /**
+     * Constructor
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param EventManager $eventManager
+     * @param array $viewOptions
+     */
+    public function __construct(Request $request = null, Response $response = null, EventManager $eventManager = null, array $viewOptions = []) {
+        parent::__construct($request, $response, $eventManager, $viewOptions);
 
-		if ($response && $response instanceof Response) {
-			$response->type('ajax');
-		}
-	}
+        if ($response && $response instanceof Response) {
+            $response->type('ajax');
+        }
+    }
+
 }

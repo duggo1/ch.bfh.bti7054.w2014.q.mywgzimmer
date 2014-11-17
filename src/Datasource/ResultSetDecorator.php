@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Datasource;
 
 use ArrayIterator;
@@ -30,39 +32,39 @@ use Traversable;
  */
 class ResultSetDecorator extends Collection implements Countable, Serializable, JsonSerializable {
 
-/**
- * Make this object countable.
- *
- * Part of the Countable interface. Calling this method
- * will convert the underlying traversable object into an array and
- * get the count of the underlying data.
- *
- * @return int
- */
-	public function count() {
-		return count($this->toArray());
-	}
+    /**
+     * Make this object countable.
+     *
+     * Part of the Countable interface. Calling this method
+     * will convert the underlying traversable object into an array and
+     * get the count of the underlying data.
+     *
+     * @return int
+     */
+    public function count() {
+        return count($this->toArray());
+    }
 
-/**
- * Serialize a resultset.
- *
- * Part of Serializable interface.
- *
- * @return string Serialized object
- */
-	public function serialize() {
-		return serialize($this->toArray());
-	}
+    /**
+     * Serialize a resultset.
+     *
+     * Part of Serializable interface.
+     *
+     * @return string Serialized object
+     */
+    public function serialize() {
+        return serialize($this->toArray());
+    }
 
-/**
- * Unserialize a resultset.
- *
- * Part of Serializable interface.
- *
- * @param string $serialized Serialized object
- */
-	public function unserialize($serialized) {
-		parent::__construct(unserialize($serialized));
-	}
+    /**
+     * Unserialize a resultset.
+     *
+     * Part of Serializable interface.
+     *
+     * @param string $serialized Serialized object
+     */
+    public function unserialize($serialized) {
+        parent::__construct(unserialize($serialized));
+    }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Driver;
 
 use Cake\Database\Dialect\SqliteDialectTrait;
@@ -22,74 +24,74 @@ use PDO;
 
 class Sqlite extends \Cake\Database\Driver {
 
-	use PDODriverTrait;
-	use SqliteDialectTrait;
+    use PDODriverTrait;
 
-/**
- * Base configuration settings for Sqlite driver
- *
- * @var array
- */
-	protected $_baseConfig = [
-		'persistent' => false,
-		'login' => null,
-		'password' => null,
-		'database' => ':memory:',
-		'encoding' => 'utf8',
-		'flags' => [],
-		'init' => [],
-		'dsn' => null
-	];
+use SqliteDialectTrait;
 
-/**
- * Establishes a connection to the databse server
- *
- * @return bool true on success
- */
-	public function connect() {
-		if ($this->_connection) {
-			return true;
-		}
-		$config = $this->_config;
-		$config['flags'] += [
-			PDO::ATTR_PERSISTENT => $config['persistent'],
-			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-		];
+    /**
+     * Base configuration settings for Sqlite driver
+     *
+     * @var array
+     */
+    protected $_baseConfig = [
+        'persistent' => false,
+        'login' => null,
+        'password' => null,
+        'database' => ':memory:',
+        'encoding' => 'utf8',
+        'flags' => [],
+        'init' => [],
+        'dsn' => null
+    ];
 
-		if (empty($config['dsn'])) {
-			$config['dsn'] = "sqlite:{$config['database']}";
-		}
+    /**
+     * Establishes a connection to the databse server
+     *
+     * @return bool true on success
+     */
+    public function connect() {
+        if ($this->_connection) {
+            return true;
+        }
+        $config = $this->_config;
+        $config['flags'] += [
+            PDO::ATTR_PERSISTENT => $config['persistent'],
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ];
 
-		$this->_connect($config);
+        if (empty($config['dsn'])) {
+            $config['dsn'] = "sqlite:{$config['database']}";
+        }
 
-		if (!empty($config['init'])) {
-			foreach ((array)$config['init'] as $command) {
-				$this->connection()->exec($command);
-			}
-		}
-		return true;
-	}
+        $this->_connect($config);
 
-/**
- * Returns whether php is able to use this driver for connecting to database
- *
- * @return bool true if it is valid to use this driver
- */
+        if (!empty($config['init'])) {
+            foreach ((array) $config['init'] as $command) {
+                $this->connection()->exec($command);
+            }
+        }
+        return true;
+    }
 
-	public function enabled() {
-		return in_array('sqlite', PDO::getAvailableDrivers());
-	}
+    /**
+     * Returns whether php is able to use this driver for connecting to database
+     *
+     * @return bool true if it is valid to use this driver
+     */
+    public function enabled() {
+        return in_array('sqlite', PDO::getAvailableDrivers());
+    }
 
-/**
- * Prepares a sql statement to be executed
- *
- * @param string|\Cake\Database\Query $query
- * @return \Cake\Database\StatementInterface
- */
-	public function prepare($query) {
-		$this->connect();
-		$statement = $this->_connection->prepare((string)$query);
-		return new SqliteStatement(new PDOStatement($statement, $this), $this);
-	}
+    /**
+     * Prepares a sql statement to be executed
+     *
+     * @param string|\Cake\Database\Query $query
+     * @return \Cake\Database\StatementInterface
+     */
+    public function prepare($query) {
+        $this->connect();
+        $statement = $this->_connection->prepare((string) $query);
+        return new SqliteStatement(new PDOStatement($statement, $this), $this);
+    }
 
 }

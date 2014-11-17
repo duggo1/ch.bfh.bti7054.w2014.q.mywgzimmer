@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\View\Error;
 
 use Cake\Error\Exception;
@@ -22,6 +24,6 @@ use Cake\Error\Exception;
  */
 class MissingCellException extends Exception {
 
-	protected $_messageTemplate = 'Cell class "%s" is missing.';
+    protected $_messageTemplate = 'Cell class "%s" is missing.';
 
 }

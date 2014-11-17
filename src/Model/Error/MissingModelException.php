@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Model\Error;
 
 use Cake\Error\Exception;
@@ -22,6 +24,6 @@ use Cake\Error\Exception;
  */
 class MissingModelException extends Exception {
 
-	protected $_messageTemplate = 'Model class "%s" of type "%s" could not be found.';
+    protected $_messageTemplate = 'Model class "%s" of type "%s" could not be found.';
 
 }

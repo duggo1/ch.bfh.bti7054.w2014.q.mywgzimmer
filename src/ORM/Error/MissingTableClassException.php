@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MissingTableClassException class
  *
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\ORM\Error;
 
 use Cake\Error\Exception;
@@ -22,6 +24,6 @@ use Cake\Error\Exception;
  */
 class MissingTableClassException extends Exception {
 
-	protected $_messageTemplate = 'Table class %s could not be found.';
+    protected $_messageTemplate = 'Table class %s could not be found.';
 
 }

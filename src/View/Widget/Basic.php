@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\View\Widget;
 
 use Cake\View\Widget\WidgetInterface;
@@ -25,54 +27,53 @@ use Cake\View\Widget\WidgetInterface;
  */
 class Basic implements WidgetInterface {
 
-/**
- * StringTemplate instance.
- *
- * @var \Cake\View\StringTemplate
- */
-	protected $_templates;
+    /**
+     * StringTemplate instance.
+     *
+     * @var \Cake\View\StringTemplate
+     */
+    protected $_templates;
 
-/**
- * Constructor.
- *
- * @param \Cake\View\StringTemplate $templates
- */
-	public function __construct($templates) {
-		$this->_templates = $templates;
-	}
+    /**
+     * Constructor.
+     *
+     * @param \Cake\View\StringTemplate $templates
+     */
+    public function __construct($templates) {
+        $this->_templates = $templates;
+    }
 
-/**
- * Render a text widget or other simple widget like email/tel/number.
- *
- * This method accepts a number of keys:
- *
- * - `name` The name attribute.
- * - `val` The value attribute.
- * - `escape` Set to false to disable escaping on all attributes.
- *
- * Any other keys provided in $data will be converted into HTML attributes.
- *
- * @param array $data The data to build an input with.
- * @return string
- */
-	public function render(array $data) {
-		$data += [
-			'name' => '',
-			'val' => null,
-			'type' => 'text',
-			'escape' => true,
-		];
-		$data['value'] = $data['val'];
-		unset($data['val']);
+    /**
+     * Render a text widget or other simple widget like email/tel/number.
+     *
+     * This method accepts a number of keys:
+     *
+     * - `name` The name attribute.
+     * - `val` The value attribute.
+     * - `escape` Set to false to disable escaping on all attributes.
+     *
+     * Any other keys provided in $data will be converted into HTML attributes.
+     *
+     * @param array $data The data to build an input with.
+     * @return string
+     */
+    public function render(array $data) {
+        $data += [
+            'name' => '',
+            'val' => null,
+            'type' => 'text',
+            'escape' => true,
+        ];
+        $data['value'] = $data['val'];
+        unset($data['val']);
 
-		return $this->_templates->format('input', [
-			'name' => $data['name'],
-			'type' => $data['type'],
-			'attrs' => $this->_templates->formatAttributes(
-				$data,
-				['name', 'type']
-			),
-		]);
-	}
+        return $this->_templates->format('input', [
+                    'name' => $data['name'],
+                    'type' => $data['type'],
+                    'attrs' => $this->_templates->formatAttributes(
+                            $data, ['name', 'type']
+                    ),
+        ]);
+    }
 
 }

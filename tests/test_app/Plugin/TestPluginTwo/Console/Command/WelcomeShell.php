@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,23 +13,24 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class WelcomeShell
  *
  */
+
 namespace TestPluginTwo\Console\Command;
 
 use Cake\Console\Shell;
 
 class WelcomeShell extends Shell {
 
-/**
- * say_hello method
- *
- * @return void
- */
-	public function say_hello() {
-		$this->out('This is the say_hello method called from TestPluginTwo.WelcomeShell');
-	}
+    /**
+     * say_hello method
+     *
+     * @return void
+     */
+    public function say_hello() {
+        $this->out('This is the say_hello method called from TestPluginTwo.WelcomeShell');
+    }
+
 }

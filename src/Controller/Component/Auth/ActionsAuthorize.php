@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -13,6 +14,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Controller\Component\Auth;
 
 use Cake\Network\Request;
@@ -26,17 +28,17 @@ use Cake\Network\Request;
  */
 class ActionsAuthorize extends BaseAuthorize {
 
-/**
- * Authorize a user using the AclComponent.
- *
- * @param array $user The user to authorize
- * @param \Cake\Network\Request $request The request needing authorization.
- * @return bool
- */
-	public function authorize($user, Request $request) {
-		$Acl = $this->_registry->load('Acl');
-		$user = [$this->_config['userModel'] => $user];
-		return $Acl->check($user, $this->action($request));
-	}
+    /**
+     * Authorize a user using the AclComponent.
+     *
+     * @param array $user The user to authorize
+     * @param \Cake\Network\Request $request The request needing authorization.
+     * @return bool
+     */
+    public function authorize($user, Request $request) {
+        $Acl = $this->_registry->load('Acl');
+        $user = [$this->_config['userModel'] => $user];
+        return $Acl->check($user, $this->action($request));
+    }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP : Rapid Development Framework (http://cakephp.org)
  * Copyright 2005-2011, Cake Software Foundation, Inc.
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Model\Table;
 
 use Cake\ORM\Query;
@@ -23,33 +25,33 @@ use Cake\Utility\Hash;
  */
 class PaginatorPostsTable extends Table {
 
-/**
- * initialize method
- *
- * @return void
- */
-	public function initialize(array $config) {
-		$this->table('posts');
-		$this->belongsTo('PaginatorAuthor', [
-			'foreignKey' => 'author_id'
-		]);
-	}
+    /**
+     * initialize method
+     *
+     * @return void
+     */
+    public function initialize(array $config) {
+        $this->table('posts');
+        $this->belongsTo('PaginatorAuthor', [
+            'foreignKey' => 'author_id'
+        ]);
+    }
 
-/**
- * Finder method for find('popular');
- */
-	public function findPopular(Query $query, array $options) {
-		$field = $this->alias() . '.' . $this->primaryKey();
-		$query->where([$field . ' >' => '1']);
-		return $query;
-	}
+    /**
+     * Finder method for find('popular');
+     */
+    public function findPopular(Query $query, array $options) {
+        $field = $this->alias() . '.' . $this->primaryKey();
+        $query->where([$field . ' >' => '1']);
+        return $query;
+    }
 
-/**
- * Finder for published posts.
- */
-	public function findPublished(Query $query, array $options) {
-		$query->where(['published' => 'Y']);
-		return $query;
-	}
+    /**
+     * Finder for published posts.
+     */
+    public function findPublished(Query $query, array $options) {
+        $query->where(['published' => 'Y']);
+        return $query;
+    }
 
 }

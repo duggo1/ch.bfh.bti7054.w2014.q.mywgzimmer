@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\View\Widget;
 
 use Cake\View\Widget\WidgetInterface;
@@ -24,42 +26,42 @@ use Cake\View\Widget\WidgetInterface;
  */
 class Textarea implements WidgetInterface {
 
-/**
- * Constructor
- *
- * @param \Cake\View\StringTemplate $templates
- */
-	public function __construct($templates) {
-		$this->_templates = $templates;
-	}
+    /**
+     * Constructor
+     *
+     * @param \Cake\View\StringTemplate $templates
+     */
+    public function __construct($templates) {
+        $this->_templates = $templates;
+    }
 
-/**
- * Render a text area form widget.
- *
- * Data supports the following keys:
- *
- * - `name` - Set the input name.
- * - `val` - A string of the option to mark as selected.
- * - `escape` - Set to false to disable HTML escaping.
- *
- * All other keys will be converted into HTML attributes.
- *
- * @param array $data The data to build a textarea with.
- * @return string HTML elements.
- */
-	public function render(array $data) {
-		$data += [
-			'val' => '',
-			'name' => '',
-			'escape' => true,
-		];
-		return $this->_templates->format('textarea', [
-			'name' => $data['name'],
-			'value' => $data['escape'] ? h($data['val']) : $data['val'],
-			'attrs' => $this->_templates->formatAttributes(
-				$data, ['name', 'val']
-			)
-		]);
-	}
+    /**
+     * Render a text area form widget.
+     *
+     * Data supports the following keys:
+     *
+     * - `name` - Set the input name.
+     * - `val` - A string of the option to mark as selected.
+     * - `escape` - Set to false to disable HTML escaping.
+     *
+     * All other keys will be converted into HTML attributes.
+     *
+     * @param array $data The data to build a textarea with.
+     * @return string HTML elements.
+     */
+    public function render(array $data) {
+        $data += [
+            'val' => '',
+            'name' => '',
+            'escape' => true,
+        ];
+        return $this->_templates->format('textarea', [
+                    'name' => $data['name'],
+                    'value' => $data['escape'] ? h($data['val']) : $data['val'],
+                    'attrs' => $this->_templates->formatAttributes(
+                            $data, ['name', 'val']
+                    )
+        ]);
+    }
 
 }

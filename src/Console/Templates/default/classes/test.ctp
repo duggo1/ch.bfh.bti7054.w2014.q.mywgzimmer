@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Case bake template
  *
@@ -22,68 +23,68 @@ echo "<?php\n";
 namespace <?= $baseNamespace; ?>\Test\TestCase\<?= $subNamespace ?>;
 
 <?php foreach ($uses as $dependency): ?>
-use <?= $dependency; ?>;
+    use <?= $dependency; ?>;
 <?php endforeach; ?>
 <?php if ($isController): ?>
-use Cake\TestSuite\ControllerTestCase;
+    use Cake\TestSuite\ControllerTestCase;
 <?php else: ?>
-use Cake\TestSuite\TestCase;
+    use Cake\TestSuite\TestCase;
 <?php endif; ?>
 
 /**
- * <?= $fullClassName; ?> Test Case
- */
+* <?= $fullClassName; ?> Test Case
+*/
 <?php if ($isController): ?>
-class <?= $className; ?>Test extends ControllerTestCase {
+    class <?= $className; ?>Test extends ControllerTestCase {
 <?php else: ?>
-class <?= $className; ?>Test extends TestCase {
+    class <?= $className; ?>Test extends TestCase {
 <?php endif; ?>
 
 <?php if (!empty($fixtures)): ?>
-/**
- * Fixtures
- *
- * @var array
- */
-	public $fixtures = [
-		'<?= join("',\n\t\t'", $fixtures); ?>'
-	];
+    /**
+    * Fixtures
+    *
+    * @var array
+    */
+    public $fixtures = [
+    '<?= join("',\n\t\t'", $fixtures); ?>'
+    ];
 
 <?php endif; ?>
 <?php if (!empty($construction)): ?>
-/**
- * setUp method
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-<?= $preConstruct ? "\t\t" . $preConstruct : ''; ?>
-		$this-><?= $subject . ' = ' . $construction; ?>
-<?= $postConstruct ? "\t\t" . $postConstruct : ''; ?>
-	}
+    /**
+    * setUp method
+    *
+    * @return void
+    */
+    public function setUp() {
+    parent::setUp();
+    <?= $preConstruct ? "\t\t" . $preConstruct : ''; ?>
+    $this-><?= $subject . ' = ' . $construction; ?>
+    <?= $postConstruct ? "\t\t" . $postConstruct : ''; ?>
+    }
 
-/**
- * tearDown method
- *
- * @return void
- */
-	public function tearDown() {
-		unset($this-><?= $subject; ?>);
+    /**
+    * tearDown method
+    *
+    * @return void
+    */
+    public function tearDown() {
+    unset($this-><?= $subject; ?>);
 
-		parent::tearDown();
-	}
+    parent::tearDown();
+    }
 
 <?php endif; ?>
 <?php foreach ($methods as $method): ?>
-/**
- * test<?= Inflector::camelize($method); ?> method
- *
- * @return void
- */
-	public function test<?= Inflector::camelize($method); ?>() {
-		$this->markTestIncomplete('test<?= Inflector::camelize($method); ?> not implemented.');
-	}
+    /**
+    * test<?= Inflector::camelize($method); ?> method
+    *
+    * @return void
+    */
+    public function test<?= Inflector::camelize($method); ?>() {
+    $this->markTestIncomplete('test<?= Inflector::camelize($method); ?> not implemented.');
+    }
 
 <?php endforeach; ?>
 }

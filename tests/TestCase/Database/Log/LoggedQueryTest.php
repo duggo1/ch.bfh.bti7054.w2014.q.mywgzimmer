@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\Database\Log;
 
 use Cake\Database\Log\LoggedQuery;
@@ -19,18 +21,18 @@ use Cake\Database\Log\LoggedQuery;
 /**
  * Tests LoggedQuery class
  *
- **/
+ * */
 class LoggedQueryTest extends \Cake\TestSuite\TestCase {
 
-/**
- * Tests that LoggedQuery can be converted to string
- *
- * @return void
- */
-	public function testStringConversion() {
-		$logged = new LoggedQuery;
-		$logged->query = 'SELECT foo FROM bar';
-		$this->assertEquals('SELECT foo FROM bar', (string)$logged);
-	}
+    /**
+     * Tests that LoggedQuery can be converted to string
+     *
+     * @return void
+     */
+    public function testStringConversion() {
+        $logged = new LoggedQuery;
+        $logged->query = 'SELECT foo FROM bar';
+        $this->assertEquals('SELECT foo FROM bar', (string) $logged);
+    }
 
 }
