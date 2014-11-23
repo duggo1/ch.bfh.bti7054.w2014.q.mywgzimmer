@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Controller;
 
 use Cake\Routing\Router;
@@ -23,29 +25,29 @@ use Cake\Routing\Router;
  */
 class ErrorController extends Controller {
 
-/**
- * Constructor
- *
- * @param \Cake\Network\Request $request
- * @param \Cake\Network\Response $response
- */
-	public function __construct($request = null, $response = null) {
-		parent::__construct($request, $response);
-		$this->constructClasses();
-		if (count(Router::extensions()) &&
-			!isset($this->RequestHandler)
-		) {
-			$this->addComponent('RequestHandler');
-		}
-		$eventManager = $this->getEventManager();
-		if (isset($this->Auth)) {
-			$eventManager->detach($this->Auth);
-		}
-		if (isset($this->Security)) {
-			$eventManager->detach($this->Security);
-		}
-		$this->cacheAction = false;
-		$this->viewPath = 'Error';
-	}
+    /**
+     * Constructor
+     *
+     * @param \Cake\Network\Request $request
+     * @param \Cake\Network\Response $response
+     */
+    public function __construct($request = null, $response = null) {
+        parent::__construct($request, $response);
+        $this->constructClasses();
+        if (count(Router::extensions()) &&
+                !isset($this->RequestHandler)
+        ) {
+            $this->addComponent('RequestHandler');
+        }
+        $eventManager = $this->getEventManager();
+        if (isset($this->Auth)) {
+            $eventManager->detach($this->Auth);
+        }
+        if (isset($this->Security)) {
+            $eventManager->detach($this->Security);
+        }
+        $this->cacheAction = false;
+        $this->viewPath = 'Error';
+    }
 
 }

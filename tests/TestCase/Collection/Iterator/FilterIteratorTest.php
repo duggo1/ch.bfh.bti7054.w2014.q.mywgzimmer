@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\Collection\Iterator;
 
 use Cake\Collection\Iterator\FilterIterator;
@@ -23,30 +25,30 @@ use Cake\TestSuite\TestCase;
  */
 class FilterIteratorTest extends TestCase {
 
-/**
- * Tests that the iterator works correctly
- *
- * @return void
- */
-	public function testFilter() {
-		$this->assertFalse(defined('HHVM_VERSION'), 'Broken on HHVM');
-		$items = new \ArrayIterator([1, 2, 3]);
-		$callable = $this->getMock('stdClass', ['__invoke']);
-		$callable->expects($this->at(0))
-			->method('__invoke')
-			->with(1, 0, $items)
-			->will($this->returnValue(false));
-		$callable->expects($this->at(1))
-			->method('__invoke')
-			->with(2, 1, $items)
-			->will($this->returnValue(true));
-		$callable->expects($this->at(2))
-			->method('__invoke')
-			->with(3, 2, $items)
-			->will($this->returnValue(false));
+    /**
+     * Tests that the iterator works correctly
+     *
+     * @return void
+     */
+    public function testFilter() {
+        $this->assertFalse(defined('HHVM_VERSION'), 'Broken on HHVM');
+        $items = new \ArrayIterator([1, 2, 3]);
+        $callable = $this->getMock('stdClass', ['__invoke']);
+        $callable->expects($this->at(0))
+                ->method('__invoke')
+                ->with(1, 0, $items)
+                ->will($this->returnValue(false));
+        $callable->expects($this->at(1))
+                ->method('__invoke')
+                ->with(2, 1, $items)
+                ->will($this->returnValue(true));
+        $callable->expects($this->at(2))
+                ->method('__invoke')
+                ->with(3, 2, $items)
+                ->will($this->returnValue(false));
 
-		$filter = new FilterIterator($items, $callable);
-		$this->assertEquals([1 => 2], iterator_to_array($filter));
-	}
+        $filter = new FilterIterator($items, $callable);
+        $this->assertEquals([1 => 2], iterator_to_array($filter));
+    }
 
 }

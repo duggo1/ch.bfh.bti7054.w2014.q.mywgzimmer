@@ -23,45 +23,45 @@ namespace <?= $namespace; ?>\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * <?= $name; ?>Fixture
- *
- */
+* <?= $name; ?>Fixture
+*
+*/
 class <?= $name; ?>Fixture extends TestFixture {
 
 <?php if ($table): ?>
-/**
- * Table name
- *
- * @var string
- */
-	public $table = '<?= $table; ?>';
+    /**
+    * Table name
+    *
+    * @var string
+    */
+    public $table = '<?= $table; ?>';
 
 <?php endif; ?>
 <?php if ($import): ?>
-/**
- * Import
- *
- * @var array
- */
-	public $import = <?= $import; ?>;
+    /**
+    * Import
+    *
+    * @var array
+    */
+    public $import = <?= $import; ?>;
 
 <?php endif; ?>
 <?php if ($schema): ?>
-/**
- * Fields
- *
- * @var array
- */
-	public $fields = <?= $schema; ?>;
+    /**
+    * Fields
+    *
+    * @var array
+    */
+    public $fields = <?= $schema; ?>;
 
 <?php endif; ?>
 <?php if ($records): ?>
-/**
- * Records
- *
- * @var array
- */
-	public $records = <?= $records; ?>;
+    /**
+    * Records
+    *
+    * @var array
+    */
+    public $records = <?= $records; ?>;
 
 <?php endif; ?>
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TestsAppsController file
  *
@@ -14,38 +15,37 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class TestsAppsController
  *
  */
+
 namespace TestApp\Controller;
 
 class TestsAppsController extends AppController {
 
-	public $uses = array();
+    public $uses = array();
+    public $components = array('RequestHandler');
 
-	public $components = array('RequestHandler');
+    public function index() {
+        $var = '';
+        if (isset($this->request->query['var'])) {
+            $var = $this->request->query['var'];
+        }
+        $this->set('var', $var);
+    }
 
-	public function index() {
-		$var = '';
-		if (isset($this->request->query['var'])) {
-			$var = $this->request->query['var'];
-		}
-		$this->set('var', $var);
-	}
+    public function some_method() {
+        $this->response->body(5);
+    }
 
-	public function some_method() {
-		$this->response->body(5);
-	}
+    public function set_action() {
+        $this->set('var', 'string');
+        $this->render('index');
+    }
 
-	public function set_action() {
-		$this->set('var', 'string');
-		$this->render('index');
-	}
-
-	public function redirect_to() {
-		return $this->redirect('http://cakephp.org');
-	}
+    public function redirect_to() {
+        return $this->redirect('http://cakephp.org');
+    }
 
 }

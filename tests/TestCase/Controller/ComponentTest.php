@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
  * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\Controller;
 
 use Cake\Controller\Component;
@@ -30,95 +32,95 @@ use TestApp\Controller\Component\OrangeComponent;
  */
 class ComponentTest extends TestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-		Configure::write('App.namespace', 'TestApp');
+    /**
+     * setUp method
+     *
+     * @return void
+     */
+    public function setUp() {
+        parent::setUp();
+        Configure::write('App.namespace', 'TestApp');
 
-		$this->_pluginPaths = App::path('Plugin');
-	}
+        $this->_pluginPaths = App::path('Plugin');
+    }
 
-/**
- * test accessing inner components.
- *
- * @return void
- */
-	public function testInnerComponentConstruction() {
-		$Collection = new ComponentRegistry();
-		$Component = new AppleComponent($Collection);
+    /**
+     * test accessing inner components.
+     *
+     * @return void
+     */
+    public function testInnerComponentConstruction() {
+        $Collection = new ComponentRegistry();
+        $Component = new AppleComponent($Collection);
 
-		$this->assertInstanceOf('TestApp\Controller\Component\OrangeComponent', $Component->Orange, 'class is wrong');
-	}
+        $this->assertInstanceOf('TestApp\Controller\Component\OrangeComponent', $Component->Orange, 'class is wrong');
+    }
 
-/**
- * test component loading
- *
- * @return void
- */
-	public function testNestedComponentLoading() {
-		$Collection = new ComponentRegistry();
-		$Apple = new AppleComponent($Collection);
+    /**
+     * test component loading
+     *
+     * @return void
+     */
+    public function testNestedComponentLoading() {
+        $Collection = new ComponentRegistry();
+        $Apple = new AppleComponent($Collection);
 
-		$this->assertInstanceOf('TestApp\Controller\Component\OrangeComponent', $Apple->Orange, 'class is wrong');
-		$this->assertInstanceOf('TestApp\Controller\Component\BananaComponent', $Apple->Orange->Banana, 'class is wrong');
-		$this->assertTrue(empty($Apple->Session));
-		$this->assertTrue(empty($Apple->Orange->Session));
-	}
+        $this->assertInstanceOf('TestApp\Controller\Component\OrangeComponent', $Apple->Orange, 'class is wrong');
+        $this->assertInstanceOf('TestApp\Controller\Component\BananaComponent', $Apple->Orange->Banana, 'class is wrong');
+        $this->assertTrue(empty($Apple->Session));
+        $this->assertTrue(empty($Apple->Orange->Session));
+    }
 
-/**
- * test that component components are not enabled in the collection.
- *
- * @return void
- */
-	public function testInnerComponentsAreNotEnabled() {
-		$mock = $this->getMock('Cake\Event\EventManager');
-		$controller = new Controller();
-		$controller->setEventManager($mock);
+    /**
+     * test that component components are not enabled in the collection.
+     *
+     * @return void
+     */
+    public function testInnerComponentsAreNotEnabled() {
+        $mock = $this->getMock('Cake\Event\EventManager');
+        $controller = new Controller();
+        $controller->setEventManager($mock);
 
-		$mock->expects($this->once())
-			->method('attach')
-			->with($this->isInstanceOf('TestApp\Controller\Component\AppleComponent'));
+        $mock->expects($this->once())
+                ->method('attach')
+                ->with($this->isInstanceOf('TestApp\Controller\Component\AppleComponent'));
 
-		$Collection = new ComponentRegistry($controller);
-		$Apple = $Collection->load('Apple');
+        $Collection = new ComponentRegistry($controller);
+        $Apple = $Collection->load('Apple');
 
-		$this->assertInstanceOf('TestApp\Controller\Component\OrangeComponent', $Apple->Orange, 'class is wrong');
-	}
+        $this->assertInstanceOf('TestApp\Controller\Component\OrangeComponent', $Apple->Orange, 'class is wrong');
+    }
 
-/**
- * test a component being used more than once.
- *
- * @return void
- */
-	public function testMultipleComponentInitialize() {
-		$Collection = new ComponentRegistry();
-		$Banana = $Collection->load('Banana');
-		$Orange = $Collection->load('Orange');
+    /**
+     * test a component being used more than once.
+     *
+     * @return void
+     */
+    public function testMultipleComponentInitialize() {
+        $Collection = new ComponentRegistry();
+        $Banana = $Collection->load('Banana');
+        $Orange = $Collection->load('Orange');
 
-		$this->assertSame($Banana, $Orange->Banana, 'Should be references');
-		$Banana->testField = 'OrangeField';
+        $this->assertSame($Banana, $Orange->Banana, 'Should be references');
+        $Banana->testField = 'OrangeField';
 
-		$this->assertSame($Banana->testField, $Orange->Banana->testField, 'References are broken');
-	}
+        $this->assertSame($Banana->testField, $Orange->Banana->testField, 'References are broken');
+    }
 
-/**
- * Test mutually referencing components.
- *
- * @return void
- */
-	public function testSomethingReferencingCookieComponent() {
-		$Controller = new ComponentTestController();
-		$Controller->components = array('SomethingWithCookie');
-		$Controller->uses = false;
-		$Controller->constructClasses();
-		$Controller->startupProcess();
+    /**
+     * Test mutually referencing components.
+     *
+     * @return void
+     */
+    public function testSomethingReferencingCookieComponent() {
+        $Controller = new ComponentTestController();
+        $Controller->components = array('SomethingWithCookie');
+        $Controller->uses = false;
+        $Controller->constructClasses();
+        $Controller->startupProcess();
 
-		$this->assertInstanceOf('TestApp\Controller\Component\SomethingWithCookieComponent', $Controller->SomethingWithCookie);
-		$this->assertInstanceOf('Cake\Controller\Component\CookieComponent', $Controller->SomethingWithCookie->Cookie);
-	}
+        $this->assertInstanceOf('TestApp\Controller\Component\SomethingWithCookieComponent', $Controller->SomethingWithCookie);
+        $this->assertInstanceOf('Cake\Controller\Component\CookieComponent', $Controller->SomethingWithCookie->Cookie);
+    }
 
 }

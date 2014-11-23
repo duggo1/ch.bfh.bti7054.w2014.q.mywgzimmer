@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Log;
 
 /**
@@ -20,41 +22,41 @@ namespace Cake\Database\Log;
  */
 class LoggedQuery {
 
-/**
- * Query string that was executed
- *
- * @var string
- */
-	public $query = '';
+    /**
+     * Query string that was executed
+     *
+     * @var string
+     */
+    public $query = '';
 
-/**
- * Number of milliseconds this query took to complete
- *
- * @var float
- */
-	public $took = 0;
+    /**
+     * Number of milliseconds this query took to complete
+     *
+     * @var float
+     */
+    public $took = 0;
 
-/**
- * Associative array with the params bound to the query string
- *
- * @var string
- */
-	public $params = [];
+    /**
+     * Associative array with the params bound to the query string
+     *
+     * @var string
+     */
+    public $params = [];
 
-/**
- * Number of rows affected or returned by the query execution
- *
- * @var int
- */
-	public $numRows = 0;
+    /**
+     * Number of rows affected or returned by the query execution
+     *
+     * @var int
+     */
+    public $numRows = 0;
 
-/**
- * Returns the string representation of this logged query
- *
- * @return void
- */
-	public function __toString() {
-		return $this->query;
-	}
+    /**
+     * Returns the string representation of this logged query
+     *
+     * @return void
+     */
+    public function __toString() {
+        return $this->query;
+    }
 
 }

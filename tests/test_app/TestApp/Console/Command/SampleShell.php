@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SampleShell file
  *
@@ -14,23 +15,24 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class SampleShell
  *
  */
+
 namespace TestApp\Console\Command;
 
 use Cake\Console\Shell;
 
 class SampleShell extends Shell {
 
-/**
- * main method
- *
- * @return void
- */
-	public function main() {
-		$this->out('This is the main method called from SampleShell');
-	}
+    /**
+     * main method
+     *
+     * @return void
+     */
+    public function main() {
+        $this->out('This is the main method called from SampleShell');
+    }
+
 }

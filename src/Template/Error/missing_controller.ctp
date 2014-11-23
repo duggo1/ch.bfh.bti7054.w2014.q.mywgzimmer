@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -22,29 +23,28 @@ $prefixNs = '';
 $prefixPath = '';
 
 if (!empty($prefix)) {
-	$prefix = Inflector::camelize($prefix);
-	$prefixNs = '\\' . $prefix;
-	$prefixPath = $prefix . DS;
+    $prefix = Inflector::camelize($prefix);
+    $prefixNs = '\\' . $prefix;
+    $prefixPath = $prefix . DS;
 }
 
 if (!empty($plugin)) {
-	$namespace = $plugin;
+    $namespace = $plugin;
 }
 if (empty($plugin)) {
-	$path = APP_DIR . DS . 'Controller' . DS . $prefixPath . h($class) . 'Controller.php' ;
+    $path = APP_DIR . DS . 'Controller' . DS . $prefixPath . h($class) . 'Controller.php';
 } else {
-	$path = Plugin::path($plugin) . 'Controller' . DS . $prefixPath . h($class) . 'Controller.php';
+    $path = Plugin::path($plugin) . 'Controller' . DS . $prefixPath . h($class) . 'Controller.php';
 }
-
 ?>
 <h2>Missing Controller</h2>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('<em>%sController</em> could not be found.', h($pluginDot . $class)); ?>
+    <strong>Error: </strong>
+    <?= sprintf('<em>%sController</em> could not be found.', h($pluginDot . $class)); ?>
 </p>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('Create the class <em>%sController</em> below in file: %s', h($class), $path); ?>
+    <strong>Error: </strong>
+    <?= sprintf('Create the class <em>%sController</em> below in file: %s', h($class), $path); ?>
 </p>
 <pre>
 &lt;?php
@@ -57,8 +57,8 @@ class <?= h($class) . 'Controller extends ' . h($plugin); ?>AppController {
 }
 </pre>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_controller.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_controller.ctp'); ?>
 </p>
 
 <?= $this->element('exception_stack_trace'); ?>

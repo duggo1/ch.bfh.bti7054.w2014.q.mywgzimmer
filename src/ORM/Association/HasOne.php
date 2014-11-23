@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\ORM\Association;
 
 use Cake\ORM\Association;
@@ -29,140 +31,140 @@ use Cake\Utility\Inflector;
  */
 class HasOne extends Association {
 
-	use DependentDeleteTrait;
-	use SelectableAssociationTrait;
+    use DependentDeleteTrait;
 
-/**
- * The type of join to be used when adding the association to a query
- *
- * @var string
- */
-	protected $_joinType = 'INNER';
+use SelectableAssociationTrait;
 
-/**
- * Sets the name of the field representing the foreign key to the target table.
- * If no parameters are passed current field is returned
- *
- * @param string $key the key to be used to link both tables together
- * @return string
- */
-	public function foreignKey($key = null) {
-		if ($key === null) {
-			if ($this->_foreignKey === null) {
-				$key = Inflector::singularize($this->source()->alias());
-				$this->_foreignKey = Inflector::underscore($key) . '_id';
-			}
-			return $this->_foreignKey;
-		}
-		return parent::foreignKey($key);
-	}
+    /**
+     * The type of join to be used when adding the association to a query
+     *
+     * @var string
+     */
+    protected $_joinType = 'INNER';
 
-/**
- * Sets the property name that should be filled with data from the target table
- * in the source table record.
- * If no arguments are passed, currently configured type is returned.
- *
- * @param string $name
- * @return string
- */
-	public function property($name = null) {
-		if ($name !== null) {
-			return parent::property($name);
-		}
-		if ($name === null && !$this->_propertyName) {
-			list($plugin, $name) = pluginSplit($this->_name);
-			$this->_propertyName = Inflector::underscore(Inflector::singularize($name));
-		}
-		return $this->_propertyName;
-	}
+    /**
+     * Sets the name of the field representing the foreign key to the target table.
+     * If no parameters are passed current field is returned
+     *
+     * @param string $key the key to be used to link both tables together
+     * @return string
+     */
+    public function foreignKey($key = null) {
+        if ($key === null) {
+            if ($this->_foreignKey === null) {
+                $key = Inflector::singularize($this->source()->alias());
+                $this->_foreignKey = Inflector::underscore($key) . '_id';
+            }
+            return $this->_foreignKey;
+        }
+        return parent::foreignKey($key);
+    }
 
-/**
- * Returns whether or not the passed table is the owning side for this
- * association. This means that rows in the 'target' table would miss important
- * or required information if the row in 'source' did not exist.
- *
- * @param \Cake\ORM\Table $side The potential Table with ownership
- * @return bool
- */
-	public function isOwningSide(Table $side) {
-		return $side === $this->source();
-	}
+    /**
+     * Sets the property name that should be filled with data from the target table
+     * in the source table record.
+     * If no arguments are passed, currently configured type is returned.
+     *
+     * @param string $name
+     * @return string
+     */
+    public function property($name = null) {
+        if ($name !== null) {
+            return parent::property($name);
+        }
+        if ($name === null && !$this->_propertyName) {
+            list($plugin, $name) = pluginSplit($this->_name);
+            $this->_propertyName = Inflector::underscore(Inflector::singularize($name));
+        }
+        return $this->_propertyName;
+    }
 
-/**
- * Get the relationship type.
- *
- * @return string
- */
-	public function type() {
-		return self::ONE_TO_ONE;
-	}
+    /**
+     * Returns whether or not the passed table is the owning side for this
+     * association. This means that rows in the 'target' table would miss important
+     * or required information if the row in 'source' did not exist.
+     *
+     * @param \Cake\ORM\Table $side The potential Table with ownership
+     * @return bool
+     */
+    public function isOwningSide(Table $side) {
+        return $side === $this->source();
+    }
 
-/**
- * Takes an entity from the source table and looks if there is a field
- * matching the property name for this association. The found entity will be
- * saved on the target table for this association by passing supplied
- * `$options`
- *
- * @param \Cake\ORM\Entity $entity an entity from the source table
- * @param array|\ArrayObject $options options to be passed to the save method in
- * the target table
- * @return bool|Entity false if $entity could not be saved, otherwise it returns
- * the saved entity
- * @see Table::save()
- */
-	public function save(Entity $entity, array $options = []) {
-		$targetEntity = $entity->get($this->property());
-		if (empty($targetEntity) || !($targetEntity instanceof Entity)) {
-			return $entity;
-		}
+    /**
+     * Get the relationship type.
+     *
+     * @return string
+     */
+    public function type() {
+        return self::ONE_TO_ONE;
+    }
 
-		$properties = array_combine(
-			(array)$this->foreignKey(),
-			$entity->extract((array)$this->source()->primaryKey())
-		);
-		$targetEntity->set($properties, ['guard' => false]);
+    /**
+     * Takes an entity from the source table and looks if there is a field
+     * matching the property name for this association. The found entity will be
+     * saved on the target table for this association by passing supplied
+     * `$options`
+     *
+     * @param \Cake\ORM\Entity $entity an entity from the source table
+     * @param array|\ArrayObject $options options to be passed to the save method in
+     * the target table
+     * @return bool|Entity false if $entity could not be saved, otherwise it returns
+     * the saved entity
+     * @see Table::save()
+     */
+    public function save(Entity $entity, array $options = []) {
+        $targetEntity = $entity->get($this->property());
+        if (empty($targetEntity) || !($targetEntity instanceof Entity)) {
+            return $entity;
+        }
 
-		if (!$this->target()->save($targetEntity, $options)) {
-			$targetEntity->unsetProperty(array_keys($properties));
-			return false;
-		}
+        $properties = array_combine(
+                (array) $this->foreignKey(), $entity->extract((array) $this->source()->primaryKey())
+        );
+        $targetEntity->set($properties, ['guard' => false]);
 
-		return $entity;
-	}
+        if (!$this->target()->save($targetEntity, $options)) {
+            $targetEntity->unsetProperty(array_keys($properties));
+            return false;
+        }
 
-/**
- * {@inheritDoc}
- */
-	protected function _linkField($options) {
-		$links = [];
-		$name = $this->name();
+        return $entity;
+    }
 
-		foreach ((array)$options['foreignKey'] as $key) {
-			$links[] = sprintf('%s.%s', $name, $key);
-		}
+    /**
+     * {@inheritDoc}
+     */
+    protected function _linkField($options) {
+        $links = [];
+        $name = $this->name();
 
-		if (count($links) === 1) {
-			return $links[0];
-		}
+        foreach ((array) $options['foreignKey'] as $key) {
+            $links[] = sprintf('%s.%s', $name, $key);
+        }
 
-		return $links;
-	}
+        if (count($links) === 1) {
+            return $links[0];
+        }
 
-/**
- * {@inheritDoc}
- */
-	protected function _buildResultMap($fetchQuery, $options) {
-		$resultMap = [];
-		$key = (array)$options['foreignKey'];
+        return $links;
+    }
 
-		foreach ($fetchQuery->all() as $result) {
-			$values = [];
-			foreach ($key as $k) {
-				$values[] = $result[$k];
-			}
-			$resultMap[implode(';', $values)] = $result;
-		}
-		return $resultMap;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    protected function _buildResultMap($fetchQuery, $options) {
+        $resultMap = [];
+        $key = (array) $options['foreignKey'];
+
+        foreach ($fetchQuery->all() as $result) {
+            $values = [];
+            foreach ($key as $k) {
+                $values[] = $result[$k];
+            }
+            $resultMap[implode(';', $values)] = $result;
+        }
+        return $resultMap;
+    }
 
 }

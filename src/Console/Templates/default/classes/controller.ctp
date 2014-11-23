@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Controller bake template file
  *
@@ -18,57 +19,56 @@
  */
 use Cake\Utility\Inflector;
 
-echo "<?php\n"; ?>
+echo "<?php\n";
+?>
 namespace <?= $namespace ?>\Controller<?= $prefix ?>;
 
 use <?= $namespace ?>\Controller\AppController;
 
 /**
- * <?= $name; ?> Controller
- *
+* <?= $name; ?> Controller
+*
 <?php
 $defaultModel = $name;
 echo " * @property {$namespace}\Model\\Table\\{$defaultModel}Table \${$defaultModel}\n";
 if (!empty($components)) {
-	foreach ($components as $component) {
-		echo " * @property {$component}Component \${$component}\n";
-	}
+    foreach ($components as $component) {
+        echo " * @property {$component}Component \${$component}\n";
+    }
 }
 ?>
- */
+*/
 class <?= $name; ?>Controller extends AppController {
 
 <?php
+if (count($helpers)):
+    echo "/**\n * Helpers\n *\n * @var array\n */\n";
+    echo "\tpublic \$helpers = [";
+    for ($i = 0, $len = count($helpers); $i < $len; $i++):
+        if ($i != $len - 1):
+            echo "'" . Inflector::camelize($helpers[$i]) . "', ";
+        else:
+            echo "'" . Inflector::camelize($helpers[$i]) . "'";
+        endif;
+    endfor;
+    echo "];\n\n";
+endif;
 
-	if (count($helpers)):
-		echo "/**\n * Helpers\n *\n * @var array\n */\n";
-		echo "\tpublic \$helpers = [";
-		for ($i = 0, $len = count($helpers); $i < $len; $i++):
-			if ($i != $len - 1):
-				echo "'" . Inflector::camelize($helpers[$i]) . "', ";
-			else:
-				echo "'" . Inflector::camelize($helpers[$i]) . "'";
-			endif;
-		endfor;
-		echo "];\n\n";
-	endif;
+if (count($components)):
+    echo "/**\n * Components\n *\n * @var array\n */\n";
+    echo "\tpublic \$components = [";
+    for ($i = 0, $len = count($components); $i < $len; $i++):
+        if ($i != $len - 1):
+            echo "'" . Inflector::camelize($components[$i]) . "', ";
+        else:
+            echo "'" . Inflector::camelize($components[$i]) . "'";
+        endif;
+    endfor;
+    echo "];\n\n";
+endif;
 
-	if (count($components)):
-		echo "/**\n * Components\n *\n * @var array\n */\n";
-		echo "\tpublic \$components = [";
-		for ($i = 0, $len = count($components); $i < $len; $i++):
-			if ($i != $len - 1):
-				echo "'" . Inflector::camelize($components[$i]) . "', ";
-			else:
-				echo "'" . Inflector::camelize($components[$i]) . "'";
-			endif;
-		endfor;
-		echo "];\n\n";
-	endif;
-
-	if (!empty($actions)) {
-		echo trim($actions) . "\n";
-	}
-
+if (!empty($actions)) {
+    echo trim($actions) . "\n";
+}
 ?>
 }

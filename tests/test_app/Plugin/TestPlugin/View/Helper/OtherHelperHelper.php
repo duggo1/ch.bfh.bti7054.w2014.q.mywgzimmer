@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestPlugin\View\Helper;
 
 use Cake\View\Helper;
@@ -21,4 +23,5 @@ use Cake\View\Helper;
  *
  */
 class OtherHelperHelper extends Helper {
+    
 }

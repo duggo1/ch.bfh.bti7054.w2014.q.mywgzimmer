@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\View\Helper;
 
 use Cake\Core\InstanceConfigTrait;
@@ -25,15 +27,17 @@ use Cake\View\Helper\StringTemplateTrait;
  */
 class TestStringTemplate {
 
-	use InstanceConfigTrait;
-	use StringTemplateTrait;
+    use InstanceConfigTrait;
 
-/**
- * _defaultConfig
- *
- * @var array
- */
-	protected $_defaultConfig = [];
+use StringTemplateTrait;
+
+    /**
+     * _defaultConfig
+     *
+     * @var array
+     */
+    protected $_defaultConfig = [];
+
 }
 
 /**
@@ -42,91 +46,85 @@ class TestStringTemplate {
  */
 class StringTemplateTraitTest extends TestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-		$this->Template = new TestStringTemplate;
-	}
+    /**
+     * setUp method
+     *
+     * @return void
+     */
+    public function setUp() {
+        parent::setUp();
+        $this->Template = new TestStringTemplate;
+    }
 
-/**
- * testInitStringTemplates
- *
- * @return void
- */
-	public function testInitStringTemplates() {
-		$templates = [
-			'text' => '<p>{{text}}</p>',
-		];
-		$this->Template->templates($templates);
+    /**
+     * testInitStringTemplates
+     *
+     * @return void
+     */
+    public function testInitStringTemplates() {
+        $templates = [
+            'text' => '<p>{{text}}</p>',
+        ];
+        $this->Template->templates($templates);
 
-		$this->assertEquals(
-			[
-				'attribute' => '{{name}}="{{value}}"',
-				'compactAttribute' => '{{name}}="{{value}}"',
-				'text' => '<p>{{text}}</p>'
-			],
-			$this->Template->templates(),
-			'newly added template should be inlcuded in template list'
-		);
-	}
+        $this->assertEquals(
+                [
+            'attribute' => '{{name}}="{{value}}"',
+            'compactAttribute' => '{{name}}="{{value}}"',
+            'text' => '<p>{{text}}</p>'
+                ], $this->Template->templates(), 'newly added template should be inlcuded in template list'
+        );
+    }
 
-/**
- * test settings['templates']
- *
- * @return void
- */
-	public function testInitStringTemplatesArrayForm() {
-		$this->Template->config(
-			'templates.text',
-			'<p>{{text}}</p>'
-		);
+    /**
+     * test settings['templates']
+     *
+     * @return void
+     */
+    public function testInitStringTemplatesArrayForm() {
+        $this->Template->config(
+                'templates.text', '<p>{{text}}</p>'
+        );
 
-		$this->assertEquals(
-			[
-				'attribute' => '{{name}}="{{value}}"',
-				'compactAttribute' => '{{name}}="{{value}}"',
-				'text' => '<p>{{text}}</p>'
-			],
-			$this->Template->templates(),
-			'Configured templates should be included in template list'
-		);
-	}
+        $this->assertEquals(
+                [
+            'attribute' => '{{name}}="{{value}}"',
+            'compactAttribute' => '{{name}}="{{value}}"',
+            'text' => '<p>{{text}}</p>'
+                ], $this->Template->templates(), 'Configured templates should be included in template list'
+        );
+    }
 
-/**
- * testFormatStringTemplate
- *
- * @return void
- */
-	public function testFormatStringTemplate() {
-		$templates = [
-			'text' => '<p>{{text}}</p>',
-		];
-		$this->Template->templates($templates);
-		$result = $this->Template->formatTemplate('text', [
-			'text' => 'CakePHP'
-		]);
-		$this->assertEquals(
-			'<p>CakePHP</p>',
-			$result
-		);
-	}
+    /**
+     * testFormatStringTemplate
+     *
+     * @return void
+     */
+    public function testFormatStringTemplate() {
+        $templates = [
+            'text' => '<p>{{text}}</p>',
+        ];
+        $this->Template->templates($templates);
+        $result = $this->Template->formatTemplate('text', [
+            'text' => 'CakePHP'
+        ]);
+        $this->assertEquals(
+                '<p>CakePHP</p>', $result
+        );
+    }
 
-/**
- * testGetTemplater
- *
- * @return void
- */
-	public function testGetTemplater() {
-		$templates = [
-			'text' => '<p>{{text}}</p>',
-		];
-		$this->Template->templates($templates);
-		$result = $this->Template->templater();
-		$this->assertInstanceOf('\Cake\View\StringTemplate', $result);
-	}
+    /**
+     * testGetTemplater
+     *
+     * @return void
+     */
+    public function testGetTemplater() {
+        $templates = [
+            'text' => '<p>{{text}}</p>',
+        ];
+        $this->Template->templates($templates);
+        $result = $this->Template->templater();
+        $this->assertInstanceOf('\Cake\View\StringTemplate', $result);
+    }
 
 }

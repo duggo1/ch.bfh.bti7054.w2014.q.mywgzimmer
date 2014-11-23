@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Log;
 
 use Cake\Database\Type;
@@ -25,46 +27,46 @@ use Cake\Utility\String;
  */
 class QueryLogger {
 
-/**
- * Writes a LoggedQuery into a log
- *
- * @param LoggedQuery $query to be written in log
- * @return void
- */
-	public function log(LoggedQuery $query) {
-		if (!empty($query->params)) {
-			$query->query = $this->_interpolate($query);
-		}
-		$this->_log($query);
-	}
+    /**
+     * Writes a LoggedQuery into a log
+     *
+     * @param LoggedQuery $query to be written in log
+     * @return void
+     */
+    public function log(LoggedQuery $query) {
+        if (!empty($query->params)) {
+            $query->query = $this->_interpolate($query);
+        }
+        $this->_log($query);
+    }
 
-/**
- * Wrapper function for the logger object, useful for unit testing
- * or for overriding in subclasses.
- *
- * @param LoggedQuery $query to be written in log
- * @return void
- */
-	protected function _log($query) {
-		Log::write('debug', $query, ['queriesLog']);
-	}
+    /**
+     * Wrapper function for the logger object, useful for unit testing
+     * or for overriding in subclasses.
+     *
+     * @param LoggedQuery $query to be written in log
+     * @return void
+     */
+    protected function _log($query) {
+        Log::write('debug', $query, ['queriesLog']);
+    }
 
-/**
- * Helper function used to replace query placeholders by the real
- * params used to execute the query
- *
- * @param LoggedQuery $query
- * @return string
- */
-	protected function _interpolate($query) {
-		$params = array_map(function($p) {
-			if ($p === null) {
-				return 'NULL';
-			}
-			return is_string($p) ? "'$p'" : $p;
-		}, $query->params);
+    /**
+     * Helper function used to replace query placeholders by the real
+     * params used to execute the query
+     *
+     * @param LoggedQuery $query
+     * @return string
+     */
+    protected function _interpolate($query) {
+        $params = array_map(function($p) {
+            if ($p === null) {
+                return 'NULL';
+            }
+            return is_string($p) ? "'$p'" : $p;
+        }, $query->params);
 
-		return String::insert($query->query, $params);
-	}
+        return String::insert($query->query, $params);
+    }
 
 }

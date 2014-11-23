@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,31 +13,32 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
 
 class ThingFixture extends TestFixture {
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => ['type' => 'integer'],
-		'title' => ['type' => 'string', 'length' => 20],
-		'body' => ['type' => 'string', 'length' => 50]
-	);
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = array(
+        'id' => ['type' => 'integer'],
+        'title' => ['type' => 'string', 'length' => 20],
+        'body' => ['type' => 'string', 'length' => 50]
+    );
 
-/**
- * records property
- *
- * @var array
- */
-	public $records = [
-		['id' => 1, 'title' => 'a title', 'body' => 'a body'],
-		['id' => 2, 'title' => 'another title', 'body' => 'another body']
-	];
+    /**
+     * records property
+     *
+     * @var array
+     */
+    public $records = [
+        ['id' => 1, 'title' => 'a title', 'body' => 'a body'],
+        ['id' => 2, 'title' => 'another title', 'body' => 'another body']
+    ];
 
 }

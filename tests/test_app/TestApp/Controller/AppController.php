@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level Controller
  *
@@ -17,6 +18,7 @@
  * @since         0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Controller;
 
 use Cake\Controller\Controller;
@@ -30,4 +32,5 @@ use Cake\Controller\Controller;
  *
  */
 class AppController extends Controller {
+    
 }

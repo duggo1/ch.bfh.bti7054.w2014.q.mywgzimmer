@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Suite Test Plugin Cache Engine class.
  *
@@ -14,35 +15,43 @@
  * @since         1.3.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class TestPluginCacheEngine
  *
  */
+
 namespace TestPlugin\Cache\Engine;
 
 use Cake\Cache\CacheEngine;
 
 class TestPluginCacheEngine extends CacheEngine {
 
-	public function write($key, $value) {
-	}
+    public function write($key, $value) {
+        
+    }
 
-	public function read($key) {
-	}
+    public function read($key) {
+        
+    }
 
-	public function increment($key, $offset = 1) {
-	}
+    public function increment($key, $offset = 1) {
+        
+    }
 
-	public function decrement($key, $offset = 1) {
-	}
+    public function decrement($key, $offset = 1) {
+        
+    }
 
-	public function delete($key) {
-	}
+    public function delete($key) {
+        
+    }
 
-	public function clear($check) {
-	}
+    public function clear($check) {
+        
+    }
 
-	public function clearGroup($group) {
-	}
+    public function clearGroup($group) {
+        
+    }
+
 }

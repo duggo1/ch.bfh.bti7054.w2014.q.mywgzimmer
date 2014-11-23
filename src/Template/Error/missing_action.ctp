@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -18,26 +19,26 @@ use Cake\Core\Plugin;
 
 $namespace = Configure::read('App.namespace');
 if (!empty($plugin)) {
-	$namespace = $plugin;
+    $namespace = $plugin;
 }
 $prefixNs = '';
 if (!empty($prefix)) {
-	$prefix = Inflector::camelize($prefix);
-	$prefixNs = '\\' . $prefix;
+    $prefix = Inflector::camelize($prefix);
+    $prefixNs = '\\' . $prefix;
 }
 if (empty($plugin)) {
-	$path = APP_DIR . DS . 'Controller' . DS . $prefix . DS . h($controller) . '.php' ;
+    $path = APP_DIR . DS . 'Controller' . DS . $prefix . DS . h($controller) . '.php';
 } else {
-	$path = Plugin::path($plugin) . 'Controller' . DS . $prefix . DS . h($class) . '.php';
+    $path = Plugin::path($plugin) . 'Controller' . DS . $prefix . DS . h($class) . '.php';
 }
 ?>
 <h2><?= sprintf('Missing Method in %s', h($controller)); ?></h2> <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('The action <em>%s</em> is not defined in controller <em>%s</em>', h($action), h($controller)); ?>
+    <strong>Error: </strong>
+    <?= sprintf('The action <em>%s</em> is not defined in controller <em>%s</em>', h($action), h($controller)); ?>
 </p>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('Create <em>%s::%s()</em> in file: %s.', h($controller),  h($action), $path); ?>
+    <strong>Error: </strong>
+    <?= sprintf('Create <em>%s::%s()</em> in file: %s.', h($controller), h($action), $path); ?>
 </p>
 <pre>
 &lt;?php
@@ -55,7 +56,7 @@ class <?= h($controller); ?> extends AppController {
 }
 </pre>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_action.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_action.ctp'); ?>
 </p>
 <?= $this->element('exception_stack_trace'); ?>

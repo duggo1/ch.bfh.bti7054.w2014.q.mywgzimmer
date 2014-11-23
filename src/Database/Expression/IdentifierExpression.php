@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Expression;
 
 use Cake\Database\ExpressionInterface;
@@ -23,59 +25,60 @@ use Cake\Database\ValueBinder;
  */
 class IdentifierExpression implements ExpressionInterface {
 
-/**
- * Holds the identifier string
- *
- * @var string
- */
-	protected $_identifier;
+    /**
+     * Holds the identifier string
+     *
+     * @var string
+     */
+    protected $_identifier;
 
-/**
- * Constructor
- *
- * @param string $identifier The identifier this expression represents
- */
-	public function __construct($identifier) {
-		$this->setIdentifier($identifier);
-	}
+    /**
+     * Constructor
+     *
+     * @param string $identifier The identifier this expression represents
+     */
+    public function __construct($identifier) {
+        $this->setIdentifier($identifier);
+    }
 
-/**
- * Sets the identifier this expression represents
- *
- * @param string $identifier
- * @return void
- */
-	public function setIdentifier($identifier) {
-		$this->_identifier = $identifier;
-	}
+    /**
+     * Sets the identifier this expression represents
+     *
+     * @param string $identifier
+     * @return void
+     */
+    public function setIdentifier($identifier) {
+        $this->_identifier = $identifier;
+    }
 
-/**
- * Returns the identifier this expression represents
- *
- * @return string
- */
-	public function getIdentifier() {
-		return $this->_identifier;
-	}
+    /**
+     * Returns the identifier this expression represents
+     *
+     * @return string
+     */
+    public function getIdentifier() {
+        return $this->_identifier;
+    }
 
-/**
- * Converts the expression to its string representation
- *
- * @param \Cake\Database\ValueBinder $generator Placeholder generator object
- * @return string
- */
-	public function sql(ValueBinder $generator) {
-		return $this->_identifier;
-	}
+    /**
+     * Converts the expression to its string representation
+     *
+     * @param \Cake\Database\ValueBinder $generator Placeholder generator object
+     * @return string
+     */
+    public function sql(ValueBinder $generator) {
+        return $this->_identifier;
+    }
 
-/**
- * This method is a no-op, this is a leaf type of expression,
- * hence there is nothing to traverse
- *
- * @param callable $callable
- * @return void
- */
-	public function traverse(callable $callable) {
-	}
+    /**
+     * This method is a no-op, this is a leaf type of expression,
+     * hence there is nothing to traverse
+     *
+     * @param callable $callable
+     * @return void
+     */
+    public function traverse(callable $callable) {
+        
+    }
 
 }

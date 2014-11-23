@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Expression;
 
 use Cake\Database\ExpressionInterface;
@@ -22,20 +24,20 @@ use Cake\Database\ValueBinder;
  */
 class UnaryExpression extends QueryExpression {
 
-/**
- * Converts the expression to its string representation
- *
- * @param \Cake\Database\ValueBinder $generator Placeholder generator object
- * @return string
- */
-	public function sql(ValueBinder $generator) {
-		foreach ($this->_conditions as $condition) {
-			if ($condition instanceof ExpressionInterface) {
-				$condition = $condition->sql($generator);
-			}
-			// We only use the first (and only) condition
-			return $this->_conjunction . ' (' . $condition . ')';
-		}
-	}
+    /**
+     * Converts the expression to its string representation
+     *
+     * @param \Cake\Database\ValueBinder $generator Placeholder generator object
+     * @return string
+     */
+    public function sql(ValueBinder $generator) {
+        foreach ($this->_conditions as $condition) {
+            if ($condition instanceof ExpressionInterface) {
+                $condition = $condition->sql($generator);
+            }
+            // We only use the first (and only) condition
+            return $this->_conjunction . ' (' . $condition . ')';
+        }
+    }
 
 }

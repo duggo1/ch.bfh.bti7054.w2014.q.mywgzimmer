@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
@@ -23,17 +25,18 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class UuidTreeFixture extends TestFixture {
 
-/**
- * fields property
- *
- * @var array
- */
-	public $fields = array(
-		'id' => ['type' => 'uuid'],
-		'name' => ['type' => 'string', 'null' => false],
-		'parent_id' => ['type' => 'uuid', 'null' => true],
-		'lft' => ['type' => 'integer', 'null' => false],
-		'rght' => ['type' => 'integer', 'null' => false],
-		'_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
-	);
+    /**
+     * fields property
+     *
+     * @var array
+     */
+    public $fields = array(
+        'id' => ['type' => 'uuid'],
+        'name' => ['type' => 'string', 'null' => false],
+        'parent_id' => ['type' => 'uuid', 'null' => true],
+        'lft' => ['type' => 'integer', 'null' => false],
+        'rght' => ['type' => 'integer', 'null' => false],
+        '_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
+    );
+
 }

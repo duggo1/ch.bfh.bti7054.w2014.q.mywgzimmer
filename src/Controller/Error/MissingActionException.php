@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Controller\Error;
 
 use Cake\Error\Exception;
@@ -22,10 +24,10 @@ use Cake\Error\Exception;
  */
 class MissingActionException extends Exception {
 
-	protected $_messageTemplate = 'Action %s::%s() could not be found.';
+    protected $_messageTemplate = 'Action %s::%s() could not be found.';
 
-	public function __construct($message, $code = 404) {
-		parent::__construct($message, $code);
-	}
+    public function __construct($message, $code = 404) {
+        parent::__construct($message, $code);
+    }
 
 }

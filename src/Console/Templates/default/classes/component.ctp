@@ -12,22 +12,23 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-echo "<?php\n"; ?>
+echo "<?php\n";
+?>
 namespace <?= $namespace ?>\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Controller\ComponentRegistry;
 
 /**
- * <?= $name ?> component
- */
+* <?= $name ?> component
+*/
 class <?= $name ?>Component extends Component {
 
 /**
- * Default configuration.
- *
- * @var array
- */
-	protected $_defaultConfig = [];
+* Default configuration.
+*
+* @var array
+*/
+protected $_defaultConfig = [];
 
 }

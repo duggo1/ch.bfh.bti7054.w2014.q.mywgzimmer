@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -13,6 +14,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\ORM\Association;
 
 use Cake\ORM\Association;
@@ -29,119 +31,119 @@ use Cake\ORM\Table;
  */
 class HasMany extends Association {
 
-	use DependentDeleteTrait;
-	use ExternalAssociationTrait;
+    use DependentDeleteTrait;
 
-/**
- * The type of join to be used when adding the association to a query
- *
- * @var string
- */
-	protected $_joinType = 'INNER';
+use ExternalAssociationTrait;
 
-/**
- * The strategy name to be used to fetch associated records.
- *
- * @var string
- */
-	protected $_strategy = parent::STRATEGY_SELECT;
+    /**
+     * The type of join to be used when adding the association to a query
+     *
+     * @var string
+     */
+    protected $_joinType = 'INNER';
 
-/**
- * Returns whether or not the passed table is the owning side for this
- * association. This means that rows in the 'target' table would miss important
- * or required information if the row in 'source' did not exist.
- *
- * @param \Cake\ORM\Table $side The potential Table with ownership
- * @return bool
- */
-	public function isOwningSide(Table $side) {
-		return $side === $this->source();
-	}
+    /**
+     * The strategy name to be used to fetch associated records.
+     *
+     * @var string
+     */
+    protected $_strategy = parent::STRATEGY_SELECT;
 
-/**
- * Takes an entity from the source table and looks if there is a field
- * matching the property name for this association. The found entity will be
- * saved on the target table for this association by passing supplied
- * `$options`
- *
- * @param \Cake\ORM\Entity $entity an entity from the source table
- * @param array|\ArrayObject $options options to be passed to the save method in
- * the target table
- * @return bool|Entity false if $entity could not be saved, otherwise it returns
- * the saved entity
- * @see Table::save()
- * @throws \InvalidArgumentException when the association data cannot be traversed.
- */
-	public function save(Entity $entity, array $options = []) {
-		$targetEntities = $entity->get($this->property());
-		if (empty($targetEntities)) {
-			return $entity;
-		}
+    /**
+     * Returns whether or not the passed table is the owning side for this
+     * association. This means that rows in the 'target' table would miss important
+     * or required information if the row in 'source' did not exist.
+     *
+     * @param \Cake\ORM\Table $side The potential Table with ownership
+     * @return bool
+     */
+    public function isOwningSide(Table $side) {
+        return $side === $this->source();
+    }
 
-		if (!is_array($targetEntities) && !($targetEntities instanceof \Traversable)) {
-			$name = $this->property();
-			$message = sprintf('Could not save %s, it cannot be traversed', $name);
-			throw new \InvalidArgumentException($message);
-		}
+    /**
+     * Takes an entity from the source table and looks if there is a field
+     * matching the property name for this association. The found entity will be
+     * saved on the target table for this association by passing supplied
+     * `$options`
+     *
+     * @param \Cake\ORM\Entity $entity an entity from the source table
+     * @param array|\ArrayObject $options options to be passed to the save method in
+     * the target table
+     * @return bool|Entity false if $entity could not be saved, otherwise it returns
+     * the saved entity
+     * @see Table::save()
+     * @throws \InvalidArgumentException when the association data cannot be traversed.
+     */
+    public function save(Entity $entity, array $options = []) {
+        $targetEntities = $entity->get($this->property());
+        if (empty($targetEntities)) {
+            return $entity;
+        }
 
-		$properties = array_combine(
-			(array)$this->foreignKey(),
-			$entity->extract((array)$this->source()->primaryKey())
-		);
-		$target = $this->target();
-		$original = $targetEntities;
+        if (!is_array($targetEntities) && !($targetEntities instanceof \Traversable)) {
+            $name = $this->property();
+            $message = sprintf('Could not save %s, it cannot be traversed', $name);
+            throw new \InvalidArgumentException($message);
+        }
 
-		foreach ($targetEntities as $k => $targetEntity) {
-			if (!($targetEntity instanceof Entity)) {
-				break;
-			}
+        $properties = array_combine(
+                (array) $this->foreignKey(), $entity->extract((array) $this->source()->primaryKey())
+        );
+        $target = $this->target();
+        $original = $targetEntities;
 
-			if (!empty($options['atomic'])) {
-				$targetEntity = clone $targetEntity;
-			}
+        foreach ($targetEntities as $k => $targetEntity) {
+            if (!($targetEntity instanceof Entity)) {
+                break;
+            }
 
-			$targetEntity->set($properties, ['guard' => false]);
-			if ($target->save($targetEntity, $options)) {
-				$targetEntities[$k] = $targetEntity;
-				continue;
-			}
+            if (!empty($options['atomic'])) {
+                $targetEntity = clone $targetEntity;
+            }
 
-			if (!empty($options['atomic'])) {
-				$original[$k]->errors($targetEntity->errors());
-				$entity->set($this->property(), $original);
-				return false;
-			}
-		}
+            $targetEntity->set($properties, ['guard' => false]);
+            if ($target->save($targetEntity, $options)) {
+                $targetEntities[$k] = $targetEntity;
+                continue;
+            }
 
-		$entity->set($this->property(), $targetEntities);
-		return $entity;
-	}
+            if (!empty($options['atomic'])) {
+                $original[$k]->errors($targetEntity->errors());
+                $entity->set($this->property(), $original);
+                return false;
+            }
+        }
 
-/**
- * {@inheritDoc}
- */
-	protected function _linkField($options) {
-		$links = [];
-		$name = $this->name();
+        $entity->set($this->property(), $targetEntities);
+        return $entity;
+    }
 
-		foreach ((array)$options['foreignKey'] as $key) {
-			$links[] = sprintf('%s.%s', $name, $key);
-		}
+    /**
+     * {@inheritDoc}
+     */
+    protected function _linkField($options) {
+        $links = [];
+        $name = $this->name();
 
-		if (count($links) === 1) {
-			return $links[0];
-		}
+        foreach ((array) $options['foreignKey'] as $key) {
+            $links[] = sprintf('%s.%s', $name, $key);
+        }
 
-		return $links;
-	}
+        if (count($links) === 1) {
+            return $links[0];
+        }
 
-/**
- * Get the relationship type.
- *
- * @return string
- */
-	public function type() {
-		return self::ONE_TO_MANY;
-	}
+        return $links;
+    }
+
+    /**
+     * Get the relationship type.
+     *
+     * @return string
+     */
+    public function type() {
+        return self::ONE_TO_MANY;
+    }
 
 }

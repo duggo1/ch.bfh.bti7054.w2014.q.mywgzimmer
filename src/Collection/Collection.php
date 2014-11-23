@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Collection;
 
 use ArrayIterator;
@@ -26,34 +28,34 @@ use JsonSerializable;
  */
 class Collection extends IteratorIterator implements JsonSerializable {
 
-	use CollectionTrait;
+    use CollectionTrait;
 
-/**
- * Constructor. You can provide an array or any traversable object
- *
- * @param array|\Traversable $items
- * @throws InvalidArgumentException if passed incorrect type for items.
- */
-	public function __construct($items) {
-		if (is_array($items)) {
-			$items = new ArrayIterator($items);
-		}
+    /**
+     * Constructor. You can provide an array or any traversable object
+     *
+     * @param array|\Traversable $items
+     * @throws InvalidArgumentException if passed incorrect type for items.
+     */
+    public function __construct($items) {
+        if (is_array($items)) {
+            $items = new ArrayIterator($items);
+        }
 
-		if (!($items instanceof \Traversable)) {
-			$msg = 'Only array or \Traversable are allowed for Collection';
-			throw new InvalidArgumentException($msg);
-		}
+        if (!($items instanceof \Traversable)) {
+            $msg = 'Only array or \Traversable are allowed for Collection';
+            throw new InvalidArgumentException($msg);
+        }
 
-		parent::__construct($items);
-	}
+        parent::__construct($items);
+    }
 
-/**
- * Returns the iterator with this collection's elements
- *
- * @return \Traversable
- */
-	public function getIterator() {
-		return $this->_iterator;
-	}
+    /**
+     * Returns the iterator with this collection's elements
+     *
+     * @return \Traversable
+     */
+    public function getIterator() {
+        return $this->_iterator;
+    }
 
 }

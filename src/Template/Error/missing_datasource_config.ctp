@@ -16,12 +16,12 @@
 ?>
 <h2>Missing Datasource Configuration</h2>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('The datasource configuration <em>%s</em> was not found in datasources.php.', h($config)); ?>
+    <strong>Error: </strong>
+    <?= sprintf('The datasource configuration <em>%s</em> was not found in datasources.php.', h($config)); ?>
 </p>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_datasource_config.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_datasource_config.ctp'); ?>
 </p>
 
 <?= $this->element('exception_stack_trace'); ?>

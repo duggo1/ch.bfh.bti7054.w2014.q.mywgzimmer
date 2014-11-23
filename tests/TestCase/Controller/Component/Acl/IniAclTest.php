@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\Controller\Component\Acl;
 
 use Cake\Controller\Component\AclComponent;
@@ -24,44 +26,45 @@ use Cake\TestSuite\TestCase;
  */
 class IniAclTest extends TestCase {
 
-/**
- * testIniCheck method
- *
- * @return void
- */
-	public function testCheck() {
-		$iniFile = TEST_APP . 'TestApp/Config/acl.ini.php';
+    /**
+     * testIniCheck method
+     *
+     * @return void
+     */
+    public function testCheck() {
+        $iniFile = TEST_APP . 'TestApp/Config/acl.ini.php';
 
-		$Ini = new IniAcl();
-		$Ini->config = $Ini->readConfigFile($iniFile);
+        $Ini = new IniAcl();
+        $Ini->config = $Ini->readConfigFile($iniFile);
 
-		$this->assertFalse($Ini->check('admin', 'ads'));
-		$this->assertTrue($Ini->check('admin', 'posts'));
+        $this->assertFalse($Ini->check('admin', 'ads'));
+        $this->assertTrue($Ini->check('admin', 'posts'));
 
-		$this->assertTrue($Ini->check('jenny', 'posts'));
-		$this->assertTrue($Ini->check('jenny', 'ads'));
+        $this->assertTrue($Ini->check('jenny', 'posts'));
+        $this->assertTrue($Ini->check('jenny', 'ads'));
 
-		$this->assertTrue($Ini->check('paul', 'posts'));
-		$this->assertFalse($Ini->check('paul', 'ads'));
+        $this->assertTrue($Ini->check('paul', 'posts'));
+        $this->assertFalse($Ini->check('paul', 'ads'));
 
-		$this->assertFalse($Ini->check('nobody', 'comments'));
-	}
+        $this->assertFalse($Ini->check('nobody', 'comments'));
+    }
 
-/**
- * check should accept a user array.
- *
- * @return void
- */
-	public function testCheckArray() {
-		$iniFile = TEST_APP . 'TestApp/Config/acl.ini.php';
+    /**
+     * check should accept a user array.
+     *
+     * @return void
+     */
+    public function testCheckArray() {
+        $iniFile = TEST_APP . 'TestApp/Config/acl.ini.php';
 
-		$Ini = new IniAcl();
-		$Ini->config = $Ini->readConfigFile($iniFile);
-		$Ini->userPath = 'User.username';
+        $Ini = new IniAcl();
+        $Ini->config = $Ini->readConfigFile($iniFile);
+        $Ini->userPath = 'User.username';
 
-		$user = array(
-			'User' => array('username' => 'admin')
-		);
-		$this->assertTrue($Ini->check($user, 'posts'));
-	}
+        $user = array(
+            'User' => array('username' => 'admin')
+        );
+        $this->assertTrue($Ini->check($user, 'posts'));
+    }
+
 }

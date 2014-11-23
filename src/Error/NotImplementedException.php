@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Error;
 
 /**
@@ -19,10 +21,10 @@ namespace Cake\Error;
  */
 class NotImplementedException extends Exception {
 
-	protected $_messageTemplate = '%s is not implemented.';
+    protected $_messageTemplate = '%s is not implemented.';
 
-	public function __construct($message, $code = 501) {
-		parent::__construct($message, $code);
-	}
+    public function __construct($message, $code = 501) {
+        parent::__construct($message, $code);
+    }
 
 }

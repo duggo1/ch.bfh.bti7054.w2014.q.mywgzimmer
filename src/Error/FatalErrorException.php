@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Error;
 
 /**
@@ -19,22 +21,22 @@ namespace Cake\Error;
  */
 class FatalErrorException extends Exception {
 
-/**
- * Constructor
- *
- * @param string $message
- * @param int $code
- * @param string $file
- * @param int $line
- */
-	public function __construct($message, $code = 500, $file = null, $line = null) {
-		parent::__construct($message, $code);
-		if ($file) {
-			$this->file = $file;
-		}
-		if ($line) {
-			$this->line = $line;
-		}
-	}
+    /**
+     * Constructor
+     *
+     * @param string $message
+     * @param int $code
+     * @param string $file
+     * @param int $line
+     */
+    public function __construct($message, $code = 500, $file = null, $line = null) {
+        parent::__construct($message, $code);
+        if ($file) {
+            $this->file = $file;
+        }
+        if ($line) {
+            $this->line = $line;
+        }
+    }
 
 }

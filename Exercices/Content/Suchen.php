@@ -31,107 +31,44 @@ function suchen() {
 function suchenDesign() {
 	?>
 
-<table style="margin: 5%">
-	
-	<tr>
-		<td style="width: 10%">Ort</td>
-		<td style="width: 20%" colspan="2">PLZ</td>
-		<td style="width: 10%"></td>
+<form name="Suchen">
+            <h3>Ich bin</h3>
+            <div>
+                <input id="BINgeschlecht" name="geschlecht" type="radio" value="f"> eine Frau 
+                <input id="BINgeschlecht" name="geschlecht" type="radio" value="m"> ein Mann<br>
+                und ich bin
+                <input id="BINalter" type="number" min="13" max="99"> Jahre alt.<br>
+            </div>
+            </br>
+            <h3>Ich suche</h3>
+            <div>
+                <input id="SUCHgeschlecht" name="SUCHgeschlecht" type="radio" value="f"> eine Frauen-WG 
+                <input id="SUCHgeschlecht" name="SUCHgeschlecht" type="radio" value="m"> eine M√§nner-WG 
+                <input id="SUCHgeschlecht" name="SUCHgeschlecht" type="radio" value="x"> eine gemischte WG<br>
+                mit Durchschnittsalter zwischen 
+                <input id="SUCHminAlter" type="number" min="13" max="99"> und 
+                <input id="SUCHmaxAlter" type="number" min="13" max="99"> Jahren.<br>
+            </div>
+            </br>
+            Ein Zimmer <input id="SUCHart" name="SUCHradioZimmerArt" type="radio" value="z"> oder 
+            <input id="SUCHart" name="SUCHradioZimmerArt" type="radio" value="s"> ein Studio 
+            <div>zwischen
+                <input id="SUCHminFlaeche" type="number" min="13" max="99"> und 
+                <input id="SUCHmaxFlaeche" type="number" min="13" max="99"> Quadratmetern, welches<br>
 
-		<td style="width: 40%" colspan="4">*Strasse</td>
-		<td style="width: 10%"></td>
-		<td style="width: 10%"></td>
-	</tr>
-
-	<tr>
-
-		<td style="width: 10%"><input id="suchenort" type="text"></td>
-		<td style="width: 10%"><input id="suchenplz" type="text"
-			style="width: 40px"></td>
-		<td style="width: 10%"></td>
-		<td style="width: 10%"></td>
-
-		<td style="width: 40%" colspan="4"><input id="suchenstrasse"
-			type="text"></td>
-		<td style="width: 10%"></td>
-		<td style="width: 10%"></td>
-	</tr>
-	<tr>
-		<td style="width: 40%" height="18pt" colspan="4"></td>
-		<td style="width: 10%"></td>
-		<td style="width: 50%" colspan="5"></td>
-	</tr>
-	<tr>
-		<td style="width: 10%">Preis von</td>
-		<td style="width: 10%">Preis bis</td>
-		<td style="width: 20%" colspan="2"></td>
-
-		<td style="width: 20%" colspan="2">Fl‰che von</td>
-
-		<td style="width: 30%" colspan="3">Fl‰che bis</td>
-		<td style="width: 20%" colspan="2"></td>
-	</tr>
-	<tr>
-		<td style="width: 10%"><input id="suchenpreisvon" type="number"
-			style="width: 100px"></td>
-		<td style="width: 10%"><input id="suchenpreisbis" type="number"
-			style="width: 100px"></td>
-		<td style="width: 20%" colspan="2"></td>
-
-		<td style="width: 20%" colspan="2"><input id="suchenflaechevon"
-			type="number" style="width: 100px"></td>
-
-		<td style="width: 30%" colspan="3"><input id="suchenflaechebis"
-			type="number" style="width: 100px"></td>
-
-		<td style="width: 20%" colspan="2"></td>
-	</tr>
-	<tr>
-		<td style="width: 10%">Frei ab</td>
-		<td style="width: 10%">Nur</td>
-		<td style="width: 20%" colspan="2"></td>
-		<td style="width: 10%"></td>
-		<td style="width: 10%"></td>
-		<td style="width: 10%"></td>
-		<td style="width: 30%" colspan="3"></td>
-	</tr>
-	<tr>
-		<td style="width: 10%"><input type="text"
-			value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
-			id="suchenfreiab" style="width: 100px" /></td>
-		<td style="width: 10%"><input type="checkbox"
-			id="checkboxsuchenstudis" name="checkboxsuchenstudis"> <label
-			for="checkboxsuchenstudis">Studis/Stifte</label></td>
-
-		<td style="width: 30%" colspan="3"><input type="checkbox"
-			id="checkboxsuchenateiler" name="checkboxsuchenateiler"><label
-			for="checkboxsuchenateiler">Studio/Atelier</label></td>
-
-		<td style="width: 10%" colspan="2"><input type="checkbox"
-			id="checkboxsuchenFrauenwg" name="checkboxsuchenFrauenwg"> <label
-			for="checkboxsuchenFrauenwg">Frauen-WG</label></td>
-		<td style="width: 40%" colspan="4"><input type="checkbox"
-			id="checkboxsuchenMannerwg" name="checkboxsuchenMannerwg"> <label
-			for="checkboxsuchenMannerwg">M‰nner-WG</label></td>
-
-	</tr>
-	<tr>
-		<td style="width: 40%" height="18pt" colspan="4"></td>
-		<td style="width: 10%"></td>
-		<td style="width: 50%" colspan="5"></td>
-	</tr>
-	<tr>
-		<td style="width: 50%" colspan="5">
-			<button type="submit" id="btSuchen" style="width: 100%">Suchen</button>
-		</td>
-		<td style="width: 10%"></td>
-		<td style="width: 40%" colspan="4"></td>
-	</tr>
-</table>
-
-
-
-
+                pro Monat zwischen 
+                <input id="SUCHminMiete" type="number"> und 
+                <input id="SUCHmaxMiete" type="number"> Franken kostet.<br>
+            </div>
+            </br>
+            Mit Einzugsdatum ab sofort oder ab  
+            <input type="date" value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
+                   id="SUCHAbDatum" style="width: 100px" /><br>
+            Unbefristet oder bis <input type="date" value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
+                               id="SUCHBisDatum" style="width: 100px" />
+        </form>
+        <button id="btnSuchen" type="submit">Suchen</button>
+        <button id="btnFilterAus" type="submit">Filter zur√ºcksetzen</button>
 <?php
 }
 ?>

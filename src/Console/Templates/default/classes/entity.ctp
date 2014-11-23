@@ -19,36 +19,38 @@ namespace <?= $namespace ?>\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * <?= $name ?> Entity.
- */
+* <?= $name ?> Entity.
+*/
 class <?= $name ?> extends Entity {
 
 <?php if (!empty($fields)): ?>
-/**
- * Fields that can be mass assigned using newEntity() or patchEntity().
- *
- * @var array
- */
-	protected $_accessible = [
-<?php foreach ($fields as $field): ?>
-		'<?= $field ?>' => true,
-<?php endforeach; ?>
-	];
+    /**
+    * Fields that can be mass assigned using newEntity() or patchEntity().
+    *
+    * @var array
+    */
+    protected $_accessible = [
+    <?php foreach ($fields as $field): ?>
+        '<?= $field ?>' => true,
+    <?php endforeach; ?>
+    ];
 
 <?php endif ?>
 <?php if (!empty($hidden)): ?>
-<?php
-$hidden = array_map(function($el) { return "'$el'"; }, $hidden);
-?>
-/**
- * Fields that are excluded from JSON an array versions of the entity.
- *
- * @var array
- */
-	protected $_hidden = [
-		<?= implode(",\n\t\t", $hidden) ?>
+    <?php
+    $hidden = array_map(function($el) {
+        return "'$el'";
+    }, $hidden);
+    ?>
+    /**
+    * Fields that are excluded from JSON an array versions of the entity.
+    *
+    * @var array
+    */
+    protected $_hidden = [
+    <?= implode(",\n\t\t", $hidden) ?>
 
-	];
+    ];
 
 <?php endif ?>
 }

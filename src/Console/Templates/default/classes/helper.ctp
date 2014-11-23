@@ -12,22 +12,23 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-echo "<?php\n"; ?>
+echo "<?php\n";
+?>
 namespace <?= $namespace ?>\View\Helper;
 
 use Cake\View\Helper;
 use Cake\View\View;
 
 /**
- * <?= $name ?> helper
- */
+* <?= $name ?> helper
+*/
 class <?= $name ?>Helper extends Helper {
 
 /**
- * Default configuration.
- *
- * @var array
- */
-	protected $_defaultConfig = [];
+* Default configuration.
+*
+* @var array
+*/
+protected $_defaultConfig = [];
 
 }

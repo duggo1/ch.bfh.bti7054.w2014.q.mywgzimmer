@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Database Exception
  *
@@ -14,11 +15,12 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database;
 
 /**
  * Exception for the database package.
  */
 class Exception extends \Cake\Error\Exception {
-
+    
 }

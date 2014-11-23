@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\ORM;
 
 use Cake\Core\InstanceConfigTrait;
@@ -92,222 +94,222 @@ use Cake\Event\EventListener;
  */
 class Behavior implements EventListener {
 
-	use InstanceConfigTrait;
+    use InstanceConfigTrait;
 
-/**
- * Reflection method cache for behaviors.
- *
- * Stores the reflected method + finder methods per class.
- * This prevents reflecting the same class multiple times in a single process.
- *
- * @var array
- */
-	protected static $_reflectionCache = [];
+    /**
+     * Reflection method cache for behaviors.
+     *
+     * Stores the reflected method + finder methods per class.
+     * This prevents reflecting the same class multiple times in a single process.
+     *
+     * @var array
+     */
+    protected static $_reflectionCache = [];
 
-/**
- * Default configuration
- *
- * These are merged with user-provided configuration when the behavior is used.
- *
- * @var array
- */
-	protected $_defaultConfig = [];
+    /**
+     * Default configuration
+     *
+     * These are merged with user-provided configuration when the behavior is used.
+     *
+     * @var array
+     */
+    protected $_defaultConfig = [];
 
-/**
- * Constructor
- *
- * Merge config with the default and store in the config property
- *
- * Does not retain a reference to the Table object. If you need this
- * you should override the constructor.
- *
- * @param Table $table The table this behavior is attached to.
- * @param array $config The config for this behavior.
- */
-	public function __construct(Table $table, array $config = []) {
-		$this->config($config);
-	}
+    /**
+     * Constructor
+     *
+     * Merge config with the default and store in the config property
+     *
+     * Does not retain a reference to the Table object. If you need this
+     * you should override the constructor.
+     *
+     * @param Table $table The table this behavior is attached to.
+     * @param array $config The config for this behavior.
+     */
+    public function __construct(Table $table, array $config = []) {
+        $this->config($config);
+    }
 
-/**
- * verifyConfig
- *
- * Check that implemented* keys contain values pointing at callable
- *
- * @return void
- * @throws \Cake\Error\Exception if config are invalid
- */
-	public function verifyConfig() {
-		$keys = ['implementedFinders', 'implementedMethods'];
-		foreach ($keys as $key) {
-			if (!isset($this->_config[$key])) {
-				continue;
-			}
+    /**
+     * verifyConfig
+     *
+     * Check that implemented* keys contain values pointing at callable
+     *
+     * @return void
+     * @throws \Cake\Error\Exception if config are invalid
+     */
+    public function verifyConfig() {
+        $keys = ['implementedFinders', 'implementedMethods'];
+        foreach ($keys as $key) {
+            if (!isset($this->_config[$key])) {
+                continue;
+            }
 
-			foreach ($this->_config[$key] as $method) {
-				if (!is_callable([$this, $method])) {
-					throw new Exception(sprintf('The method %s is not callable on class %s', $method, get_class($this)));
-				}
-			}
-		}
-	}
+            foreach ($this->_config[$key] as $method) {
+                if (!is_callable([$this, $method])) {
+                    throw new Exception(sprintf('The method %s is not callable on class %s', $method, get_class($this)));
+                }
+            }
+        }
+    }
 
-/**
- * Get the Model callbacks this behavior is interested in.
- *
- * By defining one of the callback methods a behavior is assumed
- * to be interested in the related event.
- *
- * Override this method if you need to add non-conventional event listeners.
- * Or if you want you behavior to listen to non-standard events.
- *
- * @return array
- */
-	public function implementedEvents() {
-		$eventMap = [
-			'Model.beforeFind' => 'beforeFind',
-			'Model.beforeSave' => 'beforeSave',
-			'Model.afterSave' => 'afterSave',
-			'Model.beforeDelete' => 'beforeDelete',
-			'Model.afterDelete' => 'afterDelete',
-		];
-		$config = $this->config();
-		$priority = isset($config['priority']) ? $config['priority'] : null;
-		$events = [];
+    /**
+     * Get the Model callbacks this behavior is interested in.
+     *
+     * By defining one of the callback methods a behavior is assumed
+     * to be interested in the related event.
+     *
+     * Override this method if you need to add non-conventional event listeners.
+     * Or if you want you behavior to listen to non-standard events.
+     *
+     * @return array
+     */
+    public function implementedEvents() {
+        $eventMap = [
+            'Model.beforeFind' => 'beforeFind',
+            'Model.beforeSave' => 'beforeSave',
+            'Model.afterSave' => 'afterSave',
+            'Model.beforeDelete' => 'beforeDelete',
+            'Model.afterDelete' => 'afterDelete',
+        ];
+        $config = $this->config();
+        $priority = isset($config['priority']) ? $config['priority'] : null;
+        $events = [];
 
-		foreach ($eventMap as $event => $method) {
-			if (!method_exists($this, $method)) {
-				continue;
-			}
-			if ($priority === null) {
-				$events[$event] = $method;
-			} else {
-				$events[$event] = [
-					'callable' => $method,
-					'priority' => $priority
-				];
-			}
-		}
-		return $events;
-	}
+        foreach ($eventMap as $event => $method) {
+            if (!method_exists($this, $method)) {
+                continue;
+            }
+            if ($priority === null) {
+                $events[$event] = $method;
+            } else {
+                $events[$event] = [
+                    'callable' => $method,
+                    'priority' => $priority
+                ];
+            }
+        }
+        return $events;
+    }
 
-/**
- * implementedFinders
- *
- * provides and alias->methodname map of which finders a behavior implements. Example:
- *
- * {{{
- *  [
- *    'this' => 'findThis',
- *    'alias' => 'findMethodName'
- *  ]
- * }}}
- *
- * With the above example, a call to `$Table->find('this')` will call `$Behavior->findThis()`
- * and a call to `$Table->find('alias')` will call `$Behavior->findMethodName()`
- *
- * It is recommended, though not required, to define implementedFinders in the config property
- * of child classes such that it is not necessary to use reflections to derive the available
- * method list. See core behaviors for examples
- *
- * @return array
- */
-	public function implementedFinders() {
-		if (isset($this->_config['implementedFinders'])) {
-			return $this->_config['implementedFinders'];
-		}
+    /**
+     * implementedFinders
+     *
+     * provides and alias->methodname map of which finders a behavior implements. Example:
+     *
+     * {{{
+     *  [
+     *    'this' => 'findThis',
+     *    'alias' => 'findMethodName'
+     *  ]
+     * }}}
+     *
+     * With the above example, a call to `$Table->find('this')` will call `$Behavior->findThis()`
+     * and a call to `$Table->find('alias')` will call `$Behavior->findMethodName()`
+     *
+     * It is recommended, though not required, to define implementedFinders in the config property
+     * of child classes such that it is not necessary to use reflections to derive the available
+     * method list. See core behaviors for examples
+     *
+     * @return array
+     */
+    public function implementedFinders() {
+        if (isset($this->_config['implementedFinders'])) {
+            return $this->_config['implementedFinders'];
+        }
 
-		$reflectionMethods = $this->_reflectionCache();
-		return $reflectionMethods['finders'];
-	}
+        $reflectionMethods = $this->_reflectionCache();
+        return $reflectionMethods['finders'];
+    }
 
-/**
- * implementedMethods
- *
- * provides an alias->methodname map of which methods a behavior implements. Example:
- *
- * {{{
- *  [
- *    'method' => 'method',
- *    'aliasedmethod' => 'somethingElse'
- *  ]
- * }}}
- *
- * With the above example, a call to `$Table->method()` will call `$Behavior->method()`
- * and a call to `$Table->aliasedmethod()` will call `$Behavior->somethingElse()`
- *
- * It is recommended, though not required, to define implementedFinders in the config property
- * of child classes such that it is not necessary to use reflections to derive the available
- * method list. See core behaviors for examples
- *
- * @return array
- */
-	public function implementedMethods() {
-		if (isset($this->_config['implementedMethods'])) {
-			return $this->_config['implementedMethods'];
-		}
+    /**
+     * implementedMethods
+     *
+     * provides an alias->methodname map of which methods a behavior implements. Example:
+     *
+     * {{{
+     *  [
+     *    'method' => 'method',
+     *    'aliasedmethod' => 'somethingElse'
+     *  ]
+     * }}}
+     *
+     * With the above example, a call to `$Table->method()` will call `$Behavior->method()`
+     * and a call to `$Table->aliasedmethod()` will call `$Behavior->somethingElse()`
+     *
+     * It is recommended, though not required, to define implementedFinders in the config property
+     * of child classes such that it is not necessary to use reflections to derive the available
+     * method list. See core behaviors for examples
+     *
+     * @return array
+     */
+    public function implementedMethods() {
+        if (isset($this->_config['implementedMethods'])) {
+            return $this->_config['implementedMethods'];
+        }
 
-		$reflectionMethods = $this->_reflectionCache();
-		return $reflectionMethods['methods'];
-	}
+        $reflectionMethods = $this->_reflectionCache();
+        return $reflectionMethods['methods'];
+    }
 
-/**
- * Get the methods implemented by this behavior
- *
- * Use the implementedEvents() method to exclude callback methods.
- * Methods starting with `_` will be ignored, as will methods
- * declared on Cake\ORM\Behavior
- *
- * @return array
- */
-	protected function _reflectionCache() {
-		$class = get_class($this);
-		if (isset(self::$_reflectionCache[$class])) {
-			return self::$_reflectionCache[$class];
-		}
+    /**
+     * Get the methods implemented by this behavior
+     *
+     * Use the implementedEvents() method to exclude callback methods.
+     * Methods starting with `_` will be ignored, as will methods
+     * declared on Cake\ORM\Behavior
+     *
+     * @return array
+     */
+    protected function _reflectionCache() {
+        $class = get_class($this);
+        if (isset(self::$_reflectionCache[$class])) {
+            return self::$_reflectionCache[$class];
+        }
 
-		$events = $this->implementedEvents();
-		$eventMethods = [];
-		foreach ($events as $e => $binding) {
-			if (is_array($binding) && isset($binding['callable'])) {
-				$binding = $binding['callable'];
-			}
-			$eventMethods[$binding] = true;
-		}
+        $events = $this->implementedEvents();
+        $eventMethods = [];
+        foreach ($events as $e => $binding) {
+            if (is_array($binding) && isset($binding['callable'])) {
+                $binding = $binding['callable'];
+            }
+            $eventMethods[$binding] = true;
+        }
 
-		$baseClass = 'Cake\ORM\Behavior';
-		if (isset(self::$_reflectionCache[$baseClass])) {
-			$baseMethods = self::$_reflectionCache[$baseClass];
-		} else {
-			$baseMethods = get_class_methods($baseClass);
-			self::$_reflectionCache[$baseClass] = $baseMethods;
-		}
+        $baseClass = 'Cake\ORM\Behavior';
+        if (isset(self::$_reflectionCache[$baseClass])) {
+            $baseMethods = self::$_reflectionCache[$baseClass];
+        } else {
+            $baseMethods = get_class_methods($baseClass);
+            self::$_reflectionCache[$baseClass] = $baseMethods;
+        }
 
-		$return = [
-			'finders' => [],
-			'methods' => []
-		];
+        $return = [
+            'finders' => [],
+            'methods' => []
+        ];
 
-		$reflection = new \ReflectionClass($class);
+        $reflection = new \ReflectionClass($class);
 
-		foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
-			$methodName = $method->getName();
-			if (in_array($methodName, $baseMethods)) {
-				continue;
-			}
+        foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
+            $methodName = $method->getName();
+            if (in_array($methodName, $baseMethods)) {
+                continue;
+            }
 
-			$methodName = $method->getName();
-			if (strpos($methodName, '_') === 0 || isset($eventMethods[$methodName])) {
-				continue;
-			}
+            $methodName = $method->getName();
+            if (strpos($methodName, '_') === 0 || isset($eventMethods[$methodName])) {
+                continue;
+            }
 
-			if (substr($methodName, 0, 4) === 'find') {
-				$return['finders'][lcfirst(substr($methodName, 4))] = $methodName;
-			} else {
-				$return['methods'][$methodName] = $methodName;
-			}
-		}
+            if (substr($methodName, 0, 4) === 'find') {
+                $return['finders'][lcfirst(substr($methodName, 4))] = $methodName;
+            } else {
+                $return['methods'][$methodName] = $methodName;
+            }
+        }
 
-		return self::$_reflectionCache[$class] = $return;
-	}
+        return self::$_reflectionCache[$class] = $return;
+    }
 
 }

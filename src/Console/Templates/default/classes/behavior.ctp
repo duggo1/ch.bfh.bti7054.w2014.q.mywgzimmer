@@ -12,22 +12,23 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-echo "<?php\n"; ?>
+echo "<?php\n";
+?>
 namespace <?= $namespace ?>\Model\Behavior;
 
 use Cake\ORM\Behavior;
 use Cake\ORM\Table;
 
 /**
- * <?= $name ?> behavior
- */
+* <?= $name ?> behavior
+*/
 class <?= $name ?>Behavior extends Behavior {
 
 /**
- * Default configuration.
- *
- * @var array
- */
-	protected $_defaultConfig = [];
+* Default configuration.
+*
+* @var array
+*/
+protected $_defaultConfig = [];
 
 }

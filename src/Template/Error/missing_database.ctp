@@ -16,16 +16,16 @@
 ?>
 <h2>Missing Database Connection</h2>
 <p class="error">
-	<strong>Error: </strong>
-	Scaffold requires a database connection
+    <strong>Error: </strong>
+    Scaffold requires a database connection
 </p>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('Confirm you have created the file: %s', APP_DIR . DS . 'Config' . DS . 'datasources.php'); ?>
+    <strong>Error: </strong>
+    <?= sprintf('Confirm you have created the file: %s', APP_DIR . DS . 'Config' . DS . 'datasources.php'); ?>
 </p>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_database.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_database.ctp'); ?>
 </p>
 
 <?= $this->element('exception_stack_trace'); ?>

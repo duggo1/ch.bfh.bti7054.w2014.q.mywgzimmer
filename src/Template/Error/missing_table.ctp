@@ -16,12 +16,12 @@
 ?>
 <h2>Missing Database Table</h2>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('Table <em>%s</em> for model <em>%s</em> was not found in datasource <em>%s</em>.', h($table),  h($class), h($ds)); ?>
+    <strong>Error: </strong>
+    <?= sprintf('Table <em>%s</em> for model <em>%s</em> was not found in datasource <em>%s</em>.', h($table), h($class), h($ds)); ?>
 </p>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_table.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_table.ctp'); ?>
 </p>
 
 <?= $this->element('exception_stack_trace'); ?>

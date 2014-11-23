@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Test\TestCase\View\Widget;
 
 use Cake\TestSuite\TestCase;
@@ -23,79 +25,79 @@ use Cake\View\Widget\Label;
  */
 class LabelTest extends TestCase {
 
-/**
- * setup method.
- *
- * @return void
- */
-	public function setUp() {
-		parent::setUp();
-		$templates = [
-			'label' => '<label{{attrs}}>{{text}}</label>',
-		];
-		$this->templates = new StringTemplate($templates);
-	}
+    /**
+     * setup method.
+     *
+     * @return void
+     */
+    public function setUp() {
+        parent::setUp();
+        $templates = [
+            'label' => '<label{{attrs}}>{{text}}</label>',
+        ];
+        $this->templates = new StringTemplate($templates);
+    }
 
-/**
- * test render
- *
- * @return void
- */
-	public function testRender() {
-		$label = new Label($this->templates);
-		$data = [
-			'text' => 'My text',
-		];
-		$result = $label->render($data);
-		$expected = [
-			'label' => [],
-			'My text',
-			'/label'
-		];
-		$this->assertTags($result, $expected);
-	}
+    /**
+     * test render
+     *
+     * @return void
+     */
+    public function testRender() {
+        $label = new Label($this->templates);
+        $data = [
+            'text' => 'My text',
+        ];
+        $result = $label->render($data);
+        $expected = [
+            'label' => [],
+            'My text',
+            '/label'
+        ];
+        $this->assertTags($result, $expected);
+    }
 
-/**
- * test render escape
- *
- * @return void
- */
-	public function testRenderEscape() {
-		$label = new Label($this->templates);
-		$data = [
-			'text' => 'My > text',
-			'for' => 'Some > value',
-			'escape' => false,
-		];
-		$result = $label->render($data);
-		$expected = [
-			'label' => ['for' => 'Some > value'],
-			'My > text',
-			'/label'
-		];
-		$this->assertTags($result, $expected);
-	}
+    /**
+     * test render escape
+     *
+     * @return void
+     */
+    public function testRenderEscape() {
+        $label = new Label($this->templates);
+        $data = [
+            'text' => 'My > text',
+            'for' => 'Some > value',
+            'escape' => false,
+        ];
+        $result = $label->render($data);
+        $expected = [
+            'label' => ['for' => 'Some > value'],
+            'My > text',
+            '/label'
+        ];
+        $this->assertTags($result, $expected);
+    }
 
-/**
- * test render escape
- *
- * @return void
- */
-	public function testRenderAttributes() {
-		$label = new Label($this->templates);
-		$data = [
-			'text' => 'My > text',
-			'for' => 'some-id',
-			'id' => 'some-id',
-			'data-foo' => 'value',
-		];
-		$result = $label->render($data);
-		$expected = [
-			'label' => ['id' => 'some-id', 'data-foo' => 'value', 'for' => 'some-id'],
-			'My &gt; text',
-			'/label'
-		];
-		$this->assertTags($result, $expected);
-	}
+    /**
+     * test render escape
+     *
+     * @return void
+     */
+    public function testRenderAttributes() {
+        $label = new Label($this->templates);
+        $data = [
+            'text' => 'My > text',
+            'for' => 'some-id',
+            'id' => 'some-id',
+            'data-foo' => 'value',
+        ];
+        $result = $label->render($data);
+        $expected = [
+            'label' => ['id' => 'some-id', 'data-foo' => 'value', 'for' => 'some-id'],
+            'My &gt; text',
+            '/label'
+        ];
+        $this->assertTags($result, $expected);
+    }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Controller;
 
 use Cake\Core\InstanceConfigTrait;
@@ -63,97 +65,97 @@ use Cake\Event\EventListener;
  */
 class Component implements EventListener {
 
-	use InstanceConfigTrait;
+    use InstanceConfigTrait;
 
-/**
- * Component registry class used to lazy load components.
- *
- * @var ComponentRegistry
- */
-	protected $_registry;
+    /**
+     * Component registry class used to lazy load components.
+     *
+     * @var ComponentRegistry
+     */
+    protected $_registry;
 
-/**
- * Other Components this component uses.
- *
- * @var array
- */
-	public $components = array();
+    /**
+     * Other Components this component uses.
+     *
+     * @var array
+     */
+    public $components = array();
 
-/**
- * Default config
- *
- * These are merged with user-provided config when the component is used.
- *
- * @var array
- */
-	protected $_defaultConfig = [];
+    /**
+     * Default config
+     *
+     * These are merged with user-provided config when the component is used.
+     *
+     * @var array
+     */
+    protected $_defaultConfig = [];
 
-/**
- * A component lookup table used to lazy load component objects.
- *
- * @var array
- */
-	protected $_componentMap = array();
+    /**
+     * A component lookup table used to lazy load component objects.
+     *
+     * @var array
+     */
+    protected $_componentMap = array();
 
-/**
- * Constructor
- *
- * @param ComponentRegistry $registry A ComponentRegistry this component can use to lazy load its components
- * @param array $config Array of configuration settings.
- */
-	public function __construct(ComponentRegistry $registry, array $config = []) {
-		$this->_registry = $registry;
+    /**
+     * Constructor
+     *
+     * @param ComponentRegistry $registry A ComponentRegistry this component can use to lazy load its components
+     * @param array $config Array of configuration settings.
+     */
+    public function __construct(ComponentRegistry $registry, array $config = []) {
+        $this->_registry = $registry;
 
-		$this->config($config);
+        $this->config($config);
 
-		if (!empty($this->components)) {
-			$this->_componentMap = $registry->normalizeArray($this->components);
-		}
-	}
+        if (!empty($this->components)) {
+            $this->_componentMap = $registry->normalizeArray($this->components);
+        }
+    }
 
-/**
- * Magic method for lazy loading $components.
- *
- * @param string $name Name of component to get.
- * @return mixed A Component object or null.
- */
-	public function __get($name) {
-		if (isset($this->_componentMap[$name]) && !isset($this->{$name})) {
-			$config = array_merge((array)$this->_componentMap[$name]['config'], array('enabled' => false));
-			$this->{$name} = $this->_registry->load($this->_componentMap[$name]['class'], $config);
-		}
-		if (isset($this->{$name})) {
-			return $this->{$name};
-		}
-	}
+    /**
+     * Magic method for lazy loading $components.
+     *
+     * @param string $name Name of component to get.
+     * @return mixed A Component object or null.
+     */
+    public function __get($name) {
+        if (isset($this->_componentMap[$name]) && !isset($this->{$name})) {
+            $config = array_merge((array) $this->_componentMap[$name]['config'], array('enabled' => false));
+            $this->{$name} = $this->_registry->load($this->_componentMap[$name]['class'], $config);
+        }
+        if (isset($this->{$name})) {
+            return $this->{$name};
+        }
+    }
 
-/**
- * Get the Controller callbacks this Component is interested in.
- *
- * Uses Conventions to map controller events to standard component
- * callback method names. By defining one of the callback methods a
- * component is assumed to be interested in the related event.
- *
- * Override this method if you need to add non-conventional event listeners.
- * Or if you want components to listen to non-standard events.
- *
- * @return array
- */
-	public function implementedEvents() {
-		$eventMap = [
-			'Controller.initialize' => 'initialize',
-			'Controller.startup' => 'startup',
-			'Controller.beforeRender' => 'beforeRender',
-			'Controller.beforeRedirect' => 'beforeRedirect',
-			'Controller.shutdown' => 'shutdown',
-		];
-		$events = [];
-		foreach ($eventMap as $event => $method) {
-			if (method_exists($this, $method)) {
-				$events[$event] = $method;
-			}
-		}
-		return $events;
-	}
+    /**
+     * Get the Controller callbacks this Component is interested in.
+     *
+     * Uses Conventions to map controller events to standard component
+     * callback method names. By defining one of the callback methods a
+     * component is assumed to be interested in the related event.
+     *
+     * Override this method if you need to add non-conventional event listeners.
+     * Or if you want components to listen to non-standard events.
+     *
+     * @return array
+     */
+    public function implementedEvents() {
+        $eventMap = [
+            'Controller.initialize' => 'initialize',
+            'Controller.startup' => 'startup',
+            'Controller.beforeRender' => 'beforeRender',
+            'Controller.beforeRedirect' => 'beforeRedirect',
+            'Controller.shutdown' => 'shutdown',
+        ];
+        $events = [];
+        foreach ($eventMap as $event => $method) {
+            if (method_exists($this, $method)) {
+                $events[$event] = $method;
+            }
+        }
+        return $events;
+    }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Testing task in a plugin
  *
@@ -14,15 +15,15 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class OtherTaskTask
  *
  */
+
 namespace TestPlugin\Console\Command\Task;
 
 use Cake\Console\Shell;
 
 class OtherTaskTask extends Shell {
-
+    
 }

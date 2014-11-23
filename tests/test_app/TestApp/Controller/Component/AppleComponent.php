@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Controller\Component;
 
 use Cake\Controller\Component;
@@ -23,28 +25,29 @@ use Cake\Event\Event;
  */
 class AppleComponent extends Component {
 
-/**
- * components property
- *
- * @var array
- */
-	public $components = array('Orange');
+    /**
+     * components property
+     *
+     * @var array
+     */
+    public $components = array('Orange');
 
-/**
- * testName property
- *
- * @var mixed
- */
-	public $testName = null;
+    /**
+     * testName property
+     *
+     * @var mixed
+     */
+    public $testName = null;
 
-/**
- * startup method
- *
- * @param Event $event
- * @param mixed $controller
- * @return void
- */
-	public function startup(Event $event) {
-		$this->testName = $controller->name;
-	}
+    /**
+     * startup method
+     *
+     * @param Event $event
+     * @param mixed $controller
+     * @return void
+     */
+    public function startup(Event $event) {
+        $this->testName = $controller->name;
+    }
+
 }

@@ -13,20 +13,19 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 $pluginDot = empty($plugin) ? null : $plugin . '.';
 ?>
 <h2>Missing Datasource</h2>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('Datasource class <em>%s</em> could not be found.', h($pluginDot . $class)); ?>
-	<?php if (isset($message)):  ?>
-		<?= h($message); ?>
-	<?php endif; ?>
+    <strong>Error: </strong>
+    <?= sprintf('Datasource class <em>%s</em> could not be found.', h($pluginDot . $class)); ?>
+    <?php if (isset($message)): ?>
+        <?= h($message); ?>
+    <?php endif; ?>
 </p>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_datasource.ctp'); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . 'missing_datasource.ctp'); ?>
 </p>
 
 <?= $this->element('exception_stack_trace'); ?>

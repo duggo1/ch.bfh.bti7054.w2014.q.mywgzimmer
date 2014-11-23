@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database;
 
 use Cake\Database\QueryCompiler;
@@ -23,41 +25,41 @@ use Cake\Database\QueryCompiler;
  */
 class SqlserverCompiler extends QueryCompiler {
 
-/**
- * {@inheritDoc}
- */
-	protected $_templates = [
-		'delete' => 'DELETE',
-		'update' => 'UPDATE %s',
-		'where' => ' WHERE %s',
-		'group' => ' GROUP BY %s ',
-		'having' => ' HAVING %s ',
-		'order' => ' %s',
-		'offset' => ' OFFSET %s ROWS',
-		'epilog' => ' %s'
-	];
+    /**
+     * {@inheritDoc}
+     */
+    protected $_templates = [
+        'delete' => 'DELETE',
+        'update' => 'UPDATE %s',
+        'where' => ' WHERE %s',
+        'group' => ' GROUP BY %s ',
+        'having' => ' HAVING %s ',
+        'order' => ' %s',
+        'offset' => ' OFFSET %s ROWS',
+        'epilog' => ' %s'
+    ];
 
-/**
- * {@inheritDoc}
- */
-	protected $_selectParts = [
-		'select', 'from', 'join', 'where', 'group', 'having', 'order', 'offset',
-		'limit', 'union', 'epilog'
-	];
+    /**
+     * {@inheritDoc}
+     */
+    protected $_selectParts = [
+        'select', 'from', 'join', 'where', 'group', 'having', 'order', 'offset',
+        'limit', 'union', 'epilog'
+    ];
 
-/**
- * Generates the LIMIT part of a SQL query
- *
- * @param int $limit the limit clause
- * @param \Cake\Database\Query $query The query that is being compiled
- * @return string
- */
-	protected function _buildLimitPart($limit, $query) {
-		if ($limit === null || $query->clause('offset') === null) {
-			return '';
-		}
+    /**
+     * Generates the LIMIT part of a SQL query
+     *
+     * @param int $limit the limit clause
+     * @param \Cake\Database\Query $query The query that is being compiled
+     * @return string
+     */
+    protected function _buildLimitPart($limit, $query) {
+        if ($limit === null || $query->clause('offset') === null) {
+            return '';
+        }
 
-		return sprintf(' FETCH FIRST %d ROWS ONLY', $limit);
-	}
+        return sprintf(' FETCH FIRST %d ROWS ONLY', $limit);
+    }
 
 }

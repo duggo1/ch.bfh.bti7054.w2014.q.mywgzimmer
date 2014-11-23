@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test App Posts Model
  *
@@ -13,12 +14,13 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestApp\Model\Table;
 
 use Cake\ORM\Table;
 
 class PostsTable extends Table {
 
-	protected $_table = 'posts';
+    protected $_table = 'posts';
 
 }

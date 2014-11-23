@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TestPluginController used by Dispatcher test to test plugin shortcut URLs.
  *
@@ -14,22 +15,22 @@
  * @since         1.3.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class TestPluginController
  */
+
 namespace TestPlugin\Controller;
 
 class TestPluginController extends TestPluginAppController {
 
-	public $uses = array();
+    public $uses = array();
 
-	public function index() {
-		$this->autoRender = false;
-	}
+    public function index() {
+        $this->autoRender = false;
+    }
 
-	public function add() {
-		$this->autoRender = false;
-	}
+    public function add() {
+        $this->autoRender = false;
+    }
 
 }

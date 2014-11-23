@@ -16,24 +16,24 @@
 ?>
 <h2>Missing Database Connection</h2>
 <p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('A Database connection using "%s" was missing or unable to connect.', h($class)); ?>
-	<br />
-	<?php
-	if (isset($message)):
-		echo sprintf('The database server returned this error: %s', h($message));
-	endif;
-	?>
+    <strong>Error: </strong>
+    <?= sprintf('A Database connection using "%s" was missing or unable to connect.', h($class)); ?>
+    <br />
+    <?php
+    if (isset($message)):
+        echo sprintf('The database server returned this error: %s', h($message));
+    endif;
+    ?>
 </p>
 <?php if (!$enabled) : ?>
-<p class="error">
-	<strong>Error: </strong>
-	<?= sprintf('%s driver is NOT enabled', h($class)); ?>
-</p>
+    <p class="error">
+        <strong>Error: </strong>
+        <?= sprintf('%s driver is NOT enabled', h($class)); ?>
+    </p>
 <?php endif; ?>
 <p class="notice">
-	<strong>Notice: </strong>
-	<?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . basename(__FILE__)); ?>
+    <strong>Notice: </strong>
+    <?= sprintf('If you want to customize this error message, create %s', APP_DIR . DS . 'Template' . DS . 'Error' . DS . basename(__FILE__)); ?>
 </p>
 
 <?php

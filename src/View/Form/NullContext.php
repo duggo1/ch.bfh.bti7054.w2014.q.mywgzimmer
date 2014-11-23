@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\View\Form;
 
 use Cake\Network\Request;
@@ -25,91 +27,91 @@ use Cake\View\Form\ContextInterface;
  */
 class NullContext implements ContextInterface {
 
-/**
- * The request object.
- *
- * @var \Cake\Network\Request
- */
-	protected $_request;
+    /**
+     * The request object.
+     *
+     * @var \Cake\Network\Request
+     */
+    protected $_request;
 
-/**
- * Constructor.
- *
- * @param \Cake\Network\Request
- * @param array
- */
-	public function __construct(Request $request, array $context) {
-		$this->_request = $request;
-	}
+    /**
+     * Constructor.
+     *
+     * @param \Cake\Network\Request
+     * @param array
+     */
+    public function __construct(Request $request, array $context) {
+        $this->_request = $request;
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function primaryKey() {
-		return [];
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function primaryKey() {
+        return [];
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function isPrimaryKey($field) {
-		return false;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function isPrimaryKey($field) {
+        return false;
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function isCreate() {
-		return true;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function isCreate() {
+        return true;
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function val($field) {
-		return $this->_request->data($field);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function val($field) {
+        return $this->_request->data($field);
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function isRequired($field) {
-		return false;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequired($field) {
+        return false;
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function fieldNames() {
-		return [];
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function fieldNames() {
+        return [];
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function type($field) {
-		return null;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function type($field) {
+        return null;
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function attributes($field) {
-		return [];
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function attributes($field) {
+        return [];
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function hasError($field) {
-		return false;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function hasError($field) {
+        return false;
+    }
 
-/**
- * {@inheritDoc}
- */
-	public function error($field) {
-		return [];
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function error($field) {
+        return [];
+    }
 
 }

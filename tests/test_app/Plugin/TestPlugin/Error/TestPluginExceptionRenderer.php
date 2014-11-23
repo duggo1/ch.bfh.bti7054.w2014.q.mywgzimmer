@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Exception Renderer
  *
@@ -17,6 +18,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace TestPlugin\Error;
 
 use Cake\Error\ExceptionRenderer;
@@ -27,12 +29,13 @@ use Cake\Error\ExceptionRenderer;
  */
 class TestPluginExceptionRenderer extends ExceptionRenderer {
 
-/**
- * Renders the response for the exception.
- *
- * @return void
- */
-	public function render() {
-		echo 'Rendered by test plugin';
-	}
+    /**
+     * Renders the response for the exception.
+     *
+     * @return void
+     */
+    public function render() {
+        echo 'Rendered by test plugin';
+    }
+
 }

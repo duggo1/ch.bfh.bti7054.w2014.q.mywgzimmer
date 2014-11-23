@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Suite TestPlugin Library
  *
@@ -14,12 +15,13 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class TestPluginLibrary
  *
  */
+
 namespace TestPlugin\Lib;
 
 class TestPluginLibrary {
+    
 }

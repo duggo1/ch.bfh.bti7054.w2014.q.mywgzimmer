@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Suite CustomLibClass Library
  *
@@ -14,12 +15,13 @@
  * @since         1.2.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 /**
  * Class CustomLibClass
  *
  */
+
 namespace TestPlugin\Lib\Custom\Package;
 
 class CustomLibClass {
+    
 }

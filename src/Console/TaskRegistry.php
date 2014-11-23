@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         2.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Console;
 
 use Cake\Core\App;
@@ -23,62 +25,62 @@ use Cake\Utility\ObjectRegistry;
  */
 class TaskRegistry extends ObjectRegistry {
 
-/**
- * Shell to use to set params to tasks.
- *
- * @var Shell
- */
-	protected $_Shell;
+    /**
+     * Shell to use to set params to tasks.
+     *
+     * @var Shell
+     */
+    protected $_Shell;
 
-/**
- * Constructor
- *
- * @param Shell $Shell
- */
-	public function __construct(Shell $Shell) {
-		$this->_Shell = $Shell;
-	}
+    /**
+     * Constructor
+     *
+     * @param Shell $Shell
+     */
+    public function __construct(Shell $Shell) {
+        $this->_Shell = $Shell;
+    }
 
-/**
- * Resolve a task classname.
- *
- * Part of the template method for Cake\Utility\ObjectRegistry::load()
- *
- * @param string $class Partial classname to resolve.
- * @return string|false Either the correct classname or false.
- */
-	protected function _resolveClassName($class) {
-		return App::classname($class, 'Console/Command/Task', 'Task');
-	}
+    /**
+     * Resolve a task classname.
+     *
+     * Part of the template method for Cake\Utility\ObjectRegistry::load()
+     *
+     * @param string $class Partial classname to resolve.
+     * @return string|false Either the correct classname or false.
+     */
+    protected function _resolveClassName($class) {
+        return App::classname($class, 'Console/Command/Task', 'Task');
+    }
 
-/**
- * Throws an exception when a task is missing.
- *
- * Part of the template method for Cake\Utility\ObjectRegistry::load()
- *
- * @param string $class The classname that is missing.
- * @param string $plugin The plugin the task is missing in.
- * @throws \Cake\Console\Error\MissingTaskException
- */
-	protected function _throwMissingClassError($class, $plugin) {
-		throw new Error\MissingTaskException([
-			'class' => $class,
-			'plugin' => $plugin
-		]);
-	}
+    /**
+     * Throws an exception when a task is missing.
+     *
+     * Part of the template method for Cake\Utility\ObjectRegistry::load()
+     *
+     * @param string $class The classname that is missing.
+     * @param string $plugin The plugin the task is missing in.
+     * @throws \Cake\Console\Error\MissingTaskException
+     */
+    protected function _throwMissingClassError($class, $plugin) {
+        throw new Error\MissingTaskException([
+    'class' => $class,
+    'plugin' => $plugin
+        ]);
+    }
 
-/**
- * Create the task instance.
- *
- * Part of the template method for Cake\Utility\ObjectRegistry::load()
- *
- * @param string $class The classname to create.
- * @param string $alias The alias of the task.
- * @param array $settings An array of settings to use for the task.
- * @return \Cake\Console\Shell The constructed task class.
- */
-	protected function _create($class, $alias, $settings) {
-		return new $class($this->_Shell->io());
-	}
+    /**
+     * Create the task instance.
+     *
+     * Part of the template method for Cake\Utility\ObjectRegistry::load()
+     *
+     * @param string $class The classname to create.
+     * @param string $alias The alias of the task.
+     * @param array $settings An array of settings to use for the task.
+     * @return \Cake\Console\Shell The constructed task class.
+     */
+    protected function _create($class, $alias, $settings) {
+        return new $class($this->_Shell->io());
+    }
 
 }

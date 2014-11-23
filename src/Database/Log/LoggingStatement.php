@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\Database\Log;
 
 use Cake\Database\Statement\StatementDecorator;
@@ -23,73 +25,73 @@ use Cake\Database\Statement\StatementDecorator;
  */
 class LoggingStatement extends StatementDecorator {
 
-/**
- * Logger instance responsible for actually doing the logging task
- *
- * @var QueryLogger
- */
-	protected $_logger;
+    /**
+     * Logger instance responsible for actually doing the logging task
+     *
+     * @var QueryLogger
+     */
+    protected $_logger;
 
-/**
- * Holds bound params
- *
- * @var array
- */
-	protected $_compiledParams = [];
+    /**
+     * Holds bound params
+     *
+     * @var array
+     */
+    protected $_compiledParams = [];
 
-/**
- * Wrapper for the execute function to calculate time spent
- * and log the query afterwards.
- *
- * @param array $params list of values to be bound to query
- * @return bool true on success, false otherwise
- */
-	public function execute($params = null) {
-		$t = microtime(true);
-		$result = parent::execute($params);
+    /**
+     * Wrapper for the execute function to calculate time spent
+     * and log the query afterwards.
+     *
+     * @param array $params list of values to be bound to query
+     * @return bool true on success, false otherwise
+     */
+    public function execute($params = null) {
+        $t = microtime(true);
+        $result = parent::execute($params);
 
-		$query = new LoggedQuery;
-		$query->took = round((microtime(true) - $t) * 1000, 0);
-		$query->numRows = $this->rowCount();
-		$query->params = $params ?: $this->_compiledParams;
-		$query->query = $this->queryString;
-		$this->logger()->log($query);
+        $query = new LoggedQuery;
+        $query->took = round((microtime(true) - $t) * 1000, 0);
+        $query->numRows = $this->rowCount();
+        $query->params = $params ? : $this->_compiledParams;
+        $query->query = $this->queryString;
+        $this->logger()->log($query);
 
-		return $result;
-	}
+        return $result;
+    }
 
-/**
- * Wrapper for bindValue function to gather each parameter to be later used
- * in the logger function.
- *
- * @param string|int $column name or param position to be bound
- * @param mixed $value The value to bind to variable in query
- * @param string|int $type PDO type or name of configured Type class
- * @return void
- */
-	public function bindValue($column, $value, $type = 'string') {
-		parent::bindValue($column, $value, $type);
-		if ($type === null) {
-			$type = 'string';
-		}
-		if (!ctype_digit($type)) {
-			$value = $this->cast($value, $type)[0];
-		}
-		$this->_compiledParams[$column] = $value;
-	}
+    /**
+     * Wrapper for bindValue function to gather each parameter to be later used
+     * in the logger function.
+     *
+     * @param string|int $column name or param position to be bound
+     * @param mixed $value The value to bind to variable in query
+     * @param string|int $type PDO type or name of configured Type class
+     * @return void
+     */
+    public function bindValue($column, $value, $type = 'string') {
+        parent::bindValue($column, $value, $type);
+        if ($type === null) {
+            $type = 'string';
+        }
+        if (!ctype_digit($type)) {
+            $value = $this->cast($value, $type)[0];
+        }
+        $this->_compiledParams[$column] = $value;
+    }
 
-/**
- * Sets the logger object instance. When called with no arguments
- * it returns the currently setup logger instance
- *
- * @param object $instance logger object instance
- * @return object logger instance
- */
-	public function logger($instance = null) {
-		if ($instance === null) {
-			return $this->_logger;
-		}
-		return $this->_logger = $instance;
-	}
+    /**
+     * Sets the logger object instance. When called with no arguments
+     * it returns the currently setup logger instance
+     *
+     * @param object $instance logger object instance
+     * @return object logger instance
+     */
+    public function logger($instance = null) {
+        if ($instance === null) {
+            return $this->_logger;
+        }
+        return $this->_logger = $instance;
+    }
 
 }

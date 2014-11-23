@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MissingEntityException file
  *
@@ -14,6 +15,7 @@
  * @since         3.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Cake\ORM\Error;
 
 use Cake\Error\Exception;
@@ -24,6 +26,6 @@ use Cake\Error\Exception;
  */
 class MissingEntityException extends Exception {
 
-	protected $_messageTemplate = 'Entity class %s could not be found.';
+    protected $_messageTemplate = 'Entity class %s could not be found.';
 
 }

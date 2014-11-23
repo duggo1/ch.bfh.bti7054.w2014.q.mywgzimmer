@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Basic Cake functionality.
  *
@@ -16,7 +17,6 @@
  * @since         0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 define('TIME_START', microtime(true));
 
 require CAKE . 'basics.php';
