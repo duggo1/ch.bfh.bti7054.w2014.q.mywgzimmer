@@ -287,8 +287,64 @@ function ZuruckbtTab4() {
 }
 function Suchen() {
 
+	var Ort =  $("#suchOrt").val();
+	var Plz=  $("#suchPlz").val();
+	var Strasse=  $("#suchStr").val();
+	var PreisVon=  $("#suchPreisvon").val();
+	var PreisBis=  $("#suchPreisbis").val();
+	var FlaecheVon=  $("#suchflaechevon").val();
+	var FlaecheBis=  $("#suchflaechebis").val();
+	var FreiAb=  $("#suchFreiDatum").val();
+	
+	
+	$.ajax({
+		type : "GET",
+		data : "what=suchen&suchOrt=" + Ort 
+				+ "&suchPlz=" + Plz 
+				+ "&suchStr=" + Strasse 
+				+ "&suchPreisvon=" + PreisVon 
+				+ "&suchPreisbis=" + PreisBis 
+				+ "&suchflaechevon=" + FlaecheVon 
+				+ "&suchflaechebis=" + FlaecheBis 
+				+ "&suchFreiDatum=" + FreiAb,
+
+		url : "request/service.php",
+		success : function(msg) {
+			if (msg != 'false') {
+				$("#tabs").tabs("enable", 2);
+				$("#tabs").tabs("option", "active", 2);
+				$("#tabs").tabs("disable", 1);
+			}
+		}
+	});
+
+	
+	
 }
 
 function adminLogin() {
 
+//	var adminName = $("#adminName").val();
+//	var passwort = $("#passwort").val();
+//	
+//	$.ajax({
+//		type : "GET",
+//		data : "what=admin&adminName=" + adminName + "&passwort=" + passwort,
+//		url : "request/service.php",
+//		success : function(msg) {
+//			if (msg != 'false') {
+//			
+//				// Burada eger girilen admin bilgileri dogru ise admin sayfasini cagircaz.
+//				
+//			} else {
+//				alert(unescape("%DCberprufen Sie bitt Ihre Angaben!"));
+//			}
+//		}
+//	});
+	
+}
+function UserLogin(){
+	
+	
+	
 }

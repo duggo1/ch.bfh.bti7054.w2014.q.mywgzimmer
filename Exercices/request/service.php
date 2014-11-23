@@ -78,7 +78,7 @@ if($what == "inserierenTab5")
 
 if($what == "suchen")
 {
-
+	echo "true";
 }
 
 if($what == "admin")
