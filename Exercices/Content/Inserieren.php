@@ -47,10 +47,10 @@ function Inserieren() {
             </div>
             </br>
             <div>unser Durchschnittsalter</div>
-            <div><input id="ISTalter" type="number" value="13" min="13" max="99"></div>
+            <div><input id="ISTalter" type="number" value="0" min="13" max="99"></div>
             </br>
             <div>Beschreibung der aktuellen WG-Bewohner</div>
-            <textarea id="bewohnerBeschreibung" rows="10"></textarea>
+            <textarea id="bewohnerBeschreibung" rows="10" ></textarea>
             </br>
             </br>
         </form>
@@ -71,7 +71,7 @@ function Inserieren() {
                 </tr>
                 <tr>
                     <td><input id="insZimmerStr" type="text" required></td>
-                    <td><input id="insZimmerStrNr" type="number"  value="0"  min="0"></td> 
+                    <td><input id="insZimmerStrNr" type="text"></td> 
                     <td><input id="insZimmerZusatzNr" type="text"></td> 
 
                 </tr>
@@ -81,7 +81,7 @@ function Inserieren() {
                 </tr>
                 <tr>
                     <td><input id="insZimmerOrt" type="text" required></td>
-                    <td><input id="insZimmerPlz" type="number" value="0" min="0" required></td> 
+                    <td><input id="insZimmerPlz" type="number" value="1000" min="1000" max="9999"required></td> 
                 </tr>
             </table>
             </br>

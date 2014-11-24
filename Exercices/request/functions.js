@@ -15,7 +15,7 @@ function InserierenTab1() {
 	if (BewohnerAlter.length == 0) {
 		// $("#errorTel").html("*");
 		hasErrorBewohnerAlter = true;
-                ErrorMessage = ErrorMessage + "ungültige Altersangabe\n";
+                ErrorMessage = ErrorMessage + "fehlende Altersangabe\n";
 	} else {
 		if (isNaN(BewohnerAlter)) {
 			hasErrorBewohnerAlter = true;
@@ -77,53 +77,53 @@ function InserierenTab2() {
 	var hasErrorWohnungOrt = false;
 	var hasErrorWohnungPlz = false;
 	var hasErrorWohnungkosten = false;
+        
+        var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
 
 	if (WohnungStr.length == 0) {
 		hasErrorWohnungStr = true;
+                ErrorMessage = ErrorMessage + "fehlender Strassenname\n";
 	} else {
 		hasErrorWohnungStr = false;
 	}
 
 	if (WohnungHausNr.length == 0) {
 		hasErrorWohnungStr = true;
+                ErrorMessage = ErrorMessage + "fehlende Hausnummer\n";
 	} else {
-		if (isNaN(WohnungHausNr)) {
-			hasErrorWohnungStr = true;
-		} else {
 			hasErrorWohnungStr = false;
 		}
-	}
+
 
 	if (WohnungOrt.length == 0) {
 		hasErrorWohnungOrt = true;
+                ErrorMessage = ErrorMessage + "fehlender Ortsname\n";
+                
 	} else {
 		hasErrorWohnungOrt = false;
 	}
 
 	if (WohnungPlz.length == 0) {
 		hasErrorWohnungPlz = true;
+                ErrorMessage = ErrorMessage + "fehlende Postleitzahl\n";                
 	} else {
 		if (isNaN(WohnungPlz)) {
 			hasErrorWohnungPlz = true;
+                ErrorMessage = ErrorMessage + "ungültige Postleitzahl\n";
+                        
 		} else {
 			hasErrorWohnungPlz = false;
 		}
 	}
 
-	if (WohnungPlz.length == 0) {
-		hasErrorWohnungPlz = true;
-	} else {
-		if (isNaN(WohnungPlz)) {
-			hasErrorWohnungPlz = true;
-		} else {
-			hasErrorWohnungPlz = false;
-		}
-	}
 	if (Wohnungkosten.length == 0) {
 		hasErrorWohnungkosten = true;
+                ErrorMessage = ErrorMessage + "fehlende Mietzinsangabe\n";                
 	} else {
 		if (isNaN(Wohnungkosten)) {
 			hasErrorWohnungkosten = true;
+                        ErrorMessage = ErrorMessage + "ungültiger Mietzins\n";                
+
 		} else {
 			hasErrorWohnungkosten = false;
 		}
@@ -131,7 +131,7 @@ function InserierenTab2() {
 
 	if (hasErrorWohnungStr || hasErrorWohnungHausNr || hasErrorWohnungOrt
 			|| hasErrorWohnungPlz || hasErrorWohnungkosten) {
-		alert("Kontolieren Sie bitte eingegebene Daten!");
+		alert(ErrorMessage);
 		return;
 	}
 
@@ -164,9 +164,13 @@ function InserierenTab3() {
 
 	var hasErrorZimmerFlaeche = false;
 	var hasErrorZimmerBeschreibung = false;
-
+        
+        var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
+       
 	if (ZimmerFlaeche.length == 0) {
 		hasErrorZimmerFlaeche = true;
+                 ErrorMessage = ErrorMessage + "fehlende Zimmergrössen\n";                
+               
 	} else {
 		if (isNaN(ZimmerFlaeche)) {
 			hasErrorZimmerFlaeche = true;
