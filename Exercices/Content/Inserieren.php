@@ -47,10 +47,10 @@ function Inserieren() {
             </div>
             </br>
             <div>unser Durchschnittsalter</div>
-            <div><input id="ISTalter" type="number" min="13" max="99"></div>
+            <div><input id="ISTalter" type="number" value="13" min="13" max="99"></div>
             </br>
             <div>Beschreibung der aktuellen WG-Bewohner</div>
-            <textarea id="bewohner" rows="10"></textarea>
+            <textarea id="bewohnerBeschreibung" rows="10"></textarea>
             </br>
         </form>
         <button id="btweiter1" type="submit">Weiter</button>
@@ -70,8 +70,8 @@ function Inserieren() {
                 </tr>
                 <tr>
                     <td><input id="insZimmerStr" type="text" required></td>
-                    <td><input id="insZimmerStrNr" type="number"></td> 
-                    <td><input id="insZimmer" type="text"></td> 
+                    <td><input id="insZimmerStrNr" type="number"  value="0"  min="0"></td> 
+                    <td><input id="insZimmerZusatzNr" type="text"></td> 
 
                 </tr>
                 <tr>
@@ -80,7 +80,7 @@ function Inserieren() {
                 </tr>
                 <tr>
                     <td><input id="insZimmerOrt" type="text" required></td>
-                    <td><input id="insZimmerPlz" type="number" required></td> 
+                    <td><input id="insZimmerPlz" type="number" value="0" min="0" required></td> 
                 </tr>
             </table>
             </br>
@@ -99,7 +99,7 @@ function Inserieren() {
             </table>
             </br>
             <div>Mietzins total (inkl. Nebenkosten)</div>
-            <div><input id="insMitkosten" type="number" min="4" max="200"></div>
+            <div><input id="insMitkosten" type="number" value="4" min="4" max="200"></div>
         </form>
         <button id="btweiter2">Weiter</button>
         </br>
@@ -113,15 +113,15 @@ function Inserieren() {
 
             <h3>Informationen</h3>
             <div>
-                <input id="insZimmer" name="radioZimmerArt" type="radio" value="z" checked="checked"> Zimmer &nbsp;&nbsp;
-                <input id="insZimmer" name="radioZimmerArt" type="radio" value="s"> Studio (ohne Zugang zu Bad, WC oder Küche)<br>
+                <input id="insZimmerTyp" name="radioZimmerArt" type="radio" value="z" checked="checked"> Zimmer &nbsp;&nbsp;
+                <input id="insZimmerTyp" name="radioZimmerArt" type="radio" value="s"> Studio (ohne Zugang zu Bad, WC oder Küche)<br>
             </div>
             </br>
             <div>Fläche in m<sup>2</sup></div>
             <div><input id="insFlaeche" type="number" min="4" max="200" required></div>
             </br>
             <h3>Beschreibung</h3>
-            <textarea id="zimmer" rows="10"></textarea>
+            <textarea id="insZimmerBeschreibung" rows="10"></textarea>
             </br>
             <h3>Fotos</h3>
             <div><input id="insFoto1" type="file" ><input type="submit" value="Foto hochladen" name="submit"></div>
@@ -140,9 +140,9 @@ function Inserieren() {
         <form name="Tab4">
 <h3>Wir suchen</h3>
             <div>
-                <input id="ISTgeschlecht" name="geschlecht" type="radio" value="f"> eine Frau<br>
-                <input id="ISTgeschlecht" name="geschlecht" type="radio" value="m"> einen Mann<br>
-                <input id="ISTgeschlecht" name="geschlecht" type="radio" value="x" checked="checked"> egal<br>
+                <input id="SOLLgeschlecht" name="geschlecht" type="radio" value="f"> eine Frau<br>
+                <input id="SOLLgeschlecht" name="geschlecht" type="radio" value="m"> einen Mann<br>
+                <input id="SOLLgeschlecht" name="geschlecht" type="radio" value="x" checked="checked"> egal<br>
             </div>
             </br>
             <table>
@@ -157,7 +157,7 @@ function Inserieren() {
             </table>
             </br>
             <div>Beschreibung der gesuchten Person</div>
-            <textarea id="gesucht" rows="10"></textarea>
+            <textarea id="gesuchtBeschreibung" rows="10"></textarea>
             </br>
         </form>
         <button id="btweiter4" type="submit">Weiter</button>
@@ -180,7 +180,7 @@ function Inserieren() {
             <div>AGBs akzeptieren</div>
             <div><input type=checkbox id="agbsakzeptiert"></div>
             </br>
-            <button id="btweiter5">Abschicken</button>
+            <button id="btAbschichen">Abschicken</button>
         </form>
         <?php
     }

@@ -37,20 +37,20 @@ require_once 'Language.php';
 
 
             	 $("#btweiter1").click(function( event ) {
-            		 InserierenTab2();
+            		 InserierenTab1();
   				});
             	 
             	 $("#btweiter2").click(function( event ) {
-            		 InserierenTab3();
+            		 InserierenTab2();
  				});
             	 $("#btweiter3").click(function( event ) {
-            		 InserierenTab4();
+            		 InserierenTab3();
  				});
             	 $("#btweiter4").click(function( event ) {
-            		 InserierenTab5();
+            		 InserierenTab4();
  				});
-                 $("#btweiter5").click(function( event ) {
-            		 
+                 $("#btAbschichen").click(function( event ) {
+                	 InserierenTab5();
  				});
 
             	 $("#btzuruck2").click(function( event ) {
@@ -73,9 +73,10 @@ require_once 'Language.php';
 
                 $("#insMitAbDatum").datepicker({dateFormat: "dd.mm.yy"});
                 $("#insMitBisDatum").datepicker({dateFormat: "dd.mm.yy"});
-                $("#suchenfreiab").datepicker({dateFormat: "dd.mm.yy"});
+                $("#SUCHAbDatum").datepicker({dateFormat: "dd.mm.yy"});
+                $("#SUCHBisDatum").datepicker({dateFormat: "dd.mm.yy"});
 
-               
+                
                 $("#btweiter1").button();
                 $("#btweiter2").button();
                 $("#btzuruck2").button();
@@ -88,7 +89,8 @@ require_once 'Language.php';
 
                 $("#btMitbewohsuch").button();
                 $("#btInserataufgeben").button();
-                $("#btSuchen").button();
+                $("#btnSuchen").button();
+                $("#btnFilterAus").button();
 
                 
                 /*$( "#tabs" ).tabs( "disable", 1 );
