@@ -1,5 +1,5 @@
 <?php
-use Cake\Console\ConsoleInput;
+
 session_start();
 //require_once '../db_functions.php';
 //connect();
@@ -29,9 +29,10 @@ $insWohnungkosten = (isset($_GET["insMitkosten"]))? $_GET["insMitkosten"] : "" ;
 $insZimmerTyp = (isset($_GET["insZimmerTyp"]))? $_GET["insZimmerTyp"] : "" ;
 $insZimmerFlaeche= (isset($_GET["insFlaeche"]))? $_GET["insFlaeche"] : "" ;
 $insZimmerBeschreibung = (isset($_GET["insZimmerBeschreibung"]))? $_GET["insZimmerBeschreibung"] : "" ;
-//foto1
-//foto2
-//foto3
+
+$insFoto1 = (isset($_GET["insFoto1"]))? $_GET["insFoto1"] : "" ;
+$insFoto2= (isset($_GET["insFoto2"]))? $_GET["insFoto2"] : "" ;
+$insFoto3 = (isset($_GET["insFoto3"]))? $_GET["insFoto3"] : "" ;
 
 
 //Tab_4 von Inserat-----------------------------

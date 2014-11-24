@@ -68,17 +68,32 @@ div#lang{
     margin-right: 290px;
     //width: 20px;
 }
-#btweiter1 {
+#btnweiter1 {
     float: right;
 }
-#btweiter2 {
+#btnweiter2 {
     float: right;
 }
-#btweiter3 {
+#btnweiter3 {
     float: right;
 }
-#btweiter4 {
+#btnweiter4 {
     float: right;
+}
+#btnweiter5 {
+    float: right;
+}
+#btnzuruck2 {
+    float: left;
+}
+#btnzuruck3 {
+    float: left;
+}
+#btnzuruck4 {
+    float: left;
+}
+#btnzuruck5 {
+    float: left;
 }
 #email {
     width: 300px;
@@ -86,13 +101,13 @@ div#lang{
 #wiederemail {
     width: 300px;
 }
-#bewohner {
+#bewohnerBeschreibung {
     width: 100%;
 }
-#zimmer {
+#insZimmerBeschreibung {
     width: 100%;
 }
-#gesucht {
+#gesuchtBeschreibung {
     width: 100%;
 }
 #insZimmerStr {
@@ -100,4 +115,7 @@ div#lang{
 }
 #insZimmerOrt {
     width: 300px;
+}
+#agbBeschreibung {
+    width: 100%;
 }

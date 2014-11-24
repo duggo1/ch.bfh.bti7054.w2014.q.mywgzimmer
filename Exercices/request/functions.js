@@ -10,13 +10,16 @@ function InserierenTab1() {
 
 	var hasErrorBewohnerAlter = false;
 	var hasErrorBewohnerBeschreibung = false;
+        var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
 
 	if (BewohnerAlter.length == 0) {
 		// $("#errorTel").html("*");
 		hasErrorBewohnerAlter = true;
+                ErrorMessage = ErrorMessage + "ungültige Altersangabe\n";
 	} else {
 		if (isNaN(BewohnerAlter)) {
 			hasErrorBewohnerAlter = true;
+                        ErrorMessage = ErrorMessage + "ungültige Altersangabe\n";
 		} else {
 			// $("#errorTel").html("");
 			hasErrorBewohnerAlter = false;
@@ -26,13 +29,14 @@ function InserierenTab1() {
 
 		// $("#errorTitel").html("*");
 		hasErrorBewohnerBeschreibung = true;
+                ErrorMessage = ErrorMessage + "fehlende Bewohnerbeschreibung\n";
 	} else {
 		// $("#errorTitel").html("");
 		hasErrorBewohnerBeschreibung = false;
 	}
 
 	if (hasErrorBewohnerAlter || hasErrorBewohnerBeschreibung) {
-		alert("Kontolieren Sie bitte eingegebene Daten!");
+		alert(ErrorMessage);
 		return;
 	}
 

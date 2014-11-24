@@ -1,5 +1,5 @@
 <?php
-session_start ();
+session_start();
 
 $link = 0;
 global $lan;
@@ -10,7 +10,6 @@ require_once ("Content/Home.php");
 require_once ("Content/AGB.php");
 require_once ("Content/Suchen.php");
 require_once 'Language.php';
-
 ?>
 <!DOCTYPE html>
 
@@ -28,46 +27,48 @@ require_once 'Language.php';
         <meta charset="utf-8">
         <title>MyWGZimmer</title>
         <link rel="stylesheet" type="text/css" href="mywgzimmer.css">
-          <script src="js/jquery-1.8.3.js"></script>
-          <script src="js/jquery-ui-1.9.2.custom.js"></script>
+        <script src="js/jquery-1.8.3.js"></script>
+        <script src="js/jquery-ui-1.9.2.custom.js"></script>
         <link href="css/blitzer/jquery-ui-1.9.2.custom.css" rel="stylesheet"> 
         <script type="text/javascript" src="request/functions.js"></script>    
         <script type="text/javascript">
             $(function () {
 
 
-            	 $("#btweiter1").click(function( event ) {
-            		 InserierenTab1();
-  				});
-            	 
-            	 $("#btweiter2").click(function( event ) {
-            		 InserierenTab2();
- 				});
-            	 $("#btweiter3").click(function( event ) {
-            		 InserierenTab3();
- 				});
-            	 $("#btweiter4").click(function( event ) {
-            		 InserierenTab4();
- 				});
-                 $("#btAbschichen").click(function( event ) {
-                	 InserierenTab5();
- 				});
+                $("#btnweiter1").click(function (event) {
+                    InserierenTab1();
+                });
 
-            	 $("#btzuruck2").click(function( event ) {
-            		 ZuruckbtTab2();
- 				});
-            	 $("#btzuruck3").click(function( event ) {
-            		 ZuruckbtTab3();
- 				});
-            	 $("#btzuruck4").click(function( event ) {
-            		 ZuruckbtTab4();
- 				});
-           
-  				//$("#table").droppable();
-               	//$("#table").resizable();
+                $("#btnweiter2").click(function (event) {
+                    InserierenTab2();
+                });
+                $("#btnweiter3").click(function (event) {
+                    InserierenTab3();
+                });
+                $("#btnweiter4").click(function (event) {
+                    InserierenTab4();
+                });
+                $("#btnAbschicken").click(function (event) {
+                    InserierenTab5();
+                });
+
+                $("#btnzuruck2").click(function (event) {
+                    ZuruckbtTab2();
+                });
+                $("#btnzuruck3").click(function (event) {
+                    ZuruckbtTab3();
+                });
+                $("#btnzuruck4").click(function (event) {
+                    ZuruckbtTab4();
+                });
+                $("#btnzuruck5").click(function (event) {
+                    ZuruckbtTab5();
+                });
+                //$("#table").droppable();
+                //$("#table").resizable();
                 $("#tabs").tabs();
                 $("#radio").buttonset();
-                
+
                 $("#accordion").accordion();
 
 
@@ -76,34 +77,34 @@ require_once 'Language.php';
                 $("#SUCHAbDatum").datepicker({dateFormat: "dd.mm.yy"});
                 $("#SUCHBisDatum").datepicker({dateFormat: "dd.mm.yy"});
 
-                
-                $("#btweiter1").button();
-                $("#btweiter2").button();
-                $("#btzuruck2").button();
-                $("#btweiter3").button();
-                $("#btzuruck3").button();
-                $("#btweiter4").button();
-                $("#btzuruck4").button();
-                $("#btweiter5").button();
-                $("#btzuruck5").button();
 
-                $("#btMitbewohsuch").button();
-                $("#btInserataufgeben").button();
+                $("#btnweiter1").button();
+                $("#btnweiter2").button();
+                $("#btnzuruck2").button();
+                $("#btnweiter3").button();
+                $("#btnzuruck3").button();
+                $("#btnweiter4").button();
+                $("#btnzuruck4").button();
+                $("#btnweiter5").button();
+                $("#btnzuruck5").button();
+
+                $("#btnMitbewohsuch").button();
+                $("#btnInserataufgeben").button();
                 $("#btnSuchen").button();
                 $("#btnFilterAus").button();
 
-                
+
                 /*$( "#tabs" ).tabs( "disable", 1 );
-                $( "#tabs" ).tabs( "disable", 2 );
-                $( "#tabs" ).tabs( "disable", 3 );
-                $( "#tabs" ).tabs( "disable", 4 );
-                $( "#tabs" ).tabs( "disable", 5 );*/
+                 $( "#tabs" ).tabs( "disable", 2 );
+                 $( "#tabs" ).tabs( "disable", 3 );
+                 $( "#tabs" ).tabs( "disable", 4 );
+                 $( "#tabs" ).tabs( "disable", 5 );*/
 
 
-              //  $("#autocomplete").autocomplete({
-                    //source: availableTags
-               // });
-               // $("#number").selectmenu();
+                //  $("#autocomplete").autocomplete({
+                //source: availableTags
+                // });
+                // $("#number").selectmenu();
 
             });
         </script>
@@ -132,22 +133,21 @@ require_once 'Language.php';
                         </div>
                     </td>
                     <td style="vertical-align: top;">
+                        <?php
+                        if ($link == 'home') {
+                            ?><div id="content"><?php home(); ?>
+                            </div>
                             <?php
-                            if ($link == 'home') {
-							?><div id="content"><?php 
-                                home();?>
-                                </div>
-                                <?php
-                            } elseif ($link == 'suchen') {
-                                suchen();
-                            } elseif ($link == 'inserieren') {
-                                Inserieren();
-                            } elseif ($link == 'hilfe') {
-                                echo '<ul><li>Hilfe</li></ul>';
-                            } elseif ($link == 'agb') {
-                                agb();
-                            }
-                            ?>
+                        } elseif ($link == 'suchen') {
+                            suchen();
+                        } elseif ($link == 'inserieren') {
+                            Inserieren();
+                        } elseif ($link == 'hilfe') {
+                            echo '<ul><li>Hilfe</li></ul>';
+                        } elseif ($link == 'agb') {
+                            agb();
+                        }
+                        ?>
                     </td>
                     <td>
                         <div id="rightbox"></div>
