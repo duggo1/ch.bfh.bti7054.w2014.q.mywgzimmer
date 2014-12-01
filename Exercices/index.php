@@ -3,7 +3,7 @@ session_start();
 
 $link = 0;
 global $lan;
- 
+
 
 require_once ("Content/Inserieren.php");
 require_once ("Content/Home.php");
