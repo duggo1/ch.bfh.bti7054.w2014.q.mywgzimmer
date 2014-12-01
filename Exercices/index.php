@@ -4,7 +4,6 @@ session_start();
 $link = 0;
 global $lan;
 
-
 require_once ("Content/Inserieren.php");
 require_once ("Content/Home.php");
 require_once ("Content/AGB.php");
@@ -26,7 +25,7 @@ require_once 'Language.php';
     <head>
         <meta charset="utf-8">
         <title>MyWGZimmer</title>
-        <link rel="stylesheet" type="text/css" href="mywgzimmer.css">
+        <link rel="stylesheet" type="text/css" href="mywgZimmer.css">
         <script src="js/jquery-1.8.3.js"></script>
         <script src="js/jquery-ui-1.9.2.custom.js"></script>
         <link href="css/blitzer/jquery-ui-1.9.2.custom.css" rel="stylesheet"> 
