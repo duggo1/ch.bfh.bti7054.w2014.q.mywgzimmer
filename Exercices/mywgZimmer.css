@@ -119,3 +119,19 @@ div#lang{
 #agbBeschreibung {
     width: 100%;
 }
+div#Login{
+    margin: 0 auto;
+    text-align: center;
+    min-height: 250px;
+    width: 250px;
+    background-color:rgba(255,255,255,0.5);
+}
+
+#logout {
+    position: absolute;
+    top: 37px;
+    right: 70px;
+}
+#btnlogin {
+    float: right;
+}
