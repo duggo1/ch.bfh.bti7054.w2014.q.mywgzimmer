@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
         $username = mysql_real_escape_string($username);
         $password = mysql_real_escape_string($password);
 // Selecting Database
-        $connection = mysql_connect("localhost:8889", "root", "root");
+        $connection = mysql_connect('localhost', 'adminwg', 'admin');
         if ($conn) {
             $db = mysql_select_db($dbase);
             $query = mysql_query("select Name from tblLogin WHERE Name='$username'", $connection);

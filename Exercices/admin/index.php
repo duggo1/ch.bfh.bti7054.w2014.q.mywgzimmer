@@ -1,6 +1,6 @@
 <?php
 include('login.php'); // Includes Login Script
-include('logout.php');
+
 ?>
 <html>
     <head>
