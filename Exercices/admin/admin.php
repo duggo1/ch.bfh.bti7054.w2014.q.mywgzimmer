@@ -1,34 +1,44 @@
 <?php
 include('session.php');
-    //connection information
-    $user = "your_mysql_user";
-    $pass = "your_mysql_user_pass";
-    $datbaseh = new PDO('mysql:host=localhost;dbname=mywgzimmerdb;charset=UTF-8', $user, $pass);
+//connection information
 
-//prepare statement to query table
-    $sth = $datbaseh->prepare("SELECT ID, active, Erstellungsdatum, Strasse, PLZ, Ort, Email, AbDatum FROM tblInserate");
-    $sth->execute();
-//loop over all table rows and fetch them as an object
+$user_name = "root";
+$password = "root";
+$database = "mywgzimmerdb";
+$server = "localhost";
+
+$db_handle = mysql_connect($server, $user_name, $password);
+$db_found = mysql_select_db($database, $db_handle);
+
+$SQL = "SELECT * FROM tblInserate";
+$result = mysql_query($SQL);
+if ($db_found) {
     $inserattable = "<tr><td>";
-    while ($result = $sth->fetch(PDO::FETCH_OBJ)) {
-        $inserattable = $inserattable . $result->ID;
+    while ($db_field = mysql_fetch_assoc($result)) {
+        $inserattable = $inserattable . '<input type="checkbox" name="' . $db_field['ID'] . '"/>';
         $inserattable = $inserattable . "</td><td>";
-        $inserattable = $inserattable . $result->active;
+        $inserattable = $inserattable . $db_field['ID'];
         $inserattable = $inserattable . "</td><td>";
-        $inserattable = $inserattable . $result->Erstellungsdatum;
+        $inserattable = $inserattable . $db_field['active'];
         $inserattable = $inserattable . "</td><td>";
-        $inserattable = $inserattable . $result->Strasse;
+        $inserattable = $inserattable . $db_field['Erstellungsdatum'];
         $inserattable = $inserattable . "</td><td>";
-        $inserattable = $inserattable . $result->PLZ;
+        $inserattable = $inserattable . $db_field['Strasse'];
         $inserattable = $inserattable . "</td><td>";
-        $inserattable = $inserattable . $result->Ort;
+        $inserattable = $inserattable . $db_field['PLZ'];
         $inserattable = $inserattable . "</td><td>";
-        $inserattable = $inserattable . $result->Email;
+        $inserattable = $inserattable . $db_field['Ort'];
         $inserattable = $inserattable . "</td><td>";
-        $inserattable = $inserattable . $result->AbDatum;
+        $inserattable = $inserattable . $db_field['Email'];
+        $inserattable = $inserattable . "</td><td>";
+        $inserattable = $inserattable . $db_field['AbDatum'];
     }
     $inserattable = $inserattable . "</td></tr>";
-    $inserattable = "abme";
+    mysql_close($db_handle);
+} else {
+    print "Datenbank nicht verbindbar!";
+    mysql_close($db_handle);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,11 +70,13 @@ include('session.php');
                     <th>Einzugsdatum</th>
                 </tr>
             </table>
-            <table>
-                <?php
-                echo $inserattable;
-                ?>
-            </table>
+            <form action="administration.php" method="post">
+                <table>
+                    <?php echo $inserattable; ?>
+
+                </table>
+                <input type="submit" name="formSubmit" value="Submit" />
+            </form>
             <b id="welcome">Welcome : <i><?php echo $login_session; ?></i></b>
             <p><strong><?php
                     if (isset($error)) {
