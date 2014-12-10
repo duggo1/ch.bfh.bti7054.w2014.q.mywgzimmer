@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once 'inserat_such_db.php';
 //require_once '../db_functions.php';
 //connect();
 // function __autoload($classname) {
@@ -90,6 +91,31 @@ if($what == "inserierenTab4")
 }
 if($what == "inserierenTab5")
 {
+	
+	if(strlen($insWohnungEinZug) > 0 )
+	{
+		$tmpEinzugdatum = explode(".",$insWohnungEinZug);
+	
+		$insWohnungEinZug = $tmpEinzugdatum[0] . "-". $tmpEinzugdatum[1] . "-". $tmpEinzugdatum[2] ;
+	}
+	
+	if(strlen($insWohnungAusZug) > 0 )
+	{
+		$tmpAuszugdatum = explode(".",$insWohnungAusZug);
+	
+		$insWohnungAusZug = $tmpAuszugdatum[0] . "-". $tmpAuszugdatum[1] . "-". $tmpAuszugdatum[2] ;
+	}
+	
+	
+	
+ 	$tmpRes = Inserat_speichern();
+// 	if($tmpRes)
+// 		echo "true";
+// 	else {
+// 		echo "false";
+// 	}
+	
+	
 	echo "true";
 }
 

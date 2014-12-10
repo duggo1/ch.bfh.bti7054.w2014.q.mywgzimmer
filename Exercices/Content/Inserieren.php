@@ -41,9 +41,9 @@ function Inserieren() {
         <form name="Tab1">
             <h3>Wir sind</h3>
             <div>
-                <input id="ISTgeschlecht" name="geschlecht" type="radio" value="f"> alles nur Frauen<br>
-                <input id="ISTgeschlecht" name="geschlecht" type="radio" value="m"> alles nur Männer<br>
-                <input id="ISTgeschlecht" name="geschlecht" type="radio" value="x" checked="checked"> gemischt<br>
+                <input id="ISTgeschlechtf" name="geschlecht" type="radio" value="f"> alles nur Frauen<br>
+                <input id="ISTgeschlechtm" name="geschlecht" type="radio" value="m"> alles nur Männer<br>
+                <input id="ISTgeschlechtx" name="geschlecht" type="radio" value="x" checked="checked"> gemischt<br>
             </div>
             </br>
             <div>unser Durchschnittsalter</div>
@@ -116,8 +116,8 @@ function Inserieren() {
 
             <h3>Informationen</h3>
             <div>
-                <input id="insZimmerTyp" name="radioZimmerArt" type="radio" value="z" checked="checked"> Zimmer &nbsp;&nbsp;
-                <input id="insZimmerTyp" name="radioZimmerArt" type="radio" value="s"> Studio (ohne Zugang zu Bad, WC oder Küche)<br>
+                <input id="insZimmerTypz" name="radioZimmerArt" type="radio" value="z" checked="checked"> Zimmer &nbsp;&nbsp;
+                <input id="insZimmerTyps" name="radioZimmerArt" type="radio" value="s"> Studio (ohne Zugang zu Bad, WC oder Küche)<br>
             </div>
             </br>
             <div>Fläche in m<sup>2</sup></div>
@@ -145,9 +145,9 @@ function Inserieren() {
         <form name="Tab4">
             <h3>Wir suchen</h3>
             <div>
-                <input id="SOLLgeschlecht" name="geschlecht" type="radio" value="f"> eine Frau<br>
-                <input id="SOLLgeschlecht" name="geschlecht" type="radio" value="m"> einen Mann<br>
-                <input id="SOLLgeschlecht" name="geschlecht" type="radio" value="x" checked="checked"> egal<br>
+                <input id="SOLLgeschlechtf" name="geschlecht" type="radio" value="f"> eine Frau<br>
+                <input id="SOLLgeschlechtm" name="geschlecht" type="radio" value="m"> einen Mann<br>
+                <input id="SOLLgeschlechtx" name="geschlecht" type="radio" value="x" checked="checked"> egal<br>
             </div>
             </br>
             <table>

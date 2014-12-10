@@ -5,21 +5,34 @@
 function InserierenTab1() {
 
 	var BewohnerGeschlecht = $("#ISTgeschlecht").val();
+
+	if (document.getElementById('ISTgeschlechtf').checked) {
+		BewohnerGeschlecht = document.getElementById('ISTgeschlechtf').value;
+
+	} else if (document.getElementById('ISTgeschlechtm').checked) {
+		BewohnerGeschlecht = document.getElementById('ISTgeschlechtm').value;
+
+	} else if (document.getElementById('ISTgeschlechtx').checked) {
+		BewohnerGeschlecht = document.getElementById('ISTgeschlechtx').value;
+	}
+
+	alert(BewohnerGeschlecht);
+
 	var BewohnerAlter = $("#ISTalter").val();
 	var BewohnerBeschreibung = $("#bewohnerBeschreibung").val();
 
 	var hasErrorBewohnerAlter = false;
 	var hasErrorBewohnerBeschreibung = false;
-        var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
+	var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
 
 	if (BewohnerAlter.length == 0) {
 		// $("#errorTel").html("*");
 		hasErrorBewohnerAlter = true;
-                ErrorMessage = ErrorMessage + "fehlende Altersangabe\n";
+		ErrorMessage = ErrorMessage + "fehlende Altersangabe\n";
 	} else {
 		if (isNaN(BewohnerAlter)) {
 			hasErrorBewohnerAlter = true;
-                        ErrorMessage = ErrorMessage + "ungültige Altersangabe\n";
+			ErrorMessage = ErrorMessage + "ungültige Altersangabe\n";
 		} else {
 			// $("#errorTel").html("");
 			hasErrorBewohnerAlter = false;
@@ -29,7 +42,7 @@ function InserierenTab1() {
 
 		// $("#errorTitel").html("*");
 		hasErrorBewohnerBeschreibung = true;
-                ErrorMessage = ErrorMessage + "fehlende Bewohnerbeschreibung\n";
+		ErrorMessage = ErrorMessage + "fehlende Bewohnerbeschreibung\n";
 	} else {
 		// $("#errorTitel").html("");
 		hasErrorBewohnerBeschreibung = false;
@@ -77,40 +90,39 @@ function InserierenTab2() {
 	var hasErrorWohnungOrt = false;
 	var hasErrorWohnungPlz = false;
 	var hasErrorWohnungkosten = false;
-        
-        var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
+
+	var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
 
 	if (WohnungStr.length == 0) {
 		hasErrorWohnungStr = true;
-                ErrorMessage = ErrorMessage + "fehlender Strassenname\n";
+		ErrorMessage = ErrorMessage + "fehlender Strassenname\n";
 	} else {
 		hasErrorWohnungStr = false;
 	}
 
 	if (WohnungHausNr.length == 0) {
 		hasErrorWohnungStr = true;
-                ErrorMessage = ErrorMessage + "fehlende Hausnummer\n";
+		ErrorMessage = ErrorMessage + "fehlende Hausnummer\n";
 	} else {
-			hasErrorWohnungStr = false;
-		}
-
+		hasErrorWohnungStr = false;
+	}
 
 	if (WohnungOrt.length == 0) {
 		hasErrorWohnungOrt = true;
-                ErrorMessage = ErrorMessage + "fehlender Ortsname\n";
-                
+		ErrorMessage = ErrorMessage + "fehlender Ortsname\n";
+
 	} else {
 		hasErrorWohnungOrt = false;
 	}
 
 	if (WohnungPlz.length == 0) {
 		hasErrorWohnungPlz = true;
-                ErrorMessage = ErrorMessage + "fehlende Postleitzahl\n";                
+		ErrorMessage = ErrorMessage + "fehlende Postleitzahl\n";
 	} else {
 		if (isNaN(WohnungPlz)) {
 			hasErrorWohnungPlz = true;
-                ErrorMessage = ErrorMessage + "ungültige Postleitzahl\n";
-                        
+			ErrorMessage = ErrorMessage + "ungültige Postleitzahl\n";
+
 		} else {
 			hasErrorWohnungPlz = false;
 		}
@@ -118,11 +130,11 @@ function InserierenTab2() {
 
 	if (Wohnungkosten.length == 0) {
 		hasErrorWohnungkosten = true;
-                ErrorMessage = ErrorMessage + "fehlende Mietzinsangabe\n";                
+		ErrorMessage = ErrorMessage + "fehlende Mietzinsangabe\n";
 	} else {
 		if (isNaN(Wohnungkosten)) {
 			hasErrorWohnungkosten = true;
-                        ErrorMessage = ErrorMessage + "ungültiger Mietzins\n";                
+			ErrorMessage = ErrorMessage + "ungültiger Mietzins\n";
 
 		} else {
 			hasErrorWohnungkosten = false;
@@ -159,21 +171,31 @@ function InserierenTab2() {
 function InserierenTab3() {
 
 	var ZimmerTyp = $("#insZimmerTyp").val();
+
+	if (document.getElementById('insZimmerTypz').checked) {
+		ZimmerTyp = document.getElementById('insZimmerTypz').value;
+
+	} else if (document.getElementById('insZimmerTyps').checked) {
+		ZimmerTyp = document.getElementById('insZimmerTyps').value;
+	}
+	alert(ZimmerTyp);
+
 	var ZimmerFlaeche = $("#insFlaeche").val();
 	var ZimmerBeschreibung = $("#insZimmerBeschreibung").val();
 
 	var hasErrorZimmerFlaeche = false;
 	var hasErrorZimmerBeschreibung = false;
-        
-        var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
-       
+
+	var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
+
 	if (ZimmerFlaeche.length == 0) {
 		hasErrorZimmerFlaeche = true;
-                 ErrorMessage = ErrorMessage + "fehlende Zimmergrössen\n";                
-               
+		ErrorMessage = ErrorMessage + "fehlende Zimmergrössen\n";
+
 	} else {
 		if (isNaN(ZimmerFlaeche)) {
 			hasErrorZimmerFlaeche = true;
+			ErrorMessage = ErrorMessage + "ungültiger Zimmergrössen\n";
 		} else {
 			hasErrorZimmerFlaeche = false;
 		}
@@ -181,12 +203,13 @@ function InserierenTab3() {
 
 	if (ZimmerBeschreibung.length == 0) {
 		hasErrorZimmerBeschreibung = true;
+		ErrorMessage = ErrorMessage + "fehlende Zimmerbeschreibung\n";
 	} else {
 		hasErrorZimmerBeschreibung = false;
 	}
-	
+
 	if (hasErrorZimmerBeschreibung || hasErrorZimmerFlaeche) {
-		alert("Kontolieren Sie bitte eingegebene Daten!");
+		alert(ErrorMessage);
 		return;
 	}
 
@@ -194,7 +217,7 @@ function InserierenTab3() {
 		type : "GET",
 		data : "what=inserierenTab3&" + "insZimmerTyp=" + ZimmerTyp
 				+ "&insFlaeche=" + ZimmerFlaeche + "&insZimmerBeschreibung="
-				+ ZimmerBeschreibung ,
+				+ ZimmerBeschreibung,
 
 		url : "request/service.php",
 		success : function(msg) {
@@ -206,12 +229,23 @@ function InserierenTab3() {
 		}
 	});
 
-
-
 }
 function InserierenTab4() {
 
 	var GesuchtSex = $("#SOLLgeschlecht").val();
+
+	if (document.getElementById('SOLLgeschlechtf').checked) {
+		GesuchtSex = document.getElementById('SOLLgeschlechtf').value;
+
+	} else if (document.getElementById('SOLLgeschlechtm').checked) {
+		GesuchtSex = document.getElementById('SOLLgeschlechtm').value;
+
+	} else if (document.getElementById('SOLLgeschlechtx').checked) {
+		GesuchtSex = document.getElementById('SOLLgeschlechtx').value;
+	}
+
+	alert(GesuchtSex);
+
 	var GesuchtMinAlter = $("#SOLLminAlter").val();
 	var GesuchtMaxAlter = $("#SOLLmaxAlter").val();
 	var GesuchtBeschreibung = $("#gesuchtBeschreibung").val();
@@ -219,45 +253,47 @@ function InserierenTab4() {
 	var hasErrorGesuchtMinAlter = false;
 	var hasErrorGesuchtMaxAlter = false;
 	var hasErrorGesuchtBeschreibung = false;
-	
+
+	var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
+
 	if (GesuchtMinAlter.length == 0) {
 		hasErrorGesuchtMinAlter = true;
+		ErrorMessage = ErrorMessage + "fehlende Mindestalter\n";
 	} else {
 		if (isNaN(GesuchtMinAlter)) {
 			hasErrorGesuchtMinAlter = true;
+			ErrorMessage = ErrorMessage + "ungültiger Mindestalter\n";
 		} else {
 			hasErrorGesuchtMinAlter = false;
 		}
 	}
 	if (GesuchtMaxAlter.length == 0) {
 		hasErrorGesuchtMaxAlter = true;
+		ErrorMessage = ErrorMessage + "fehlende Höchstalter\n";
 	} else {
 		if (isNaN(GesuchtMaxAlter)) {
 			hasErrorGesuchtMaxAlter = true;
+			ErrorMessage = ErrorMessage + "ungültiger Höchstalter\n";
 		} else {
 			hasErrorGesuchtMaxAlter = false;
 		}
 	}
-	
+
 	if (GesuchtBeschreibung.length == 0) {
 		hasErrorGesuchtBeschreibung = true;
+		ErrorMessage = ErrorMessage + "fehlende Gesuchtbeschreibung\n";
 	} else {
 
 		hasErrorGesuchtBeschreibung = false;
-		
+
 	}
-	
-	if (hasErrorGesuchtMinAlter || hasErrorGesuchtMaxAlter||hasErrorGesuchtBeschreibung) {
-		alert("Kontolieren Sie bitte eingegebene Daten!");
+
+	if (hasErrorGesuchtMinAlter || hasErrorGesuchtMaxAlter
+			|| hasErrorGesuchtBeschreibung) {
+		alert(ErrorMessage);
 		return;
 	}
 
-	var GesuchtSex = $("#SOLLgeschlecht").val();
-	var GesuchtMinAlter = $("#SOLLminAlter").val();
-	var GesuchtMaxAlter = $("#SOLLmaxAlter").val();
-	var GesuchtBeschreibung = $("#gesuchtBeschreibung").val();
-
-	
 	$.ajax({
 		type : "GET",
 		data : "what=inserierenTab4&" + "SOLLgeschlecht=" + GesuchtSex
@@ -268,8 +304,7 @@ function InserierenTab4() {
 		url : "request/service.php",
 		success : function(msg) {
 			if (msg != 'false') {
-				
-				
+
 				$("#tabs").tabs("enable", 4);
 				$("#tabs").tabs("option", "active", 4);
 				$("#tabs").tabs("disable", 3);
@@ -277,11 +312,9 @@ function InserierenTab4() {
 		}
 	});
 
-
 }
 function InserierenTab5() {
 
-	
 	var BestaetigungEmail = $("#email").val();
 	var BestaetigungEmailWieder = $("#wiederemail").val();
 	var BestaetigungAGB = $("#agbsakzeptiert").val();
@@ -289,20 +322,60 @@ function InserierenTab5() {
 	var hasErrorBestaetigungEmail = false;
 	var hasErrorBestaetigungEmailWieder = false;
 	var hasErrorBestaetigungAGB = false;
-	
-	
-	if (BestaetigungEmail.length==0){
-		hasErrorBestaetigungEmail=true;
-	}else{
-		hasErrorBestaetigungEmail=false;
+
+	var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
+
+	if (document.getElementById('agbsakzeptiert').checked) {
+		hasErrorBestaetigungAGB = false;
+	} else {
+		hasErrorBestaetigungAGB = true;
+		ErrorMessage = ErrorMessage + "AGB\n";
+	}
+
+	if (BestaetigungEmail.length == 0) {
+		hasErrorBestaetigungEmail = true;
+		ErrorMessage = ErrorMessage + "fehlende Email\n";
+	} else {
+		hasErrorBestaetigungEmail = false;
+	}
+
+	if (BestaetigungEmailWieder.length == 0) {
+		hasErrorBestaetigungEmailWieder = true;
+		ErrorMessage = ErrorMessage + "fehlende Email Wiederholung\n";
+	} else {
+		hasErrorBestaetigungEmailWieder = false;
 	}
 	
-	if (BestaetigungEmailWieder.length==0){
-		hasErrorBestaetigungEmailWieder=true;
+	if (BestaetigungEmail == BestaetigungEmailWieder){
+		
 	}else{
-		hasErrorBestaetigungEmailWieder=false;
+		hasErrorBestaetigungEmailWieder = true;
+		ErrorMessage = ErrorMessage + "falsche Email Wiederholung\n";
 	}
-	alert(BestaetigungAGB);
+	
+
+	if (hasErrorBestaetigungEmail || hasErrorBestaetigungEmailWieder
+			|| hasErrorBestaetigungAGB) {
+		alert(ErrorMessage);
+		return;
+	}
+
+	var BestaetigungEmail = $("#email").val();
+	var BestaetigungEmailWieder = $("#wiederemail").val();
+
+	$.ajax({
+		type : "GET",
+		data : "what=inserierenTab5&" + "email=" + BestaetigungEmail
+				+ "&wiederemail=" + BestaetigungEmailWieder,
+
+		url : "request/service.php",
+		success : function(msg) {
+			if (msg != 'false') {
+
+				alert("Inserat wurde erfolgreich gespeichert!");
+			}
+		}
+	});
 
 }
 
@@ -326,6 +399,13 @@ function ZuruckbtTab4() {
 	$("#tabs").tabs("enable", 2);
 	$("#tabs").tabs("option", "active", 2);
 	$("#tabs").tabs("disable", 3);
+
+}
+function ZuruckbtTab4() {
+
+	$("#tabs").tabs("enable", 3);
+	$("#tabs").tabs("option", "active", 3);
+	$("#tabs").tabs("disable", 4);
 
 }
 function Suchen() {

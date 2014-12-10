@@ -47,7 +47,7 @@ require_once 'Language.php';
                 $("#btnweiter4").click(function (event) {
                     InserierenTab4();
                 });
-                $("#btnAbschicken").click(function (event) {
+                $("#btnweiter5").click(function (event) {
                     InserierenTab5();
                 });
 
@@ -93,11 +93,11 @@ require_once 'Language.php';
                 $("#btnFilterAus").button();
 
 
-                /*$( "#tabs" ).tabs( "disable", 1 );
-                 $( "#tabs" ).tabs( "disable", 2 );
-                 $( "#tabs" ).tabs( "disable", 3 );
-                 $( "#tabs" ).tabs( "disable", 4 );
-                 $( "#tabs" ).tabs( "disable", 5 );*/
+//                 $( "#tabs" ).tabs( "disable", 1 );
+//                  $( "#tabs" ).tabs( "disable", 2 );
+//                  $( "#tabs" ).tabs( "disable", 3 );
+//                  $( "#tabs" ).tabs( "disable", 4 );
+                 //$( "#tabs" ).tabs( "disable", 5 );
 
 
                 //  $("#autocomplete").autocomplete({
