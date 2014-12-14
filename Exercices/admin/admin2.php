@@ -10,6 +10,16 @@ $server = "localhost";
 $db_handle = mysql_connect($server, $user_name, $password);
 $db_found = mysql_select_db($database, $db_handle);
 
+if (isset($_POST["delete"])){
+    
+    $delete = $_POST["checkbox"];
+    foreach ($delete as $id => $val) {
+    if($val=='on'){
+        $query="DELETE FROM tblInserate WHERE ID = '".$id."'";
+        $result= mysql_query($query) or die("Ungültige Abfrage");
+        $outcome = $query;
+    }
+}
 $SQL = "SELECT * FROM tblInserate";
 $result = mysql_query($SQL) or die("Ungültige Abfrage");
 if ($db_found) {
@@ -39,6 +49,10 @@ if ($db_found) {
     print "Datenbank nicht verbindbar!";
     mysqli_close($db_handle);
 }
+
+}
+else $error = $error + $query;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,13 +84,14 @@ if ($db_found) {
                     <th>Einzugsdatum</th>
                 </tr>
             </table>
-            <form action="admin2.php" method="post">
+            <form action="admin.php" method="post">
                 
                     <?php echo $inserattable; ?>
                     
                 <input type="submit" name="delete" value="Löschen" />
                 <input type="submit" name="edit" value="Bearbeiten" />
             </form>
+            <p><?php echo $outcome ?></p>
             <p><strong><?php
                     if (isset($error)) {
                         echo $error;
