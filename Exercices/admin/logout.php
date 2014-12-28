@@ -6,4 +6,5 @@ if (session_destroy()) { // Destroying All Sessions
 } else {
     $error = "die Session wurde nicht zerstört!";
 }
+$_SESSION['error'] = $error;
 ?>

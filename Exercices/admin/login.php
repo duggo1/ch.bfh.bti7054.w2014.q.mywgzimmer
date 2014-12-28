@@ -2,6 +2,7 @@
 
 session_start(); // Starting Session
 
+ 
 if (isset($_POST['submit'])) {
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = "Name oder Passwort ist ungültig!";
@@ -34,10 +35,11 @@ if (isset($_POST['submit'])) {
             $error = "Connection Error";
     }
 }
+$_SESSION['error'] = $error;
 ?>
 <!DOCTYPE html>
 <html>
     <head >
-        <meta http-equiv="refresh" content="0; URL=index.php?link=loginpage?error=<?php echo urlencode($error) ?>">
+        <meta http-equiv="refresh" content="0; URL=index.php?link=loginpage">
     </head >
 </html>

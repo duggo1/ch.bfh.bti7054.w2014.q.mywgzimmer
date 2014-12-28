@@ -1,7 +1,8 @@
 <?php
 
 function loginpage() {
-
+session_start();
+$error = $_SESSION['error'];
     $output = '<div id="Login">
             <h1>
                 Login
@@ -20,9 +21,11 @@ function loginpage() {
                     <input id="password" type="password" name="password" value="">
                 </p>
                 <input type="submit" name="submit" value=" Login " class="button">';
-    if (isset($_GET["error"])) {
-        $output = $output . '<p><strong>' . urldecode($_GET["error"]) . '</strong></p>';
+    if (isset($error)) {
+        $output = $output . '<p class="error">' . $error . '</p>';
     }
     echo $output . '</form></div>';
+    $error = '';
+    $_SESSION['error'] = $error;
 }
 ?>

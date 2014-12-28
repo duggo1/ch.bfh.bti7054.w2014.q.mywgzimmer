@@ -2,7 +2,6 @@
 
 function Inserieren() {
     ?>
-    <h1>&nbsp;WG-Zimmer Inserieren</h1>
     <div id="tabs" class="Tabs">
         <ul>
             <li><a href="#tabs-1">Bewohner</a></li>
@@ -12,19 +11,19 @@ function Inserieren() {
             <li><a href="#tabs-5">Bestätigung</a></li>
         </ul>
         <div id="tabs-1" class="ui-widget-content">
-    <?php InserierenTab1() ?>
+            <?php InserierenTab1() ?>
         </div>
         <div id="tabs-2" class="ui-widget-content">
-    <?php InserierenTab2() ?>
+            <?php InserierenTab2() ?>
         </div>
         <div id="tabs-3" class="ui-widget-content">
-    <?php InserierenTab3() ?>
+            <?php InserierenTab3() ?>
         </div>
         <div id="tabs-4" class="ui-widget-content">
-    <?php InserierenTab4() ?>
+            <?php InserierenTab4() ?>
         </div>
         <div id="tabs-5" class="ui-widget-content">
-    <?php InserierenTab5() ?>
+            <?php InserierenTab5() ?>
         </div>
     </div>
     <?php
@@ -47,8 +46,9 @@ function InserierenTab1() {
             <div>Beschreibung der aktuellen WG-Bewohner</div>
             <textarea id="bewohnerBeschreibung" class="Beschreibung" rows="10" ></textarea>
             </br>
+            <input id="btnweiter1" class="btnweiter" type="submit" name="btnweiter1" value="Weiter">
             </br>
-            <button id="btnweiter1" class="btnweiter" type="submit">Weiter</button>
+            </br>
         </form>
     </div>
     <?php
@@ -97,11 +97,10 @@ function InserierenTab2() {
         <div>Mietzins total (inkl. Nebenkosten)</div>
         <div><input id="insMitkosten" type="number" value="4" min="4" max="200"></div>
         </br>
-        </br>
-
-
         <button id="btnzuruck2" class="btnzuruck" type="submit">Zurück</button>
         <button id="btnweiter2" class="btnweiter">Weiter</button>
+        </br>
+        </br>
     </form><?php
 }
 
@@ -128,10 +127,10 @@ function InserierenTab3() {
         </br>
         <div><input id="insFoto3" type="file" ><input type="submit" value="Foto hochladen" name="submit"></div>
         </br>
-        </br>
-
         <button id="btnzuruck3" class="btnzuruck" type="submit">Zurück</button>
         <button id="btnweiter3" class="btnweiter">Weiter</button>
+        </br>
+        </br>
     </form><?php
 }
 
@@ -159,10 +158,10 @@ function InserierenTab4() {
         <div>Beschreibung der gesuchten Person</div>
         <textarea id="gesuchtBeschreibung" class="Beschreibung" rows="10"></textarea>
         </br>
-        </br>
-
         <button id="btnzuruck4" class="btnzuruck" type="submit">Zurück</button>
         <button id="btnweiter4" class="btnweiter" type="submit">Weiter</button>
+        </br>
+            </br>
     </form><?php
 }
 
@@ -182,9 +181,10 @@ function InserierenTab5() {
         <div>AGBs akzeptieren</div>
         <div><input type=checkbox id="agbsakzeptiert"></div>
         </br>
-        </br>
         <button id="btnzuruck5" class="btnzuruck" type="submit">Zurück</button>
         <button id="btnweiter5" class="btnweiter">Abschicken</button>
+    </br>
+            </br>
     </form>
     <?php
 }

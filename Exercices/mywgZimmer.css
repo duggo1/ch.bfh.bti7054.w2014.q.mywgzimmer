@@ -5,18 +5,36 @@ body {
     background-image: url('holz.jpg');
     background-repeat: repeat;
 }
+td {
+    text-align: left;
+    vertical-align: top;
+}
+.lang {
+    vertical-align: center;
+    padding-left: 15px;
+}
 .Header {
-    padding: 3px 30px;
+    min-height: 150px;
+    valign: center;
+    vertical-align: center;
 }
-#help {
-    position: absolute;
-    top: 25px;
-    right: 200px;
+img#logo {
+    padding: 5px 30px;
 }
-#agb {
+img#help {
     position: absolute;
-    top: 25px;
-    right: 100px;
+    top: 40px;
+    right: 164px;
+}
+#logout {
+    position: absolute;
+    top: 37px;
+    right: 113px;
+}
+img#agb {
+    position: absolute;
+    top: 40px;
+    right: 60px;
 }
 .Wrap {
     width: 100vw;
@@ -26,35 +44,24 @@ body {
 }
 .rightbox {
     width: 300px;
+    text-align: center;
 }
 .textcontent {
     padding: 20px;
     background-color:rgba(255,255,255,0.5);
-    min-height: 380px;
+    min-height: 440px;
 }
-img#suche {
-    height: 200px;
-    width: 200px;
-}	
-img#inserat {
+.inserat {
     padding-top: 20px;
     height: 200px;
     width: 200px;
 }
-td {
-    vertical-align: top;
-    text-align: left;
-}
 
 .error {
     color: red;
-    font-size: 8pt;
+    font-weight: bold;
+    font-size: large;
 }
-.lang {
-    text-align: right;
-    margin-right: 290px;
-}
-
 .formfield {
     width: 300px;
 }
@@ -69,27 +76,11 @@ div#Login{
     width: 250px;
     background-color:rgba(255,255,255,0.5);
 }
-#btnlogout {
-    position: absolute;
-    top: 37px;
-    right: 100px;
-}
+
 .btnweiter {
-    background: red; 
-    color: white;
-    padding: 3px;
-    border-radius: 5px;
-    border: 1px solid black;
-    font-size: large;
     float: right;
 }
 .btnzuruck {
-    background: red; 
-    color: white;
-    padding: 3px;
-    border-radius: 5px;
-    border: 1px solid black;
-    font-size: large;
     float: left;
 }
 .button {

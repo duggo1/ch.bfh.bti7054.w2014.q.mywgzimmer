@@ -1,28 +1,24 @@
 <?php
 session_start();
-global $error; // Variable To Store Error Message
+$error = $_SESSION['error'];  // Variable To Store Error Message
 
 $link = 0;
 global $lan;
 
 require_once ("loginpage.php");
 require_once ("admin.php");
-
 ?>
 <!DOCTYPE html>
 
 <html>
-    <?php
-    if (isset($_GET ['link'])) {
-        $link = $_GET ['link'];
-    }
-    if (isset($_GET ['lan'])) {
-        $lan = $_GET ['lan'];
-    }
-    if (isset($_GET ['error'])) {
-        $error = $_GET ['error'];
-    }
-    ?>
+<?php
+if (isset($_GET ['link'])) {
+    $link = $_GET ['link'];
+}
+if (isset($_GET ['lan'])) {
+    $lan = $_GET ['lan'];
+}
+?>
 
     <head>
         <meta charset="utf-8">
@@ -33,25 +29,26 @@ require_once ("admin.php");
     <body>
         <div class="Header">
             <a href="../index.php?link=home"><img id="logo" src="../logo.png" alt="Home" title="Home"></a>
-            <a href="logout.php"><img id="btnlogout" src="../logout.png" alt="Logout" title="Logout"></a>
+            <a href="logout.php"><img id="logout" src="../logout.png" alt="Logout" title="Logout"></a>
         </div>
         <table class="Wrap">
             <tr>
                 <td class="leftbox">
                 </td>
                 <td class="content">
-                    <?php
-                    if ($link = 'loginpage') {
-                        ?><div class="functionalcontent"><?php loginpage(); ?></div><?php
-                    } elseif ($link == 'admin') {
-                        ?><div class="textcontent"><?php admin(); ?></div><?php
-                    }
-                    ?>
+<?php
+if ($link == 'loginpage') {
+    ?><div class="functionalcontent"><?php loginpage(); ?></div><?php
+} elseif ($link == 'admin') {
+     ?><div class="textcontent"><?php admin(); ?></div><?php
+}
+?>
                 </td>
                 <td class="rightbox">
                 </td>
             </tr>
         </table>
-
+        <div class="footer">
+        </div>
     </body>
 </html>

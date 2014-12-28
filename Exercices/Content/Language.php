@@ -15,10 +15,16 @@ function add_URLparam($url, $name, $value, $sep = "&") {
 function language() {
     $url = $_SERVER ['PHP_SELF'];
     $url = add_URLparam($url, "link", get_URLparam("link", 0), "?");
-    $deu = '<img id = logo src = "de.png" alt = "Deutsch" title = "Deutsch">';
-    $eng = '<img id=logo src="en.png" alt="English" title="English">';        
-    echo "<a href=\"".add_URLparam($url,"lan","de")."\">".$deu."</a> ";
-    echo "<a href=\"".add_URLparam($url,"lan","en")."\">".$eng."</a> ";
+    $deu = '<img class="lang" src = "de.png" alt = "Deutsch" title = "Deutsch">';
+    $eng = '<img class="lang" src="en.png" alt="English" title="English">';
+    $fra = '<img class="lang" src="fr.png" alt="Français" title="Français">';   
+    $ita = '<img class="lang" src="it.png" alt="Italiano" title="Italiano">';   
+    
+    $output = "<a href=\"".add_URLparam($url,"lan","de")."\">".$deu."</a> ";
+    $output = $output . "<a href=\"".add_URLparam($url,"lan","en")."\">".$eng."</a> ";
+    $output = $output . "<a href=\"".add_URLparam($url,"lan","fr")."\">".$fra."</a> ";
+    $output = $output . "<a href=\"".add_URLparam($url,"lan","it")."\">".$ita."</a> ";
+    echo $output;
 }
 
 function menu() {

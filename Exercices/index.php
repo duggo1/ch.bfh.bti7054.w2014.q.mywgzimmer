@@ -8,7 +8,7 @@ require_once ("Content/Inserieren.php");
 require_once ("Content/Home.php");
 require_once ("Content/AGB.php");
 require_once ("Content/Suchen.php");
-require_once 'Language.php';
+require_once ("Content/Language.php");
 ?>
 <!DOCTYPE html>
 
@@ -111,15 +111,16 @@ require_once 'Language.php';
     <body>
         <div class="Header">
             <a href="?link=home"><img id="logo" src="logo.png" alt="Home" title="Home"></a>
-            <div class="lang"><?php language(); ?></div>
             <a href="?link=hilfe"><img id="help" src="help.png" alt="Hilfe" title="Hilfe"></a>
             <a href="?link=agb"><img id="agb" src="agb.png" alt="AGB" title="AGB"></a>
+            </div>
         </div>
         <table class="Wrap">
             <tr>
                 <td class="leftbox">
-                    <a href="?link=suchen"><img id="suche" src="suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
-                    <a href="?link=inserieren"><img id="inserat" src="inserat.png" alt="Gratis-WG-Zimmer-inserieren" title="Gratis WG-Zimmer inserieren"></a>
+                    <?php language(); ?>
+                    <a href="?link=suchen"><img class="inserat" src="suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
+                    <a href="?link=inserieren"><img class="inserat" src="inserat.png" alt="Gratis-WG-Zimmer-inserieren" title="Gratis WG-Zimmer inserieren"></a>
                 </td>
                 <td class="content">
                     <?php
@@ -137,6 +138,7 @@ require_once 'Language.php';
                         ?>
                 </td>
                 <td class="rightbox">
+                    <img id="ad" src="banner.gif" title="Werbung">
                 </td>
             </tr>
         </table>
