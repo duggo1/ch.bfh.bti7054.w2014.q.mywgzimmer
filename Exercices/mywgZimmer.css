@@ -1,11 +1,11 @@
 @CHARSET "utf-8";
 
 body {
-    font: 80% "Trebuchet MS", sans-serif;
+    font: 100% "Trebuchet MS", sans-serif;
     background-image: url('holz.jpg');
     background-repeat: repeat;
 }
-div#Header {
+.Header {
     padding: 3px 30px;
 }
 #help {
@@ -18,107 +18,50 @@ div#Header {
     top: 25px;
     right: 100px;
 }
-div#Wrap {
-    /*padding-top: 10px;*/
+.Wrap {
+    width: 100vw;
 }
-div#leftbox{
-    width: 220px;
+.leftbox {
+    width: 250px;
 }
-#suche {
+.rightbox {
+    width: 300px;
+}
+.textcontent {
+    padding: 20px;
+    background-color:rgba(255,255,255,0.5);
+    min-height: 380px;
+}
+img#suche {
     height: 200px;
     width: 200px;
 }	
-#inserat {
+img#inserat {
     padding-top: 20px;
     height: 200px;
     width: 200px;
 }
-
-td{
+td {
     vertical-align: top;
     text-align: left;
 }
 
-div#content
-{
-    min-height: 380px;
-    padding: 20px;
-    margin-left: 30px;
-    width: 100%;
-    background-color:rgba(255,255,255,0.5);
-}
-div#rightbox{
-    width: 300px;
-}
-.Tabs {
-        width: 100%;
-
-    min-height: 550px;
-}
-tr#4{
-    width: 100%;
-}
-
-.error{
+.error {
     color: red;
     font-size: 8pt;
 }
-div#lang{
+.lang {
     text-align: right;
     margin-right: 290px;
-    //width: 20px;
 }
-#btnweiter1 {
-    float: right;
-}
-#btnweiter2 {
-    float: right;
-}
-#btnweiter3 {
-    float: right;
-}
-#btnweiter4 {
-    float: right;
-}
-#btnweiter5 {
-    float: right;
-}
-#btnzuruck2 {
-    float: left;
-}
-#btnzuruck3 {
-    float: left;
-}
-#btnzuruck4 {
-    float: left;
-}
-#btnzuruck5 {
-    float: left;
-}
-#email {
+
+.formfield {
     width: 300px;
 }
-#wiederemail {
-    width: 300px;
-}
-#bewohnerBeschreibung {
+.Beschreibung {
     width: 100%;
 }
-#insZimmerBeschreibung {
-    width: 100%;
-}
-#gesuchtBeschreibung {
-    width: 100%;
-}
-#insZimmerStr {
-    width: 300px;
-}
-#insZimmerOrt {
-    width: 300px;
-}
-#agbBeschreibung {
-    width: 100%;
-}
+
 div#Login{
     margin: 0 auto;
     text-align: center;
@@ -126,12 +69,57 @@ div#Login{
     width: 250px;
     background-color:rgba(255,255,255,0.5);
 }
-
-#logout {
+#btnlogout {
     position: absolute;
     top: 37px;
-    right: 70px;
+    right: 100px;
 }
-#btnlogin {
+.btnweiter {
+    background: red; 
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: large;
     float: right;
+}
+.btnzuruck {
+    background: red; 
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: large;
+    float: left;
+}
+.button {
+    background: red; 
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: large;
+}
+Table {
+    width: 100%;
+    border-collapse:collapse;
+}
+table thead { 
+    border-bottom: 1px solid #000;
+}
+.admintable { 
+    border: dashed;
+    border-width: 1px 0;
+}
+.ui-widget-header {
+}
+.ui-tabs-nav{
+}
+.ui-helper-reset{
+}
+.ui-widget-content{
+}
+.Tabs{
+    width: inherit;
+    height: inherit;
 }

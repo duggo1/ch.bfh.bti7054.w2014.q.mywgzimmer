@@ -17,7 +17,7 @@ if (isset($_POST["delete"])){
     if($val=='on'){
         $query="DELETE FROM tblInserate WHERE ID = '".$id."'";
         $result= mysql_query($query) or die("Ungültige Abfrage");
-        $outcome = $query;
+        //$outcome = $query;
     }
 }
 $SQL = "SELECT * FROM tblInserate";

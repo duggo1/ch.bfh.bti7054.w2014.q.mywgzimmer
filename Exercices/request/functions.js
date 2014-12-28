@@ -438,28 +438,3 @@ function Suchen() {
 
 }
 
-function adminLogin() {
-
-	// var adminName = $("#adminName").val();
-	// var passwort = $("#passwort").val();
-	//	
-	// $.ajax({
-	// type : "GET",
-	// data : "what=admin&adminName=" + adminName + "&passwort=" + passwort,
-	// url : "request/service.php",
-	// success : function(msg) {
-	// if (msg != 'false') {
-	//			
-	// // Burada eger girilen admin bilgileri dogru ise admin sayfasini
-	// cagircaz.
-	//				
-	// } else {
-	// alert(unescape("%DCberprufen Sie bitt Ihre Angaben!"));
-	// }
-	// }
-	// });
-
-}
-function UserLogin() {
-
-}

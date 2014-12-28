@@ -1,37 +1,9 @@
 <?php
+
 function suchen() {
-	?>
-
-
-<!--     $("#table").droppable(); -->
-<table cellpadding="1">
-
-	<tr>
-
-		<th valign="top">
-
-			<div class="ui-widget-content">
-				<h2 class="ui-widget-header"
-					style="margin-top: 0; margin-bottom: 5px;">WG-Zimmer Suchen</h2>
-
-				<div class="Tabs">
-				<?php
-	
-	suchenDesign ()?>
-				</div>
-			</div>
-		</th>
-	</tr>
-
-</table>
-
-
-<?php
-}
-function suchenDesign() {
-	?>
-
-<form name="Suchen">
+    ?>
+    <div class="ui-widget-content"><h2 class="ui-widget-header">WG-Zimmer suchen</h2>
+        <form name="Suchen" >
             <h3>Ich bin</h3>
             <div>
                 <input id="BINgeschlecht" name="geschlecht" type="radio" value="f"> eine Frau 
@@ -63,12 +35,12 @@ function suchenDesign() {
             </br>
             Mit Einzugsdatum ab sofort oder ab  
             <input type="date" value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
-                   id="SUCHAbDatum" style="width: 100px" /><br>
-            Unbefristet oder bis <input type="date" value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
-                               id="SUCHBisDatum" style="width: 100px" />
+                   id="SUCHAbDatum" style="width: 100px" />
+            , unbefristet oder bis <input type="date" value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
+                                          id="SUCHBisDatum" style="width: 100px" />
         </form>
         <button id="btnSuchen" type="submit">Suchen</button>
-        <button id="btnFilterAus" type="submit">Filter zurücksetzen</button>
-<?php
+        <button id="btnFilterAus" type="submit">Filter zurücksetzen</button></div>
+    <?php
 }
 ?>

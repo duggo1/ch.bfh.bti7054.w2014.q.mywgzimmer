@@ -97,7 +97,7 @@ require_once 'Language.php';
 //                  $( "#tabs" ).tabs( "disable", 2 );
 //                  $( "#tabs" ).tabs( "disable", 3 );
 //                  $( "#tabs" ).tabs( "disable", 4 );
-                 //$( "#tabs" ).tabs( "disable", 5 );
+                //$( "#tabs" ).tabs( "disable", 5 );
 
 
                 //  $("#autocomplete").autocomplete({
@@ -109,50 +109,36 @@ require_once 'Language.php';
         </script>
     </head>
     <body>
-        <div id="Header">
-            <a href="?link=home"><img id=logo src="logo.png" alt="Home"
-                                      title="Home"></a>
-            <div id="lang"><?php language(); ?></div>
-            <a href="?link=hilfe"><img id=help src="help.png"
-                                       alt="Hilfe" title="Hilfe"></a> <a href="?link=agb"><img id=agb
-                                                                    src="agb.png" alt="AGB" title="AGB"></a>
+        <div class="Header">
+            <a href="?link=home"><img id="logo" src="logo.png" alt="Home" title="Home"></a>
+            <div class="lang"><?php language(); ?></div>
+            <a href="?link=hilfe"><img id="help" src="help.png" alt="Hilfe" title="Hilfe"></a>
+            <a href="?link=agb"><img id="agb" src="agb.png" alt="AGB" title="AGB"></a>
         </div>
-
-        <div id="Wrap">
-            <table>
-                <tr>
-                    <td style="vertical-align: top;">
-                        <div id="leftbox">
-
-                            <a href="?link=suchen"><img id=suche
-                                                        src="suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
-                            <a href="?link=inserieren"><img id=inserat src="inserat.png"
-                                                            alt="Gratis-WG-Zimmer-inserieren"
-                                                            title="Gratis WG-Zimmer inserieren"></a>
-                        </div>
-                    </td>
-                    <td style="vertical-align: top;">
-                        <?php
-                        if ($link == 'home') {
-                            ?><div id="content"><?php home(); ?>
-                            </div>
-                            <?php
-                        } elseif ($link == 'suchen') {
-                            suchen();
-                        } elseif ($link == 'inserieren') {
-                            Inserieren();
+        <table class="Wrap">
+            <tr>
+                <td class="leftbox">
+                    <a href="?link=suchen"><img id="suche" src="suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
+                    <a href="?link=inserieren"><img id="inserat" src="inserat.png" alt="Gratis-WG-Zimmer-inserieren" title="Gratis WG-Zimmer inserieren"></a>
+                </td>
+                <td class="content">
+                    <?php
+                    if ($link == 'home') {
+                        ?><div class="textcontent"><?php home(); ?></div><?php
+                    } elseif ($link == 'suchen') {
+                        ?><div class="functionalcontent"><?php suchen(); ?></div><?php
+                    } elseif ($link == 'inserieren') {
+                        ?><div class="funtionalcontent"><?php inserieren(); ?></div><?php
                         } elseif ($link == 'hilfe') {
-                            echo '<ul><li>Hilfe</li></ul>';
+                            ?><div class="textcontent"><?php hilfe(); ?></div><?php
                         } elseif ($link == 'agb') {
-                            agb();
+                            ?><div class="textcontent"><?php agb(); ?></div><?php
                         }
                         ?>
-                    </td>
-                    <td>
-                        <div id="rightbox"></div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+                </td>
+                <td class="rightbox">
+                </td>
+            </tr>
+        </table>
     </body>
 </html>

@@ -1,42 +1,57 @@
 <?php
-include('login.php'); // Includes Login Script
+session_start();
+global $error; // Variable To Store Error Message
+
+$link = 0;
+global $lan;
+
+require_once ("loginpage.php");
+require_once ("admin.php");
 
 ?>
+<!DOCTYPE html>
+
 <html>
+    <?php
+    if (isset($_GET ['link'])) {
+        $link = $_GET ['link'];
+    }
+    if (isset($_GET ['lan'])) {
+        $lan = $_GET ['lan'];
+    }
+    if (isset($_GET ['error'])) {
+        $error = $_GET ['error'];
+    }
+    ?>
+
     <head>
         <meta charset="utf-8">
         <title>MyWGZimmer-Administrator</title>
-        <link rel="stylesheet" type="text/css" href="../mywgzimmer.css">
+        <link rel="stylesheet" type="text/css" href="../mywgZimmer.css">
+        <link href="../css/blitzer/jquery-ui-1.9.2.custom.css" rel="stylesheet"> 
     </head>
     <body>
-        <div id="Header">
-            <a href="../index.php?link=home"><img id=logo src="../logo.png" alt="Home" title="Home"></a>
-            <img id=logout src="../logout.png" alt="Logout" title="Logout" onclick="logout();">
+        <div class="Header">
+            <a href="../index.php?link=home"><img id="logo" src="../logo.png" alt="Home" title="Home"></a>
+            <a href="logout.php"><img id="btnlogout" src="../logout.png" alt="Logout" title="Logout"></a>
+        </div>
+        <table class="Wrap">
+            <tr>
+                <td class="leftbox">
+                </td>
+                <td class="content">
+                    <?php
+                    if ($link = 'loginpage') {
+                        ?><div class="functionalcontent"><?php loginpage(); ?></div><?php
+                    } elseif ($link == 'admin') {
+                        ?><div class="textcontent"><?php admin(); ?></div><?php
+                    }
+                    ?>
+                </td>
+                <td class="rightbox">
+                </td>
+            </tr>
+        </table>
 
-        </div>
-        <div id="Login">
-            </br>
-            <h1>
-                Login
-            </h1>
-            <form action="" method="post">
-                <p>
-                    <label for = "username">Name</label>
-                </p>
-                <p>
-                    <input id="name" type="text" name="username" value="">
-                </p>
-                <p>
-                    <label for = "password">Passwort</label>
-                </p>
-                <p>
-                    <input id="password" type="password" name="password" value="">
-                </p>
-                <input type="submit" name="submit" value=" Login ">
-                <p><strong><?php if (isset($error)) {
-    echo $error;
-} ?></strong></p>
-            </form>
-        </div>
     </body>
 </html>
