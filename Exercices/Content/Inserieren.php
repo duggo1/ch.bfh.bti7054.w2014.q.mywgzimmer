@@ -31,43 +31,47 @@ function Inserieren() {
 
 function InserierenTab1() {
     ?>
-    <div class="Tabs">
-        <form name="Tab1">
-            <h3>Wir sind</h3>
-            <div>
-                <input id="ISTgeschlechtf" name="geschlecht" type="radio" value="f"> alles nur Frauen<br>
-                <input id="ISTgeschlechtm" name="geschlecht" type="radio" value="m"> alles nur Männer<br>
-                <input id="ISTgeschlechtx" name="geschlecht" type="radio" value="x" checked="checked"> gemischt<br>
-            </div>
-            </br>
-            <div>unser Durchschnittsalter</div>
-            <div><input id="ISTalter" type="number" value="0" min="13" max="99"></div>
-            </br>
-            <div>Beschreibung der aktuellen WG-Bewohner</div>
-            <textarea id="bewohnerBeschreibung" class="Beschreibung" rows="10" ></textarea>
-            </br>
-            <input id="btnweiter1" class="btnweiter" name="btnweiter1" value="Weiter">
-            </br>
-            </br>
-        </form>
-    </div>
+    <form name="Tab1" class='Tabs'>
+        <h3>Wir sind</h3>
+        <div>
+            <input id="ISTgeschlechtf" name="geschlecht" type="radio" value="f"> alles nur Frauen<br>
+            <input id="ISTgeschlechtm" name="geschlecht" type="radio" value="m"> alles nur Männer<br>
+            <input id="ISTgeschlechtx" name="geschlecht" type="radio" value="x" checked="checked"> gemischt<br>
+        </div>
+        </br>
+        <table>
+            <tr>
+                <td>unser Durchschnittsalter</td>
+            </tr>
+            <tr>
+                <td><input id="ISTalter" type="number" value="0" min="13" max="99"></tr>
+            </tr>
+        </table>
+        </br>
+        <div>Beschreibung der aktuellen WG-Bewohner</div>
+        <textarea id="bewohnerBeschreibung" class="Beschreibung" rows="10" ></textarea>
+        </br>
+        <input id="btnweiter1" class="btnweiter" name="btnweiter1" value="Weiter">
+        </br>
+        </br>
+    </form>
     <?php
 }
 
 function InserierenTab2() {
     ?>
-    <form name="Tab2">
+    <form name="Tab2" class="Tabs">
         <h3>Adresse</h3>
-        <table>
+        <table >
             <tr>
                 <td>Strasse</td>
                 <td>Hausnummer</td> 
                 <td>Wohnungszusatz</td> 
             </tr>
             <tr>
-                <td><input id="insZimmerStr" class="formfield" type="text" required></td>
-                <td><input id="insZimmerStrNr" type="text"></td> 
-                <td><input id="insZimmerZusatzNr" type="text"></td> 
+                <td><input id="insZimmerStr" class="formfield" name="insZimmerStr" type="text" required></td>
+                <td><input id="insZimmerStrNr" name="insZimmerStrNr" type="text"></td> 
+                <td><input id="insZimmerZusatzNr" name="insZimmerZusatzNr" type="text"></td> 
 
             </tr>
             <tr>
@@ -75,8 +79,8 @@ function InserierenTab2() {
                 <td>Postleitzahl</td> 
             </tr>
             <tr>
-                <td><input id="insZimmerOrt" class="formfield" type="text" required></td>
-                <td><input id="insZimmerPlz" type="number" value="1000" min="1000" max="9999"required></td> 
+                <td><input id="insZimmerOrt" class="formfield" name="insZimmerOrt" type="text" required></td>
+                <td><input id="insZimmerPlz" name="insZimmerPLZ" type="number" value="1000" min="1000" max="9999"required></td> 
             </tr>
         </table>
         </br>
@@ -84,13 +88,13 @@ function InserierenTab2() {
         <table>
             <tr>
                 <td>Einzugstermin</td>
-                <td style="margin-left: 200px;">Auszugstermin (sofern befristet)</td>
+                <td>Auszugstermin (sofern befristet)</td>
             </tr>
             <tr>
                 <td><input type="date"
                            value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
-                           id="insMitAbDatum" style="width: 100px" /></td>
-                <td style="margin-left: 200px;"><input type="date" id="insMitBisDatum" style="width: 100px" /></td>
+                           id="insMitAbDatum"/></td>
+                <td><input type="date" id="insMitBisDatum"/></td>
             </tr>
         </table>
         </br>
@@ -101,12 +105,13 @@ function InserierenTab2() {
         <input id="btnweiter2" class="btnweiter" name="btnweiter2" value="Weiter">
         </br>
         </br>
-    </form><?php
+    </form>
+    <?php
 }
 
 function InserierenTab3() {
     ?>
-    <form name="Tab3">
+    <form name="Tab3" class="Tabs">
 
         <h3>Informationen</h3>
         <div>
@@ -118,7 +123,7 @@ function InserierenTab3() {
         <div><input id="insFlaeche" type="number" value="4" min="4" max="200" required></div>
         </br>
         <h3>Beschreibung</h3>
-        <textarea id="insZimmerBeschreibung" class="Beschreibung" rows="10"></textarea>
+        <textarea id="insZimmerBeschreibung" class="Beschreibung" rows="5"></textarea>
         </br>
         <h3>Fotos</h3>
         <div><input id="insFoto1" type="file" ><input type="submit" value="Foto hochladen" name="submit"></div>
@@ -136,7 +141,7 @@ function InserierenTab3() {
 
 function InserierenTab4() {
     ?>
-    <form name="Tab4">
+    <form name="Tab4" class="Tabs">
         <h3>Wir suchen</h3>
         <div>
             <input id="SOLLgeschlechtf" name="geschlecht" type="radio" value="f"> eine Frau<br>
@@ -147,11 +152,11 @@ function InserierenTab4() {
         <table>
             <tr>
                 <td>Mindestalter</td>
-                <td style="margin-left: 200px;">Maximumalter</td>
+                <td>Maximumalter</td>
             </tr>
             <tr>
                 <td><input id="SOLLminAlter" type="number" min="13" max="99"></td>
-                <td style="margin-left: 200px;"><input id="SOLLmaxAlter" type="number" min="13" max="99"></td>
+                <td ><input id="SOLLmaxAlter" type="number" min="13" max="99"></td>
             </tr>
         </table>
         </br>
@@ -161,7 +166,7 @@ function InserierenTab4() {
         <input id="btnzuruck4" class="btnzuruck" name="btnzuruck4" value="Zurück">
         <input id="btnweiter4" class="btnweiter" name="btnweiter4" value="Weiter">
         </br>
-            </br>
+        </br>
     </form><?php
 }
 
@@ -176,16 +181,16 @@ function InserierenTab5() {
         <div><input id="wiederemail" class="formfield" type="email"></div>
         </br>
         <h3>AGBs</h3>
-        <textarea id="agbBeschreibung" class="Beschreibung" rows="10" disabled="true">Der Inserent bestätigt hiermit die Angaben über ein echtes Zimmer in einer echten WG gemacht zu haben und ist alleiniger Verantwortlicher für den Inhalt. Das Inserat läuft nach 10 Wochen ab. Daraufhin wird der Inserent automatisch an den Ablauf des Inserates erinnert. Bei Änderung der Daten oder Aktualisierung des Erstellungsdatums wird das Inserat wieder für 10 Wochen aufgeschaltet. Es wird jedoch automatisch gelöscht, sofern der Inserent die Löschwarnung ignoriert. Die E-Mail-Adressen sind für die Öffentlichkeit nicht ersichtlich. Um bei vergebenem WG-Zimmer keine E-Mails mehr zu erhalten, wird empfohlen das Inserat zu löschen. Die Betreiber der Webseite sind weder für wirtschaftliche, noch für psychische Schäden haftbar, die durch die Verwendung dieser Webseite entstanden sind. Die Webdesigner liessen sich von diversen schon existierenden vergleichbaren Webseiten inspirieren. Sie werden weder urheberrechtlichen Ansprüchen nachkommen, noch selber welche stellen.</textarea>
+        <textarea id="agbBeschreibung" class="Beschreibung" rows="5" disabled="true">Der Inserent bestätigt hiermit die Angaben über ein echtes Zimmer in einer echten WG gemacht zu haben und ist alleiniger Verantwortlicher für den Inhalt. Das Inserat läuft nach 10 Wochen ab. Daraufhin wird der Inserent automatisch an den Ablauf des Inserates erinnert. Bei Änderung der Daten oder Aktualisierung des Erstellungsdatums wird das Inserat wieder für 10 Wochen aufgeschaltet. Es wird jedoch automatisch gelöscht, sofern der Inserent die Löschwarnung ignoriert. Die E-Mail-Adressen sind für die Öffentlichkeit nicht ersichtlich. Um bei vergebenem WG-Zimmer keine E-Mails mehr zu erhalten, wird empfohlen das Inserat zu löschen. Die Betreiber der Webseite sind weder für wirtschaftliche, noch für psychische Schäden haftbar, die durch die Verwendung dieser Webseite entstanden sind. Die Webdesigner liessen sich von diversen schon existierenden vergleichbaren Webseiten inspirieren. Sie werden weder urheberrechtlichen Ansprüchen nachkommen, noch selber welche stellen.</textarea>
         </br>
         <div>AGBs akzeptieren</div>
         <div><input type=checkbox id="agbsakzeptiert"></div>
         </br>
-          <input id="btnzuruck5" class="btnzuruck" name="btnzuruck5" value="Zurück" >
-        <input id="btnweiter5" class="btnweiter" name="btnweiter5" value="Abschicken" style="width: 100px;">
+        <input id="btnzuruck5" class="btnzuruck" name="btnzuruck5" value="Zurück" >
+        <input id="btnweiter5" class="btnweiter" name="btnweiter5" value="Abschicken">
 
-    </br>
-            </br>
+        </br>
+        </br>
     </form>
     <?php
 }

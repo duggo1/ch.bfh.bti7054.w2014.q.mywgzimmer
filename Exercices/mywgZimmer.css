@@ -10,7 +10,6 @@ td {
     vertical-align: top;
 }
 .lang {
-    vertical-align: center;
     padding-left: 15px;
 }
 .Header {
@@ -51,12 +50,14 @@ img#agb {
     background-color:rgba(255,255,255,0.5);
     min-height: 440px;
 }
-.inserat {
+.ui-widget-content {
+    min-height: 500px;
+}
+.function {
     padding-top: 20px;
     height: 200px;
     width: 200px;
 }
-
 .error {
     color: red;
     font-weight: bold;
@@ -68,7 +69,6 @@ img#agb {
 .Beschreibung {
     width: 100%;
 }
-
 div#Login{
     margin: 0 auto;
     text-align: center;
@@ -76,14 +76,11 @@ div#Login{
     width: 250px;
     background-color:rgba(255,255,255,0.5);
 }
-
 .btnweiter {
     float: right;
-    width: 60px;
 }
 .btnzuruck {
     float: left;
-      width: 60px;
 }
 .button {
     background: red; 
@@ -95,6 +92,7 @@ div#Login{
 }
 Table {
     width: 100%;
+    height: 100%;
     border-collapse:collapse;
 }
 table thead { 
@@ -104,15 +102,6 @@ table thead {
     border: dashed;
     border-width: 1px 0;
 }
-.ui-widget-header {
-}
-.ui-tabs-nav{
-}
-.ui-helper-reset{
-}
-.ui-widget-content{
-}
-.Tabs{
-    width: inherit;
-    height: inherit;
+td#search {
+    text-align: center;
 }
