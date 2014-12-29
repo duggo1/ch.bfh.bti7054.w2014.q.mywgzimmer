@@ -33,6 +33,13 @@ function InserierenTab1() {
 		if (isNaN(BewohnerAlter)) {
 			hasErrorBewohnerAlter = true;
 			ErrorMessage = ErrorMessage + "ungültige Altersangabe\n";
+			
+		} else if (BewohnerAlter <  document.getElementById('ISTalter').min){
+			hasErrorBewohnerAlter = true;
+			ErrorMessage = ErrorMessage + "ungültige Altersangabe\n";
+		} else if (BewohnerAlter >  document.getElementById('ISTalter').max){
+			hasErrorBewohnerAlter = true;
+			ErrorMessage = ErrorMessage + "ungültige Altersangabe\n";
 		} else {
 			// $("#errorTel").html("");
 			hasErrorBewohnerAlter = false;
@@ -53,10 +60,12 @@ function InserierenTab1() {
 		return;
 	}
 
+
+	
 	$.ajax({
 
 		type : "GET",
-		data : "what=inserierenTab1&&insBewohnerGeschlecht="
+		data : "what=inserierenTab1&insBewohnerGeschlecht="
 				+ BewohnerGeschlecht + "&insBewohnerAlter=" + BewohnerAlter
 				+ "&iinsBewohnerBeschreibung=" + BewohnerBeschreibung,
 
@@ -123,6 +132,12 @@ function InserierenTab2() {
 			hasErrorWohnungPlz = true;
 			ErrorMessage = ErrorMessage + "ungültige Postleitzahl\n";
 
+		}else if (WohnungPlz < document.getElementById('insZimmerPlz').min){
+			hasErrorWohnungPlz = true;
+			ErrorMessage = ErrorMessage + "ungültige Postleitzahl\n";
+		}else if (WohnungPlz > document.getElementById('insZimmerPlz').max){
+			hasErrorWohnungPlz = true;
+			ErrorMessage = ErrorMessage + "ungültige Postleitzahl\n";
 		} else {
 			hasErrorWohnungPlz = false;
 		}
@@ -196,6 +211,17 @@ function InserierenTab3() {
 		if (isNaN(ZimmerFlaeche)) {
 			hasErrorZimmerFlaeche = true;
 			ErrorMessage = ErrorMessage + "ungültiger Zimmergrössen\n";
+		}else if (ZimmerFlaeche < (document.getElementById('insFlaeche').min)){
+			alert(ZimmerFlaeche+"kücük"+document.getElementById('insFlaeche').min);
+
+			hasErrorZimmerFlaeche = true;
+			ErrorMessage = ErrorMessage + "ungültiger Zimmergrössen\n";
+		}else if (ZimmerFlaeche > document.getElementById('insFlaeche').max){
+			
+			alert(ZimmerFlaeche+"büyük"+document.getElementById('insFlaeche').max);
+			hasErrorZimmerFlaeche = true;
+			ErrorMessage = ErrorMessage + "ungültiger Zimmergrössen\n";
+			
 		} else {
 			hasErrorZimmerFlaeche = false;
 		}
@@ -244,7 +270,6 @@ function InserierenTab4() {
 		GesuchtSex = document.getElementById('SOLLgeschlechtx').value;
 	}
 
-	alert(GesuchtSex);
 
 	var GesuchtMinAlter = $("#SOLLminAlter").val();
 	var GesuchtMaxAlter = $("#SOLLmaxAlter").val();
@@ -263,6 +288,12 @@ function InserierenTab4() {
 		if (isNaN(GesuchtMinAlter)) {
 			hasErrorGesuchtMinAlter = true;
 			ErrorMessage = ErrorMessage + "ungültiger Mindestalter\n";
+		} else if (GesuchtMinAlter < document.getElementById('SOLLminAlter').min){
+			hasErrorGesuchtMinAlter = true;
+			ErrorMessage = ErrorMessage + "ungültiger Mindestalter\n";
+		} else if (GesuchtMinAlter > document.getElementById('SOLLminAlter').max){
+			hasErrorGesuchtMinAlter = true;
+			ErrorMessage = ErrorMessage + "ungültiger Mindestalter\n";
 		} else {
 			hasErrorGesuchtMinAlter = false;
 		}
@@ -274,6 +305,15 @@ function InserierenTab4() {
 		if (isNaN(GesuchtMaxAlter)) {
 			hasErrorGesuchtMaxAlter = true;
 			ErrorMessage = ErrorMessage + "ungültiger Höchstalter\n";
+			
+		} else if (GesuchtMaxAlter < document.getElementById('SOLLmaxAlter').min){
+			hasErrorGesuchtMaxAlter = true;
+			ErrorMessage = ErrorMessage + "ungültiger Höchstalter\n";
+		} else if (GesuchtMaxAlter > document.getElementById('SOLLmaxAlter').max){
+			hasErrorGesuchtMaxAlter = true;
+			ErrorMessage = ErrorMessage + "ungültiger Höchstalter\n";
+			
+			
 		} else {
 			hasErrorGesuchtMaxAlter = false;
 		}
@@ -314,7 +354,7 @@ function InserierenTab4() {
 
 }
 function InserierenTab5() {
-
+	alert("Hallo");
 	var BestaetigungEmail = $("#email").val();
 	var BestaetigungEmailWieder = $("#wiederemail").val();
 	var BestaetigungAGB = $("#agbsakzeptiert").val();
@@ -353,15 +393,14 @@ function InserierenTab5() {
 		ErrorMessage = ErrorMessage + "falsche Email Wiederholung\n";
 	}
 	
-
+	alert("Hallo");
 	if (hasErrorBestaetigungEmail || hasErrorBestaetigungEmailWieder
 			|| hasErrorBestaetigungAGB) {
 		alert(ErrorMessage);
 		return;
 	}
 
-	var BestaetigungEmail = $("#email").val();
-	var BestaetigungEmailWieder = $("#wiederemail").val();
+	alert("Hallo");
 
 	$.ajax({
 		type : "GET",
@@ -401,7 +440,7 @@ function ZuruckbtTab4() {
 	$("#tabs").tabs("disable", 3);
 
 }
-function ZuruckbtTab4() {
+function ZuruckbtTab5() {
 
 	$("#tabs").tabs("enable", 3);
 	$("#tabs").tabs("option", "active", 3);

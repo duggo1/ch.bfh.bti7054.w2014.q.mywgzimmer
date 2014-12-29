@@ -79,9 +79,11 @@ div#Login{
 
 .btnweiter {
     float: right;
+    width: 60px;
 }
 .btnzuruck {
     float: left;
+      width: 60px;
 }
 .button {
     background: red; 

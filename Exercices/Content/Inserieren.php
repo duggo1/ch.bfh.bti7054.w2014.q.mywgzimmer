@@ -46,7 +46,7 @@ function InserierenTab1() {
             <div>Beschreibung der aktuellen WG-Bewohner</div>
             <textarea id="bewohnerBeschreibung" class="Beschreibung" rows="10" ></textarea>
             </br>
-            <input id="btnweiter1" class="btnweiter" type="submit" name="btnweiter1" value="Weiter">
+            <input id="btnweiter1" class="btnweiter" name="btnweiter1" value="Weiter">
             </br>
             </br>
         </form>
@@ -97,8 +97,8 @@ function InserierenTab2() {
         <div>Mietzins total (inkl. Nebenkosten)</div>
         <div><input id="insMitkosten" type="number" value="4" min="4" max="200"></div>
         </br>
-        <button id="btnzuruck2" class="btnzuruck" type="submit">Zurück</button>
-        <button id="btnweiter2" class="btnweiter">Weiter</button>
+        <input id="btnzuruck2" class="btnzuruck" name="btnzuruck2" value="Zurück">
+        <input id="btnweiter2" class="btnweiter" name="btnweiter2" value="Weiter">
         </br>
         </br>
     </form><?php
@@ -115,7 +115,7 @@ function InserierenTab3() {
         </div>
         </br>
         <div>Fläche in m<sup>2</sup></div>
-        <div><input id="insFlaeche" type="number" min="4" max="200" required></div>
+        <div><input id="insFlaeche" type="number" value="4" min="4" max="200" required></div>
         </br>
         <h3>Beschreibung</h3>
         <textarea id="insZimmerBeschreibung" class="Beschreibung" rows="10"></textarea>
@@ -127,8 +127,8 @@ function InserierenTab3() {
         </br>
         <div><input id="insFoto3" type="file" ><input type="submit" value="Foto hochladen" name="submit"></div>
         </br>
-        <button id="btnzuruck3" class="btnzuruck" type="submit">Zurück</button>
-        <button id="btnweiter3" class="btnweiter">Weiter</button>
+        <input id="btnzuruck3" class="btnzuruck" name="btnzuruck3" value="Zurück">
+        <input id="btnweiter3" class="btnweiter" name="btnweiter3" value="Weiter">
         </br>
         </br>
     </form><?php
@@ -158,8 +158,8 @@ function InserierenTab4() {
         <div>Beschreibung der gesuchten Person</div>
         <textarea id="gesuchtBeschreibung" class="Beschreibung" rows="10"></textarea>
         </br>
-        <button id="btnzuruck4" class="btnzuruck" type="submit">Zurück</button>
-        <button id="btnweiter4" class="btnweiter" type="submit">Weiter</button>
+        <input id="btnzuruck4" class="btnzuruck" name="btnzuruck4" value="Zurück">
+        <input id="btnweiter4" class="btnweiter" name="btnweiter4" value="Weiter">
         </br>
             </br>
     </form><?php
@@ -181,8 +181,9 @@ function InserierenTab5() {
         <div>AGBs akzeptieren</div>
         <div><input type=checkbox id="agbsakzeptiert"></div>
         </br>
-        <button id="btnzuruck5" class="btnzuruck" type="submit">Zurück</button>
-        <button id="btnweiter5" class="btnweiter">Abschicken</button>
+          <input id="btnzuruck5" class="btnzuruck" name="btnzuruck5" value="Zurück" >
+        <input id="btnweiter5" class="btnweiter" name="btnweiter5" value="Abschicken" style="width: 100px;">
+
     </br>
             </br>
     </form>
