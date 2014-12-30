@@ -147,7 +147,7 @@ function InserierenTab2Kontrolle() {
         alert(ErrorMessage);
         return;
     }
-    
+
 
     $.ajax({
         type: "POST",
@@ -413,8 +413,22 @@ function ZuruckbtTab5() {
 }
 function filtern() {
 
+    var BINalter = $("#BINalter").val();
+
+    var SUCHart = $("#SUCHart").val();
+    var SUCHort = $("#SUCHort").val();
+    var SUCHminFlaeche = $("#SUCHminFlaeche").val();
+    var SUCHmaxFlaeche = $("#SUCHmaxFlaeche").val();
+    var SUCHminMiete = $("#SUCHminMiete").val();
+    var SUCHmaxMiete = $("#SUCHmaxMiete").val();
+    var SUCHAbDatum = $("#SUCHAbDatum").val();
+    var SUCHBisDatum = $("#SUCHBisDatum").val();
+    var SUCHgeschlecht = $("#SUCHgeschlecht").val();
+    var SUCHminAlter = $("#SUCHminAlter").val();
+    var SUCHmaxAlter = $("#SUCHmaxAlter").val();
+
     var Geschlecht;
-    var Alter = $("#BINalter").val();
+
     var hasErrorGeschlecht = false;
     var hasErrorAlter = false;
     var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
@@ -427,7 +441,7 @@ function filtern() {
         hasErrorGeschlecht = true;
         ErrorMessage = ErrorMessage + "bitte dein Geschlecht angeben\n";
     }
-    if (Alter.length == 0) {
+    if (BINalter.length == 0) {
         hasErrorAlter = true;
         ErrorMessage = ErrorMessage + "bitte dein Alter angeben\n";
     }
@@ -436,17 +450,38 @@ function filtern() {
         return;
     }
 
-    $.ajax({
-        type: "POST",
-        data: $("#Suchen").serialize() , 
-        url: "../Content/suchtabelle.php",
+
+
+    /*$.ajax({
+        type:   "POST",
+        data:   "what=suchen&" + "suchGeschlecht=" + Geschlecht +
+                "&suchAlter=" + BINalter +
+                "&suchWGZimmerArt=" + SUCHart +
+                "&suchWGort=" + SUCHort +
+                "&suchWGminflaeche=" + SUCHminFlaeche +
+                "&suchWGmaxflaeche=" + SUCHmaxFlaeche +
+                "&suchWGminKost=" + SUCHminMiete +
+                "&suchWGmaxKost=" + SUCHmaxMiete +
+                "&suchWGabDatum=" + SUCHAbDatum +
+                "&suchWGbisDatum=" + SUCHBisDatum +
+                "&suchWGgeschlecht=" + SUCHgeschlecht +
+                "&suchWGminAlter=" + SUCHminAlter +
+                "&suchWGmaxAlter=" + SUCHmaxAlter,
+        url:    "request/service.php",
         success: function (msg) {
-            if (msg != 'false') {
-                alert("okey");
-                drawtable();
-            }
+            document.getElementById("Sie").innerHTML = msg;
+        }
+    });*/
+    $.ajax({
+        type:   "POST",
+        data:   {what: "suchen",
+                geschlecht: Geschlecht,
+                alter: BINalter},
+        url:    "request/service.php",
+        success: function (msg) {
+            document.getElementById("Sie").innerHTML = msg;
         }
     });
-
 }
+
 
