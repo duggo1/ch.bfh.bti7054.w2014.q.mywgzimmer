@@ -2,7 +2,7 @@
 
 body {
     font: 100% "Trebuchet MS", sans-serif;
-    background-image: url('holz.jpg');
+    background-image: url('../images/holz.jpg');
     background-repeat: repeat;
 }
 td {

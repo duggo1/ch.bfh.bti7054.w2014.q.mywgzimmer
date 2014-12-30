@@ -28,7 +28,7 @@ require_once ("Content/InseratAufgeben.php");
     <head>
         <meta charset="utf-8">
         <title>MyWGZimmer</title>
-        <link rel="stylesheet" type="text/css" href="mywgZimmer.css">
+        <link rel="stylesheet" type="text/css" href="css/mywgZimmer.css">
         <script src="js/jquery-1.8.3.js"></script>
         <script src="js/jquery-ui-1.9.2.custom.js"></script>
         <link href="css/blitzer/jquery-ui-1.9.2.custom.css" rel="stylesheet"> 
@@ -85,7 +85,7 @@ require_once ("Content/InseratAufgeben.php");
                 $("#btnzuruck5").button();
                 $("#btnMitbewohsuch").button();
                 $("#btnInserataufgeben").button();
-                $("#btnSuchen").button();
+                $("#btnFiltern").button();
                 $("#btnFilterAus").button();
 //                 $( "#tabs" ).tabs( "disable", 1 );
 //                  $( "#tabs" ).tabs( "disable", 2 );
@@ -97,17 +97,17 @@ require_once ("Content/InseratAufgeben.php");
     </head>
     <body>
         <div class="Header">
-            <a href="?link=home" class="link"><img id="logo" src="logo.png" alt="Home" title="Home"></a>
-            <a href="?link=hilfe" class="link"><img id="help" src="help.png" alt="Hilfe" title="Hilfe"></a>
-            <a href="?link=agb" class="link"><img id="agb" src="agb.png" alt="AGB" title="AGB"></a>
+            <a href="?link=home" class="link"><img id="logo" src="images/logo.png" alt="Home" title="Home"></a>
+            <a href="?link=hilfe" class="link"><img id="help" src="images/help.png" alt="Hilfe" title="Hilfe"></a>
+            <a href="?link=agb" class="link"><img id="agb" src="images/agb.png" alt="AGB" title="AGB"></a>
             </div>
         </div>
         <table class="Wrap">
             <tr>
                 <td class="leftbox">
                     <?php language(); ?>
-                    <a href="?link=suchen"><img class="function" src="suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
-                    <a href="?link=inserieren"><img class="function" src="inserat.png" alt="Gratis-WG-Zimmer-inserieren" title="Gratis WG-Zimmer inserieren"></a>
+                    <a href="?link=suchen"><img class="function" src="images/suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
+                    <a href="?link=inserieren"><img class="function" src="images/inserat.png" alt="Gratis-WG-Zimmer-inserieren" title="Gratis WG-Zimmer inserieren"></a>
                 </td>
                 <td class="content">
                     <?php
@@ -127,7 +127,7 @@ require_once ("Content/InseratAufgeben.php");
                         ?>
                 </td>
                 <td class="rightbox">
-                    <a href="https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb"><img id="ad" src="banner.gif" title="Werbung"></a>
+                    <a href="https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb"><img id="ad" src="images/banner.gif" title="Werbung"></a>
                 </td>
             </tr>
         </table>

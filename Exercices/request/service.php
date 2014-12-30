@@ -1,67 +1,63 @@
 <?php
 session_start ();
-require_once 'inserat_such_db.php';
-// require_once '../db_functions.php';
-// connect();
-// function __autoload($classname) {
-// include '../'.$classname . '.inc.php';
-// }
+
+require_once '../Content/suchen.php';
 
 // Tab_1 von Inserat-----------------------------
-$insBewohnerGeschlecht = (isset ( $_GET ["ISTgeschlecht"] )) ? $_GET ["ISTgeschlecht"] : "";
-$insBewohnerAlter = (isset ( $_GET ["ISTalter"] )) ? $_GET ["ISTalter"] : "";
-$insBewohnerBeschreibung = (isset ( $_GET ["bewohnerBeschreibung"] )) ? $_GET ["bewohnerBeschreibung"] : "";
+$insBewohnerGeschlecht = (isset ( $_POST ["ISTgeschlecht"] )) ? $_POST ["ISTgeschlecht"] : "";
+$insBewohnerAlter = (isset ( $_POST ["ISTalter"] )) ? $_POST ["ISTalter"] : "";
+$insBewohnerBeschreibung = (isset ( $_POST ["bewohnerBeschreibung"] )) ? $_POST ["bewohnerBeschreibung"] : "";
 
 // Tab_2 von Inserat-----------------------------
-$insWohnungStr = (isset ( $_GET ["insZimmerStr"] )) ? $_GET ["insZimmerStr"] : "";
-$insWohnungHausNr = (isset ( $_GET ["insZimmerStrNr"] )) ? $_GET ["insZimmerStrNr"] : "";
-$insWohnungZusatzNr = (isset ( $_GET ["insZimmerZusatzNr"] )) ? $_GET ["insZimmerZusatzNr"] : "";
-$insWohnungOrt = (isset ( $_GET ["insZimmerOrt"] )) ? $_GET ["insZimmerOrt"] : "";
-$insWohnungPlz = (isset ( $_GET ["insZimmerPlz"] )) ? $_GET ["insZimmerPlz"] : "";
+$insWohnungStr = (isset ( $_POST ["insZimmerStr"] )) ? $_POST ["insZimmerStr"] : "";
+$insWohnungHausNr = (isset ( $_POST ["insZimmerStrNr"] )) ? $_POST ["insZimmerStrNr"] : "";
+$insWohnungZusatzNr = (isset ( $_POST ["insZimmerZusatzNr"] )) ? $_POST ["insZimmerZusatzNr"] : "";
+$insWohnungOrt = (isset ( $_POST ["insZimmerOrt"] )) ? $_POST ["insZimmerOrt"] : "";
+$insWohnungPlz = (isset ( $_POST ["insZimmerPlz"] )) ? $_POST ["insZimmerPlz"] : "";
 
-$insWohnungEinZug = (isset ( $_GET ["insMitAbDatum"] )) ? $_GET ["insMitAbDatum"] : "";
-$insWohnungAusZug = (isset ( $_GET ["insMitBisDatum"] )) ? $_GET ["insMitBisDatum"] : "";
-$insWohnungkosten = (isset ( $_GET ["insMitkosten"] )) ? $_GET ["insMitkosten"] : "";
+$insWohnungEinZug = (isset ( $_POST ["insMitAbDatum"] )) ? $_POST ["insMitAbDatum"] : "";
+$insWohnungAusZug = (isset ( $_POST ["insMitBisDatum"] )) ? $_POST ["insMitBisDatum"] : "";
+$insWohnungkosten = (isset ( $_POST ["insMitkosten"] )) ? $_POST ["insMitkosten"] : "";
 
 // Tab_3 von Inserat----------------------------
-$insZimmerTyp = (isset ( $_GET ["insZimmerTyp"] )) ? $_GET ["insZimmerTyp"] : "";
-$insZimmerFlaeche = (isset ( $_GET ["insFlaeche"] )) ? $_GET ["insFlaeche"] : "";
-$insZimmerBeschreibung = (isset ( $_GET ["insZimmerBeschreibung"] )) ? $_GET ["insZimmerBeschreibung"] : "";
+$insZimmerTyp = (isset ( $_POST ["insZimmerTyp"] )) ? $_POST ["insZimmerTyp"] : "";
+$insZimmerFlaeche = (isset ( $_POST ["insFlaeche"] )) ? $_POST ["insFlaeche"] : "";
+$insZimmerBeschreibung = (isset ( $_POST ["insZimmerBeschreibung"] )) ? $_POST ["insZimmerBeschreibung"] : "";
 
-$insFoto1 = (isset ( $_GET ["insFoto1"] )) ? $_GET ["insFoto1"] : "";
-$insFoto2 = (isset ( $_GET ["insFoto2"] )) ? $_GET ["insFoto2"] : "";
-$insFoto3 = (isset ( $_GET ["insFoto3"] )) ? $_GET ["insFoto3"] : "";
+$insFoto1 = (isset ( $_POST ["insFoto1"] )) ? $_POST ["insFoto1"] : "";
+$insFoto2 = (isset ( $_POST ["insFoto2"] )) ? $_POST ["insFoto2"] : "";
+$insFoto3 = (isset ( $_POST ["insFoto3"] )) ? $_POST ["insFoto3"] : "";
 
 // Tab_4 von Inserat-----------------------------
-$insGesuchtSex = (isset ( $_GET ["SOLLgeschlecht"] )) ? $_GET ["SOLLgeschlecht"] : "";
-$insGesuchtMinAlter = (isset ( $_GET ["SOLLminAlter"] )) ? $_GET ["SOLLminAlter"] : "";
-$insGesuchtMaxAlter = (isset ( $_GET ["SOLLmaxAlter"] )) ? $_GET ["SOLLmaxAlter"] : "";
-$insGesuchtBeschreibung = (isset ( $_GET ["gesuchtBeschreibung"] )) ? $_GET ["gesuchtBeschreibung"] : "";
+$insGesuchtSex = (isset ( $_POST ["SOLLgeschlecht"] )) ? $_POST ["SOLLgeschlecht"] : "";
+$insGesuchtMinAlter = (isset ( $_POST ["SOLLminAlter"] )) ? $_POST ["SOLLminAlter"] : "";
+$insGesuchtMaxAlter = (isset ( $_POST ["SOLLmaxAlter"] )) ? $_POST ["SOLLmaxAlter"] : "";
+$insGesuchtBeschreibung = (isset ( $_POST ["gesuchtBeschreibung"] )) ? $_POST ["gesuchtBeschreibung"] : "";
 
 // Tab_5 von Inserat
-$insBestaetigungEmail = (isset ( $_GET ["email"] )) ? $_GET ["email"] : "";
-$insBestaetigungEmailWieder = (isset ( $_GET ["wiederemail"] )) ? $_GET ["wiederemail"] : "";
-$insBestaetigungAGB = (isset ( $_GET ["agbsakzeptiert"] )) ? $_GET ["agbsakzeptiert"] : "";
+$insBestaetigungEmail = (isset ( $_POST ["email"] )) ? $_POST ["email"] : "";
+$insBestaetigungEmailWieder = (isset ( $_POST ["wiederemail"] )) ? $_POST ["wiederemail"] : "";
+$insBestaetigungAGB = (isset ( $_POST ["agbsakzeptiert"] )) ? $_POST ["agbsakzeptiert"] : "";
 
-// Suchen-----------------------------------------
+/* Suchen-----------------------------------------
 
 // Ich bin
-$suchGeschlecht = (isset ( $_GET ["BINgeschlecht"] )) ? $_GET ["BINgeschlecht"] : "";
-$suchAlter = (isset ( $_GET ["BINalter"] )) ? $_GET ["BINalter"] : "";
+$suchGeschlecht = (isset ( $_POST ["BINgeschlecht"] )) ? $_POST ["BINgeschlecht"] : "";
+$suchAlter = (isset ( $_POST ["BINalter"] )) ? $_POST ["BINalter"] : "";
 
 // Ich suche
-$suchWGgeschlecht = (isset ( $_GET ["SUCHgeschlecht"] )) ? $_GET ["SUCHgeschlecht"] : "";
-$suchWGminAlter = (isset ( $_GET ["SUCHminAlter"] )) ? $_GET ["SUCHminAlter"] : "";
-$suchWGmaxAlter = (isset ( $_GET ["SUCHmaxAlter"] )) ? $_GET ["SUCHmaxAlter"] : "";
-$suchWGZimmerArt = (isset ( $_GET ["SUCHart"] )) ? $_GET ["SUCHart"] : "";
-$suchWGminflaeche = (isset ( $_GET ["SUCHminFlaeche"] )) ? $_GET ["SUCHminFlaeche"] : "";
-$suchWGmaxflaeche = (isset ( $_GET ["SUCHmaxFlaeche"] )) ? $_GET ["SUCHmaxFlaeche"] : "";
-$suchWGminKost = (isset ( $_GET ["SUCHminMiete"] )) ? $_GET ["SUCHminMiete"] : "";
-$suchWGmaxKost = (isset ( $_GET ["SUCHmaxMiete"] )) ? $_GET ["SUCHmaxMiete"] : "";
-$suchWGabDatum = (isset ( $_GET ["SUCHAbDatum"] )) ? $_GET ["SUCHAbDatum"] : "";
-$suchWGbisDatum = (isset ( $_GET ["SUCHBisDatum"] )) ? $_GET ["SUCHBisDatum"] : "";
-
-$what = $_GET ['what'];
+$suchWGgeschlecht = (isset ( $_POST ["SUCHgeschlecht"] )) ? $_POST ["SUCHgeschlecht"] : "";
+$suchWGminAlter = (isset ( $_POST ["SUCHminAlter"] )) ? $_POST ["SUCHminAlter"] : "";
+$suchWGmaxAlter = (isset ( $_POST ["SUCHmaxAlter"] )) ? $_POST ["SUCHmaxAlter"] : "";
+$suchWGZimmerArt = (isset ( $_POST ["SUCHart"] )) ? $_POST ["SUCHart"] : "";
+$suchWGminflaeche = (isset ( $_POST ["SUCHminFlaeche"] )) ? $_POST ["SUCHminFlaeche"] : "";
+$suchWGmaxflaeche = (isset ( $_POST ["SUCHmaxFlaeche"] )) ? $_POST ["SUCHmaxFlaeche"] : "";
+$suchWGminKost = (isset ( $_POST ["SUCHminMiete"] )) ? $_POST ["SUCHminMiete"] : "";
+$suchWGmaxKost = (isset ( $_POST ["SUCHmaxMiete"] )) ? $_POST ["SUCHmaxMiete"] : "";
+$suchWGabDatum = (isset ( $_POST ["SUCHAbDatum"] )) ? $_POST ["SUCHAbDatum"] : "";
+$suchWGbisDatum = (isset ( $_POST ["SUCHBisDatum"] )) ? $_POST ["SUCHBisDatum"] : "";
+*/
+$what = $_POST ['what'];
 
 if ($what == "inserierenTab1") {
 	
@@ -108,11 +104,14 @@ if ($what == "inserierenTab5") {
 }
 
 if ($what == "suchen") {
-	echo "true";
+    
+    drawtable();
+    echo "true";
 }
 
 if ($what == "userbearbeiten") {
 }
+
 
 
 

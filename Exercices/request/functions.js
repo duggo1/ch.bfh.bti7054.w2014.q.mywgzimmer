@@ -367,10 +367,8 @@ function InserierenTab5Kontrolle() {
         return;
     }
 
-    alert("Hallo");
-
     $.ajax({
-        type: "GET",
+        type: "POST",
         data: "what=inserierenTab5&" + "email=" + BestaetigungEmail
                 + "&wiederemail=" + BestaetigungEmailWieder,
         url: "request/service.php",
@@ -440,16 +438,12 @@ function filtern() {
 
     $.ajax({
         type: "POST",
-        data: "what=suchen&suchOrt=" + Ort + "&suchPlz=" + Plz + "&suchStr="
-                + Strasse + "&suchPreisvon=" + PreisVon + "&suchPreisbis="
-                + PreisBis + "&suchflaechevon=" + FlaecheVon
-                + "&suchflaechebis=" + FlaecheBis + "&suchFreiDatum=" + FreiAb,
-        url: "request/service.php",
+        data: $("#Suchen").serialize() , 
+        url: "../Content/suchtabelle.php",
         success: function (msg) {
             if (msg != 'false') {
-                $("#tabs").tabs("enable", 2);
-                $("#tabs").tabs("option", "active", 2);
-                $("#tabs").tabs("disable", 1);
+                alert("okey");
+                drawtable();
             }
         }
     });
