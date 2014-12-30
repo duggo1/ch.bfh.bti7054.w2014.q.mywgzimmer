@@ -50,9 +50,7 @@ img#agb {
     background-color:rgba(255,255,255,0.5);
     min-height: 440px;
 }
-.ui-widget-content {
-    min-height: 500px;
-}
+
 .function {
     padding-top: 20px;
     height: 200px;

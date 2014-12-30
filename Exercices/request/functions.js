@@ -1,5 +1,17 @@
 function InserierenTab1Kontrolle() {
 
+    var BewohnerGeschlecht;
+
+    if (document.getElementById('ISTgeschlechtf').checked) {
+        BewohnerGeschlecht = 'f';
+
+    } else if (document.getElementById('ISTgeschlechtm').checked) {
+        BewohnerGeschlecht = 'm';
+
+    } else {
+        BewohnerGeschlecht = 'x';
+    }
+
     var BewohnerAlter = $("#ISTalter").val();
     var BewohnerBeschreibung = $("#bewohnerBeschreibung").val();
 
@@ -34,23 +46,18 @@ function InserierenTab1Kontrolle() {
     if (hasErrorBewohnerAlter || hasErrorBewohnerBeschreibung) {
         alert(ErrorMessage);
     } else {
-$.ajax({
-        type: "POST",
-        data: "what=inserierenTab2&" + "insZimmerStr=" + WohnungStr
-                + "&insZimmerStrNr=" + WohnungHausNr + "&insZimmerZusatzNr="
-                + WohnungZusatzNr + "&insZimmerOrt=" + WohnungOrt
-                + "&insZimmerPlz=" + WohnungPlz + "&insMitAbDatum="
-                + WohnungEinZug + "&insMitBisDatum=" + WohnungAusZug
-                + "&insMitkosten=" + Wohnungkosten,
-        url: "request/service.php",
-        success: function (msg) {
-            if (msg != 'false') {
-                $("#tabs").tabs("enable", 1);
-                $("#tabs").tabs("option", "active", 1);
-                $("#tabs").tabs("disable", 0);
+        $.ajax({
+            type: "POST",
+            data: "BewohnerGeschlecht",
+            url: "request/service.php",
+            success: function (msg) {
+                if (msg != 'false') {
+                    $("#tabs").tabs("enable", 1);
+                    $("#tabs").tabs("option", "active", 1);
+                    $("#tabs").tabs("disable", 0);
+                }
             }
-        }
-    });
+        });
     }
 }
 
@@ -58,18 +65,20 @@ function InserierenTab2Kontrolle() {
 
     var WohnungStr = $("#insZimmerStr").val();
     var WohnungHausNr = $("#insZimmerStrNr").val();
-    var WohnungZusatzNr = $("#insZimmerZusatzNr").val();
     var WohnungOrt = $("#insZimmerOrt").val();
     var WohnungPlz = $("#insZimmerPlz").val();
-    var WohnungEinZug = $("#insMitAbDatum").val();
-    var WohnungAusZug = $("#insMitBisDatum").val();
+    var WohnungEinzug = $("#insMitAbDatum").val();
+    var WohnungAuszug = $("#insMitBisDatum").val();
     var Wohnungkosten = $("#insMitkosten").val();
+
+    var heute = new Date();
 
     var hasErrorWohnungStr = false;
     var hasErrorWohnungHausNr = false;
     var hasErrorWohnungOrt = false;
     var hasErrorWohnungPlz = false;
     var hasErrorWohnungkosten = false;
+    var hasErrorWohnungBezug = false;
 
     var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
 
@@ -126,21 +135,23 @@ function InserierenTab2Kontrolle() {
             hasErrorWohnungkosten = false;
         }
     }
-
+    if ($("#insMitBisDatum").length == 0) {
+        WohnungAuszug = "30.12.9999";
+    }
+    if (WohnungEinzug < heute || WohnungEinzug >= WohnungAuszug) {
+        hasErrorWohnungBezug = true;
+        ErrorMessage = ErrorMessage + "falsche Datumeingabe\n";
+    }
     if (hasErrorWohnungStr || hasErrorWohnungHausNr || hasErrorWohnungOrt
             || hasErrorWohnungPlz || hasErrorWohnungkosten) {
         alert(ErrorMessage);
         return;
     }
+    
 
     $.ajax({
         type: "POST",
-        data: "what=inserierenTab2&" + "insZimmerStr=" + WohnungStr
-                + "&insZimmerStrNr=" + WohnungHausNr + "&insZimmerZusatzNr="
-                + WohnungZusatzNr + "&insZimmerOrt=" + WohnungOrt
-                + "&insZimmerPlz=" + WohnungPlz + "&insMitAbDatum="
-                + WohnungEinZug + "&insMitBisDatum=" + WohnungAusZug
-                + "&insMitkosten=" + Wohnungkosten,
+        data: "tostring(WohnungEinzug), tostring(WohnungAuszug)",
         url: "request/service.php",
         success: function (msg) {
             if (msg != 'false') {
@@ -155,43 +166,35 @@ function InserierenTab2Kontrolle() {
 
 function InserierenTab3Kontrolle() {
 
-    var ZimmerTyp = $("#insZimmerTyp").val();
-
-    if (document.getElementById('insZimmerTypz').checked) {
-        ZimmerTyp = document.getElementById('insZimmerTypz').value;
-
-    } else if (document.getElementById('insZimmerTyps').checked) {
-        ZimmerTyp = document.getElementById('insZimmerTyps').value;
-    }
-    alert(ZimmerTyp);
-
     var ZimmerFlaeche = $("#insFlaeche").val();
     var ZimmerBeschreibung = $("#insZimmerBeschreibung").val();
+    var ZimmerTyp;
 
     var hasErrorZimmerFlaeche = false;
     var hasErrorZimmerBeschreibung = false;
 
     var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
 
+    if (document.getElementById('insZimmerTypz').checked) {
+        ZimmerTyp = 0;
+    } else {
+        ZimmerTyp = 1;
+    }
+
     if (ZimmerFlaeche.length == 0) {
         hasErrorZimmerFlaeche = true;
-        ErrorMessage = ErrorMessage + "fehlende Zimmergrössen\n";
+        ErrorMessage = ErrorMessage + "fehlende Zimmergrösse\n";
 
     } else {
         if (isNaN(ZimmerFlaeche)) {
             hasErrorZimmerFlaeche = true;
-            ErrorMessage = ErrorMessage + "ungültiger Zimmergrössen\n";
+            ErrorMessage = ErrorMessage + "ungültige Flächenangabe\n";
         } else if (ZimmerFlaeche < (document.getElementById('insFlaeche').min)) {
-            alert(ZimmerFlaeche + "kücük" + document.getElementById('insFlaeche').min);
-
             hasErrorZimmerFlaeche = true;
-            ErrorMessage = ErrorMessage + "ungültiger Zimmergrössen\n";
+            ErrorMessage = ErrorMessage + "ungültige Flächenangabe\n";
         } else if (ZimmerFlaeche > document.getElementById('insFlaeche').max) {
-
-            alert(ZimmerFlaeche + "büyük" + document.getElementById('insFlaeche').max);
             hasErrorZimmerFlaeche = true;
-            ErrorMessage = ErrorMessage + "ungültiger Zimmergrössen\n";
-
+            ErrorMessage = ErrorMessage + "ungültige Flächenangabe\n";
         } else {
             hasErrorZimmerFlaeche = false;
         }
@@ -211,9 +214,7 @@ function InserierenTab3Kontrolle() {
 
     $.ajax({
         type: "GET",
-        data: "what=inserierenTab3&" + "insZimmerTyp=" + ZimmerTyp
-                + "&insFlaeche=" + ZimmerFlaeche + "&insZimmerBeschreibung="
-                + ZimmerBeschreibung,
+        data: insZimmerTyp,
         url: "request/service.php",
         success: function (msg) {
             if (msg != 'false') {
@@ -227,16 +228,16 @@ function InserierenTab3Kontrolle() {
 }
 function InserierenTab4Kontrolle() {
 
-    var GesuchtSex = $("#SOLLgeschlecht").val();
+    var GesuchtSex;
 
     if (document.getElementById('SOLLgeschlechtf').checked) {
-        GesuchtSex = document.getElementById('SOLLgeschlechtf').value;
+        GesuchtSex = 'f';
 
     } else if (document.getElementById('SOLLgeschlechtm').checked) {
-        GesuchtSex = document.getElementById('SOLLgeschlechtm').value;
+        GesuchtSex = 'm';
 
-    } else if (document.getElementById('SOLLgeschlechtx').checked) {
-        GesuchtSex = document.getElementById('SOLLgeschlechtx').value;
+    } else {
+        GesuchtSex = 'x';
     }
 
 
@@ -325,7 +326,6 @@ function InserierenTab5Kontrolle() {
     alert("Hallo");
     var BestaetigungEmail = $("#email").val();
     var BestaetigungEmailWieder = $("#wiederemail").val();
-    var BestaetigungAGB = $("#agbsakzeptiert").val();
 
     var hasErrorBestaetigungEmail = false;
     var hasErrorBestaetigungEmailWieder = false;
@@ -361,7 +361,6 @@ function InserierenTab5Kontrolle() {
         ErrorMessage = ErrorMessage + "falsche Email Wiederholung\n";
     }
 
-    alert("Hallo");
     if (hasErrorBestaetigungEmail || hasErrorBestaetigungEmailWieder
             || hasErrorBestaetigungAGB) {
         alert(ErrorMessage);
@@ -414,19 +413,33 @@ function ZuruckbtTab5() {
     $("#tabs").tabs("disable", 4);
 
 }
-function Suchen() {
+function filtern() {
 
-    var Ort = $("#suchOrt").val();
-    var Plz = $("#suchPlz").val();
-    var Strasse = $("#suchStr").val();
-    var PreisVon = $("#suchPreisvon").val();
-    var PreisBis = $("#suchPreisbis").val();
-    var FlaecheVon = $("#suchflaechevon").val();
-    var FlaecheBis = $("#suchflaechebis").val();
-    var FreiAb = $("#suchFreiDatum").val();
+    var Geschlecht;
+    var Alter = $("#BINalter").val();
+    var hasErrorGeschlecht = false;
+    var hasErrorAlter = false;
+    var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
+
+    if (document.getElementById('BINgeschlechtf').checked) {
+        Geschlecht = 'f';
+    } else if (document.getElementById('BINgeschlechtm').checked) {
+        Geschlecht = 'm';
+    } else {
+        hasErrorGeschlecht = true;
+        ErrorMessage = ErrorMessage + "bitte dein Geschlecht angeben\n";
+    }
+    if (Alter.length == 0) {
+        hasErrorAlter = true;
+        ErrorMessage = ErrorMessage + "bitte dein Alter angeben\n";
+    }
+    if (hasErrorAlter || hasErrorGeschlecht) {
+        alert(ErrorMessage);
+        return;
+    }
 
     $.ajax({
-        type: "GET",
+        type: "POST",
         data: "what=suchen&suchOrt=" + Ort + "&suchPlz=" + Plz + "&suchStr="
                 + Strasse + "&suchPreisvon=" + PreisVon + "&suchPreisbis="
                 + PreisBis + "&suchflaechevon=" + FlaecheVon

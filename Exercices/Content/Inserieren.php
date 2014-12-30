@@ -92,7 +92,7 @@ function InserierenTab2() {
             </tr>
             <tr>
                 <td><input type="date"
-                           value="<?php echo date("d" + 2) . "." . date("m") . "." . date("Y"); ?>"
+                           value="<?php echo date("d") . "." . date("m") . "." . date("Y"); ?>"
                            id="insMitAbDatum"/></td>
                 <td><input type="date" id="insMitBisDatum"/></td>
             </tr>
@@ -115,8 +115,8 @@ function InserierenTab3() {
 
         <h3>Informationen</h3>
         <div>
-            <input id="insZimmerTypz" name="radioZimmerArt" type="radio" value="z" checked="checked"> Zimmer &nbsp;&nbsp;
-            <input id="insZimmerTyps" name="radioZimmerArt" type="radio" value="s"> Studio (ohne Zugang zu Bad, WC oder Küche)<br>
+            <input id="insZimmerTypz" name="radioZimmerArt" type="radio" value=0 checked="checked"> Zimmer &nbsp;&nbsp;
+            <input id="insZimmerTyps" name="radioZimmerArt" type="radio" value=1> Studio (ohne Zugang zu Bad, WC oder Küche)<br>
         </div>
         </br>
         <div>Fläche in m<sup>2</sup></div>

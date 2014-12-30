@@ -62,6 +62,12 @@ require_once ("Content/InseratAufgeben.php");
                 $("#btnzuruck5").click(function (event) {
                     ZuruckbtTab5();
                 });
+                $("#btnFiltern").click(function (event) {
+                    filtern();
+                });
+                $("#btnFilterAus").click(function (event) {
+                    filterAus();
+                });
                 $("#tabs").tabs();
                 $("#radio").buttonset();
                 $("#insMitAbDatum").datepicker({dateFormat: "dd.mm.yy"});
