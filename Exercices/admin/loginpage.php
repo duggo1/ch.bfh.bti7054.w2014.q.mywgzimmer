@@ -2,7 +2,9 @@
 
 function loginpage() {
 session_start();
-$error = $_SESSION['error'];
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];  // Variable To Store Error Message
+}
     $output = '<div id="Login">
             <h1>
                 Login
@@ -25,7 +27,5 @@ $error = $_SESSION['error'];
         $output = $output . '<p class="error">' . $error . '</p>';
     }
     echo $output . '</form></div>';
-    $error = '';
-    $_SESSION['error'] = $error;
 }
 ?>
