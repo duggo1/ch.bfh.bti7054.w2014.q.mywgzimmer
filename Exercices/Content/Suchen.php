@@ -29,7 +29,7 @@ function suchen() {
         <table>
             <tr>
                 <td  id="search">
-                    <input id="btnFiltern" name = "filtern"  value="Suchen"/>
+                    <input id="btnFiltern" name = "filtern"  value="Suchen" type="button"/>
                     <input id="btnFilterAus" name = "filteraus" value ="Filter zurücksetzen"/>
                 </td>
             </tr>

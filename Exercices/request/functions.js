@@ -474,12 +474,11 @@ function filtern() {
     });*/
     $.ajax({
         type:   "POST",
-        data:   {what: "suchen",
-                geschlecht: Geschlecht,
-                alter: BINalter},
+        data:   $('#Suchen').serialize(),
         url:    "request/service.php",
         success: function (msg) {
             document.getElementById("Sie").innerHTML = msg;
+            
         }
     });
 }
