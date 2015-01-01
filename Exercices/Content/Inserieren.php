@@ -99,7 +99,7 @@ function InserierenTab2() {
         </table>
         </br>
         <div>Mietzins total (inkl. Nebenkosten)</div>
-        <div><input id="insMitkosten" type="number" value="4" min="4" max="200"></div>
+        <div><input id="insMitkosten" type="number" value="10" min="10" ></div>
         </br>
         <input id="btnzuruck2" class="btnzuruck" name="btnzuruck2" value="Zurück">
         <input id="btnweiter2" class="btnweiter" name="btnweiter2" value="Weiter">
@@ -123,7 +123,7 @@ function InserierenTab3() {
         <div><input id="insFlaeche" type="number" value="4" min="4" max="200" required></div>
         </br>
         <h3>Beschreibung</h3>
-        <textarea id="insZimmerBeschreibung" class="Beschreibung" rows="5"></textarea>
+        <textarea id="ZimmerBeschreibung" class="Beschreibung" rows="5"></textarea>
         </br>
         <h3>Fotos</h3>
         <div><input id="insFoto1" type="file" ><input type="submit" value="Foto hochladen" name="submit"></div>

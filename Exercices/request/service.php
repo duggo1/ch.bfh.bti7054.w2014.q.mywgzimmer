@@ -3,40 +3,40 @@
 // session_start();
 
 // Tab_1 von Inserat-----------------------------
-$insBewohnerGeschlecht = (isset ( $_POST ["ISTgeschlecht"] )) ? $_POST ["ISTgeschlecht"] : "";
-$insBewohnerAlter = (isset ( $_POST ["ISTalter"] )) ? $_POST ["ISTalter"] : "";
-$insBewohnerBeschreibung = (isset ( $_POST ["bewohnerBeschreibung"] )) ? $_POST ["bewohnerBeschreibung"] : "";
+$insBewohnerGeschlecht = (isset ( $_POST ["insBewohnerGeschlecht"] )) ? $_POST ["insBewohnerGeschlecht"] : "";
+$insBewohnerAlter = (isset ( $_POST ["insBewohnerAlter"] )) ? $_POST ["insBewohnerAlter"] : "";
+$insBewohnerBeschreibung = (isset ( $_POST ["insBewohnerBeschreibung"] )) ? $_POST ["insBewohnerBeschreibung"] : "";
 
 // Tab_2 von Inserat-----------------------------
-$insWohnungStr = (isset ( $_POST ["insZimmerStr"] )) ? $_POST ["insZimmerStr"] : "";
-$insWohnungHausNr = (isset ( $_POST ["insZimmerStrNr"] )) ? $_POST ["insZimmerStrNr"] : "";
-$insWohnungZusatzNr = (isset ( $_POST ["insZimmerZusatzNr"] )) ? $_POST ["insZimmerZusatzNr"] : "";
-$insWohnungOrt = (isset ( $_POST ["insZimmerOrt"] )) ? $_POST ["insZimmerOrt"] : "";
-$insWohnungPlz = (isset ( $_POST ["insZimmerPlz"] )) ? $_POST ["insZimmerPlz"] : "";
+$insWohnungStr = (isset ( $_POST ["insWohnungStr"] )) ? $_POST ["insWohnungStr"] : "";
+$insWohnungHausNr = (isset ( $_POST ["insWohnungHausNr"] )) ? $_POST ["insWohnungHausNr"] : "";
+$insWohnungZusatzNr = (isset ( $_POST ["insWohnungZusatzNr"] )) ? $_POST ["insWohnungZusatzNr"] : "";
+$insWohnungOrt = (isset ( $_POST ["insWohnungOrt"] )) ? $_POST ["insWohnungOrt"] : "";
+$insWohnungPlz = (isset ( $_POST ["insWohnungPlz"] )) ? $_POST ["insWohnungPlz"] : "";
 
-$insWohnungEinZug = (isset ( $_POST ["insMitAbDatum"] )) ? $_POST ["insMitAbDatum"] : "";
-$insWohnungAusZug = (isset ( $_POST ["insMitBisDatum"] )) ? $_POST ["insMitBisDatum"] : "";
-$insWohnungkosten = (isset ( $_POST ["insMitkosten"] )) ? $_POST ["insMitkosten"] : "";
+$insWohnungAbDatum = (isset ( $_POST ["insWohnungAbDatum"] )) ? $_POST ["insWohnungAbDatum"] : "";
+$insWohnungBisDatum = (isset ( $_POST ["insWohnungBisDatum"] )) ? $_POST ["insWohnungBisDatum"] : "";
+$insWohnungkosten = (isset ( $_POST ["insWohnungkosten"] )) ? $_POST ["insWohnungkosten"] : "";
 
 // Tab_3 von Inserat----------------------------
 $insZimmerTyp = (isset ( $_POST ["insZimmerTyp"] )) ? $_POST ["insZimmerTyp"] : "";
-$insZimmerFlaeche = (isset ( $_POST ["insFlaeche"] )) ? $_POST ["insFlaeche"] : "";
+$insZimmerFlaeche = (isset ( $_POST ["insZimmerFlaeche"] )) ? $_POST ["insZimmerFlaeche"] : "";
 $insZimmerBeschreibung = (isset ( $_POST ["insZimmerBeschreibung"] )) ? $_POST ["insZimmerBeschreibung"] : "";
 
-$insFoto1 = (isset ( $_POST ["insFoto1"] )) ? $_POST ["insFoto1"] : "";
-$insFoto2 = (isset ( $_POST ["insFoto2"] )) ? $_POST ["insFoto2"] : "";
-$insFoto3 = (isset ( $_POST ["insFoto3"] )) ? $_POST ["insFoto3"] : "";
+$insFoto1link = (isset ( $_POST ["insFoto1link"] )) ? $_POST ["insFoto1link"] : "";
+$insFoto2link = (isset ( $_POST ["insFoto2link"] )) ? $_POST ["insFoto2link"] : "";
+$insFoto3link = (isset ( $_POST ["insFoto3link"] )) ? $_POST ["insFoto3link"] : "";
 
 // Tab_4 von Inserat-----------------------------
-$insGesuchtSex = (isset ( $_POST ["SOLLgeschlecht"] )) ? $_POST ["SOLLgeschlecht"] : "";
-$insGesuchtMinAlter = (isset ( $_POST ["SOLLminAlter"] )) ? $_POST ["SOLLminAlter"] : "";
-$insGesuchtMaxAlter = (isset ( $_POST ["SOLLmaxAlter"] )) ? $_POST ["SOLLmaxAlter"] : "";
-$insGesuchtBeschreibung = (isset ( $_POST ["gesuchtBeschreibung"] )) ? $_POST ["gesuchtBeschreibung"] : "";
+$insGesuchtSollSex = (isset ( $_POST ["insGesuchtSollSex"] )) ? $_POST ["insGesuchtSollSex"] : "";
+$insGesuchtSollMinAlter = (isset ( $_POST ["insGesuchtSollMinAlter"] )) ? $_POST ["insGesuchtSollMinAlter"] : "";
+$insGesuchtSollMaxAlter = (isset ( $_POST ["insGesuchtSollMaxAlter"] )) ? $_POST ["insGesuchtSollMaxAlter"] : "";
+$insGesuchtBeschreibung = (isset ( $_POST ["insGesuchtBeschreibung"] )) ? $_POST ["insGesuchtBeschreibung"] : "";
 
 // Tab_5 von Inserat
-$insBestaetigungEmail = (isset ( $_POST ["email"] )) ? $_POST ["email"] : "";
-$insBestaetigungEmailWieder = (isset ( $_POST ["wiederemail"] )) ? $_POST ["wiederemail"] : "";
-$insBestaetigungAGB = (isset ( $_POST ["agbsakzeptiert"] )) ? $_POST ["agbsakzeptiert"] : "";
+$insEmail = (isset ( $_POST ["insEmail"] )) ? $_POST ["insEmail"] : "";
+// $insEmailWieder = (isset ( $_POST ["insEmailWieder"] )) ? $_POST ["insEmailWieder"] : "";
+// $insBestaetigungAGB = (isset ( $_POST ["agbsakzeptiert"] )) ? $_POST ["agbsakzeptiert"] : "";
 
 // Suchen-----------------------------------------
 // Ich bin
@@ -159,8 +159,8 @@ function drawtable() {
 				$query = $query . " AND Durchscnittsalter >= " . $tmpminalter;
 			}
 		}
-		
-		$result = mysql_query ( $query ) or die ( "Ungültige Abfrage Hallo" );
+		$query = $query . " AND active=1";
+		$result = mysql_query ( $query ) or die ( "Ungültige Abfrage" );
 	} else {
 		$query = "SELECT * FROM tblInserate";
 		$result = mysql_query ( $query ) or die ( "Ungültige Abfrage" );
@@ -226,23 +226,66 @@ if ($what == "inserierenTab4") {
 }
 if ($what == "inserierenTab5") {
 	
-	// if(strlen($insWohnungEinZug) > 0 )
-	// {
-	// $tmpEinzugdatum = explode(".",$insWohnungEinZug);
-	// $insWohnungEinZug = $tmpEinzugdatum[0] . "-". $tmpEinzugdatum[1] . "-". $tmpEinzugdatum[2] ;
-	// }
-	// if(strlen($insWohnungAusZug) > 0 )
-	// {
-	// $tmpAuszugdatum = explode(".",$insWohnungAusZug);
-	// $insWohnungAusZug = $tmpAuszugdatum[0] . "-". $tmpAuszugdatum[1] . "-". $tmpAuszugdatum[2] ;
-	// }
-	// $tmpRes = Inserat_speichern();
-	// if( isset($tmpRes))
-	// echo "true";
-	// else {
-	// echo "false";
-	// }
+	if (strlen ( $insWohnungAbDatum ) > 0) {
+		
+		$tmpWohnungabdatum = explode ( ".", $insWohnungAbDatum );
+		$insWohnungAbDatum = $tmpWohnungabdatum [2] . "." . $tmpWohnungabdatum [1] . "." . $tmpWohnungabdatum [0];
+	}
+	if (strlen ( $insWohnungBisDatum ) > 0) {
+		
+		$tmpWohnungBisdatum = explode ( ".", $insWohnungBisDatum );
+		
+		$insWohnungBisDatum = $tmpWohnungBisdatum [2] . "." . $tmpWohnungBisdatum [1] . "." . $tmpWohnungBisdatum [0];
+	}
 	
+	// ---------Link erstellen--------------------------
+	$link = "";
+	// 6 Stellige Zahl
+	for($i = 0; $i < 7; $i ++) {
+		$x1 = rand ( 0, 9 );
+		$link .= $x1;
+	}
+	// Wort 6 Buchschtaben
+	$charakter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	for($i = 0; $i < 7; $i ++) {
+		$link .= substr ( $charakter, mt_rand ( 0, strlen ( $charakter ) - 1 ), 1 );
+	}
+	// 6 Stellige Zahl
+	for($i = 0; $i < 7; $i ++) {
+		$x3 = rand ( 0, 9 );
+		$link .= $x3;
+	}
+	// -------------------------------------------------
+	
+	$user_name = "root";
+	$password = "root";
+	$database = "mywgzimmerdb";
+	$server = "localhost";
+	
+	$db_handle = mysql_connect ( $server, $user_name, $password );
+	$db_found = mysql_select_db ( $database, $db_handle );
+	
+	$query = "INSERT INTO `mywgzimmerdb`.`tblinserate` (`ID`, `Email`, `Strasse`, `Hausnummer`, `Wohnungszusatz`, `PLZ`, `Ort`,
+			 `Quadratmeter`, `Studio`, `Minimumalter`, `Maximumalter`, `SollGeschlecht`, `IstGeschlecht`, `Durchscnittsalter`,
+	 		 `Zimmerbeschreibung`, `Bewohnerbeschreibung`, `Personenbeschreibung`, `AbDatum`, `BisDatum`, `Befristet`, `Mietzins`, `active`,
+			 `Link`, `ImagePath1`, `ImagePath2`, `ImagePath3`, `Erstellungsdatum`) VALUES 		
+			 (NULL, '$insEmail', '$insWohnungStr', '$insWohnungHausNr', '$insWohnungZusatzNr', '$insWohnungPlz', '$insWohnungOrt',
+			 '$insZimmerFlaeche' , '$insZimmerTyp', '$insGesuchtSollMinAlter', '$insGesuchtSollMaxAlter', '$insGesuchtSollSex',
+	 		'$insBewohnerGeschlecht', '$insBewohnerAlter', '$insZimmerBeschreibung', '$insBewohnerBeschreibung', '$insGesuchtBeschreibung', 
+	 		'$insWohnungAbDatum', '$insWohnungBisDatum', '', '$insWohnungkosten', '0', '$link', '$insFoto1link', '$insFoto2link', 
+			'$insFoto3link', CURRENT_TIMESTAMP);";
+	
+	$result = mysql_query ( $query ) or die ( "Ungültige Abfrage" );
+	mysql_close ( $db_handle );
+	
+	$empfaenger = $insEmail; //cagdas.cakir@students.bfh.ch
+	$betreff = "Aktivierungslink";
+	$from = "From: MyWGzimmer.ch <cagdascbu@hotmail.com>";
+	$text = "Guten Tag \n Ihre Aktivierungslink ist \n
+	http://localhost:8888/index.php?link=" . $link ."\n Freundliche Gr�sse \n mywgzimmer.ch Team";
+	
+	mail ( $empfaenger, $betreff, $text, $from );
+
 	echo "true";
 }
 
@@ -253,6 +296,8 @@ if ($what == "suchen") {
 
 if ($what == "userbearbeiten") {
 }
+
+
 
 
 
