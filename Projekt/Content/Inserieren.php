@@ -126,16 +126,48 @@ function InserierenTab3() {
         <textarea id="ZimmerBeschreibung" class="Beschreibung" rows="5"></textarea>
         </br>
         <h3>Fotos</h3>
-        <div><input id="insFoto1" type="file" ><input type="submit" value="Foto hochladen" name="submit"></div>
         </br>
-        <div><input id="insFoto2" type="file" ><input type="submit" value="Foto hochladen" name="submit"></div>
-        </br>
-        <div><input id="insFoto3" type="file" ><input type="submit" value="Foto hochladen" name="submit"></div>
-        </br>
-        <input id="btnzuruck3" class="btnzuruck" name="btnzuruck3" value="Zurück">
-        <input id="btnweiter3" class="btnweiter" name="btnweiter3" value="Weiter">
-        </br>
-        </br>
+        <table>
+            <tr>
+                <td>
+                    <form id="foto1" enctype="multipart/form-data"><input id="insFoto1" type="file" name="foto1">
+                </td>
+                <td>
+                    <input value="Titelfoto hochladen" name="btnfoto1" type="button"></form>
+                </td>
+                <td>
+                    <img id="image1" src="" class="thumbnail">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form id="foto2" enctype="multipart/form-data"><input id="insFoto2" type="file" name="foto2">
+                </td>
+                <td>
+                    <input value="zweites Foto hochladen" name="btnfoto2" type="button"></form>
+                </td>
+                <td>
+                    <img id="image2" src="" class="thumbnail">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form id="foto3" enctype="multipart/form-data"><input id="insFoto3" type="file" name="foto3">
+                </td>
+                <td>
+                    <input value="drittes Foto hochladen" name="btnfoto3" type="button"></form>
+                </td>
+                <td>
+                    <img id="image3" src="" class="thumbnail">
+                </td>
+            </tr>
+        </table>
+    </form>
+    </br>
+    <input id="btnzuruck3" class="btnzuruck" name="btnzuruck3" value="Zurück">
+    <input id="btnweiter3" class="btnweiter" name="btnweiter3" value="Weiter">
+    </br>
+    </br>
     </form><?php
 }
 

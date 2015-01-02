@@ -103,3 +103,6 @@ table thead {
 td#search {
     text-align: center;
 }
+.thumbnail {
+    height: 50px;
+}

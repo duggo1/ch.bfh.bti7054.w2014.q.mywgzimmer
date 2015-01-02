@@ -45,6 +45,7 @@ function InserierenTab1Kontrolle() {
 	}
 	if (hasErrorBewohnerAlter || hasErrorBewohnerBeschreibung) {
 		alert(ErrorMessage);
+                return;
 	}
 
 	$.ajax({
@@ -63,7 +64,6 @@ function InserierenTab1Kontrolle() {
 	});
 
 }
-
 function InserierenTab2Kontrolle() {
 
 	var WohnungStr = $("#insZimmerStr").val();
@@ -176,7 +176,6 @@ function InserierenTab2Kontrolle() {
 	});
 
 }
-
 function InserierenTab3Kontrolle() {
 
 	var ZimmerFlaeche = $("#insFlaeche").val();
@@ -378,17 +377,19 @@ function InserierenTab5Kontrolle() {
 	var ZimmerFlaeche = $("#insFlaeche").val();
 	var ZimmerBeschreibung = $("#ZimmerBeschreibung").val();
 	var ZimmerTyp;
+        
 	var foto1 = $("#insFoto1").val();
 	var foto2 = $("#insFoto2").val();
 	var foto3 = $("#insFoto3").val();
+        
 	if (document.getElementById('insZimmerTypz').checked) {
 		
 		ZimmerTyp = '0';
-		alert("Zimmertyp= "+parseInt(ZimmerTyp));
+		//alert("Zimmertyp= "+parseInt(ZimmerTyp));
 	} else {
 		
 		ZimmerTyp = '1';
-		alert("Zimmertyp= "+parseInt(ZimmerTyp));
+		//alert("Zimmertyp= "+parseInt(ZimmerTyp));
 	}
 	// Tab4
 	var GesuchtSex;
@@ -409,14 +410,9 @@ function InserierenTab5Kontrolle() {
 	
 	// Tab 5
 	
-	
-	
 	var WohnungStr = $("#insZimmerStr").val();
-	
-	
 	var BestaetigungEmail = $("#email").val();
 	var BestaetigungEmailWieder = $("#wiederemail").val();
-
 	var hasErrorBestaetigungEmail = false;
 	var hasErrorBestaetigungEmailWieder = false;
 	var hasErrorBestaetigungAGB = false;
@@ -468,13 +464,24 @@ function InserierenTab5Kontrolle() {
 				url : "request/service.php",
 		success : function(msg) {
 			if (msg != 'false') {
-
+                                
 				alert("Inserat wurde erfolgreich gespeichert!");
-				window.location = window.location;
+				window.location.href = "?link=home&lan=de";
 			}
 		}
 	});
 
+}
+function Foto1(){
+    $.ajax({
+		type : "POST",
+		data : "what=upload&" + $('#foto1').serialize(),
+		url : "request/upload.php",
+		success : function(msg) {
+			document.getElementById("image1").src = msg;
+
+		}
+	});
 }
 
 function ZuruckbtTab2() {
@@ -484,7 +491,6 @@ function ZuruckbtTab2() {
 	$("#tabs").tabs("disable", 1);
 
 }
-
 function ZuruckbtTab3() {
 
 	$("#tabs").tabs("enable", 1);
@@ -509,7 +515,6 @@ function ZuruckbtTab5() {
 function filtern() {
 
 	var BINalter = $("#BINalter").val();
-
 	var SUCHort = $("#SUCHort").val();
 	var SUCHminFlaeche = $("#SUCHminFlaeche").val();
 	var SUCHmaxFlaeche = $("#SUCHmaxFlaeche").val();
@@ -525,7 +530,6 @@ function filtern() {
 	var SUCHart;
 	var hasErrorDatum = false
 	var hasErrorGeschlecht = false;
-	var hasErrorart = false
 	var hasErrorAlter = false;
 	var hasErrorSuchalter = false;
 	var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
@@ -533,25 +537,22 @@ function filtern() {
 	if (SUCHminAlter > SUCHmaxAlter) {
 
 		hasErrorSuchalter = true;
-		ErrorMessage = ErrorMessage + "Falsche Alter\n";
+		ErrorMessage = ErrorMessage + "Falsche Altersangabe\n";
 	} else {
 		hasErrorSuchalter = false;
 	}
 
 	if (SUCHAbDatum > SUCHBisDatum) {
 		hasErrorDatum = true;
-		ErrorMessage = ErrorMessage + "Falsche Datum\n";
+		ErrorMessage = ErrorMessage + "Falsche Datumseingabe\n";
 	} else {
 		hasErrorDatum = false;
 	}
 
 	if (document.getElementById('SUCHartz').checked) {
 		SUCHart = 0;
-	} else if (document.getElementById('SUCHarts').checked) {
-		SUCHart = 1;
 	} else {
-		hasErrorart = true;
-		ErrorMessage = ErrorMessage + "bitte dein Zimmerart angeben\n";
+		SUCHart = 1;
 	}
 
 	if (document.getElementById('BINgeschlechtf').checked) {
@@ -577,15 +578,15 @@ function filtern() {
 		SUCHgeschlecht = "";
 	}
 
-	if (hasErrorAlter || hasErrorGeschlecht || hasErrorart || hasErrorDatum
+	if (hasErrorAlter || hasErrorGeschlecht || hasErrorDatum
 			|| hasErrorSuchalter) {
 		alert(ErrorMessage);
 		return;
 	}
 
-	alert("suchGeschlecht=" + Geschlecht + "\nsuchWGgeschlecht="
+	/*alert("suchGeschlecht=" + Geschlecht + "\nsuchWGgeschlecht="
 			+ SUCHgeschlecht + "\nsuchWGminAlter=" + SUCHminAlter
-			+ "\nsuchWGmaxAlter=" + SUCHmaxAlter);
+			+ "\nsuchWGmaxAlter=" + SUCHmaxAlter);*/
 
 	$.ajax({
 		type : "POST",

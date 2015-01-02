@@ -22,7 +22,7 @@ if (isset($_SESSION['error'])) {
                 <p>
                     <input id="password" type="password" name="password" value="">
                 </p>
-                <input type="submit" name="submit" value=" Login " class="button">';
+                <input id="btnlogin" type="submit" name="submit" value=" Login " >';
     if (isset($error)) {
         $output = $output . '<p class="error">' . $error . '</p>';
     }
