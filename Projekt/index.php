@@ -62,6 +62,9 @@ require_once ("Content/Message.php");
                 $("#btnzuruck5").click(function () {
                     ZuruckbtTab5();
                 });
+                $("#btnsave").click(function () {
+                    Inseratspeichern();
+                });
                 $("#btnFiltern").click(function () {
                     filtern();
                 });
@@ -97,7 +100,7 @@ require_once ("Content/Message.php");
                 $("#btnzuruck5").button();
                 $("#btnkontakt").button();
                 $("#btnzuruck6").button();
-                $("#btnzuruck7").button();
+                $("#btnsave").button();
 
                 $("#btnMitbewohsuch").button();
                 $("#btnInserataufgeben").button();
