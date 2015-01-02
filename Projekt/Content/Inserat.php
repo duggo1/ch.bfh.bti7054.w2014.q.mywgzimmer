@@ -24,7 +24,7 @@ function inserat() {
             $whgnr = $db_field ['Wohnungszusatz'];
             $plz = $db_field ['PLZ'];
             $ort = $db_field ['Ort'];
-            $m2r = $db_field ['Quadratmeter'];
+            $m2 = $db_field ['Quadratmeter'];
             if ($db_field ['IstGeschlecht'] == 'f') {
                 $geschlecht = "eine Frauen-WG";
             } elseif ($db_field ['IstGeschlecht'] == 'm') {
@@ -56,17 +56,20 @@ function inserat() {
         ?>
         <h1>
             Inserat-Nr. <?php
-            echo $id;
+            echo $id;?>
+        </h1>
+<h4><?php
             if ($befristet) {
-                echo "<br />(Ab dem: " . $ab . ", bis zum: " . $bis . ")";
+                echo "(Ab dem: " . $ab . ", bis zum: " . $bis . ")";
             } else {
-                echo "<br />(Ab dem: " . $ab . ")";
+                echo "(Ab dem: " . $ab . ")";
             }
             ?>
-        </h1>
-        <h2>
+        </h4>
+<h2>Standort</h2>(für die Ansicht auf der Karte auf die Adresse klicken)
+        <h3>
         <?php echo "<a href='https://www.google.ch/maps/search/" . $strasse . "+" . $strnr . "+" . $whgnr . ",+" . $plz . "+" . $ort . "'>" . $strasse . " " . $strnr . " " . $whgnr . ", " . $plz . " " . $ort . "</a>"; ?>
-        </h2>
+        </h3>
         <h2>
             Wen wir suchen
         </h2>
@@ -92,10 +95,9 @@ function inserat() {
             <?php echo $art; ?>
             ist
         <?php echo $m2; ?>
-            Quadratmeter gross.
+            m&sup2; Quadratmeter gross.
             Es kostet 
-        <?php echo $miete; ?>
-            Fr. pro Monat.
+        <?php echo $miete; ?>.- Fr. pro Monat.
             <h3>
                 Über das Zimmer
             </h3>
@@ -112,16 +114,17 @@ function inserat() {
 <h2>
     Kontaktaufnahme
 </h2>
-<form id="kontakt">
-<table>
-    <tr>
-        <td>
-            <input id="btnfoto2" value="zweites Foto hochladen" name="btnfoto2" type="button">
-        </td>
-          
-    </tr>
-</table>
+
+<form id="kontakt" method="POST" action="../request/contact.php?insid=<?php echo $id; ?>">
+
+            <textarea id="KontaktBeschreibung" name="KontaktBeschreibung" class="Beschreibung" rows="5">Hier dein Bewerbungstext...</textarea>
+            <div>Bitte E-Mail eingeben:
+            </div>
+            <input id="interessent" class="formfield" type="email" name="interessent">
+            <input id="btnkontakt" value="Bewerben" name="btnkontakt" type="submit">
 </form>
+<br />
+<button onclick="history.go(-1);" id="btnzuruck6">Zurück zur Suche </button>
         <?php
     } else {
         echo "Error";

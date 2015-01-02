@@ -7,10 +7,6 @@ function home() {
     $lan = get_URLparam("lan", "de");
     echo "<h1>" . $title[$lan] . "</h1>";
     echo "<ul>" . $text[$lan] . "</ul>";
-
-    $url = add_URLparam($url, "link", "home", "?");
-    $url = add_URLparam($url, "lan", $lan);
-
 }
 
 $link = array(

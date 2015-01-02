@@ -77,6 +77,9 @@ require_once ("Content/Message.php");
                 $("#btnfoto3").click(function () {
                     Foto3();
                 });
+                $("#btnkontakt").click(function () {
+                    kontaktieren();
+                });
                 $("#tabs").tabs();
                 $("#radio").buttonset();
                 $("#insMitAbDatum").datepicker({dateFormat: "dd.mm.yy"});
@@ -92,6 +95,9 @@ require_once ("Content/Message.php");
                 $("#btnzuruck4").button();
                 $("#btnweiter5").button();
                 $("#btnzuruck5").button();
+                $("#btnkontakt").button();
+                $("#btnzuruck6").button();
+                $("#btnzuruck7").button();
 
                 $("#btnMitbewohsuch").button();
                 $("#btnInserataufgeben").button();
@@ -145,6 +151,5 @@ require_once ("Content/Message.php");
             </td>
         </tr>
     </table>
-    <img id="image3" src="request/showImage.php?image=33" class="thumbnail">
 </body>
 </html>
