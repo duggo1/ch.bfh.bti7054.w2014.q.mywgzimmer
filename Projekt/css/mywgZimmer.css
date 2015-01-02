@@ -9,6 +9,10 @@ td {
     text-align: left;
     vertical-align: top;
 }
+tr.drittel {
+    width: 33%;
+    text-align: center;
+}
 .lang {
     padding-left: 15px;
 }
@@ -18,7 +22,7 @@ td {
     vertical-align: center;
 }
 img#logo {
-    padding: 5px 30px;
+    padding: 5px 45px;
 }
 img#help {
     position: absolute;
@@ -105,4 +109,12 @@ td#search {
 }
 .thumbnail {
     height: 50px;
+}
+.preview {
+    padding: 10px;
+    max-width: 100%;
+}
+a {
+    text-decoration: none;
+    color: black;
 }

@@ -10,6 +10,8 @@ require_once ("Content/Help.php");
 require_once ("Content/AGB.php");
 require_once ("Content/Suchen.php");
 require_once ("Content/Language.php");
+require_once ("Content/Inserat.php");
+require_once ("Content/Message.php");
 ?>
 <!DOCTYPE html>
 
@@ -70,10 +72,10 @@ require_once ("Content/Language.php");
                     Foto1();
                 });
                 $("#btnfoto2").click(function () {
-                    Foto1();
+                    Foto2();
                 });
                 $("#btnfoto3").click(function () {
-                    Foto1();
+                    Foto3();
                 });
                 $("#tabs").tabs();
                 $("#radio").buttonset();
@@ -96,10 +98,10 @@ require_once ("Content/Language.php");
                 $("#btnFiltern").button();
                 $("#btnFilterAus").button();
                 /*$("#tabs").tabs("enable", 0);
-                $("#tabs").tabs("disable", 1);
-                $("#tabs").tabs("disable", 2);
-                $("#tabs").tabs("disable", 3);
-                $("#tabs").tabs("disable", 4);*/
+                 $("#tabs").tabs("disable", 1);
+                 $("#tabs").tabs("disable", 2);
+                 $("#tabs").tabs("disable", 3);
+                 $("#tabs").tabs("disable", 4);*/
             });
         </script>
     </head>
@@ -125,13 +127,17 @@ require_once ("Content/Language.php");
                     ?><div class="textcontent"><?php suchen(); ?></div><?php
                 } elseif ($link == 'inserieren') {
                     ?><div class="funtionalcontent"><?php inserieren(); ?></div><?php
-                    } elseif ($link == 'hilfe') {
-                        ?><div class="textcontent"><?php hilfe(); ?></div><?php
-                    } elseif ($link == 'agb') {
-                        ?><div class="textcontent"><?php agb(); ?></div><?php
-                    } elseif ($link == 'danke') {
-                        ?><div class="textcontent"><?php danke(); ?></div><?php
-                    }
+                } elseif ($link == 'hilfe') {
+                    ?><div class="textcontent"><?php hilfe(); ?></div><?php
+                } elseif ($link == 'agb') {
+                    ?><div class="textcontent"><?php agb(); ?></div><?php
+                } elseif ($link == 'danke') {
+                    ?><div class="textcontent"><?php danke(); ?></div><?php
+                } elseif ($link == 'inserat') {
+                    ?><div class="textcontent"><?php inserat(); ?></div><?php
+                }elseif ($link == 'message') {
+                    ?><div class="textcontent"><?php message(); ?></div><?php
+                }
                     ?>
             </td>
             <td class="rightbox">
@@ -139,5 +145,6 @@ require_once ("Content/Language.php");
             </td>
         </tr>
     </table>
+    <img id="image3" src="request/showImage.php?image=33" class="thumbnail">
 </body>
 </html>

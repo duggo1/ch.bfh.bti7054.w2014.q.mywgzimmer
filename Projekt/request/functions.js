@@ -472,14 +472,21 @@ function InserierenTab5Kontrolle() {
 	});
 
 }
+
 function Foto1(){
+    
+    var Foto1 =new FormData();
+    //var Foto1 = $("#foto1form").serialize();
+    Foto1.append("file", $("#insfoto1").prop("files")[0]);
+    //$("#insfoto1").val()
+     
     $.ajax({
 		type : "POST",
-		data : "what=upload&" + $('#foto1').serialize(),
+		data : "what=upload&tmp_insfoto1=" + Foto1,
 		url : "request/upload.php",
 		success : function(msg) {
-			document.getElementById("image1").src = msg;
-
+			//document.getElementById("image1").src = msg;
+                        alert(msg);
 		}
 	});
 }

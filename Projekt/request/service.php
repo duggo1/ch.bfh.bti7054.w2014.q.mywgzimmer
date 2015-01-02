@@ -72,7 +72,7 @@ function drawtable() {
     $db_handle = mysql_connect($server, $user_name, $password);
     $db_found = mysql_select_db($database, $db_handle);
 
-    $query = "SELECT * FROM tblInserate WHERE active=0";
+    $query = "SELECT * FROM tblInserate WHERE active = 1";
 
     if (isset($_POST ["what"])) {
 
@@ -166,23 +166,30 @@ function drawtable() {
     if ($db_found) {
             $inserattable = '<h1>aktuelle Inserate</h1><table><thead><tr><th>Art</th><th>Fläche</th><th>Strasse</th><th>PLZ</th><th>Ort</th><th>Verfügbar ab</th><th>Befristet bis</th><th>Mietzins</th><th>Bild</th></tr></thead><tbody>';
             while ($db_field = mysql_fetch_assoc($result)) {
-                $inserattable = $inserattable . '<tr class="admintable"><td>' . $db_field ['Studio'] . '</td>';
-                $inserattable = $inserattable . "</td><td>";
-                $inserattable = $inserattable . $db_field ['Quadratmeter'];
-                $inserattable = $inserattable . "</td><td>";
+                if($db_field ['Studio'] == 1){
+                    $art = "Studio";
+                } else {
+                    $art = "Zimmer";
+                }
+                $inserattable = $inserattable . '<tr class="admintable"><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
+                $inserattable = $inserattable . $art . '</a></td>';
+                $inserattable = $inserattable . '</td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
+                $inserattable = $inserattable . $db_field ['Quadratmeter']. " m&sup2;</a>";
+                $inserattable = $inserattable . '</td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
                 $inserattable = $inserattable . $db_field ['Strasse'];
-                $inserattable = $inserattable . "</td><td>";
+                $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
                 $inserattable = $inserattable . $db_field ['PLZ'];
-                $inserattable = $inserattable . "</td><td>";
+                $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
                 $inserattable = $inserattable . $db_field ['Ort'];
-                $inserattable = $inserattable . "</td><td>";
+                $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
                 $inserattable = $inserattable . $db_field ['AbDatum'];
-                $inserattable = $inserattable . "</td><td>";
+                $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
                 $inserattable = $inserattable . $db_field ['BisDatum'];
-                $inserattable = $inserattable . "</td><td>";
-                $inserattable = $inserattable . $db_field ['Mietzins'] . " CHF";
-                $inserattable = $inserattable . "</td><td>";
-                $inserattable = $inserattable . $db_field ['ImagePath1'] . "</td></tr>";
+                $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
+                $inserattable = $inserattable . "CHF " . $db_field ['Mietzins'];
+                $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
+                $inserattable = $inserattable . "<img class='thumbnail' src='request/showImage.php?image='";
+                $inserattable = $inserattable . $db_field ['ImageID1'] . "'></a></td></tr>";
                 $hasResult = true;
             }
             $inserattable = $inserattable . '</tbody></table></br></form>';
@@ -254,7 +261,7 @@ if ($what == "inserierenTab5") {
     $query = "INSERT INTO `tblinserate` (`Email`, `Strasse`, `Hausnummer`, `Wohnungszusatz`, `PLZ`, `Ort`,
 			 `Quadratmeter`, `Studio`, `Minimumalter`, `Maximumalter`, `SollGeschlecht`, `IstGeschlecht`, `Durchschnittsalter`,
 	 		 `Zimmerbeschreibung`, `Bewohnerbeschreibung`, `Personenbeschreibung`, `AbDatum`, `BisDatum`, `Befristet`, `Mietzins`, `active`,
-			 `Link`, `ImagePath1`, `ImagePath2`, `ImagePath3`, `Erstellungsdatum`) VALUES 		
+			 `Link`, `ImageID1`, `ImageID2`, `ImageID3`, `Erstellungsdatum`) VALUES 		
 			 ('$insEmail', '$insWohnungStr', '$insWohnungHausNr', '$insWohnungZusatzNr', '$insWohnungPlz', '$insWohnungOrt',
 			 '$insZimmerFlaeche' , '$insZimmerTyp', '$insGesuchtSollMinAlter', '$insGesuchtSollMaxAlter', '$insGesuchtSollSex',
 	 		'$insBewohnerGeschlecht', '$insBewohnerAlter', '$insZimmerBeschreibung', '$insBewohnerBeschreibung', '$insGesuchtBeschreibung', 
@@ -264,13 +271,12 @@ if ($what == "inserierenTab5") {
     $result = mysql_query($query) or die("Ungültige Abfrage");
     mysql_close($db_handle);
 
-    $empfaenger = $insEmail; //cagdas.cakir@students.bfh.ch
     $betreff = "Aktivierungslink";
-    $from = "From: MyWGzimmer.ch <cagdascbu@hotmail.com>";
-    $text = "Guten Tag \n Ihre Aktivierungslink ist \n
-	http://localhost:8888/index.php?link=" . $link . "\n Freundliche Grüsse \n mywgzimmer.ch Team";
+    $headers = "From: MyWGzimmer.ch <help@mywgzimmer.ch>" . "\r\n" . "Content-type: text/html; charset=UTF-8";
+    $text = "Guten Tag,<br /><br />Danke für dein Inserat.<br />Bitte aktiviere es mit folgendem Link:<br />
+	http://localhost:8888/request/activation.php?id=" . $link . "<br /><br />Freundliche Grüsse,<br />Dein mywgzimmer.ch-Team";
 
-    mail($empfaenger, $betreff, $text, $from);
+    mail($insEmail, $betreff, $text, $headers);
 
     echo "true";
 }
@@ -280,7 +286,9 @@ if ($what == "suchen") {
     drawtable();
 }
 
-
+if ($what == "upload"){
+    
+}
 
 
 
