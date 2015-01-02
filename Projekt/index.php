@@ -135,7 +135,34 @@ require_once ("Content/Message.php");
                 } elseif ($link == 'suchen') {
                     ?><div class="textcontent"><?php suchen(); ?></div><?php
                 } elseif ($link == 'inserieren') {
-                    ?><div class="funtionalcontent"><?php inserieren(); ?></div><?php
+ ?><div class="funtionalcontent"><?php inserieren();if (isset ( $_GET ['id'] )) {
+	$link=$_GET ['id'];
+	echo ' <script type="text/javascript" src="request/functions.js"></script>  <script type="text/javascript">
+             bearbeitung("'.$link.'");  </script>';
+
+	// 	$user_name = "root";
+	// 	$password = "root";
+	// 	$database = "mywgzimmerdb";
+	// 	$server = "localhost";
+
+	// 	$db_handle = mysql_connect ( $server, $user_name, $password );
+	// 	$db_found = mysql_select_db ( $database, $db_handle );
+
+	// 	$id = mysql_real_escape_string ( $_GET ['id'] );
+	// 	$query = "SELECT * FROM tblInserate WHERE Link = '$id'";
+	// 	$result = mysql_query ( $query ) or die ( "Ungültige Abfrage" );
+	// 	while ( $db_field = mysql_fetch_assoc ( $result ) ) {
+	// 		$email = $db_field ["Email"];
+	// 		$hasResult = true;
+	// 		$insid = $db_field ["ID"];
+
+	// 	}
+	// 	mysql_close ( $db_handle );
+
+	// 	if ($hasResult) {
+
+	// 	}
+} ?></div><?php
                 } elseif ($link == 'hilfe') {
                     ?><div class="textcontent"><?php hilfe(); ?></div><?php
                 } elseif ($link == 'agb') {

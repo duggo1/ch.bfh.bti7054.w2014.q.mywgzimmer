@@ -746,3 +746,68 @@ function filtern() {
 	// }
 	// });
 }
+function bearbeitung(link) {
+	
+	$.ajax({
+		type : "POST",
+		data : "what=bearbeitung&bearbeitungslink="+link,
+
+		url : "request/service.php",
+		success : function(msg) {
+			var obj = jQuery.parseJSON(msg);
+			
+			$("#ISTalter").val(obj.Durchschnittsalter);
+			$("#bewohnerBeschreibung").val(obj.Bewohnerbeschreibung);
+			$("#insZimmerStr").val(obj.Strasse);
+			$("#insZimmerStrNr").val(obj.Hausnummer);
+			$("#insZimmerZusatzNr").val(obj.Wohnungszusatz);
+			$("#insZimmerOrt").val(obj.Ort);
+			$("#insZimmerPlz").val(obj.PLZ);
+			$("#insMitAbDatum").val(obj.AbDatum);
+			$("#insMitBisDatum").val(obj.BisDatum);
+			$("#insMitkosten").val(obj.Mietzins);
+			$("#insFlaeche").val(obj.Quadratmeter);
+			$("#ZimmerBeschreibung").val(obj.Zimmerbeschreibung);
+			$("#SOLLminAlter").val(obj.Minimumalter);
+			$("#SOLLmaxAlter").val(obj.Maximumalter);
+			$("#gesuchtBeschreibung").val(obj.Personenbeschreibung);
+//			$("#insFoto1").val(obj.ImageID1);
+//			$("#insFoto2").val(obj.ImageID2);
+//			$("#insFoto3").val(obj.ImageID3);
+			$("#email").val(obj.Email);
+			$("#wiederemail").val(obj.Email);
+		
+			
+			if (obj.IstGeschlecht ="f") {
+				document.getElementById('ISTgeschlechtf').checked=true;		
+			} else if (obj.IstGeschlecht == 'm') {
+				document.getElementById('ISTgeschlechtm').checked=true;	
+			} else {
+				document.getElementById('ISTgeschlechtx').checked=true;
+			}
+			
+			if (obj.Studio = 0) {
+				document.getElementById('insZimmerTypz').checked=true;
+				
+			} else {	
+				document.getElementById('insZimmerTyps').checked=true;
+			}
+
+			
+			if (obj.SollGeschlecht = 'f') {
+				document.getElementById('SOLLgeschlechtf').checked=true;
+				
+
+			} else if (obj.SollGeschlecht = 'm') {
+				document.getElementById('SOLLgeschlechtm').checked=true;
+				
+
+			} else {
+				document.getElementById('SOLLgeschlechtx').checked=true;
+				
+			}
+
+		}
+	});
+	
+}

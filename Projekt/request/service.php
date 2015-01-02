@@ -54,6 +54,7 @@ $suchWGminKost = (isset($_POST ["suchWGminKost"])) ? sanitizeString($_POST ["suc
 $suchWGmaxKost = (isset($_POST ["suchWGmaxKost"])) ? sanitizeString($_POST ["suchWGmaxKost"]) : "";
 $suchWGort = (isset($_POST ["suchWGort"])) ? sanitizeString($_POST ["suchWGort"]) : "";
 
+$bearbeitungslink = (isset($_POST ["bearbeitungslink"])) ? $_POST ["bearbeitungslink"] : "";
 $what = (isset($_POST ["what"])) ? $_POST ["what"] : "";
 
 function sanitizeString($var) {
@@ -62,6 +63,45 @@ function sanitizeString($var) {
     $var = strip_tags($var);
     return $var;
 }
+if ($what == "bearbeitung"){
+
+	// 	echo "true";
+
+	$user_name = "root";
+	$password = "root";
+	$database = "mywgzimmerdb";
+	$server = "localhost";
+
+	$db_handle = mysql_connect ( $server, $user_name, $password );
+	$db_found = mysql_select_db ( $database, $db_handle );
+
+	$id = mysql_real_escape_string ($bearbeitungslink );
+
+	$query = "SELECT * FROM tblInserate WHERE Link = '$bearbeitungslink'";
+	$result = mysql_query ( $query ) or die ( "Ungültige Abfrage" );
+
+	$db_field = mysql_fetch_assoc ( $result );
+
+	// 		while ( $db_field = mysql_fetch_assoc ( $result ) ) {
+	// 			$email = $db_field ["Email"];
+	$hasResult = true;
+	// 			$insid = $db_field ["ID"];
+	// 		}
+	mysql_close ( $db_handle );
+
+	if ($hasResult) {
+		//echo "true";
+		echo json_encode($db_field);
+	}else{
+		$msg = urlencode("<h1>Sorry!</h1>Es existiert kein Inserat zu diesem Link.");
+		header("Location: ../index.php?link=message&msg=" . $msg);
+
+	}
+
+
+}
+
+
 
 function drawtable() {
     $user_name = "root";
