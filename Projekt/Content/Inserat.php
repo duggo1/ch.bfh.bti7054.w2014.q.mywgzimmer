@@ -66,7 +66,7 @@ function inserat() {
 <h2>Standort</h2>
 (für die Ansicht auf der Karte auf die Adresse klicken)
 <h3>
-        <?php echo "<a href='https://www.google.ch/maps/search/" . $strasse . "+" . $strnr . "+" . $whgnr . ",
+        <?php echo "<a target='_blank' href='https://www.google.ch/maps/search/" . $strasse . "+" . $strnr . "+" . $whgnr . ",
 			+" . $plz . "+" . $ort . "'>" . $strasse . " " . $strnr . " " . $whgnr . ", " . $plz . " " . $ort . "</a>"; ?>
         </h3>
 <h2>Wen wir suchen</h2>

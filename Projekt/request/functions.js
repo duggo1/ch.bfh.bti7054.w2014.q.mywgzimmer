@@ -679,7 +679,7 @@ function filtern() {
         hasErrorSuchalter = false;
     }
 
-    if (SUCHAbDatum > SUCHBisDatum) {
+    if ((SUCHAbDatum > SUCHBisDatum) && (SUCHBisDatum != '') && (SUCHAbDatum != '')) {
         hasErrorDatum = true;
         ErrorMessage = ErrorMessage + "Falsche Datumseingabe\n";
     } else {

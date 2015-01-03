@@ -16,8 +16,8 @@ if (isset ( $_POST ['submit'] )) {
 		$username = mysql_real_escape_string ( $username );
 		$password = mysql_real_escape_string ( $password );
 		// Selecting Database
-		// Hier werden die Eingegebene Admindaten geprüft, ob die korrekt ist.
-		// Wenn ja, öffnet es die Adminseite sonst bekommt man ein Fehlermeldung.
+		// Hier werden die Eingegebene Admindaten geprï¿½ft, ob die korrekt ist.
+		// Wenn ja, ï¿½ffnet es die Adminseite sonst bekommt man ein Fehlermeldung.
 		$conn = mysql_connect ( "localhost:8889", "root", "root" );
 		if ($conn) {
 			$db = mysql_select_db ( $dbase );
@@ -37,9 +37,3 @@ if (isset ( $_POST ['submit'] )) {
 }
 $_SESSION ['error'] = $error;
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="refresh" content="0; URL=index.php?link=loginpage">
-</head>
-</html>
