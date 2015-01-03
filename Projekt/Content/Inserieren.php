@@ -130,10 +130,10 @@ function InserierenTab3() {
         <table>
             <tr class="drittel">
                 <td >
-                    <form id="foto1form" method="post" enctype="multipart/form-data" id="image_upload_form" action="request/upload.php"><input id="insFoto1" type="file" name="insfoto1" multiple accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
+                    <form method="post" enctype="multipart/form-data" id="image_upload_form" action="request/upload.php"><input id="insfoto1id" type="file" name="insfoto1" multiple accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
                 </td>
                 <td>
-                    <button id="btnfoto1" name="btnfoto1" type="button">Titelfoto hochladen</button></form>
+                    <button id="btnfoto1id" name="btnfoto1" type="button">Titelfoto hochladen</button></form>
                 </td>
                 <td >
                     <img id="image1" src="" class="thumbnail">

@@ -618,7 +618,7 @@ function Foto1(){
                         alert(msg);
 		}
 	});*/
-var input = $("#foto1form").serialize(), 
+var input = document.getElementById("insfoto1id"), 
     formdata = false;
 
 function showUploadedItem (source) {
@@ -632,7 +632,7 @@ function showUploadedItem (source) {
 
 if (window.FormData) {
     formdata = new FormData();
-    document.getElementById("btnfoto1").style.display = "none";
+    document.getElementById("btnfoto1id").style.display = "none";
 }
 
 input.addEventListener("change", function () {

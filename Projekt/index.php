@@ -71,7 +71,7 @@ require_once ("Content/Message.php");
                 $("#btnFilterAus").click(function () {
                     filterAus();
                 });
-                $("#btnfoto1").click(function () {
+                $("#btnfoto1id").click(function () {
                     Foto1();
                 });
                 $("#btnfoto2").click(function () {
@@ -101,7 +101,7 @@ require_once ("Content/Message.php");
                 $("#btnkontakt").button();
                 $("#btnzuruck6").button();
                 $("#btnsave").button();
-                $("#btnfoto1").button();
+                $("#btnfoto1id").button();
                 $("#btnfoto2").button();
                 $("#btnfoto3").button();
 
