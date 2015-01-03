@@ -22,7 +22,7 @@ function loginpage() {
                 <p>
                     <input id="password" type="password" name="password" value="">
                 </p>
-                <input id="btnlogin" type="submit" name="submit" value=" Login " >';
+                <input id="btnlogin" type="submit" class="button" name="submit" value=" Login " >';
 	if (isset ( $error )) {
 		$output = $output . '<p class="error">' . $error . '</p>';
 	}

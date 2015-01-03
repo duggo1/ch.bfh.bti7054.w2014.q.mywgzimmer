@@ -63,8 +63,7 @@ function admin() {
 			$inserattable = $inserattable . $db_field ['ID'];
 			$inserattable = $inserattable . "</td><td>";
 			$inserattable = $inserattable . $aktiv;
-			$inserattable = $inserattable . "</td><td>";
-			
+			$inserattable = $inserattable . "</td><td>";	
 			$inserattable = $inserattable . $db_field ['Erstellungsdatum'];
 			$inserattable = $inserattable . "</td><td>";
 			$inserattable = $inserattable . $art;
@@ -85,8 +84,8 @@ function admin() {
 			$inserattable = $inserattable . '</td><td>';
 			$inserattable = $inserattable . $db_field ['Email'];
 			$inserattable = $inserattable . "</td><td>";
-			$inserattable = $inserattable . "<img class='thumbnail' src='request/showImage.php?image='";
-			$inserattable = $inserattable . $db_field ['ImageID1'] . "'></td></tr>";
+			$inserattable = $inserattable . "<img class='thumbnail' src='../uploads/";
+			 $inserattable = $inserattable . $db_field ['ImageID1'] . "'></td></tr>";
 		}
 		echo $inserattable . '</tbody></table></br><input type="submit" name="delete" value="Löschen" class="button"/></form>';
 		mysql_close ( $db_handle );

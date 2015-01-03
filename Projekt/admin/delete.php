@@ -1,5 +1,5 @@
 <?php
-include ('session.php');
+//include ('session.php');
 // connection information
 
 $user_name = "root";
