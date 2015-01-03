@@ -102,7 +102,7 @@ function InserierenTab2() {
         <div><input id="insMitkosten" type="number" value="10" min="10" ></div>
         <br />
         <button id="btnzuruck2" class="btnzuruck" name="btnzuruck2" type="button">Zurück</button>
-            <button id="btnweiter2" class="btnweiter" name="btnweiter2" type="button">Weiter</button>
+        <button id="btnweiter2" class="btnweiter" name="btnweiter2" type="button">Weiter</button>
         <br />
         <br />
     </form>
@@ -128,34 +128,34 @@ function InserierenTab3() {
         <h3>Fotos</h3>
         <br />
         <table>
-            <tr>
-                <td >
+            <tr >
+                <td>
                     <form method="post" enctype="multipart/form-data" id="fotosform" action="request/upload.php">
                         <input id="insfoto1" type="file" accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
                         </td>
-                <td>
-                    <button id="btnfoto1" type="button">Titelfoto hochladen</button></form>
-                    <img id="image1" src="">
+                        <td>
+                            <button id="btnfoto1" type="button"  class="top">Titelfoto hochladen</button></form>
+                    <a id="link1" href="" target="_blank"><img id="image1" src="" class="thumbnail"></a>
                 </td>
             </tr>
-            <tr>
+            <tr >
                 <td>
                     <form id="foto2form" enctype="multipart/form-data">
                         <input id="insfoto2" type="file" accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
-                </td>
-                <td>
-                    <button id="btnfoto2" type="button">zweites Foto hochladen</button></form>
-                <img id="image2" src="" class="thumbnail">
+                        </td>
+                        <td>
+                            <button id="btnfoto2" type="button" class="top">zweites Foto hochladen</button></form>
+                    <a id="link2" href="" target="_blank"><img id="image2" src="" class="thumbnail"></a>
                 </td>
             </tr>
-            <tr>
+            <tr >
                 <td>
                     <form id="foto3form" enctype="multipart/form-data">
-                    <input id="insfoto3" type="file" accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
-                </td>
-                <td>
-                    <button id="btnfoto3" type="button">drittes Foto hochladen</button>
-                    <img id="image3" src="" class="thumbnail"></form>
+                        <input id="insfoto3" type="file" accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
+                        </td>
+                        <td>
+                            <button id="btnfoto3" type="button"  class="top">drittes Foto hochladen</button></form>
+                    <a id="link3" href="" target="_blank"><img id="image3" src="" class="thumbnail"></a>
                 </td>
             </tr>
         </table>
@@ -193,7 +193,7 @@ function InserierenTab4() {
         <textarea id="gesuchtBeschreibung" class="Beschreibung" rows="10"></textarea>
         <br />
         <button id="btnzuruck4" class="btnzuruck" name="btnzuruck4" type="button">Zurück</button>
-    <button id="btnweiter4" class="btnweiter" name="btnweiter4" type="button">Weiter</button>
+        <button id="btnweiter4" class="btnweiter" name="btnweiter4" type="button">Weiter</button>
         <br />
         <br />
     </form><?php
@@ -216,7 +216,7 @@ function InserierenTab5() {
         <div><input type=checkbox id="agbsakzeptiert"></div>
         <br />
         <button id="btnzuruck5" class="btnzuruck" name="btnzuruck5" type="button">Zurück</button>
-    <button id="btnweiter5" class="btnweiter" name="btnweiter5" type="button">Inserieren</button>
+        <button id="btnweiter5" class="btnweiter" name="btnweiter5" type="button">Inserieren</button>
         <br />
         <br />
     </form>

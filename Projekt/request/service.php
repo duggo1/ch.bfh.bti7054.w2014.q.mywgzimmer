@@ -228,7 +228,7 @@ function drawtable() {
                 $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
                 $inserattable = $inserattable . "CHF " . $db_field ['Mietzins'];
                 $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
-                $inserattable = $inserattable . "<img class='thumbnail' src='request/showImage.php?image='";
+                $inserattable = $inserattable . "<img class='thumbnail' src='";
                 $inserattable = $inserattable . $db_field ['ImageID1'] . "'></a></td></tr>";
                 $hasResult = true;
             }

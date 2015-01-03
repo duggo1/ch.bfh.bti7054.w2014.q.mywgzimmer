@@ -181,7 +181,7 @@ require_once ("Content/Message.php");
                     ?>
             </td>
             <td class="rightbox">
-                <a href="https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb"><img id="ad" src="images/banner.gif" title="Werbung"></a>
+                <a href="https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb" target="_blank"><img id="ad" src="images/banner.gif" title="Werbung"></a>
             </td>
         </tr>
     </table>

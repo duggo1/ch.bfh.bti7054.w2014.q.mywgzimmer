@@ -9,10 +9,6 @@ td {
     text-align: left;
     vertical-align: top;
 }
-tr.drittel {
-    width: 33%;
-    text-align: center;
-}
 .lang {
     padding-left: 15px;
 }
@@ -54,7 +50,6 @@ img#agb {
     background-color:rgba(255,255,255,0.5);
     min-height: 440px;
 }
-
 .function {
     padding-top: 20px;
     height: 200px;
@@ -108,7 +103,8 @@ td#search {
     text-align: center;
 }
 .thumbnail {
-    height: 50px;
+    max-height: 200px;
+    max-width: 200px;
 }
 .preview {
     padding: 10px;
@@ -117,4 +113,7 @@ td#search {
 a {
     text-decoration: none;
     color: black;
+}
+.top {
+    vertical-align: top;
 }
