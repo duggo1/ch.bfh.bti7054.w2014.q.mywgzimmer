@@ -1,6 +1,7 @@
 <?php
 
 if (isset($_GET['id'])) {
+	//Hier wird das Inserat gelöscht. Hier ist für löschenlink und Löschenfunktion für Admin.
     $user_name = "root";
     $password = "root";
     $database = "mywgzimmerdb";

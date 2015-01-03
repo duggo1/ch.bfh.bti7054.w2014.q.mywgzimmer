@@ -1,6 +1,7 @@
 <?php
 
 if (isset($_GET['id'])) {
+	// Mit dem Inseratlink wird Inserat deaktiviert.
     $user_name = "root";
     $password = "root";
     $database = "mywgzimmerdb";
