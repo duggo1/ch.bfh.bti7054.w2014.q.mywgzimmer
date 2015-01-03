@@ -18,7 +18,7 @@ foreach ($errors as $key => $error) {
 }
 
 
-echo "<h2>Successfully Uploaded Images</h2>";
+echo "Foto erfolgreich hochgeladen!";
 ?>
 
 

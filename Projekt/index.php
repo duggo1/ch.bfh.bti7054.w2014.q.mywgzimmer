@@ -71,7 +71,7 @@ require_once ("Content/Message.php");
                 $("#btnFilterAus").click(function () {
                     filterAus();
                 });
-                $("#btnfoto1id").click(function () {
+                $("#btnfoto1").click(function () {
                     Foto1();
                 });
                 $("#btnfoto2").click(function () {
@@ -101,7 +101,7 @@ require_once ("Content/Message.php");
                 $("#btnkontakt").button();
                 $("#btnzuruck6").button();
                 $("#btnsave").button();
-                $("#btnfoto1id").button();
+                $("#btnfoto1").button();
                 $("#btnfoto2").button();
                 $("#btnfoto3").button();
 
@@ -114,26 +114,7 @@ require_once ("Content/Message.php");
                  $("#tabs").tabs("disable", 2);
                  $("#tabs").tabs("disable", 3);
                  $("#tabs").tabs("disable", 4);*/
-        $('#insfoto1').die('click').live('change', function()         { 
-                       //$("#preview").html('');
-                 
-                $("#fotoform").ajaxForm({target: '#preview', 
-                     beforeSubmit:function(){                   
-                    console.log('v');
-                    //$("#imgloadstatus").show();
-                     //$("#imageloadbutton").hide();
-                     }, 
-                    success:function(){ 
-                    console.log('z');
-                     //$("#imgloadstatus").hide();
-                     //$("#imageloadbutton").show();
-                    }, 
-                    error:function(){ 
-                            console.log('d');
-                     //$("#imgloadstatus").hide();
-                    //$("#imageloadbutton").show();
-                    } }).submit();      
-            });
+        
             });
         </script>
     </head>

@@ -128,41 +128,34 @@ function InserierenTab3() {
         <h3>Fotos</h3>
         <br />
         <table>
-            <tr class="drittel">
+            <tr>
                 <td >
-                    <form method="post" enctype="multipart/form-data" id="image_upload_form" action="request/upload.php"><input id="insfoto1id" type="file" name="insfoto1" multiple accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
-                </td>
+                    <form method="post" enctype="multipart/form-data" id="fotosform" action="request/upload.php">
+                        <input id="insfoto1" type="file" accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
+                        </td>
                 <td>
-                    <button id="btnfoto1id" name="btnfoto1" type="button">Titelfoto hochladen</button></form>
-                </td>
-                <td >
-                    <img id="image1" src="" class="thumbnail">
-                    <div id="response"></div>
-<ul id="image-list">
-
-</ul>
+                    <button id="btnfoto1" type="button">Titelfoto hochladen</button></form>
+                    <img id="image1" src="">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form id="foto2form" enctype="multipart/form-data"><input id="insFoto2" type="file" name="insfoto2" >
+                    <form id="foto2form" enctype="multipart/form-data">
+                        <input id="insfoto2" type="file" accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
                 </td>
                 <td>
-                    <button id="btnfoto2" name="btnfoto2" type="button">zweites Foto hochladen</button></form>
-                </td>
-                <td>
-                    <img id="image2" src="" class="thumbnail">
+                    <button id="btnfoto2" type="button">zweites Foto hochladen</button></form>
+                <img id="image2" src="" class="thumbnail">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form id="foto3form" enctype="multipart/form-data"><input id="insFoto3" type="file" name="insfoto3">
+                    <form id="foto3form" enctype="multipart/form-data">
+                    <input id="insfoto3" type="file" accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
                 </td>
                 <td>
-                    <button id="btnfoto3" name="btnfoto3" type="button">drittes Foto hochladen</button></form>
-                </td>
-                <td>
-                    <img id="image3" src="" class="thumbnail">
+                    <button id="btnfoto3" type="button">drittes Foto hochladen</button>
+                    <img id="image3" src="" class="thumbnail"></form>
                 </td>
             </tr>
         </table>

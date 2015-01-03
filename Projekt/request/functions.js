@@ -618,35 +618,27 @@ function Foto1(){
                         alert(msg);
 		}
 	});*/
-var input = document.getElementById("insfoto1id"), 
-    formdata = false;
+    //formdata = false;
 
-function showUploadedItem (source) {
-    var list = document.getElementById("image-list"),
-        li   = document.createElement("li"),
-        img  = document.createElement("img");
-    img.src = source;
-    li.appendChild(img);
-    list.appendChild(li);
-}   
+    document.getElementById("image1").src = "/images/wait.gif";
+
 
 if (window.FormData) {
     formdata = new FormData();
-    document.getElementById("btnfoto1id").style.display = "none";
+    document.getElementById("btnfoto1").style.display = "none";
 }
 
-input.addEventListener("change", function () {
-    document.getElementById("response").innerHTML = "Uploading . . .";
-    var i = 0, len = this.files.length, img, reader, file;
+//document.getElementById("insfoto1").addEventListener("change", function () {
+   // var i = 0, len = this.files.length, img, reader, file;
 
-    for ( ; i < len; i++ ) {
-        file = this.files[i];
+    //for ( ; i < len; i++ ) {
+        file = document.getElementById("insfoto1").files[0];
 
         if (!!file.type.match(/image.*/)) {
             if ( window.FileReader ) {
                 reader = new FileReader();
                 reader.onloadend = function (e) { 
-                    showUploadedItem(e.target.result, file.fileName);
+                    showUploadedItem1(e.target.result, file.fileName);
                 };
                 reader.readAsDataURL(file);
             }
@@ -654,7 +646,7 @@ input.addEventListener("change", function () {
                 formdata.append("images[]", file);
             }
         }   
-    }
+    //}
 
     if (formdata) {
         $.ajax({
@@ -664,13 +656,16 @@ input.addEventListener("change", function () {
             processData: false,
             contentType: false,
             success: function (res) {
-                document.getElementById("response").innerHTML = res;
+                alert(res);
             }
         });
     }
-}, false);
+//}, false);
 }
-
+function showUploadedItem1 (source) {
+    var img = document.getElementById("image1");
+    img.src = source;
+}   
 
 function ZuruckbtTab2() {
 
