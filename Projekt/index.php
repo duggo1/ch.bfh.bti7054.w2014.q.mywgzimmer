@@ -101,6 +101,9 @@ require_once ("Content/Message.php");
                 $("#btnkontakt").button();
                 $("#btnzuruck6").button();
                 $("#btnsave").button();
+                $("#btnfoto1").button();
+                $("#btnfoto2").button();
+                $("#btnfoto3").button();
 
                 $("#btnMitbewohsuch").button();
                 $("#btnInserataufgeben").button();
@@ -111,6 +114,26 @@ require_once ("Content/Message.php");
                  $("#tabs").tabs("disable", 2);
                  $("#tabs").tabs("disable", 3);
                  $("#tabs").tabs("disable", 4);*/
+        $('#insfoto1').die('click').live('change', function()         { 
+                       //$("#preview").html('');
+                 
+                $("#fotoform").ajaxForm({target: '#preview', 
+                     beforeSubmit:function(){                   
+                    console.log('v');
+                    //$("#imgloadstatus").show();
+                     //$("#imageloadbutton").hide();
+                     }, 
+                    success:function(){ 
+                    console.log('z');
+                     //$("#imgloadstatus").hide();
+                     //$("#imageloadbutton").show();
+                    }, 
+                    error:function(){ 
+                            console.log('d');
+                     //$("#imgloadstatus").hide();
+                    //$("#imageloadbutton").show();
+                    } }).submit();      
+            });
             });
         </script>
     </head>
@@ -150,7 +173,7 @@ require_once ("Content/Message.php");
 
 	// 	$id = mysql_real_escape_string ( $_GET ['id'] );
 	// 	$query = "SELECT * FROM tblInserate WHERE Link = '$id'";
-	// 	$result = mysql_query ( $query ) or die ( "Ungültige Abfrage" );
+	// 	$result = mysql_query ( $query ) or die ( "Ungï¿½ltige Abfrage" );
 	// 	while ( $db_field = mysql_fetch_assoc ( $result ) ) {
 	// 		$email = $db_field ["Email"];
 	// 		$hasResult = true;

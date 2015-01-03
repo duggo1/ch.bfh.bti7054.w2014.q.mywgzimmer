@@ -51,7 +51,7 @@ function InserierenTab1() {
         <div>Beschreibung der aktuellen WG-Bewohner</div>
         <textarea id="bewohnerBeschreibung" class="Beschreibung" rows="10" ></textarea>
         <br />
-        <input id="btnweiter1" class="btnweiter" name="btnweiter1" value="Weiter">
+        <button id="btnweiter1" class="btnweiter" name="btnweiter1" type="button">Weiter</button>
         <br />
         <br />
     </form>
@@ -101,8 +101,8 @@ function InserierenTab2() {
         <div>Mietzins total (inkl. Nebenkosten)</div>
         <div><input id="insMitkosten" type="number" value="10" min="10" ></div>
         <br />
-        <input id="btnzuruck2" class="btnzuruck" name="btnzuruck2" value="Zurück">
-        <input id="btnweiter2" class="btnweiter" name="btnweiter2" value="Weiter">
+        <button id="btnzuruck2" class="btnzuruck" name="btnzuruck2" type="button">Zurück</button>
+            <button id="btnweiter2" class="btnweiter" name="btnweiter2" type="button">Weiter</button>
         <br />
         <br />
     </form>
@@ -130,21 +130,25 @@ function InserierenTab3() {
         <table>
             <tr class="drittel">
                 <td >
-                    <form id="foto1form" enctype="multipart/form-data"><input id="insFoto1" type="file" name="insfoto1">
+                    <form id="foto1form" method="post" enctype="multipart/form-data" id="image_upload_form" action="request/upload.php"><input id="insFoto1" type="file" name="insfoto1" multiple accept="image/x-png, image/gif, image/jpeg, image/jpg, image/png">
                 </td>
                 <td>
-                <input id="btnfoto1" value="Titelfoto hochladen" name="btnfoto1" type="button"></form>
+                    <button id="btnfoto1" name="btnfoto1" type="button">Titelfoto hochladen</button></form>
                 </td>
                 <td >
                     <img id="image1" src="" class="thumbnail">
+                    <div id="response"></div>
+<ul id="image-list">
+
+</ul>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form id="foto2form" enctype="multipart/form-data"><input id="insFoto2" type="file" name="insfoto2">
+                    <form id="foto2form" enctype="multipart/form-data"><input id="insFoto2" type="file" name="insfoto2" >
                 </td>
                 <td>
-                    <input id="btnfoto2" value="zweites Foto hochladen" name="btnfoto2" type="button"></form>
+                    <button id="btnfoto2" name="btnfoto2" type="button">zweites Foto hochladen</button></form>
                 </td>
                 <td>
                     <img id="image2" src="" class="thumbnail">
@@ -155,7 +159,7 @@ function InserierenTab3() {
                     <form id="foto3form" enctype="multipart/form-data"><input id="insFoto3" type="file" name="insfoto3">
                 </td>
                 <td>
-                    <input id="btnfoto3" value="drittes Foto hochladen" name="btnfoto3" type="button"></form>
+                    <button id="btnfoto3" name="btnfoto3" type="button">drittes Foto hochladen</button></form>
                 </td>
                 <td>
                     <img id="image3" src="" class="thumbnail">
@@ -164,8 +168,8 @@ function InserierenTab3() {
         </table>
     </form>
     <br />
-    <input id="btnzuruck3" class="btnzuruck" name="btnzuruck3" value="Zurück">
-    <input id="btnweiter3" class="btnweiter" name="btnweiter3" value="Weiter">
+    <button id="btnzuruck3" class="btnzuruck" name="btnzuruck3" type="button">Zurück</button>
+    <button id="btnweiter3" class="btnweiter" name="btnweiter3" type="button">Weiter</button>
     <br />
     <br />
     </form><?php
@@ -195,8 +199,8 @@ function InserierenTab4() {
         <div>Beschreibung der gesuchten Person</div>
         <textarea id="gesuchtBeschreibung" class="Beschreibung" rows="10"></textarea>
         <br />
-        <input id="btnzuruck4" class="btnzuruck" name="btnzuruck4" value="Zurück">
-        <input id="btnweiter4" class="btnweiter" name="btnweiter4" value="Weiter">
+        <button id="btnzuruck4" class="btnzuruck" name="btnzuruck4" type="button">Zurück</button>
+    <button id="btnweiter4" class="btnweiter" name="btnweiter4" type="button">Weiter</button>
         <br />
         <br />
     </form><?php
@@ -218,9 +222,8 @@ function InserierenTab5() {
         <div>AGBs akzeptieren</div>
         <div><input type=checkbox id="agbsakzeptiert"></div>
         <br />
-        <input id="btnzuruck5" class="btnzuruck" name="btnzuruck5" value="Zurück" >
-        <input id="btnweiter5" class="btnweiter" name="btnweiter5" value="Abschicken">
-
+        <button id="btnzuruck5" class="btnzuruck" name="btnzuruck5" type="button">Zurück</button>
+    <button id="btnweiter5" class="btnweiter" name="btnweiter5" type="button">Inserieren</button>
         <br />
         <br />
     </form>

@@ -29,8 +29,8 @@ function suchen() {
         <table>
             <tr>
                 <td  id="search">
-                    <input id="btnFiltern" name = "filtern"  value="Suchen" />
-                    <input id="btnFilterAus" name = "filteraus" onclick="location.reload();" value="Filter zurücksetzen"/>
+                    <button id="btnFiltern" name = "filtern" type="button">Suchen</button>
+                    <button id="btnFilterAus" name = "filteraus" onclick="location.reload();" type="button">Filter zurücksetzen</button>
                 </td>
             </tr>
         </table>

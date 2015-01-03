@@ -78,7 +78,7 @@ if ($what == "bearbeitung"){
 	$id = mysql_real_escape_string ($bearbeitungslink );
 
 	$query = "SELECT * FROM tblInserate WHERE Link = '$bearbeitungslink'";
-	$result = mysql_query ( $query ) or die ( "Ungültige Abfrage" );
+	$result = mysql_query ( $query ) or die ( "Ungï¿½ltige Abfrage" );
 
 	$db_field = mysql_fetch_assoc ( $result );
 
@@ -371,7 +371,7 @@ if ($what == "suchen") {
 }
 
 if ($what == "upload"){
-    
+    upload();
 }
 
 

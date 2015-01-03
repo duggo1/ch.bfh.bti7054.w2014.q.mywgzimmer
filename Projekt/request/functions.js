@@ -598,21 +598,79 @@ function InseratSpeichern() {
 }
 function Foto1(){
     
-    var Foto1 =new FormData();
+    //var Foto1 =new FormData();
     //var Foto1 = $("#foto1form").serialize();
-    Foto1.append("file", $("#insfoto1").prop("files")[0]);
-    //$("#insfoto1").val()
-     
-    $.ajax({
+    //Foto1.append("file", $("#insfoto1").prop("files")[0]);
+    //"insfoto1="+$("#insfoto1").val()
+    //"insfoto1="+$("#insfoto1").show()[1]
+    //document.getElementById("foto1form")
+    //dataType: 'image',
+    //var data;
+    //data = new FormData($("#insfoto1")[0]);
+  //  data.append('file', $('#insfoto1')[0].files[0]);
+   /* $.ajax({
 		type : "POST",
-		data : "what=upload&tmp_insfoto1=" + Foto1,
+		data : "insfoto1="+$("#insfoto1").show()[0],
+                dataType: 'image',
 		url : "request/upload.php",
 		success : function(msg) {
 			//document.getElementById("image1").src = msg;
                         alert(msg);
 		}
-	});
+	});*/
+var input = $("#foto1form").serialize(), 
+    formdata = false;
+
+function showUploadedItem (source) {
+    var list = document.getElementById("image-list"),
+        li   = document.createElement("li"),
+        img  = document.createElement("img");
+    img.src = source;
+    li.appendChild(img);
+    list.appendChild(li);
+}   
+
+if (window.FormData) {
+    formdata = new FormData();
+    document.getElementById("btnfoto1").style.display = "none";
 }
+
+input.addEventListener("change", function () {
+    document.getElementById("response").innerHTML = "Uploading . . .";
+    var i = 0, len = this.files.length, img, reader, file;
+
+    for ( ; i < len; i++ ) {
+        file = this.files[i];
+
+        if (!!file.type.match(/image.*/)) {
+            if ( window.FileReader ) {
+                reader = new FileReader();
+                reader.onloadend = function (e) { 
+                    showUploadedItem(e.target.result, file.fileName);
+                };
+                reader.readAsDataURL(file);
+            }
+            if (formdata) {
+                formdata.append("images[]", file);
+            }
+        }   
+    }
+
+    if (formdata) {
+        $.ajax({
+            url: "request/upload.php",
+            type: "POST",
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                document.getElementById("response").innerHTML = res;
+            }
+        });
+    }
+}, false);
+}
+
 
 function ZuruckbtTab2() {
 

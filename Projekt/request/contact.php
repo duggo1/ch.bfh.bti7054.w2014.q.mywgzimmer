@@ -24,7 +24,7 @@ if (isset($_POST['btnkontakt'])) {
         if ($hasResult) {
             $betreff = "Interesse an Inserat-Nr." . $id;
             $headers = "From: " . $interessent . "\r\n" . "Content-type: text/html; charset=UTF-8";
-            $text = "Guten Tag, <br /> Dein Inserat st auf Interesse gestossen:<br /><br />" . $message;
+            $text = "Guten Tag, <br /> Dein Inserat ist auf Interesse gestossen:<br /><br />" . $message;
             $text .= "<br /><br /> Freundliche Grüsse <br /> Dein mywgzimmer.ch-Team";
             mail($email, $betreff, $text, $headers);
             $msg = urlencode("<h1>Super!</h1>Du hast dich erfolgreich beim Inserat-Nr." . $id . " beworben.");

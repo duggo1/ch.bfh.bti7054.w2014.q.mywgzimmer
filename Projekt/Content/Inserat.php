@@ -121,7 +121,7 @@ function inserat() {
             <div>Bitte E-Mail eingeben:
             </div>
             <input id="interessent" class="formfield" type="email" name="interessent">
-            <input id="btnkontakt" value="Bewerben" name="btnkontakt" type="submit">
+            <button id="btnkontakt" name="btnkontakt" type="submit">Bewerben</button>
 </form>
 <br />
 <button onclick="history.go(-1);" id="btnzuruck6">Zurück zur Suche </button>
