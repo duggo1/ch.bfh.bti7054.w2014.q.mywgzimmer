@@ -228,7 +228,7 @@ function drawtable() {
                 $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
                 $inserattable = $inserattable . "CHF " . $db_field ['Mietzins'];
                 $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
-                $inserattable = $inserattable . "<img class='thumbnail' src='";
+                $inserattable = $inserattable . "<img class='thumbnail' src='uploads/";
                 $inserattable = $inserattable . $db_field ['ImageID1'] . "'></a></td></tr>";
                 $hasResult = true;
             }
@@ -318,52 +318,12 @@ if ($what == "inserierenTab5") {
 
     mail($insEmail, $betreff, $text, $headers);
 
-    echo "true";
+
+    	echo "true";
+   
+    
 }
-if ($what == "speichern") {
 
-    if (strlen($insWohnungAbDatum) > 0) {
-
-        $tmpWohnungabdatum = explode(".", $insWohnungAbDatum);
-        $insWohnungAbDatum = $tmpWohnungabdatum [2] . "." . $tmpWohnungabdatum [1] . "." . $tmpWohnungabdatum [0];
-    }
-    if (strlen($insWohnungBisDatum) > 0) {
-
-        $tmpWohnungBisdatum = explode(".", $insWohnungBisDatum);
-
-        $insWohnungBisDatum = $tmpWohnungBisdatum [2] . "." . $tmpWohnungBisdatum [1] . "." . $tmpWohnungBisdatum [0];
-    }
-
-    $user_name = "root";
-    $password = "root";
-    $database = "mywgzimmerdb";
-    $server = "localhost";
-
-    $db_handle = mysql_connect($server, $user_name, $password);
-    $db_found = mysql_select_db($database, $db_handle);
-    $query = " tblInserate  active= 1 WHERE Link = '$id'";
-    $query = "UPDATE `tblinserate` SET `Email`, `Strasse`, `Hausnummer`, `Wohnungszusatz`, `PLZ`, `Ort`,
-			 `Quadratmeter`, `Studio`, `Minimumalter`, `Maximumalter`, `SollGeschlecht`, `IstGeschlecht`, `Durchschnittsalter`,
-	 		 `Zimmerbeschreibung`, `Bewohnerbeschreibung`, `Personenbeschreibung`, `AbDatum`, `BisDatum`, `Befristet`, `Mietzins`, `active`,
-			 `Link`, `ImageID1`, `ImageID2`, `ImageID3`, `Erstellungsdatum`) VALUES 		
-			 ('$insEmail', '$insWohnungStr', '$insWohnungHausNr', '$insWohnungZusatzNr', '$insWohnungPlz', '$insWohnungOrt',
-			 '$insZimmerFlaeche' , '$insZimmerTyp', '$insGesuchtSollMinAlter', '$insGesuchtSollMaxAlter', '$insGesuchtSollSex',
-	 		'$insBewohnerGeschlecht', '$insBewohnerAlter', '$insZimmerBeschreibung', '$insBewohnerBeschreibung', '$insGesuchtBeschreibung', 
-	 		'$insWohnungAbDatum', '$insWohnungBisDatum', '', '$insWohnungkosten', '0', '$link', '$insFoto1link', '$insFoto2link', 
-			'$insFoto3link', CURRENT_TIMESTAMP);";
-
-    $result = mysql_query($query) or die("Ungültige Abfrage");
-    mysql_close($db_handle);
-
-    $betreff = "Aktivierungslink";
-    $headers = "From: MyWGzimmer.ch <help@mywgzimmer.ch>" . "\r\n" . "Content-type: text/html; charset=UTF-8";
-    $text = "Guten Tag,<br /><br />Danke für dein Inserat.<br />Bitte aktiviere es mit folgendem Link:<br />
-	http://localhost:8888/request/activation.php?id=" . $link . "<br /><br />Freundliche Grüsse,<br />Dein mywgzimmer.ch-Team";
-
-    mail($insEmail, $betreff, $text, $headers);
-
-    echo "true";
-}
 
 if ($what == "suchen") {
 

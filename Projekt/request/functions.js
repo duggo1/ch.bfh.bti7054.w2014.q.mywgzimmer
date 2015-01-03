@@ -486,129 +486,7 @@ function InserierenTab5Kontrolle() {
     });
 
 }
-function InseratSpeichern() {
 
-    // Tab1
-    var BewohnerAlter = $("#ISTalter").val();
-    var BewohnerBeschreibung = $("#bewohnerBeschreibung").val();
-    var BewohnerGeschlecht;
-    if (document.getElementById('ISTgeschlechtf').checked) {
-        BewohnerGeschlecht = 'f';
-    } else if (document.getElementById('ISTgeschlechtm').checked) {
-        BewohnerGeschlecht = 'm';
-    } else {
-        BewohnerGeschlecht = 'x';
-    }
-    // Tab2
-    var WohnungStr = $("#insZimmerStr").val();
-    var WohnungHausNr = $("#insZimmerStrNr").val();
-    var WohnungZusatzNr = $("#insZimmerZusatzNr").val();
-    var WohnungOrt = $("#insZimmerOrt").val();
-    var WohnungPlz = $("#insZimmerPlz").val();
-    var WohnungEinzug = $("#insMitAbDatum").val();
-    var WohnungAuszug = $("#insMitBisDatum").val();
-    var Wohnungkosten = $("#insMitkosten").val();
-    if ($("#insMitBisDatum").length == 0) {
-        WohnungAuszug = "30.12.9999";
-    }
-    // Tab3
-    var ZimmerFlaeche = $("#insFlaeche").val();
-    var ZimmerBeschreibung = $("#ZimmerBeschreibung").val();
-    var ZimmerTyp;
-
-    var foto1 = $("#insFoto1").val();
-    var foto2 = $("#insFoto2").val();
-    var foto3 = $("#insFoto3").val();
-
-    if (document.getElementById('insZimmerTypz').checked) {
-
-        ZimmerTyp = '0';
-        //alert("Zimmertyp= "+parseInt(ZimmerTyp));
-    } else {
-
-        ZimmerTyp = '1';
-        //alert("Zimmertyp= "+parseInt(ZimmerTyp));
-    }
-    // Tab4
-    var GesuchtSex;
-
-    if (document.getElementById('SOLLgeschlechtf').checked) {
-        GesuchtSex = 'f';
-
-    } else if (document.getElementById('SOLLgeschlechtm').checked) {
-        GesuchtSex = 'm';
-
-    } else {
-        GesuchtSex = 'x';
-    }
-
-    var GesuchtMinAlter = $("#SOLLminAlter").val();
-    var GesuchtMaxAlter = $("#SOLLmaxAlter").val();
-    var GesuchtBeschreibung = $("#gesuchtBeschreibung").val();
-
-    // Tab 5
-
-    var WohnungStr = $("#insZimmerStr").val();
-    var BestaetigungEmail = $("#email").val();
-    var BestaetigungEmailWieder = $("#wiederemail").val();
-    var hasErrorBestaetigungEmail = false;
-    var hasErrorBestaetigungEmailWieder = false;
-    var hasErrorBestaetigungAGB = false;
-
-    var ErrorMessage = "Bitte überprüfen Sie folgende Angaben:\n";
-
-    if (document.getElementById('agbsakzeptiert').checked) {
-        hasErrorBestaetigungAGB = false;
-    } else {
-        hasErrorBestaetigungAGB = true;
-        ErrorMessage = ErrorMessage + "AGB\n";
-    }
-
-    if (BestaetigungEmail.length == 0) {
-        hasErrorBestaetigungEmail = true;
-        ErrorMessage = ErrorMessage + "fehlende Email\n";
-    } else {
-        hasErrorBestaetigungEmail = false;
-    }
-
-    if (BestaetigungEmailWieder.length == 0) {
-        hasErrorBestaetigungEmailWieder = true;
-        ErrorMessage = ErrorMessage + "fehlende Email Wiederholung\n";
-    } else {
-        hasErrorBestaetigungEmailWieder = false;
-    }
-
-    if (BestaetigungEmail == BestaetigungEmailWieder) {
-
-    } else {
-        hasErrorBestaetigungEmailWieder = true;
-        ErrorMessage = ErrorMessage + "falsche Email Wiederholung\n";
-    }
-
-    if (hasErrorBestaetigungEmail || hasErrorBestaetigungEmailWieder
-            || hasErrorBestaetigungAGB) {
-        alert(ErrorMessage);
-        return;
-    }
-
-    $.ajax({
-        type: "POST",
-        data: "what=speichern&insEmail=" + BestaetigungEmail +
-                "&insBewohnerGeschlecht=" + BewohnerGeschlecht + "&insBewohnerAlter=" + BewohnerAlter + "&insBewohnerBeschreibung=" + BewohnerBeschreibung +
-                "&insWohnungStr=" + WohnungStr + "&insWohnungHausNr=" + WohnungHausNr + "&insWohnungZusatzNr=" + WohnungZusatzNr + "&insWohnungOrt=" + WohnungOrt + "&insWohnungPlz=" + WohnungPlz + "&insWohnungAbDatum=" + WohnungEinzug + "&insWohnungBisDatum=" + WohnungAuszug + "&insWohnungkosten=" + Wohnungkosten +
-                "&insZimmerTyp=" + ZimmerTyp + "&insZimmerFlaeche=" + ZimmerFlaeche + "&insZimmerBeschreibung=" + ZimmerBeschreibung + "&$insFoto1link=" + foto1 + "&$insFoto2link=" + foto2 + "&$insFoto3link=" + foto3 +
-                "&insGesuchtSollSex=" + GesuchtSex + "&insGesuchtSollMinAlter=" + GesuchtMinAlter + "&insGesuchtSollMaxAlter=" + GesuchtMaxAlter + "&insGesuchtBeschreibung=" + GesuchtBeschreibung,
-        url: "request/service.php",
-        success: function (msg) {
-            if (msg != 'false') {
-
-                alert("Inserat wurde erfolgreich gespeichert!");
-                window.location.href = "?link=home&lan=de";
-            }
-        }
-    });
-
-}
 function Foto1() {
 file = document.getElementById("insfoto1").files[0];
 if (!file == ''){
@@ -898,9 +776,16 @@ function bearbeitung(link) {
             $("#SOLLminAlter").val(obj.Minimumalter);
             $("#SOLLmaxAlter").val(obj.Maximumalter);
             $("#gesuchtBeschreibung").val(obj.Personenbeschreibung);
-//			$("#insFoto1").val(obj.ImageID1);
-//			$("#insFoto2").val(obj.ImageID2);
-//			$("#insFoto3").val(obj.ImageID3);
+            
+            	$("#insFoto1").val(obj.ImageID1);
+			$("#insFoto2").val(obj.ImageID2);
+			$("#insFoto3").val(obj.ImageID3);
+            document.getElementById('image1').src= "uploads/"+obj.ImageID1;
+            document.getElementById('image2').src="uploads/"+obj.ImageID2;
+            document.getElementById('image3').src="uploads/"+obj.ImageID3;
+		
+            
+            
             $("#email").val(obj.Email);
             $("#wiederemail").val(obj.Email);
 
