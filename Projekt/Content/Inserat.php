@@ -44,12 +44,9 @@ function inserat() {
 				$befristet = true;
 			}
 			$miete = $db_field ['Mietzins'];
-			$foto1 = (isset ( $db_field ['ImageID1'] )) ? ("<img class='preview' src='request/showImage.php?image='" . $db_field ['ImageID1'] . "'>") : "";
-			$foto2 = (isset ( $db_field ['ImageID2'] )) ? ("<img class='preview' src='request/showImage.php?image='" . $db_field ['ImageID2'] . "'>") : "";
-			$foto3 = (isset ( $db_field ['ImageID3'] )) ? ("<img class='preview' src='request/showImage.php?image='" . $db_field ['ImageID3'] . "'>") : "";
-			// $foto3 = (isset($db_field ['ImageID3'])) ? ("<img class='preview' src='images/holz1.jpg'" . $db_field ['ImageID3'] . "'>") : "";
-			// $foto2 = (isset($db_field ['ImageID3'])) ? ("<img class='preview' src='images/holz.jpg'" . $db_field ['ImageID3'] . "'>") : "";
-			// $foto1 = (isset($db_field ['ImageID3'])) ? ("<img class='preview' src='images/suche.png'" . $db_field ['ImageID3'] . "'>") : "";
+			$foto1 = (isset ( $db_field ['ImageID1'] )) ? ("<img class='preview' src='uploads/" . $db_field ['ImageID1'] . "'>") : "";
+			$foto2 = (isset ( $db_field ['ImageID2'] )) ? ("<img class='preview' src='uploads/" . $db_field ['ImageID2'] . "'>") : "";
+			$foto3 = (isset ( $db_field ['ImageID3'] )) ? ("<img class='preview' src='uploads/" . $db_field ['ImageID3'] . "'>") : "";
 		}
 		mysql_close ( $db_handle );
 		?>

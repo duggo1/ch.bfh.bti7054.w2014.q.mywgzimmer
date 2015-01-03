@@ -378,9 +378,25 @@ function InserierenTab5Kontrolle() {
     var ZimmerBeschreibung = $("#ZimmerBeschreibung").val();
     var ZimmerTyp;
 
-    var foto1 = document.getElementById("image1").src;
-    var foto2 = document.getElementById("image2").src;
-    var foto3 = document.getElementById("image3").src;
+    var foto1 = $("#insfoto1").val();
+    var foto2 = $("#insfoto2").val();
+    var foto3 = $("#insfoto3").val();
+    
+    if (foto1 !== ''){
+        if (foto1.indexOf("C:\\fakepath\\") > -1){
+            foto1 = foto1.replace("C:\\fakepath\\","");
+        }
+    }
+    if (foto2 !== ''){
+        if (foto2.indexOf("C:\\fakepath\\") > -1){
+            foto2 = foto2.replace("C:\\fakepath\\","");
+        }
+    }
+    if (foto3 !== ''){
+        if (foto3.indexOf("C:\\fakepath\\") > -1){
+            foto3 = foto3.replace("C:\\fakepath\\","");
+        }
+    }
 
     if (document.getElementById('insZimmerTypz').checked) {
 
@@ -410,7 +426,6 @@ function InserierenTab5Kontrolle() {
 
     // Tab 5
 
-    var WohnungStr = $("#insZimmerStr").val();
     var BestaetigungEmail = $("#email").val();
     var BestaetigungEmailWieder = $("#wiederemail").val();
     var hasErrorBestaetigungEmail = false;
@@ -458,7 +473,7 @@ function InserierenTab5Kontrolle() {
         data: "what=inserierenTab5&insEmail=" + BestaetigungEmail +
                 "&insBewohnerGeschlecht=" + BewohnerGeschlecht + "&insBewohnerAlter=" + BewohnerAlter + "&insBewohnerBeschreibung=" + BewohnerBeschreibung +
                 "&insWohnungStr=" + WohnungStr + "&insWohnungHausNr=" + WohnungHausNr + "&insWohnungZusatzNr=" + WohnungZusatzNr + "&insWohnungOrt=" + WohnungOrt + "&insWohnungPlz=" + WohnungPlz + "&insWohnungAbDatum=" + WohnungEinzug + "&insWohnungBisDatum=" + WohnungAuszug + "&insWohnungkosten=" + Wohnungkosten +
-                "&insZimmerTyp=" + ZimmerTyp + "&insZimmerFlaeche=" + ZimmerFlaeche + "&insZimmerBeschreibung=" + ZimmerBeschreibung + "&$insFoto1link=" + foto1 + "&$insFoto2link=" + foto2 + "&$insFoto3link=" + foto3 +
+                "&insZimmerTyp=" + ZimmerTyp + "&insZimmerFlaeche=" + ZimmerFlaeche + "&insZimmerBeschreibung=" + ZimmerBeschreibung + "&insFoto1link=" + foto1 + "&insFoto2link=" + foto2 + "&insFoto3link=" + foto3 +
                 "&insGesuchtSollSex=" + GesuchtSex + "&insGesuchtSollMinAlter=" + GesuchtMinAlter + "&insGesuchtSollMaxAlter=" + GesuchtMaxAlter + "&insGesuchtBeschreibung=" + GesuchtBeschreibung,
         url: "request/service.php",
         success: function (msg) {
