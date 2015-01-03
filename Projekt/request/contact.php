@@ -1,5 +1,6 @@
 <?php
 
+// Wenn ein Besucher irgendein Inserat interesiert, wird das Bewerbungsmail von hier geschickt.
 if (isset($_POST['btnkontakt'])) {
     if (isset($_GET['insid'])) {
         $user_name = "root";

@@ -20,7 +20,7 @@ require_once ("admin.php");
         $lan = $_GET ['lan'];
     }
     ?>
-
+<!-- Hier wird die Adminseite erstellt. --> 
     <head>
         <meta charset="utf-8">
         <title>MyWGZimmer-Administrator</title>

@@ -1,5 +1,5 @@
 <?php
-
+// Inserat aktivieren
 if (isset($_GET['id'])) {
     $user_name = "root";
     $password = "root";
@@ -21,6 +21,9 @@ if (isset($_GET['id'])) {
     mysql_close($db_handle);
 
     if ($hasResult) {
+    	// Wenn das Inserat aktiviert wurde, bekommt Inseratgeber ein Mail. Und in diesem Mail stehen 4 Linke 
+    	//,um dieses Inserat zu erreichen zu bearbeiten zu löschen und zu deaktivieren.
+    	
         $betreff = "Inseratlinks";
         $headers = "From: MyWGzimmer.ch <help@mywgzimmer.ch>" . "\r\n" . "Content-type: text/html; charset=UTF-8";
         $text = "Guten Tag, <br /> Dein Inserat ist jetzt aktiv.<br /><br /> Hier ist der Link zu deinem Inserat: <br />

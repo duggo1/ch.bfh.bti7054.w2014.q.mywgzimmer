@@ -4,7 +4,7 @@
 $connection = mysql_connect("localhost", "root", "root");
 // Selecting Database
 $database = mysql_select_db("mywgzimmerdb", $connection);
-session_start(); // Starting Session
+
 // Storing Session
 $user_check = $_SESSION['login_user'];
 // SQL Query To Fetch Complete Information Of User
