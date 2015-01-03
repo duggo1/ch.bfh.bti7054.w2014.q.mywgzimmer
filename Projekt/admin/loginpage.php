@@ -1,11 +1,11 @@
 <?php
-
 function loginpage() {
-session_start();
-if (isset($_SESSION['error'])) {
-    $error = $_SESSION['error'];  // Variable To Store Error Message
-}
-    $output = '<div id="Login">
+
+	if (isset ( $_SESSION ['error'] )) {
+		$error = $_SESSION ['error']; // Variable To Store Error Message
+	}
+	// Hier erstellt 2 Felder, um Adminpasswort und Adminname einzugeben.
+	$output = '<div id="Login">
             <h1>
                 Login
             </h1>
@@ -23,9 +23,9 @@ if (isset($_SESSION['error'])) {
                     <input id="password" type="password" name="password" value="">
                 </p>
                 <input id="btnlogin" type="submit" name="submit" value=" Login " >';
-    if (isset($error)) {
-        $output = $output . '<p class="error">' . $error . '</p>';
-    }
-    echo $output . '</form></div>';
+	if (isset ( $error )) {
+		$output = $output . '<p class="error">' . $error . '</p>';
+	}
+	echo $output . '</form></div>';
 }
 ?>
