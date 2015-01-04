@@ -11,7 +11,7 @@ if (isset($_POST['btnkontakt'])) {
         $db_handle = mysql_connect($server, $user_name, $password);
         $db_found = mysql_select_db($database, $db_handle);
         $insid = mysql_real_escape_string($_GET['insid']);
-        $query = "SELECT Email FROM tblInserate WHERE ID = $insid";
+        $query = "SELECT * FROM tblInserate WHERE ID = $insid";
         $result = mysql_query($query) or die("Ungültige Abfrage");
         while ($db_field = mysql_fetch_assoc($result)) {
             $email = $db_field["Email"];
