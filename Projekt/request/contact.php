@@ -26,7 +26,7 @@ if (isset($_POST['btnkontakt'])) {
         if ($hasResult) {
             $betreff = "Interesse an Inserat-Nr." . $insid;
             $headers = "From: " . $interessent . "\r\n" . "Content-type: text/html; charset=UTF-8";
-            $text = "Guten Tag, <br /> Dein Inserat ist auf Interesse gestossen:\"<br /><br />" . $message;
+            $text = "Guten Tag, <br /> Dein Inserat ist auf Interesse gestossen:$interessent\"<br /><br />" . $message;
             $text .= "\"<br /><br />Hier ist der Link zu deinem Inserat-Nr " . $insid . ":<br />
 	http://localhost:8888/index.php?link=inserat&insid=" . $insid . "<br /><br />
             Willst du es bearbeiten, klicke bitte auf folgenden Link: <br />
