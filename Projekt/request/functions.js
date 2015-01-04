@@ -348,7 +348,7 @@ function InserierenTab4Kontrolle() {
     });
 
 }
-function InserierenTab5Kontrolle() {
+function InserierenTab5Kontrolle(tmplink) {
 
     // Tab1
     var BewohnerAlter = $("#ISTalter").val();
@@ -467,14 +467,13 @@ function InserierenTab5Kontrolle() {
         alert(ErrorMessage);
         return;
     }
-
     $.ajax({
         type: "POST",
         data: "what=inserierenTab5&insEmail=" + BestaetigungEmail +
                 "&insBewohnerGeschlecht=" + BewohnerGeschlecht + "&insBewohnerAlter=" + BewohnerAlter + "&insBewohnerBeschreibung=" + BewohnerBeschreibung +
                 "&insWohnungStr=" + WohnungStr + "&insWohnungHausNr=" + WohnungHausNr + "&insWohnungZusatzNr=" + WohnungZusatzNr + "&insWohnungOrt=" + WohnungOrt + "&insWohnungPlz=" + WohnungPlz + "&insWohnungAbDatum=" + WohnungEinzug + "&insWohnungBisDatum=" + WohnungAuszug + "&insWohnungkosten=" + Wohnungkosten +
                 "&insZimmerTyp=" + ZimmerTyp + "&insZimmerFlaeche=" + ZimmerFlaeche + "&insZimmerBeschreibung=" + ZimmerBeschreibung + "&insFoto1link=" + foto1 + "&insFoto2link=" + foto2 + "&insFoto3link=" + foto3 +
-                "&insGesuchtSollSex=" + GesuchtSex + "&insGesuchtSollMinAlter=" + GesuchtMinAlter + "&insGesuchtSollMaxAlter=" + GesuchtMaxAlter + "&insGesuchtBeschreibung=" + GesuchtBeschreibung,
+                "&insGesuchtSollSex=" + GesuchtSex + "&insGesuchtSollMinAlter=" + GesuchtMinAlter + "&insGesuchtSollMaxAlter=" + GesuchtMaxAlter + "&insGesuchtBeschreibung=" + GesuchtBeschreibung+"&bearbeitungslink="+tmplink,
         url: "request/service.php",
         success: function (msg) {
             if (msg != 'false') {
@@ -777,9 +776,9 @@ function bearbeitung(link) {
             $("#SOLLmaxAlter").val(obj.Maximumalter);
             $("#gesuchtBeschreibung").val(obj.Personenbeschreibung);
             
-            	$("#insFoto1").val(obj.ImageID1);
-			$("#insFoto2").val(obj.ImageID2);
-			$("#insFoto3").val(obj.ImageID3);
+//            	$("#insFoto1").val(obj.ImageID1);
+//			$("#insFoto2").val(obj.ImageID2);
+//			$("#insFoto3").val(obj.ImageID3);
             document.getElementById('image1').src= "uploads/"+obj.ImageID1;
             document.getElementById('image2').src="uploads/"+obj.ImageID2;
             document.getElementById('image3').src="uploads/"+obj.ImageID3;
@@ -790,7 +789,7 @@ function bearbeitung(link) {
             $("#wiederemail").val(obj.Email);
 
 
-            if (obj.IstGeschlecht = "f") {
+            if (obj.IstGeschlecht == "f") {
                 document.getElementById('ISTgeschlechtf').checked = true;
             } else if (obj.IstGeschlecht == 'm') {
                 document.getElementById('ISTgeschlechtm').checked = true;
@@ -798,15 +797,16 @@ function bearbeitung(link) {
                 document.getElementById('ISTgeschlechtx').checked = true;
             }
 
-            if (obj.Studio = 0) {
+            if (obj.Studio == 0) {
                 document.getElementById('insZimmerTypz').checked = true;
 
             } else {
                 document.getElementById('insZimmerTyps').checked = true;
             }
 
-
-            if (obj.SollGeschlecht = 'f') {
+   
+            
+            if (obj.SollGeschlecht == 'f') {
                 document.getElementById('SOLLgeschlechtf').checked = true;
 
 

@@ -37,6 +37,10 @@ $insEmail = (isset($_POST ["insEmail"])) ? $_POST ["insEmail"] : "";
 $bearbeitungslink = (isset($_POST ["bearbeitungslink"])) ? $_POST ["bearbeitungslink"] : "";
 $what = (isset($_POST ["what"])) ? $_POST ["what"] : "";
 
+
+
+
+
 function sanitizeString($var) {
     $var = stripslashes($var);
     $var = htmlentities($var);
@@ -289,8 +293,37 @@ if ($what == "inserierenTab5") {
 			'$insFoto3link', CURRENT_TIMESTAMP);";
 
     $result = mysql_query($query) or die("Ungültige Abfrage");
+
+     
+
+//      	$id = mysql_real_escape_string($_GET['id']);
+     	
+//      	$query = "DELETE FROM tblInserate WHERE Link = '$tmpinseratlink'";
+//      	$result = mysql_query($query) or die("Ungültige Abfrage");
+     	//mysql_close($db_handle);
+
+    
     mysql_close($db_handle);
 
+    
+    //Wenn eine Bearbeitung gespeichert wird, wird alte link vom Inserat gel�scht.
+    if (isset($_POST ["bearbeitungslink"])){
+    if ($bearbeitungslink!="") {
+    
+    	$user_name = "root";
+    	$password = "root";
+    	$database = "mywgzimmerdb";
+    	$server = "localhost";
+    
+    	$db_handle = mysql_connect($server, $user_name, $password);
+    	$db_found = mysql_select_db($database, $db_handle);
+    	$query = "DELETE FROM tblInserate WHERE Link = '$bearbeitungslink'";
+    	$result = mysql_query($query) or die("Ungültige Abfrage");
+    	mysql_close($db_handle);
+    
+    }}
+    
+    
     $betreff = "Aktivierungslink";
     $headers = "From: MyWGzimmer.ch <help@mywgzimmer.ch>" . "\r\n" . "Content-type: text/html; charset=UTF-8";
     $text = "Guten Tag,<br /><br />Danke für dein Inserat.<br />Bitte aktiviere es mit folgendem Link:<br />
@@ -298,8 +331,12 @@ if ($what == "inserierenTab5") {
 
     mail($insEmail, $betreff, $text, $headers);
 
+    
 
-    	echo "true";
+    
+    
+    return "true";
+    	
    
     
 }

@@ -49,7 +49,9 @@ require_once ("Content/Message.php");
                     InserierenTab4Kontrolle();
                 });
                 $("#btnweiter5").click(function () {
-                    InserierenTab5Kontrolle();
+                  	 <?php if (isset ( $_GET ['id'] )) {
+                      	$inseratlink=$_GET ['id'];
+                      	echo ' InserierenTab5Kontrolle("'.$inseratlink.'");';}else{echo ' InserierenTab5Kontrolle("");';}?>// InserierenTab5Kontrolle();
                 });
                 $("#btnzuruck2").click(function () {
                     ZuruckbtTab2();
