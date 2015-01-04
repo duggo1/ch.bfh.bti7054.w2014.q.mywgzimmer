@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_GET['id'])) {
-	//Hier wird das Inserat gelöscht. Hier ist für löschenlink und Löschenfunktion für Admin.
+    //Hier wird das Inserat gelï¿½scht. Hier ist fï¿½r lï¿½schenlink und Lï¿½schenfunktion fï¿½r Admin.
     $user_name = "root";
     $password = "root";
     $database = "mywgzimmerdb";
@@ -10,6 +10,25 @@ if (isset($_GET['id'])) {
     $db_handle = mysql_connect($server, $user_name, $password);
     $db_found = mysql_select_db($database, $db_handle);
     $id = mysql_real_escape_string($_GET['id']);
+
+    //Fotos lÃ¶schen
+    $query = "SELECT * FROM tblInserate WHERE Link = '$id'";
+    $result = mysql_query($query) or die("UngÃ¼ltige Abfrage");
+    while ($db_field = mysql_fetch_assoc($result)) {
+        $foto1 = "../uploads/" . $db_field["ImageID1"];
+        $foto2 = "../uploads/" . $db_field["ImageID2"];
+        $foto3 = "../uploads/" . $db_field["ImageID3"];
+    }
+    if ($foto1 != '') {
+        unlink($foto1);
+    }
+    if ($foto2 != '') {
+        unlink($foto2);
+    }
+    if ($foto3 != '') {
+        unlink($foto3);
+    }
+
     $query = "DELETE FROM tblInserate WHERE Link = '$id'";
     $result = mysql_query($query) or die("UngÃ¼ltige Abfrage");
     mysql_close($db_handle);

@@ -33,7 +33,7 @@ $text = array(
             Click on "Gratis WG-Zimmer inserieren"!
         <h2>Help &#8599;</h2>Have you lost the links to your advertisements?
 Then click on "Hilfe"!
-        <h2>terms and conditions &#8599;</h2>For background information on the content of this site, click on "AGB"!
+        <h2>Terms and Conditions &#8599;</h2>For background information on the content of this site, click on "AGB"!
 		',
 		"fr" =>  '
         
@@ -53,7 +53,7 @@ Pour plus d\'information sur le contenu de ce site, veuillez consulter les "AGB"
         Cliccate su "Gratis WG-Zimmer inserieren"!
 <h2>Aiuto &#8599;</h2>Avete perso i link ai tuoi annunci?
 Quindi fare clic su "Hilfe"!
-        <h2>termini di utilizzo &#8599;</h2>Per informazioni generali sul contenuto di questo sito, cliccate su "AGB"!
+        <h2>Termini di utilizzo &#8599;</h2>Per informazioni generali sul contenuto di questo sito, cliccate su "AGB"!
 
 		'
 );
