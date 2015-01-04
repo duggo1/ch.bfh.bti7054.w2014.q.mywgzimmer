@@ -17,6 +17,7 @@ require_once ("Content/Message.php");
 
 <html>
     <?php
+    $lan = "de";
     if (isset($_GET ['link'])) {
         $link = $_GET ['link'];
     }
@@ -120,17 +121,17 @@ require_once ("Content/Message.php");
     </head>
     <body>
         <div class="Header">
-            <a href="?link=home" class="link"><img id="logo" src="images/logo.png" alt="Home" title="Home"></a>
-            <a href="?link=hilfe" class="link"><img id="help" src="images/help.png" alt="Hilfe" title="Hilfe"></a>
-            <a href="?link=agb" class="link"><img id="agb" src="images/agb.png" alt="AGB" title="AGB"></a>
+            <a href="?link=home&lan=<?php echo $lan; ?>" class="link"><img id="logo" src="images/logo.png" alt="Home" title="Home"></a>
+            <a href="?link=hilfe&lan=<?php echo $lan; ?>" class="link"><img id="help" src="images/help.png" alt="Hilfe" title="Hilfe"></a>
+            <a href="?link=agb&lan=<?php echo $lan; ?>" class="link"><img id="agb" src="images/agb.png" alt="AGB" title="AGB"></a>
         </div>
     </div>
     <table class="Wrap">
         <tr>
             <td class="leftbox">
                 <?php language(); ?>
-                <a href="?link=suchen"><img class="function" src="images/suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
-                <a href="?link=inserieren"><img class="function" src="images/inserat.png" alt="Gratis-WG-Zimmer-inserieren" title="Gratis WG-Zimmer inserieren"></a>
+                <a href="?link=suchen&lan=<?php echo $lan; ?>"><img class="function" src="images/suche.png" alt="WG-Zimmer-suchen" title="WG-Zimmer suchen"></a>
+                <a href="?link=inserieren&lan=<?php echo $lan; ?>"><img class="function" src="images/inserat.png" alt="Gratis-WG-Zimmer-inserieren" title="Gratis WG-Zimmer inserieren"></a>
             </td>
             <td class="content">
                 <?php
@@ -144,35 +145,11 @@ require_once ("Content/Message.php");
 	echo ' <script type="text/javascript" src="request/functions.js"></script>  <script type="text/javascript">
              bearbeitung("'.$link.'");  </script>';
 
-	// 	$user_name = "root";
-	// 	$password = "root";
-	// 	$database = "mywgzimmerdb";
-	// 	$server = "localhost";
-
-	// 	$db_handle = mysql_connect ( $server, $user_name, $password );
-	// 	$db_found = mysql_select_db ( $database, $db_handle );
-
-	// 	$id = mysql_real_escape_string ( $_GET ['id'] );
-	// 	$query = "SELECT * FROM tblInserate WHERE Link = '$id'";
-	// 	$result = mysql_query ( $query ) or die ( "Ung�ltige Abfrage" );
-	// 	while ( $db_field = mysql_fetch_assoc ( $result ) ) {
-	// 		$email = $db_field ["Email"];
-	// 		$hasResult = true;
-	// 		$insid = $db_field ["ID"];
-
-	// 	}
-	// 	mysql_close ( $db_handle );
-
-	// 	if ($hasResult) {
-
-	// 	}
 } ?></div><?php
                 } elseif ($link == 'hilfe') {
                     ?><div class="textcontent"><?php hilfe(); ?></div><?php
                 } elseif ($link == 'agb') {
                     ?><div class="textcontent"><?php agb(); ?></div><?php
-                } elseif ($link == 'danke') {
-                    ?><div class="textcontent"><?php danke(); ?></div><?php
                 } elseif ($link == 'inserat') {
                     ?><div class="textcontent"><?php inserat(); ?></div><?php
                 }elseif ($link == 'message') {

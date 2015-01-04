@@ -34,26 +34,6 @@ $insGesuchtBeschreibung = (isset($_POST ["insGesuchtBeschreibung"])) ? $_POST ["
 
 // Tab_5 von Inserat
 $insEmail = (isset($_POST ["insEmail"])) ? $_POST ["insEmail"] : "";
-// $insEmailWieder = (isset ( $_POST ["insEmailWieder"] )) ? $_POST ["insEmailWieder"] : "";
-// $insBestaetigungAGB = (isset ( $_POST ["agbsakzeptiert"] )) ? $_POST ["agbsakzeptiert"] : "";
-// Suchen-----------------------------------------
-/* Ich bin
-$suchGeschlecht = (isset($_POST ["suchGeschlecht"])) ? $_POST ["suchGeschlecht"] : "";
-$suchAlter = (isset($_POST ["suchAlter"])) ? $_POST ["suchAlter"] : "";
-
-// Ich suche
-$suchWGgeschlecht = (isset($_POST ["suchWGgeschlecht"])) ? $_POST ["suchWGgeschlecht"] : "";
-$suchWGminAlter = (isset($_POST ["suchWGminAlter"])) ? $_POST ["suchWGminAlter"] : "";
-$suchWGmaxAlter = (isset($_POST ["suchWGmaxAlter"])) ? $_POST ["suchWGmaxAlter"] : "";
-$suchWGZimmerArt = (isset($_POST ["suchWGZimmerArt"])) ? $_POST ["suchWGZimmerArt"] : "";
-$suchWGabDatum = (isset($_POST ["suchWGabDatum"])) ? $_POST ["suchWGabDatum"] : "";
-$suchWGbisDatum = (isset($_POST ["suchWGbisDatum"])) ? $_POST ["suchWGbisDatum"] : "";
-$suchWGminflaeche = (isset($_POST ["suchWGminflaeche"])) ? sanitizeString($_POST ["suchWGminflaeche"]) : "";
-$suchWGmaxflaeche = (isset($_POST ["suchWGmaxflaeche"])) ? sanitizeString($_POST ["suchWGmaxflaeche"]) : "";
-$suchWGminKost = (isset($_POST ["suchWGminKost"])) ? sanitizeString($_POST ["suchWGminKost"]) : "";
-$suchWGmaxKost = (isset($_POST ["suchWGmaxKost"])) ? sanitizeString($_POST ["suchWGmaxKost"]) : "";
-$suchWGort = (isset($_POST ["suchWGort"])) ? sanitizeString($_POST ["suchWGort"]) : "";*/
-
 $bearbeitungslink = (isset($_POST ["bearbeitungslink"])) ? $_POST ["bearbeitungslink"] : "";
 $what = (isset($_POST ["what"])) ? $_POST ["what"] : "";
 
