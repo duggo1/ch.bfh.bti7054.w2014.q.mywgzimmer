@@ -110,11 +110,11 @@ require_once ("Content/Message.php");
                 $("#btnInserataufgeben").button();
                 $("#btnFiltern").button();
                 $("#btnFilterAus").button();
-                /*$("#tabs").tabs("enable", 0);
+                $("#tabs").tabs("enable", 0);
                  $("#tabs").tabs("disable", 1);
                  $("#tabs").tabs("disable", 2);
                  $("#tabs").tabs("disable", 3);
-                 $("#tabs").tabs("disable", 4);*/
+                 $("#tabs").tabs("disable", 4);
         
             });
         </script>
