@@ -24,15 +24,15 @@ if (isset($_POST['btnkontakt'])) {
         $message = sanitizeString($_POST['KontaktBeschreibung']);
 
         if ($hasResult) {
-            $betreff = "Interesse an Inserat-Nr." . $insid;
+            $betreff = "Interesse an Inserat-Nr. " . $insid;
             $headers = "From: " . $interessent . "\r\n" . "Content-type: text/html; charset=UTF-8";
-            $text = "Guten Tag, <br /> Dein Inserat ist auf Interesse gestossen:$interessent\"<br /><br />" . $message;
+            $text = "Guten Tag, <br /> Dein Inserat ist auf Interesse gestossen!<br /><br />Absender:<br />$interessent<br /><br />Nachricht:<br />\"" . $message;
             $text .= "\"<br /><br />Hier ist der Link zu deinem Inserat-Nr " . $insid . ":<br />
 	http://localhost:8888/index.php?link=inserat&insid=" . $insid . "<br /><br />
             Willst du es bearbeiten, klicke bitte auf folgenden Link: <br />
 	http://localhost:8888/index.php?link=inserieren&id=" . $id . "<br /><br />
             Willst du es löschen, klicke bitte auf folgenden Link: <br />
-	http://localhost:8888/request/delete.php?id=" . $id . "<br /><br /><br />";
+	http://localhost:8888/request/delete.php?id=" . $id;
             $text .= "<br /><br /> Freundliche Grüsse <br /> Dein mywgzimmer.ch-Team";
             mail($email, $betreff, $text, $headers);
             $msg = urlencode("<h1>Super!</h1>Du hast dich erfolgreich beim Inserat-Nr." . $insid . " beworben.");
