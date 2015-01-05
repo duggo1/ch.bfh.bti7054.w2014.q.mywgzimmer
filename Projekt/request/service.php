@@ -62,7 +62,7 @@ if ($what == "bearbeitung"){
 	$id = mysql_real_escape_string ($bearbeitungslink );
 
 	$query = "SELECT * FROM tblInserate WHERE Link = '$bearbeitungslink'";
-	$result = mysql_query ( $query ) or die ( "Ungï¿½ltige Abfrage" );
+	$result = mysql_query ( $query ) or die ( "UngÃ¼ltige Abfrage" );
 
 	$db_field = mysql_fetch_assoc ( $result );
 
@@ -212,7 +212,7 @@ function drawtable() {
                 $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
                 $inserattable = $inserattable . "CHF " . $db_field ['Mietzins'];
                 $inserattable = $inserattable . '</a></td><td><a href="?link=inserat&insid=' . $db_field['ID'] . '">';
-                $inserattable = $inserattable . "<img class='thumbnail' src='uploads/";
+                $inserattable = $inserattable . "<img class='titlefoto' src='uploads/";
                 $inserattable = $inserattable . $db_field ['ImageID1'] . "'></a></td></tr>";
                 $hasResult = true;
             }
@@ -306,7 +306,7 @@ if ($what == "inserierenTab5") {
     mysql_close($db_handle);
 
     
-    //Wenn eine Bearbeitung gespeichert wird, wird alte link vom Inserat gelöscht.
+    //Wenn eine Bearbeitung gespeichert wird, wird alte link vom Inserat gelï¿½scht.
     if (isset($_POST ["bearbeitungslink"])){
     if ($bearbeitungslink!="") {
     

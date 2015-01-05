@@ -46,7 +46,7 @@ function admin() {
         		</th></tr></thead><tbody>';
 		
 		while ( $db_field = mysql_fetch_assoc ( $result ) ) {
-			// Die Tabelle wird hier gefüllt.
+			// Die Tabelle wird hier gefï¿½llt.
 			if ($db_field ['Studio'] == 1) {
 				$art = "Studio";
 			} else {
@@ -84,7 +84,7 @@ function admin() {
 			$inserattable = $inserattable . '</td><td>';
 			$inserattable = $inserattable . $db_field ['Email'];
 			$inserattable = $inserattable . "</td><td>";
-			$inserattable = $inserattable . "<img class='thumbnail' src='../uploads/";
+			$inserattable = $inserattable . "<img class='titlefoto' src='../uploads/";
 			 $inserattable = $inserattable . $db_field ['ImageID1'] . "'></td></tr>";
 		}
 		echo $inserattable . '</tbody></table></br><input type="submit" name="delete" value="LÃ¶schen" class="button"/></form>';
