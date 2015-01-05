@@ -1,6 +1,5 @@
 <?php
 
-//include ('session.php');
 // connection information
 
 $user_name = "root";

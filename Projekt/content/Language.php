@@ -27,16 +27,5 @@ function language() {
     echo $output;
 }
 
-function menu() {
-
-    $lan = get_URLparam("lan", "de");
-    echo "<h1>Menu</h1>";
-        $url = $_SERVER['PHP_SELF'];
-        $url = add_URLparam($url, "link", $home, "?");
-        $url = add_URLparam($url, "lan", $lan);
-        echo "<a href = \"$url\">{$link[$lan]}home</a><br />";
-    echo "<a href=\"$url\">{$link[$lan]}agb</a><br />";
-    echo "<a href=\"$url\">{$link[$lan]}help</a><br />";
-}
 ?>
 
